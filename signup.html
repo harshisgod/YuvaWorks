@@ -825,10 +825,10 @@
         const googleSignInButton = document.getElementById('google-signin-btn');
         googleSignInButton.addEventListener('click', () => {
             const googleLoginUrl = "https://accounts.google.com/o/oauth2/v2/auth?" +
-                "client_id=52657429929-bs3uuieuo4pmm8kf7afo8788kbvrf68l.apps.googleusercontent.com&" + // Replace with your actual Client ID
-                "redirect_uri=https://yuva-works.vercel.app/auth/google/callback&" + // Replace with your correct redirect URI
-                "response_type=token&" +
-                "scope=email profile";
+            "client_id=52657429929-bs3uuieuo4pmm8kf7afo8788kbvrf68l.apps.googleusercontent.com&" + // Replace with your actual Client ID from Google Cloud Console
+            "redirect_uri=https://yuva-works.vercel.app/auth/google/callback&" + // Redirecting to Google
+            "response_type=token&" +
+            "scope=email%20profile"; // Ensure scopes are URL-encoded
             window.location.href = googleLoginUrl;
         });
 
