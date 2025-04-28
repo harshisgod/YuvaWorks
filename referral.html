@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral System - YuvaWorks</title>
+    <style>
+         :root {
+            --primary-color: #0a192f;
+            --accent-color: #64ffda;
+            --secondary-color: #112240;
+            --text-color: #ccd6f6;
+            --blue-accent: #5671f5;
+            --blue-light: #8492fe;
+        }
+        
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--blue-light);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .referral-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .referral-header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+        }
+        
+        .referral-header p {
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+        
+        .referral-link {
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .referral-link input {
+            width: 80%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+        
+        .referral-link button {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .referral-link button:hover {
+            background-color: var(--blue-light);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .stats .card {
+            background-color: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            margin: 0 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stats .card h2 {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+        
+        .stats .card p {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        
+        .leaderboard {
+            margin-top: 2rem;
+        }
+        
+        .leaderboard h2 {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .leaderboard table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .leaderboard th,
+        .leaderboard td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(204, 214, 246, 0.1);
+        }
+        
+        .leaderboard th {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+        }
+        
+        .leaderboard tr:hover {
+            background-color: rgba(204, 214, 246, 0.1);
+        }
+        
+        .leaderboard td {
+            color: var(--text-color);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Yuva<span>Works</span></a>
+    </header>
+
+    <div class="container">
+        <!-- Referral Header -->
+        <div class="referral-header">
+            <h1>Invite Your Friends & Earn Rewards</h1>
+            <p>Share your referral link and earn points for every successful signup and completed project.</p>
+        </div>
+
+        <!-- Referral Link -->
+        <div class="referral-link">
+            <input type="text" id="referral-link" value="https://yuvaworks.com/referral?code=YOURCODE" readonly>
+            <button onclick="copyReferralLink()">Copy Link</button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="card">
+                <h2>1,200</h2>
+                <p>Total Points Earned</p>
+            </div>
+            <div class="card">
+                <h2>15</h2>
+                <p>Successful Referrals</p>
+            </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="leaderboard">
+            <h2>Top Referrers</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>5,000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jane Smith</td>
+                        <td>4,500</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Michael Brown</td>
+                        <td>4,200</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function copyReferralLink() {
+            const referralLink = document.getElementById('referral-link');
+            referralLink.select();
+            referralLink.setSelectionRange(0, 99999); // For mobile devices
+            navigator.clipboard.writeText(referralLink.value);
+            alert('Referral link copied to clipboard!');
+        }
+    </script>
+</body>
+
+</html>
