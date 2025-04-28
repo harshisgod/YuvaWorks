@@ -705,8 +705,8 @@
         const googleSignInButton = document.getElementById('google-signin-btn');
         googleSignInButton.addEventListener('click', () => {
             const googleLoginUrl = "https://accounts.google.com/o/oauth2/v2/auth?" +
-                "client_id=52657429929-bs3uuieuo4pmm8kf7afo8788kbvrf68l.apps.googleusercontent.com&" + // Replace with your actual Client ID
-                "redirect_uri=https://yuva-works.vercel.app/.com/auth/google/callback&" + // Replace with your redirect URI
+                "client_id=YOUR_GOOGLE_CLIENT_ID&" + // Replace with your actual Client ID
+                "redirect_uri=YOUR_REDIRECT_URI&" + // Replace with your redirect URI
                 "response_type=token&" +
                 "scope=email profile";
             window.location.href = googleLoginUrl;
@@ -716,8 +716,8 @@
         const facebookSignInButton = document.getElementById('facebook-signin-btn');
         facebookSignInButton.addEventListener('click', () => {
             const facebookLoginUrl = "https://www.facebook.com/v12.0/dialog/oauth?" +
-                "client_id=1210800050754620&" + // Replace with your actual App ID
-                "redirect_uri=https://yuva-works.vercel.app/auth/facebook/callback&" + // Replace with your redirect URI
+                "client_id=YOUR_FACEBOOK_APP_ID&" + // Replace with your actual App ID
+                "redirect_uri=YOUR_REDIRECT_URI&" + // Replace with your redirect URI
                 "response_type=token&" +
                 "scope=email,public_profile";
             window.location.href = facebookLoginUrl;
