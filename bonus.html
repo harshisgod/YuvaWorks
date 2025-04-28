@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonus & Rewards System - YuvaWorks</title>
+    <style>
+         :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #60a5fa;
+            --dark: #111827;
+            --darker: #030712;
+            --light: #e5e7eb;
+            --accent: #8b5cf6;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+        
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: var(--dark);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .container {
+            padding: 80px 5%;
+        }
+        
+        .points-balance {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .points-balance h1 {
+            font-size: 3rem;
+            color: var(--primary);
+        }
+        
+        .points-balance p {
+            font-size: 1.2rem;
+            color: var(--light);
+        }
+        
+        .activity-history {
+            margin-bottom: 50px;
+        }
+        
+        .activity-history h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .activity-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--dark);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .activity-table th,
+        .activity-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .activity-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .activity-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .activity-table tr:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+        
+        .redeem-section {
+            margin-bottom: 50px;
+        }
+        
+        .redeem-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .reward-card {
+            background: linear-gradient(145deg, #1f2937, #111827);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .reward-card h3 {
+            font-size: 1.5rem;
+            color: var(--light);
+        }
+        
+        .reward-card p {
+            font-size: 1rem;
+            color: #aaa;
+        }
+        
+        .btn-redeem {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-redeem:hover {
+            background: var(--primary-dark);
+        }
+        
+        .badges-section {
+            text-align: center;
+        }
+        
+        .badges-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .badges-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .badge-card {
+            background: linear-gradient(145deg, #1f2937, #111827);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .badge-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+        
+        .badge-card h3 {
+            font-size: 1.2rem;
+            color: var(--light);
+        }
+        
+        .badge-card p {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Yuva<span>Works</span></a>
+    </header>
+
+    <div class="container">
+        <!-- Points Balance -->
+        <div class="points-balance">
+            <h1>Your Points Balance: 1,250</h1>
+            <p>Earn more points by completing activities and redeem them for exciting rewards!</p>
+        </div>
+
+        <!-- Activity History -->
+        <div class="activity-history">
+            <h2>Recent Activity</h2>
+            <table class="activity-table">
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Points</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Completed Project</td>
+                        <td>+200</td>
+                        <td>April 25, 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Left a Review</td>
+                        <td>+30</td>
+                        <td>April 24, 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Redeemed Reward</td>
+                        <td>-500</td>
+                        <td>April 23, 2025</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Redeem Rewards Section -->
+        <div class="redeem-section">
+            <h2>Redeem Rewards</h2>
+
+            <!-- Amazon -->
+            <div class="reward-card">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="assets/amazon-logo.svg" alt="Amazon Logo" style="width: 50px; height: auto;">
+                    <div>
+                        <h3>Amazon Gift Voucher</h3>
+                        <p>Redeem 1,000 points for a ₹500 Amazon gift voucher.</p>
+                    </div>
+                </div>
+                <button class="btn-redeem">Redeem</button>
+            </div>
+
+            <!-- Flipkart -->
+            <div class="reward-card">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="assets/flipkart-logo.svg" alt="Flipkart Logo" style="width: 50px; height: auto;">
+                    <div>
+                        <h3>Flipkart Gift Voucher</h3>
+                        <p>Redeem 1,000 points for a ₹500 Flipkart gift voucher.</p>
+                    </div>
+                </div>
+                <button class="btn-redeem">Redeem</button>
+            </div>
+
+            <!-- Myntra -->
+            <div class="reward-card">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="assets/myntra-logo.png" alt="Myntra Logo" style="width: 50px; height: auto;">
+                    <div>
+                        <h3>Myntra Gift Voucher</h3>
+                        <p>Redeem 1,000 points for a ₹500 Myntra gift voucher.</p>
+                    </div>
+                </div>
+                <button class="btn-redeem">Redeem</button>
+            </div>
+
+            <!-- Swiggy -->
+            <div class="reward-card">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="assets/swiggy-logo.svg" alt="Swiggy Logo" style="width: 50px; height: auto;">
+                    <div>
+                        <h3>Swiggy Gift Voucher</h3>
+                        <p>Redeem 800 points for a ₹400 Swiggy gift voucher.</p>
+                    </div>
+                </div>
+                <button class="btn-redeem">Redeem</button>
+            </div>
+
+            <!-- Zomato -->
+            <div class="reward-card">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="assets/zomato-logo.png" alt="Zomato Logo" style="width: 50px; height: auto;">
+                    <div>
+                        <h3>Zomato Gift Voucher</h3>
+                        <p>Redeem 800 points for a ₹400 Zomato gift voucher.</p>
+                    </div>
+                </div>
+                <button class="btn-redeem">Redeem</button>
+            </div>
+
+            <!-- Paytm -->
+            <div class="reward-card">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="assets/paytm-logo.png" alt="Paytm Logo" style="width: 50px; height: auto;">
+                    <div>
+                        <h3>Paytm Wallet Credit</h3>
+                        <p>Redeem 1,200 points for ₹600 Paytm wallet credit.</p>
+                    </div>
+                </div>
+                <button class="btn-redeem">Redeem</button>
+            </div>
+        </div>
+
+        <!-- Badges Section -->
+        <div class="badges-section">
+            <h2>Your Badges</h2>
+            <div class="badges-container">
+                <div class="badge-card">
+                    <div class="badge-icon" style="font-size: 3rem; margin-bottom: 10px;">🏆</div>
+                    <h3>Top Freelancer</h3>
+                    <p>Awarded for completing 10+ projects successfully.</p>
+                </div>
+                <div class="badge-card">
+                    <div class="badge-icon" style="font-size: 3rem; margin-bottom: 10px;">🌟</div>
+                    <h3>Community Helper</h3>
+                    <p>Awarded for leaving 20+ reviews.</p>
+                </div>
+                <div class="badge-card">
+                    <div class="badge-icon" style="font-size: 3rem; margin-bottom: 10px;">💼</div>
+                    <h3>Business Pro</h3>
+                    <p>Awarded for earning ₹1,00,000+ on the platform.</p>
+                </div>
+                <div class="badge-card">
+                    <div class="badge-icon" style="font-size: 3rem; margin-bottom: 10px;">🚀</div>
+                    <h3>Fast Starter</h3>
+                    <p>Awarded for completing your first project within a week.</p>
+                </div>
+                <div class="badge-card">
+                    <div class="badge-icon" style="font-size: 3rem; margin-bottom: 10px;">🤝</div>
+                    <h3>Trusted Partner</h3>
+                    <p>Awarded for maintaining a 5-star rating for 3 months.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 YuvaWorks. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
