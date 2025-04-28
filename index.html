@@ -621,7 +621,7 @@
             content: '"';
             position: absolute;
             top: 10px;
-            left: 20px;
+            left: 0;
             font-size: 5rem;
             color: rgba(96, 165, 250, 0.1);
             font-family: Georgia, serif;
@@ -2145,7 +2145,9 @@
                 </div>
                 <div class="template-footer">
                     <div class="template-price">Free</div>
-                    <button class="btn btn-outline">Use Template</button>
+                    <a href="basic-contract.html">
+                        <button class="btn btn-outline">View Details</button>
+                    </a>
                 </div>
             </div>
 
@@ -2166,7 +2168,9 @@
                 </div>
                 <div class="template-footer">
                     <div class="template-price">₹1,500</div>
-                    <button class="btn btn-outline">Use Template</button>
+                    <a href="professional-contract.html">
+                        <button class="btn btn-outline">View Details</button>
+                    </a>
                 </div>
             </div>
 
@@ -2188,7 +2192,9 @@
                 </div>
                 <div class="template-footer">
                     <div class="template-price">₹3,500</div>
-                    <button class="btn btn-outline">Use Template</button>
+                    <a href="enterprise-contract.html">
+                        <button class="btn btn-outline">View Details</button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -2233,55 +2239,62 @@
                 </div>
             </div>
             <div class="milestone-card reveal delay-1">
-                <h3 style="margin-bottom: 20px;">Project Milestones Example</h3>
+                <h3 style="margin-bottom: 20px;">Project Milestones</h3>
                 <ul class="milestone-list">
-                    <li class="milestone-item">
-                        <div class="milestone-status status-completed">Completed</div>
-                        <h4>Project Planning & Design</h4>
-                        <p>Initial wireframes, mockups, and project plan</p>
-                        <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                    <li class="milestone-item" data-status="completed">
+                        <div class="milestone-header">
+                            <h4>Project Planning & Design</h4>
+                            <span class="milestone-status status-completed" title="This milestone is completed.">Completed</span>
+                        </div>
+                        <p class="milestone-details">Initial wireframes, mockups, and project plan.</p>
+                        <div class="milestone-actions">
                             <span>20% of total</span>
                             <span>₹20,000</span>
                         </div>
                     </li>
-                    <li class="milestone-item">
-                        <div class="milestone-status status-completed">Completed</div>
-                        <h4>Frontend Development</h4>
-                        <p>HTML, CSS, and responsive design implementation</p>
-                        <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                    <li class="milestone-item" data-status="completed">
+                        <div class="milestone-header">
+                            <h4>Frontend Development</h4>
+                            <span class="milestone-status status-completed" title="This milestone is completed.">Completed</span>
+                        </div>
+                        <p class="milestone-details">HTML, CSS, and responsive design implementation.</p>
+                        <div class="milestone-actions">
                             <span>30% of total</span>
                             <span>₹30,000</span>
                         </div>
                     </li>
-                    <li class="milestone-item">
-                        <div class="milestone-status status-pending">In Progress</div>
-                        <h4>Backend Integration</h4>
-                        <p>Server-side logic and database connectivity</p>
-                        <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-                            <span>25% of total</span>
-                            <span>₹25,000</span>
-                        </div>
+                    <li class="milestone-item" data-status="in-progress">
+                        <div class="milestone-header">
+                            <h4>Backend Integration</h4>
+                            <div class="milestone-status status-pending" title="This milestone is in progress.">In Progress</span>
+                            </div>
+                            <p class="milestone-details">Server-side logic and databaseconnectivity.</p>
+                            <div class="milestone-actions">
+                                <span>25% of total</span>
+                                <span>₹25,000</span>
+                            </div>
                     </li>
-                    <li class="milestone-item```html
-                    <li class=" milestone-item ">
-                        <div class="milestone-status status-pending ">Pending</div>
-                        <h4>Testing & Launch</h4>
-                        <p>QA testing, bug fixes, and final deployment</p>
-                        <div style="display: flex; justify-content: space-between; margin-top: 10px; ">
+                    <li class="milestone-item" data-status="pending">
+                        <div class="milestone-header">
+                            <h4>Testing & Launch</h4>
+                            <span class="milestone-status status-pending" title="This milestone is pending.">Pending</span>
+                        </div>
+                        <p class="milestone-details">QA testing, bug fixes, and final deployment.</p>
+                        <div class="milestone-actions">
                             <span>25% of total</span>
                             <span>₹25,000</span>
                         </div>
                     </li>
                 </ul>
-                <div class="milestone-progress ">
-                    <div class="milestone-progress-bar "></div>
+                <div class="milestone-progress">
+                    <div class="milestone-progress-bar" style="width: 50%;"></div>
                 </div>
-                <div class="milestone-total ">
+                <div class="milestone-total">
                     <span>Total Project Value:</span>
                     <span>₹100,000</span>
                 </div>
+                </div>
             </div>
-        </div>
     </section>
 
     <!-- Jobs Browse Section -->
@@ -2645,7 +2658,7 @@
             document.querySelector('.estimator-results').style.display = 'block';
         });
 
-        
+
         // Milestone progress bar animation
         const milestoneProgressBar = document.querySelector('.milestone-progress-bar');
         setTimeout(() => {
