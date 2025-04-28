@@ -103,10 +103,121 @@
             text-align: center;
             color: #aaa;
         }
+
+        .bubbles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--dark), var(--darker));
+}
+
+.bubbles span {
+    position: absolute;
+    display: block;
+    width: 80px;
+    height: 80px;
+    background: var(--primary);
+    opacity: 0.5;
+    border-radius: 50%;
+    animation: bubble 15s linear infinite;
+    bottom: -150px;
+}
+
+.bubbles span:nth-child(1) {
+    left: 10%;
+    width: 120px;
+    height: 120px;
+    animation-duration: 12s;
+    animation-delay: 0s;
+}
+
+.bubbles span:nth-child(2) {
+    left: 20%;
+    width: 100px;
+    height: 100px;
+    animation-duration: 10s;
+    animation-delay: 2s;
+}
+
+.bubbles span:nth-child(3) {
+    left: 30%;
+    width: 140px;
+    height: 140px;
+    animation-duration: 18s;
+    animation-delay: 4s;
+}
+
+.bubbles span:nth-child(4) {
+    left: 50%;
+    width: 160px;
+    height: 160px;
+    animation-duration: 20s;
+    animation-delay: 6s;
+}
+
+.bubbles span:nth-child(5) {
+    left: 70%;
+    width: 110px;
+    height: 110px;
+    animation-duration: 14s;
+    animation-delay: 8s;
+}
+
+.bubbles span:nth-child(6) {
+    left: 85%;
+    width: 180px;
+    height: 180px;
+    animation-duration: 22s;
+    animation-delay: 10s;
+}
+
+.bubbles span:nth-child(7) {
+    left: 40%;
+    width: 90px;
+    height: 90px;
+    animation-duration: 16s;
+    animation-delay: 3s;
+}
+
+.bubbles span:nth-child(8) {
+    left: 60%;
+    width: 130px;
+    height: 130px;
+    animation-duration: 19s;
+    animation-delay: 5s;
+}
+
+@keyframes bubble {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-1200px) scale(0.8);
+        opacity: 0;
+    }
+}
     </style>
 </head>
 
 <body>
+    <div class="bubbles">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <header>
         <a href="index.html" class="logo">Yuva<span>Works</span></a>
     </header>
@@ -124,7 +235,7 @@
             <li>Non-disclosure agreement</li>
         </ul>
         <p>This contract is perfect for projects requiring clear deliverables, milestones, and legal protections. It ensures both parties are protected and aligned throughout the project.</p>
-        <a href="#" class="btn-primary">Download Contract</a>
+        <a href="assets/professional-contract.pdf" class="btn-primary" target="_blank">Download Contract</a>
     </section>
 
     <footer>
