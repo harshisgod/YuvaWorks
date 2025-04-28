@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YuvaWorks - Freelancing Platform for Indians</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #60a5fa;
+            --dark: #111827;
+            --darker: #030712;
+            --light: #e5e7eb;
+            --accent: #8b5cf6;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Animation for elements coming into view */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        .animated {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        header {
+            background-color: var(--dark);
+            padding: 20px 5%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 24px;
+            color: var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            width: 50%;
+            z-index: 1;
+        }
+
+        .hero-image {
+            width: 45%;
+            z-index: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: pulse 3s infinite;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            position: relative;
+        }
+
+        .hero h1 span:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            bottom: 5px;
+            left: 0;
+            background-color: var(--accent);
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            display: block;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-500px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .how-it-works {
+            padding: 80px 5%;
+            background-color: var(--darker);
+            position: relative;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: -30%;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        .step h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .step p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent));
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .cta-shape {
+            position: absolute;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .cta-shape-1 {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: white;
+            top: -150px;
+            left: -100px;
+        }
+
+        .cta-shape-2 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: white;
+            bottom: -100px;
+            right: -50px;
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 40px 50px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h4 {
+            color: var(--white);
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4:after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .contact-info p {
+            color: #aaa;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info p i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            color: #aaa;
+            font-size: 14px;
+        }
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                height: auto;
+                padding: 80px 5%;
+            }
+
+            .hero-content, .hero-image {
+                width: 100%;
+                margin-bottom: 40px;
+            }
+
+            .step:not(:last-child)::after {
+                display: none;
+            }
+
+            .escrow-line {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-items {
+                display: none;
+            }
+
+            .auth-buttons {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animation for scroll */
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            height: 100vh;
+            background: var(--dark);
+            z-index: 1000;
+            padding: 50px 30px;
+            transition: all 0.5s ease;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+            box-shadow: 5px 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            margin-top: 50px;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+        }
+
+        .mobile-nav li {
+            margin-bottom: 15px;
+        }
+
+        .mobile-nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-auth-buttons {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">Yuva<span>Works</span></a>
+        <nav class="nav-items">
+            <ul>
+                <a href="index.html">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="contactus.html">Contact</a>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html">
+                <button class="btn btn-outline">Log In</button>
+            </a>
+            <a href="signup.html">
+                <button class="btn btn-primary">Sign Up</button>
+            </a>
+        </div>
+        <button class="mobile-menu-btn">☰</button>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <button class="mobile-menu-close">✕</button>
+        <div class="mobile-logo">
+            <a href="#" class="logo">Yuva<span>Works</span></a>
+        </div>
+        <nav class="mobile-nav">
+            <ul>
+                <a href="index.html">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="contactus.html">Contact</a>
+            </ul>
+        </nav>
+        <div class="mobile-auth-buttons">
+            <a href="login.html">
+                <button class="btn btn-outline">Log In</button>
+            </a>
+            <a href="signup.html">
+                <button class="btn btn-primary">Sign Up</button>
+            </a>
+        </div>
+    </div>
+    <div class="overlay"></div>
+
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-title reveal">
+            <h2>How YuvaWorks Works</h2>
+        </div>
+        <div class="steps">
+            <div class="step reveal">
+                <div class="step-number">1</div>
+                <h3>Create Your Profile</h3>
+                <p>Sign up and showcase your skills, portfolio, and experience to stand out from the crowd.</p>
+            </div>
+            <div class="step reveal delay-1">
+                <div class="step-number">2</div>
+                <h3>Find Opportunities</h3>
+                <p>Browse projects or get matched with clients looking for your specific skills and expertise.</p>
+            </div>
+            <div class="step reveal delay-2">
+                <div class="step-number">3</div>
+                <h3>Submit Proposals</h3>
+                <p>Send customized proposals that highlight how your skills meet the client's specific needs.</p>
+            </div>
+            <div class="step reveal delay-3">
+                <div class="step-number">4</div>
+                <h3>Get Paid Securely</h3>
+                <p>Work with confidence using our milestone-based payments and escrow system.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="cta-shape cta-shape-1"></div>
+        <div class="cta-shape cta-shape-2"></div>
+        <div class="reveal">
+            <h2>Ready to Start Your Journey?</h2>
+            <p>Join YuvaWorks today and connect with clients and talent from across India. Whether you're looking to hire or get hired, we've got you covered.</p>
+            <div class="cta-buttons">
+                <a href="signup.html"><button class="btn btn-primary btn-cta">Sign Up as Freelancer</button></a>
+                <a href="postproject.html"><button class="btn btn-outline btn-cta" style="background: rgba(255, 255, 255, 0.1); border-color: white; color: white;">Post a Project</button></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>YuvaWorks</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="press.html">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>For Freelancers</h4>
+                    <ul>
+                        <li><a href="find-work.html">Find Work</a></li>
+                        <li><a href="create-profile.html">Create Profile</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="community.html">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>For Clients</h4>
+                    <ul>
+                        <li><a href="hire-freelancers.html">Hire Freelancers</a></li>
+                        <li><a href="post-project.html">Post a Project</a></li>
+                        <li><a href="success-stories.html">Success Stories</a></li>
+                        <li><a href="enterprise.html">Enterprise Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column contact-info">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Delhi NCR, India</p>
+                    <p><i class="fas fa-phone"></i> +91 85889 30528</p>
+                    <p><i class="fas fa-envelope"></i> contact@yuvaworks.in</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 YuvaWorks. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.overlay');
+        const mobileMenuClose = document.querySelector('.mobile-menu-close');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Scroll Reveal Animation
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveals[i].getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        // Testimonial Carousel
+        const carousel = document.querySelector('.testimonial-carousel');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        carousel.addEventListener('mousedown', (e) => {
+            isDown = true;
+            carousel.classList.add('active');
+            startX = e.pageX - carousel.offsetLeft;
+            scrollLeft = carousel.scrollLeft;
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            isDown = false;
+            carousel.classList.remove('active');
+        });
+
+        carousel.addEventListener('mouseup', () => {
+            isDown = false;
+            carousel.classList.remove('active');
+        });
+
+        carousel.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - carousel.offsetLeft;
+            const walk = (x - startX) * 2;
+            carousel.scrollLeft = scrollLeft - walk;
+        });
+
+        // Auto-scroll carousel
+        let scrollAmount = 0;
+        const scrollSpeed = 2;
+        const distance = 3000;
+
+        function autoScroll() {
+            carousel.scrollLeft += scrollSpeed;
+            scrollAmount += scrollSpeed;
+            
+            if (scrollAmount >= distance) {
+                carousel.scrollLeft = 0;
+                scrollAmount = 0;
+            }
+            
+            requestAnimationFrame(autoScroll);
+        }
+
+        // Start auto-scroll after 3 seconds
+        setTimeout(() => {
+            requestAnimationFrame(autoScroll);
+        }, 3000);
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        overlay.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YuvaWorks - About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #0066ff;
+            --primary-dark: #0055d4;
+            --secondary: #001233;
+            --light-bg: #f5f8ff;
+            --text: #333;
+            --text-light: #777;
+            --white: #fff;
+            --accent: #00c2ff;
+        }
+
+        body {
+            background-color: #000;
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 102, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .navbar:hover {
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.5);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 10px 24px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 102, 255, 0.2);
+        }
+
+        .hero {
+            height: 400px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 18, 51, 0.9)), url('/api/placeholder/1920/500');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--white);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards 0.2s;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #cccccc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards 0.4s;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: var(--primary);
+            clip-path: polygon(0 0, 100% 100%, 100% 100%, 0% 100%);
+            z-index: 2;
+            animation: waveEffect 10s infinite linear;
+            opacity: 0.5;
+        }
+
+        .about-section {
+            padding: 80px 50px;
+            background-color: #001233;
+            position: relative;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--white);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2:after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .about-text {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #cccccc;
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(0);
+            transition: all 0.5s ease;
+        }
+
+        .about-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.4);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .team-section {
+            padding: 80px 50px;
+            background-color: #000;
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background: linear-gradient(145deg, #001233, #00183d);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .team-member:nth-child(1) { animation-delay: 0.2s; }
+        .team-member:nth-child(2) { animation-delay: 0.4s; }
+        .team-member:nth-child(3) { animation-delay: 0.6s; }
+        .team-member:nth-child(4) { animation-delay: 0.8s; }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 102, 255, 0.3);
+        }
+
+        .member-image {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
+        }
+
+        .member-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .member-info h4 {
+            font-size: 20px;
+            color: var(--white);
+            margin-bottom: 5px;
+        }
+
+        .member-info p {
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(0, 102, 255, 0.1);
+            color: var(--primary);
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .values-section {
+            padding: 80px 50px;
+            background-color: #001233;
+        }
+
+        .values-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .value-card:nth-child(1) { animation-delay: 0.2s; }
+        .value-card:nth-child(2) { animation-delay: 0.4s; }
+        .value-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .value-card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 102, 255, 0.1), transparent);
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .value-card:hover:before {
+            background: linear-gradient(45deg, rgba(0, 102, 255, 0.2), transparent);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: rgba(0, 102, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+            color: var(--primary);
+            transition: all 0.4s ease;
+        }
+
+        .value-card:hover .value-icon {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: rotateY(180deg);
+        }
+
+        .value-card h4 {
+            font-size: 20px;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            color: #aaa;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        footer {
+            background-color: #000;
+            padding: 40px 50px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h4 {
+            color: var(--white);
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4:after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .contact-info p {
+            color: #aaa;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info p i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes waveEffect {
+            0% {
+                clip-path: polygon(0 0, 30% 50%, 60% 30%, 100% 60%, 100% 100%, 0% 100%);
+            }
+            50% {
+                clip-path: polygon(0 60%, 30% 30%, 60% 50%, 100% 0, 100% 100%, 0% 100%);
+            }
+            100% {
+                clip-path: polygon(0 0, 30% 50%, 60% 30%, 100% 60%, 100% 100%, 0% 100%);
+            }
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 992px) {
+            .navbar {
+                padding: 15px 30px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Yuva<span>Works</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="categories.html">Categories</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="contactus.html">Contact</a>
+            </div>
+            <a href="login.html"> <button class="btn">Login / Sign Up</button> </a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Meet The Team Behind YuvaWorks</h1>
+            <p>A passionate group of innovators dedicated to revolutionizing the freelancing ecosystem in India</p>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="about-container">
+            <div class="section-title">
+                <h2>Our Story</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Transforming Freelancing in India</h3>
+                    <p>YuvaWorks was born out of a simple yet powerful vision: to create a freelancing platform that truly understands and addresses the unique needs of the Indian market. We realized that existing platforms often overlook local context, currency preferences, and the unique challenges faced by Indian freelancers and businesses.</p>
+                    <p>Our journey began when four tech enthusiasts with diverse backgrounds but a shared passion for empowering talent came together. We've combined our expertise in technology, design, business development, and community building to create a platform that isn't just a marketplace but an ecosystem where talent meets opportunity, fairly and transparently.</p>
+                    <p>What sets YuvaWorks apart is our innovative "Karma Fee System" that rewards contributing members with lower commission rates, our built-in contract templates tailored to Indian legal requirements, milestone-based payment systems that build trust, and our "fair pay estimator" that ensures everyone gets compensated fairly for their skills and time.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/assets/yw.png" alt="YuvaWorks Team Collaboration">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="team-container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/assets/rs.png" alt="Raghav Sharma">
+                    </div>
+                    <div class="member-info">
+                        <h4>Raghav Sharma</h4>
+                        <p>Co-Founder & CEO</p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/raghav8sharma/"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/emporium8"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/assets/kt.jpg" alt="Krish Tanwar">
+                    </div>
+                    <div class="member-info">
+                        <h4>Krish Tanwar</h4>
+                        <p>Co-Founder & CTO</p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/krish-tanwar-267334325/"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/assets/hc.png" alt="Harshit Chappliyal">
+                    </div>
+                    <div class="member-info">
+                        <h4>Harshit Chappliyal</h4>
+                        <p>Lead Designer & UX Specialist</p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/harshit-chhapliyal/"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/chhapliyalharshit"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/assets/hvs.jpg" alt="Harsh Vardhan">
+                    </div>
+                    <div class="member-info">
+                        <h4>Harsh Vardhan</h4>
+                        <p>Chief Marketing Officer</p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/harsh-vardhan-387796291/"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="https://github.com/harshisgod"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="values-container">
+            <div class="section-title">
+                <h2>Our Core Values</h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h4>Fairness & Transparency</h4>
+                    <p>We believe in fair compensation and transparent processes. Our Karma Fee System and Fair Pay Estimator ensure everyone gets what they deserve for their work and contribution.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h4>Community & Collaboration</h4>
+                    <p>YuvaWorks isn't just a platform, it's a community. We foster collaboration, mentorship, and knowledge sharing among our members to help everyone grow together.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Trust & Security</h4>
+                    <p>Our milestone-based payment system, escrow services, and built-in contract templates are designed to create a secure environment where both freelancers and clients feel protected.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>YuvaWorks</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="press.html">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>For Freelancers</h4>
+                    <ul>
+                        <li><a href="find-work.html">Find Work</a></li>
+                        <li><a href="create-profile.html">Create Profile</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="community.html">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>For Clients</h4>
+                    <ul>
+                        <li><a href="hire-freelancers.html">Hire Freelancers</a></li>
+                        <li><a href="post-project.html">Post a Project</a></li>
+                        <li><a href="success-stories.html">Success Stories</a></li>
+                        <li><a href="enterprise.html">Enterprise Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column contact-info">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Delhi NCR, India</p>
+                    <p><i class="fas fa-phone"></i> +91 85889 30528</p>
+                    <p><i class="fas fa-envelope"></i> contact@yuvaworks.in</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 YuvaWorks. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+                navbar.style.padding = '10px 50px';
+            } else {
+                navbar.style.background = 'rgba(0, 0, 0, 0.9)';
+                navbar.style.padding = '15px 50px';
+            }
+        });
+
+        // Animate team members on scroll
+        const teamMembers = document.querySelectorAll('.team-member');
+        const valueCards = document.querySelectorAll('.value-card');
+        
+        function checkVisible(elements) {
+            elements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                const visible = rect.top <= windowHeight * 0.8;
+                
+                if (visible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', function() {
+            checkVisible(teamMembers);
+            checkVisible(valueCards);
+        });
+        
+        // Initial check on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkVisible(teamMembers);
+            checkVisible(valueCards);
+        });
+    </script>
+</body>
+</html>
