@@ -483,7 +483,9 @@
         
         .features {
             padding: 80px 5%;
-            background-color: var(--dark);
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--light);
+            text-align: center;
         }
         
         .features-container {
@@ -494,36 +496,72 @@
         }
         
         .feature-card {
-            background: rgba(17, 24, 39, 0.8);
+            background: linear-gradient(145deg, #1f2937, #111827);
             border-radius: 15px;
             padding: 30px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(96, 165, 250, 0.1);
-            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
         
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             border-color: rgba(96, 165, 250, 0.3);
         }
         
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(96, 165, 250, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: scale(1.2);
+            opacity: 0.2;
+        }
+        
         .feature-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--primary);
             margin-bottom: 20px;
+            z-index: 1;
+            position: relative;
         }
         
         .feature-card h3 {
+            font-size: 1.8rem;
             margin-bottom: 15px;
-            font-size: 1.5rem;
             color: var(--secondary);
+            z-index: 1;
+            position: relative;
         }
         
         .feature-card p {
             color: #aaa;
             line-height: 1.6;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .feature-card:hover .feature-icon {
+            color: var(--accent);
+            transform: scale(1.2);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover h3 {
+            color: var(--primary);
+            transition: all 0.3s ease;
         }
         /* Karma System Section */
         
@@ -2244,6 +2282,7 @@
                     <li class="milestone-item" data-status="completed">
                         <div class="milestone-header">
                             <h4>Project Planning & Design</h4>
+                            <span class="milestone-status status-completed" ```html <h4>Project Planning & Design</h4>
                             <span class="milestone-status status-completed" title="This milestone is completed.">Completed</span>
                         </div>
                         <p class="milestone-details">Initial wireframes, mockups, and project plan.</p>
