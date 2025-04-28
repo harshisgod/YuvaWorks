@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,8 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-
-        :root {
+        
+         :root {
             --primary: #0066ff;
             --primary-dark: #0055d4;
             --secondary: #001233;
@@ -23,13 +24,13 @@
             --white: #fff;
             --accent: #00c2ff;
         }
-
+        
         body {
             background-color: #000;
             color: var(--white);
             overflow-x: hidden;
         }
-
+        
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -43,27 +44,27 @@
             box-shadow: 0 2px 10px rgba(0, 102, 255, 0.3);
             transition: all 0.3s ease;
         }
-
+        
         .navbar:hover {
             box-shadow: 0 4px 20px rgba(0, 102, 255, 0.5);
         }
-
+        
         .logo {
             font-size: 28px;
             font-weight: 700;
             color: var(--white);
             text-decoration: none;
         }
-
+        
         .logo span {
             color: var(--primary);
         }
-
+        
         .nav-links {
             display: flex;
             gap: 30px;
         }
-
+        
         .nav-links a {
             color: var(--white);
             text-decoration: none;
@@ -72,7 +73,7 @@
             transition: all 0.3s ease;
             position: relative;
         }
-
+        
         .nav-links a:after {
             content: '';
             position: absolute;
@@ -83,15 +84,15 @@
             background-color: var(--primary);
             transition: width 0.3s ease;
         }
-
+        
         .nav-links a:hover:after {
             width: 100%;
         }
-
+        
         .nav-links a:hover {
             color: var(--primary);
         }
-
+        
         .btn {
             padding: 10px 24px;
             background-color: var(--primary);
@@ -102,13 +103,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
+        
         .btn:hover {
             background-color: var(--primary-dark);
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0, 102, 255, 0.2);
         }
-
+        
         .hero {
             height: 400px;
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 18, 51, 0.9)), url('/api/placeholder/1920/500');
@@ -121,14 +122,14 @@
             overflow: hidden;
             margin-top: 80px;
         }
-
+        
         .hero-content {
             text-align: center;
             z-index: 1;
             max-width: 800px;
             padding: 0 20px;
         }
-
+        
         .hero h1 {
             font-size: 48px;
             margin-bottom: 20px;
@@ -137,7 +138,7 @@
             transform: translateY(30px);
             animation: fadeUp 0.8s forwards 0.2s;
         }
-
+        
         .hero p {
             font-size: 18px;
             color: #cccccc;
@@ -147,7 +148,7 @@
             transform: translateY(30px);
             animation: fadeUp 0.8s forwards 0.4s;
         }
-
+        
         .hero:before {
             content: '';
             position: absolute;
@@ -161,24 +162,24 @@
             animation: waveEffect 10s infinite linear;
             opacity: 0.5;
         }
-
+        
         .about-section {
             padding: 80px 50px;
             background-color: #001233;
             position: relative;
         }
-
+        
         .about-container {
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        
         .section-title {
             text-align: center;
             margin-bottom: 60px;
             position: relative;
         }
-
+        
         .section-title h2 {
             font-size: 36px;
             color: var(--white);
@@ -186,7 +187,7 @@
             display: inline-block;
             padding-bottom: 15px;
         }
-
+        
         .section-title h2:after {
             content: "";
             position: absolute;
@@ -197,31 +198,31 @@
             left: 50%;
             transform: translateX(-50%);
         }
-
+        
         .about-content {
             display: flex;
             gap: 40px;
             margin-bottom: 80px;
         }
-
+        
         .about-text {
             flex: 1;
             padding-right: 20px;
         }
-
+        
         .about-text h3 {
             font-size: 28px;
             margin-bottom: 20px;
             color: var(--white);
         }
-
+        
         .about-text p {
             font-size: 16px;
             line-height: 1.8;
             color: #cccccc;
             margin-bottom: 20px;
         }
-
+        
         .about-image {
             flex: 1;
             border-radius: 10px;
@@ -230,40 +231,40 @@
             transform: translateY(0);
             transition: all 0.5s ease;
         }
-
+        
         .about-image:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 102, 255, 0.4);
         }
-
+        
         .about-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-
+        
         .about-image:hover img {
             transform: scale(1.05);
         }
-
+        
         .team-section {
             padding: 80px 50px;
             background-color: #000;
         }
-
+        
         .team-container {
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
-
+        
         .team-member {
             background: linear-gradient(145deg, #001233, #00183d);
             border-radius: 10px;
@@ -274,56 +275,67 @@
             transform: translateY(30px);
             animation: fadeUp 0.8s forwards;
         }
-
-        .team-member:nth-child(1) { animation-delay: 0.2s; }
-        .team-member:nth-child(2) { animation-delay: 0.4s; }
-        .team-member:nth-child(3) { animation-delay: 0.6s; }
-        .team-member:nth-child(4) { animation-delay: 0.8s; }
-
+        
+        .team-member:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .team-member:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .team-member:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        .team-member:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        
         .team-member:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 102, 255, 0.3);
         }
-
+        
         .member-image {
             height: 300px;
             position: relative;
             overflow: hidden;
         }
-
+        
         .member-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-
+        
         .team-member:hover .member-image img {
             transform: scale(1.1);
         }
-
+        
         .member-info {
             padding: 20px;
             text-align: center;
         }
-
+        
         .member-info h4 {
             font-size: 20px;
             color: var(--white);
             margin-bottom: 5px;
         }
-
+        
         .member-info p {
             color: #aaa;
             margin-bottom: 15px;
         }
-
+        
         .social-links {
             display: flex;
             justify-content: center;
             gap: 15px;
         }
-
+        
         .social-links a {
             display: flex;
             align-items: center;
@@ -336,29 +348,29 @@
             font-size: 18px;
             transition: all 0.3s ease;
         }
-
+        
         .social-links a:hover {
             background-color: var(--primary);
             color: var(--white);
             transform: translateY(-3px);
         }
-
+        
         .values-section {
             padding: 80px 50px;
             background-color: #001233;
         }
-
+        
         .values-container {
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
-
+        
         .value-card {
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
@@ -373,11 +385,19 @@
             transform: translateY(30px);
             animation: fadeUp 0.8s forwards;
         }
-
-        .value-card:nth-child(1) { animation-delay: 0.2s; }
-        .value-card:nth-child(2) { animation-delay: 0.4s; }
-        .value-card:nth-child(3) { animation-delay: 0.6s; }
-
+        
+        .value-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .value-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .value-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
         .value-card:before {
             content: "";
             position: absolute;
@@ -389,16 +409,16 @@
             z-index: -1;
             transition: all 0.4s ease;
         }
-
+        
         .value-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
-
+        
         .value-card:hover:before {
             background: linear-gradient(45deg, rgba(0, 102, 255, 0.2), transparent);
         }
-
+        
         .value-icon {
             width: 70px;
             height: 70px;
@@ -412,42 +432,42 @@
             color: var(--primary);
             transition: all 0.4s ease;
         }
-
+        
         .value-card:hover .value-icon {
             background-color: var(--primary);
             color: var(--white);
             transform: rotateY(180deg);
         }
-
+        
         .value-card h4 {
             font-size: 20px;
             color: var(--white);
             margin-bottom: 15px;
         }
-
+        
         .value-card p {
             color: #aaa;
             line-height: 1.6;
             font-size: 15px;
         }
-
+        
         footer {
             background-color: #000;
             padding: 40px 50px 20px;
         }
-
+        
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
             margin-bottom: 30px;
         }
-
+        
         .footer-column h4 {
             color: var(--white);
             font-size: 18px;
@@ -455,7 +475,7 @@
             position: relative;
             padding-bottom: 10px;
         }
-
+        
         .footer-column h4:after {
             content: "";
             position: absolute;
@@ -465,38 +485,38 @@
             bottom: 0;
             left: 0;
         }
-
+        
         .footer-column ul {
             list-style: none;
         }
-
+        
         .footer-column ul li {
             margin-bottom: 10px;
         }
-
+        
         .footer-column ul li a {
             color: #aaa;
             text-decoration: none;
             transition: all 0.3s ease;
         }
-
+        
         .footer-column ul li a:hover {
             color: var(--primary);
             padding-left: 5px;
         }
-
+        
         .contact-info p {
             color: #aaa;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
         }
-
+        
         .contact-info p i {
             margin-right: 10px;
             color: var(--primary);
         }
-
+        
         .copyright {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 20px;
@@ -504,14 +524,14 @@
             color: #aaa;
             font-size: 14px;
         }
-
+        
         @keyframes fadeUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
+        
         @keyframes waveEffect {
             0% {
                 clip-path: polygon(0 0, 30% 50%, 60% 30%, 100% 60%, 100% 100%, 0% 100%);
@@ -523,56 +543,51 @@
                 clip-path: polygon(0 0, 30% 50%, 60% 30%, 100% 60%, 100% 100%, 0% 100%);
             }
         }
-
         /* Responsive Styles */
+        
         @media screen and (max-width: 992px) {
             .navbar {
                 padding: 15px 30px;
             }
-            
             .about-content {
                 flex-direction: column;
             }
-            
             .about-text {
                 padding-right: 0;
                 margin-bottom: 30px;
             }
         }
-
+        
         @media screen and (max-width: 768px) {
             .hero h1 {
                 font-size: 36px;
             }
-            
             .team-grid {
                 grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             }
         }
-
+        
         @media screen and (max-width: 576px) {
             .navbar {
                 padding: 15px 20px;
             }
-            
             .nav-links {
                 gap: 15px;
             }
-            
             .hero h1 {
                 font-size: 30px;
             }
-            
             .section-title h2 {
                 font-size: 30px;
             }
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav class="navbar">
-            <a href="index.html" class="logo">Yuva<span>Works</span></a>
+            <a href="index1.html" class="logo">Yuva<span>Works</span></a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="aboutus.html">About Us</a>
@@ -599,9 +614,12 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Transforming Freelancing in India</h3>
-                    <p>YuvaWorks was born out of a simple yet powerful vision: to create a freelancing platform that truly understands and addresses the unique needs of the Indian market. We realized that existing platforms often overlook local context, currency preferences, and the unique challenges faced by Indian freelancers and businesses.</p>
-                    <p>Our journey began when four tech enthusiasts with diverse backgrounds but a shared passion for empowering talent came together. We've combined our expertise in technology, design, business development, and community building to create a platform that isn't just a marketplace but an ecosystem where talent meets opportunity, fairly and transparently.</p>
-                    <p>What sets YuvaWorks apart is our innovative "Karma Fee System" that rewards contributing members with lower commission rates, our built-in contract templates tailored to Indian legal requirements, milestone-based payment systems that build trust, and our "fair pay estimator" that ensures everyone gets compensated fairly for their skills and time.</p>
+                    <p>YuvaWorks was born out of a simple yet powerful vision: to create a freelancing platform that truly understands and addresses the unique needs of the Indian market. We realized that existing platforms often overlook local context,
+                        currency preferences, and the unique challenges faced by Indian freelancers and businesses.</p>
+                    <p>Our journey began when four tech enthusiasts with diverse backgrounds but a shared passion for empowering talent came together. We've combined our expertise in technology, design, business development, and community building to create
+                        a platform that isn't just a marketplace but an ecosystem where talent meets opportunity, fairly and transparently.</p>
+                    <p>What sets YuvaWorks apart is our innovative "Karma Fee System" that rewards contributing members with lower commission rates, our built-in contract templates tailored to Indian legal requirements, milestone-based payment systems that
+                        build trust, and our "fair pay estimator" that ensures everyone gets compensated fairly for their skills and time.</p>
                 </div>
                 <div class="about-image">
                     <img src="/assets/yw.png" alt="YuvaWorks Team Collaboration">
@@ -639,7 +657,7 @@
                         <div class="social-links">
                             <a href="https://www.linkedin.com/in/krish-tanwar-267334325/"><i class="fab fa-linkedin-in"></i></a>
                             <a href="#"><i class="fab fa-github"></i></a>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -770,25 +788,25 @@
         // Animate team members on scroll
         const teamMembers = document.querySelectorAll('.team-member');
         const valueCards = document.querySelectorAll('.value-card');
-        
+
         function checkVisible(elements) {
             elements.forEach(element => {
                 const rect = element.getBoundingClientRect();
                 const windowHeight = window.innerHeight || document.documentElement.clientHeight;
                 const visible = rect.top <= windowHeight * 0.8;
-                
+
                 if (visible) {
                     element.style.opacity = '1';
                     element.style.transform = 'translateY(0)';
                 }
             });
         }
-        
+
         window.addEventListener('scroll', function() {
             checkVisible(teamMembers);
             checkVisible(valueCards);
         });
-        
+
         // Initial check on page load
         document.addEventListener('DOMContentLoaded', function() {
             checkVisible(teamMembers);
@@ -796,4 +814,5 @@
         });
     </script>
 </body>
+
 </html>
