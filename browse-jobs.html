@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yuva Works - Browse Jobs</title>
     <style>
-        :root {
+         :root {
             --primary-color: #3367d6;
             --secondary-color: #4285f4;
             --dark-bg: #0e1217;
@@ -46,11 +47,6 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin-right: 1rem;
-        }
-        
-        .logo a {
-            text-decoration: none;
-            color: var(--secondary-color);
         }
         
         .nav-links {
@@ -233,24 +229,25 @@
             background-color: var(--card-bg);
             border-radius: 8px;
         }
-
+        
         @media (max-width: 768px) {
             .filter-container {
                 grid-template-columns: 1fr;
             }
-            
             .jobs-container {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="logo-container">
             <div class="logo">
-                <a href="index.html">Yuva</a>
-                <a href="index.html" style="color: var(--text-light);">Works</a>
+                <a href="index1.html" style="text-decoration: none; color: var(--secondary-color);">
+                    Yuva<span style="color: var(--text-light);">Works</span>
+                </a>
             </div>
             <div class="nav-links">
                 <a href="how-it-works.html">How It Works</a>
@@ -267,12 +264,12 @@
 
     <div class="container">
         <h1 class="page-title">Browse Available Jobs</h1>
-        
+
         <div class="search-bar">
             <input type="text" class="search-input" id="search-input" placeholder="Search for jobs by skill, keyword, or category...">
             <button class="search-button" id="search-button">Search</button>
         </div>
-        
+
         <div class="filter-container">
             <div class="filter-group">
                 <label class="filter-label">Category</label>
@@ -285,7 +282,7 @@
                     <option value="digital-marketing">Digital Marketing</option>
                 </select>
             </div>
-            
+
             <div class="filter-group">
                 <label class="filter-label">Experience Level</label>
                 <select class="filter-select" id="experience-filter">
@@ -295,7 +292,7 @@
                     <option value="expert">Expert</option>
                 </select>
             </div>
-            
+
             <div class="filter-group">
                 <label class="filter-label">Project Length</label>
                 <select class="filter-select" id="duration-filter">
@@ -305,7 +302,7 @@
                     <option value="long">Long-term (1+ months)</option>
                 </select>
             </div>
-            
+
             <div class="filter-group">
                 <label class="filter-label">Budget Range</label>
                 <select class="filter-select" id="budget-filter">
@@ -316,7 +313,7 @@
                 </select>
             </div>
         </div>
-        
+
         <div class="jobs-container" id="jobs-container">
             <!-- Jobs will be dynamically loaded here -->
         </div>
@@ -324,80 +321,73 @@
 
     <script>
         // Sample jobs data (this would be populated from your backend)
-        let jobs = [
-            {
-                id: 1,
-                title: "Full Stack E-commerce Website Development",
-                description: "Looking for an experienced developer to build a responsive e-commerce website with product listings, shopping cart, and payment integration.",
-                price: 45000,
-                postedDays: 2,
-                category: "web-development",
-                experienceLevel: "expert",
-                duration: "medium",
-                budget: "medium",
-                tags: ["React", "Node.js", "MongoDB", "Payment API"]
-            },
-            {
-                id: 2,
-                title: "Content Writing for Technology Blog",
-                description: "Need a tech-savvy content writer to create 10 detailed blog posts about emerging technologies and digital transformation.",
-                price: 25000,
-                postedDays: 4,
-                category: "content-writing",
-                experienceLevel: "intermediate",
-                duration: "medium",
-                budget: "medium",
-                tags: ["Tech Writing", "SEO", "Blog Posts"]
-            },
-            {
-                id: 3,
-                title: "Mobile App UI/UX Design",
-                description: "Seeking a talented UI/UX designer to create modern and intuitive designs for a health and fitness mobile application.",
-                price: 35000,
-                postedDays: 1,
-                category: "mobile-app",
-                experienceLevel: "expert",
-                duration: "short",
-                budget: "medium",
-                tags: ["UI/UX", "Mobile App", "Figma", "Adobe XD"]
-            },
-            {
-                id: 4,
-                title: "Digital Marketing Campaign for New Product Launch",
-                description: "Looking for a digital marketing expert to create and execute a comprehensive marketing strategy for our new SaaS product launch.",
-                price: 60000,
-                postedDays: 3,
-                category: "digital-marketing",
-                experienceLevel: "expert",
-                duration: "long",
-                budget: "high",
-                tags: ["SEM", "Social Media", "Email Marketing", "Analytics"]
-            },
-            {
-                id: 5,
-                title: "WordPress Blog Redesign",
-                description: "Need to revamp an existing WordPress blog with a modern design, improved navigation, and mobile responsiveness.",
-                price: 18000,
-                postedDays: 5,
-                category: "web-development",
-                experienceLevel: "intermediate",
-                duration: "short",
-                budget: "medium",
-                tags: ["WordPress", "CSS", "Responsive Design"]
-            },
-            {
-                id: 6,
-                title: "Logo Design for Tech Startup",
-                description: "Seeking a creative graphic designer to create a modern, minimalist logo for our AI-based tech startup.",
-                price: 12000,
-                postedDays: 2,
-                category: "graphic-design",
-                experienceLevel: "intermediate",
-                duration: "short",
-                budget: "low",
-                tags: ["Logo Design", "Branding", "Adobe Illustrator"]
-            }
-        ];
+        let jobs = [{
+            id: 1,
+            title: "Full Stack E-commerce Website Development",
+            description: "Looking for an experienced developer to build a responsive e-commerce website with product listings, shopping cart, and payment integration.",
+            price: 45000,
+            postedDays: 2,
+            category: "web-development",
+            experienceLevel: "expert",
+            duration: "medium",
+            budget: "medium",
+            tags: ["React", "Node.js", "MongoDB", "Payment API"]
+        }, {
+            id: 2,
+            title: "Content Writing for Technology Blog",
+            description: "Need a tech-savvy content writer to create 10 detailed blog posts about emerging technologies and digital transformation.",
+            price: 25000,
+            postedDays: 4,
+            category: "content-writing",
+            experienceLevel: "intermediate",
+            duration: "medium",
+            budget: "medium",
+            tags: ["Tech Writing", "SEO", "Blog Posts"]
+        }, {
+            id: 3,
+            title: "Mobile App UI/UX Design",
+            description: "Seeking a talented UI/UX designer to create modern and intuitive designs for a health and fitness mobile application.",
+            price: 35000,
+            postedDays: 1,
+            category: "mobile-app",
+            experienceLevel: "expert",
+            duration: "short",
+            budget: "medium",
+            tags: ["UI/UX", "Mobile App", "Figma", "Adobe XD"]
+        }, {
+            id: 4,
+            title: "Digital Marketing Campaign for New Product Launch",
+            description: "Looking for a digital marketing expert to create and execute a comprehensive marketing strategy for our new SaaS product launch.",
+            price: 60000,
+            postedDays: 3,
+            category: "digital-marketing",
+            experienceLevel: "expert",
+            duration: "long",
+            budget: "high",
+            tags: ["SEM", "Social Media", "Email Marketing", "Analytics"]
+        }, {
+            id: 5,
+            title: "WordPress Blog Redesign",
+            description: "Need to revamp an existing WordPress blog with a modern design, improved navigation, and mobile responsiveness.",
+            price: 18000,
+            postedDays: 5,
+            category: "web-development",
+            experienceLevel: "intermediate",
+            duration: "short",
+            budget: "medium",
+            tags: ["WordPress", "CSS", "Responsive Design"]
+        }, {
+            id: 6,
+            title: "Logo Design for Tech Startup",
+            description: "Seeking a creative graphic designer to create a modern, minimalist logo for our AI-based tech startup.",
+            price: 12000,
+            postedDays: 2,
+            category: "graphic-design",
+            experienceLevel: "intermediate",
+            duration: "short",
+            budget: "low",
+            tags: ["Logo Design", "Branding", "Adobe Illustrator"]
+        }];
 
         // Elements
         const jobsContainer = document.getElementById('jobs-container');
@@ -411,7 +401,7 @@
         // Function to render jobs
         function renderJobs(jobsToRender) {
             jobsContainer.innerHTML = '';
-            
+
             if (jobsToRender.length === 0) {
                 jobsContainer.innerHTML = `
                     <div class="no-jobs">
@@ -421,13 +411,13 @@
                 `;
                 return;
             }
-            
+
             jobsToRender.forEach(job => {
                 const jobCard = document.createElement('div');
                 jobCard.className = 'job-card';
-                
+
                 const tagsHTML = job.tags.map(tag => `<span class="job-tag">${tag}</span>`).join('');
-                
+
                 jobCard.innerHTML = `
                     <div class="job-header">
                         <span class="posted-date">Posted ${job.postedDays} day${job.postedDays !== 1 ? 's' : ''} ago</span>
@@ -439,7 +429,7 @@
                         ${tagsHTML}
                     </div>
                 `;
-                
+
                 jobsContainer.appendChild(jobCard);
             });
         }
@@ -451,29 +441,29 @@
             const experienceValue = experienceFilter.value;
             const durationValue = durationFilter.value;
             const budgetValue = budgetFilter.value;
-            
+
             const filteredJobs = jobs.filter(job => {
                 // Search term matching
-                const matchesSearch = 
-                    job.title.toLowerCase().includes(searchTerm) || 
+                const matchesSearch =
+                    job.title.toLowerCase().includes(searchTerm) ||
                     job.description.toLowerCase().includes(searchTerm) ||
                     job.tags.some(tag => tag.toLowerCase().includes(searchTerm));
-                
+
                 // Category matching
                 const matchesCategory = categoryValue === 'all' || job.category === categoryValue;
-                
+
                 // Experience level matching
                 const matchesExperience = experienceValue === 'all' || job.experienceLevel === experienceValue;
-                
+
                 // Duration matching
                 const matchesDuration = durationValue === 'all' || job.duration === durationValue;
-                
+
                 // Budget matching
                 const matchesBudget = budgetValue === 'all' || job.budget === budgetValue;
-                
+
                 return matchesSearch && matchesCategory && matchesExperience && matchesDuration && matchesBudget;
             });
-            
+
             renderJobs(filteredJobs);
         }
 
@@ -484,7 +474,7 @@
                 filterJobs();
             }
         });
-        
+
         categoryFilter.addEventListener('change', filterJobs);
         experienceFilter.addEventListener('change', filterJobs);
         durationFilter.addEventListener('change', filterJobs);
@@ -495,16 +485,16 @@
             // Generate a unique ID
             const newId = Math.max(...jobs.map(j => j.id)) + 1;
             job.id = newId;
-            
+
             // Add posted days (today = 0)
             job.postedDays = 0;
-            
+
             // Add the job to the array
             jobs.unshift(job);
-            
+
             // Re-render the jobs
             filterJobs();
-            
+
             // Optionally, save to localStorage or send to server
             saveJobsToStorage();
         }
@@ -526,10 +516,10 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Load jobs from storage if available
             loadJobsFromStorage();
-            
+
             // Render all jobs initially
             renderJobs(jobs);
-            
+
             // Listen for messages from job posting page
             window.addEventListener('message', (event) => {
                 if (event.data.type === 'newJob') {
@@ -539,4 +529,5 @@
         });
     </script>
 </body>
+
 </html>
