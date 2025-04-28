@@ -2,7 +2,7 @@
 const oauthConfig = {
     google: {
         clientId: '52657429929-bs3uuieuo4pmm8kf7afo8788kbvrf68l.apps.googleusercontent.com',
-        redirectUri: 'https://yuva-works.vercel.app/auth/google/callback&', // Changed to local development URL
+        redirectUri: 'https://yuva-works.vercel.app/auth/google/callback', // Changed to local development URL
         scope: 'email profile'
     },
     facebook: {
