@@ -714,12 +714,38 @@
             outline: none;
         }
         
-        select.form-control {
+        .filter-select {
+            background-color: #1a1a1a;
+            /* Dark background color */
+            color: #e0e0e0;
+            /* Light text color */
+            border: 1px solid #333;
+            /* Border color */
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 1rem;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23e5e7eb' viewBox='0 0 16 16'%3E%3Cpath d='M8 12L2 6h12z'/%3E%3C/svg%3E");
+            /* Remove default dropdown arrow */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23e0e0e0' viewBox='0 0 16 16'%3E%3Cpath d='M8 12L2 6h12z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 15px center;
-            padding-right: 40px;
+            background-position: right 10px center;
+            background-size: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-select:focus {
+            outline: none;
+            border-color: #4285f4;
+            /* Highlight border color on focus */
+            background-color: #222;
+            /* Slightly lighter background on focus */
+        }
+        
+        .filter-select option {
+            background-color: #1a1a1a;
+            /* Dark background for options */
+            color: #e0e0e0;
+            /* Light text color for options */
         }
         
         .estimator-results {
@@ -1454,7 +1480,7 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Mobile Menu */
+                /* Mobile Menu */
         
         .mobile-menu-btn {
             display: none;
@@ -2223,7 +2249,8 @@
                         <h4>Frontend Development</h4>
                         <p>HTML, CSS, and responsive design implementation</p>
                         <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-                            <span>30% of total</span>
+                            <span>30% of total```html
+</span>
                             <span>₹30,000</span>
                         </div>
                     </li>
@@ -2240,7 +2267,6 @@
                         <div class="milestone-status status-pending">Pending</div>
                         <h4>Testing & Launch</h4>
                         <p>QA testing, bug fixes, and final deployment</p>
-                        ```html
                         <div style="display: flex; justify-content: space-between; margin-top: 10px;">
                             <span>25% of total</span>
                             <span>₹25,000</span>
@@ -2270,7 +2296,7 @@
         <div class="jobs-filters reveal">
             <div class="filter-group">
                 <label>Category</label>
-                <select class="form-control">
+                <select class="form-control filter-select">
                     <option value="">All Categories</option>
                     <option value="web-development">Web Development</option>
                     <option value="mobile-development">Mobile Development</option>
@@ -2285,7 +2311,7 @@
             </div>
             <div class="filter-group">
                 <label>Experience Level</label>
-                <select class="form-control">
+                <select class="form-control filter-select">
                     <option value="">All Levels</option>
                     <option value="entry">Entry</option>
                     <option value="intermediate">Intermediate</option>
@@ -2294,7 +2320,7 @@
             </div>
             <div class="filter-group">
                 <label>Project Length</label>
-                <select class="form-control">
+                <select class="form-control filter-select">
                     <option value="">Any Duration</option>
                     <option value="short">Short-term (< 1 month)</option>
                     <option value="medium">Medium-term (1-3 months)</option>
@@ -2303,7 +2329,7 @@
             </div>
             <div class="filter-group">
                 <label>Budget Range</label>
-                <select class="form-control">
+                <select class="form-control filter-select">
                     <option value="">Any Budget</option>
                     <option value="low">₹5,000 - ₹20,000</option>
                     <option value="medium">₹20,000 - ₹50,000</option>
@@ -2437,7 +2463,6 @@
             <div class="job-card reveal delay-2">
                 <div class="job-header">
                     <span>Posted 2 days ago</span>
-
                 </div>
                 <h3 class="job-title">Cybersecurity Audit and Assessment</h3>
                 <p>Seeking a cybersecurity expert to conduct a comprehensive security audit, identify vulnerabilities, and provide recommendations.</p>
@@ -2536,6 +2561,8 @@
             <p>&copy; 2025 YuvaWorks. All rights reserved. | <a href="#" style="color: #aaa; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: #aaa; text-decoration: none;">Terms of Service</a></p>
         </div>
     </footer>
+
+
     <!-- JavaScript -->
     <script>
         // Mobile Menu Toggle
@@ -2646,14 +2673,14 @@
             document.querySelector('.estimator-results').style.display = 'block';
         });
 
-    
-
+        
         // Milestone progress bar animation
         const milestoneProgressBar = document.querySelector('.milestone-progress-bar');
         setTimeout(() => {
             milestoneProgressBar.style.width = '50%';
         }, 1000);
-         // Smooth scroll for navigation links
+
+        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -2682,4 +2709,3 @@
 </body>
 
 </html>
-```
