@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Contract - YuvaWorks</title>
+    <style>
+        /* Reuse the CSS from the home page */
+        
+         :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #60a5fa;
+            --dark: #111827;
+            --darker: #030712;
+            --light: #e5e7eb;
+            --accent: #8b5cf6;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+        
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: var(--dark);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .contract-details {
+            padding: 80px 5%;
+        }
+        
+        .contract-details h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .contract-details p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .contract-details ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contract-details ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .contract-details ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            padding: 20px 5%;
+            text-align: center;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Yuva<span>Works</span></a>
+    </header>
+
+    <section class="contract-details">
+        <h1>Enterprise Contract</h1>
+        <p>The Enterprise Contract is designed for complex, large-scale projects. It includes advanced terms to handle intricate requirements and ensure legal compliance.</p>
+        <h2>Features</h2>
+        <ul>
+            <li>Complex project management terms</li>
+            <li>Customizable payment structure</li>
+            <li>Advanced IP and licensing options</li>
+            <li>Legal compliance guarantees</li>
+            <li>Maintenance & support clauses</li>
+            <li>Exit strategies & termination</li>
+            <li>Liability & indemnification</li>
+        </ul>
+        <p>This contract is ideal for enterprise-level projects that require detailed agreements, legal protections, and advanced project management terms.</p>
+        <a href="#" class="btn-primary">Download Contract</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 YuvaWorks. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Add any interactive behavior if needed
+        document.querySelector('.btn-primary').addEventListener('click', function() {
+            alert('The Enterprise Contract will be downloaded soon!');
+        });
+    </script>
+</body>
+
+</html>
