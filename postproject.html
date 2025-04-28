@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Project - YuvaWorks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+         :root {
+            --primary-color: #1a66ff;
+            --primary-dark: #0d47a1;
+            --secondary-color: #1e1e2e;
+            --text-color: #ffffff;
+            --text-light: #b3b3b3;
+            --accent-color: #3584ff;
+            --bg-dark: #0d1117;
+            --bg-darker: #060a10;
+            --success: #4CAF50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        /* Header */
+        
+        header {
+            background-color: var(--secondary-color);
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        
+        .logo a:first-child {
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 102, 255, 0.3);
+        }
+        /* Main Content */
+        
+        main {
+            padding: 40px 0;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .page-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .page-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 15px auto;
+        }
+        
+        .post-project-form {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1s;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #2c2c44;
+            border-radius: 5px;
+            background-color: #161622;
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(26, 102, 255, 0.2);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .form-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-info {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #2c2c44;
+            padding-bottom: 20px;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+        }
+        
+        .range-display {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        .tags-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 8px 12px;
+            border: 1px solid #2c2c44;
+            border-radius: 5px;
+            background-color: #161622;
+            min-height: 50px;
+        }
+        
+        .tag {
+            background: var(--primary-color);
+            border-radius: 20px;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .tag span {
+            cursor: pointer;
+        }
+        
+        #tag-input {
+            border: none;
+            background: transparent;
+            color: var(--text-color);
+            flex: 1;
+            min-width: 120px;
+            outline: none;
+        }
+        
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+        
+        .karma-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(26, 102, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .karma-info i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        .fee-breakdown {
+            margin-top: 20px;
+            background: #191927;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        
+        .fee-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .fee-total {
+            border-top: 1px solid #2c2c44;
+            margin-top: 10px;
+            padding-top: 10px;
+            font-weight: bold;
+        }
+        /* Animations */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .form-section {
+            animation: fadeIn 0.6s;
+            animation-fill-mode: both;
+        }
+        
+        .form-section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .form-section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .form-section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        
+        .form-section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+        /* Footer */
+        
+        footer {
+            background-color: var(--secondary-color);
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #1e1e2e;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #2c2c44;
+            color: var(--text-light);
+        }
+        /* Tooltip */
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        /* Responsive */
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .logo a {
+                font-size: 1.2rem;
+            }
+            .auth-buttons .btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="index1.html">Yuva</a>
+                    <a href="index1.html">Works</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="how-it-works.html">How It Works</a></li>
+                    <li><a href="#">Karma System</a></li>
+                    <li><a href="browse-jobs.html">Browse Jobs</a></li>
+                    <li><a href="#">Fair Pay</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline">Log In</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-title">
+                <h1 class="animate__animated animate__fadeInDown">Post a Project</h1>
+                <p>Tell us what you need and find the perfect freelancer for your project</p>
+            </div>
+
+            <form class="post-project-form">
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-file-alt"></i> Project Details</h2>
+                    <div class="form-group">
+                        <label for="project-title">Project Title*</label>
+                        <input type="text" id="project-title" class="form-control" placeholder="E.g., Full Stack E-commerce Website Development" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="project-description">Project Description*</label>
+                        <textarea id="project-description" class="form-control" placeholder="Provide a detailed description of your project, requirements, and expectations..." required></textarea>
+                        <div class="form-info">Be clear and specific about what you need to get the best responses</div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-tag"></i> Category & Skills</h2>
+                    <div class="form-group">
+                        <label for="project-category">Project Category*</label>
+                        <select id="project-category" class="form-control" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="mobile-development">Mobile Development</option>
+                            <option value="content-writing">Content Writing</option>
+                            <option value="graphic-design">Graphic Design</option>
+                            <option value="data-entry">Data Entry</option>
+                            <option value="digital-marketing">Digital Marketing</option>
+                            <option value="ui-ux-design">UI/UX Design</option>
+                            <option value="video-editing">Video Editing</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="skills-required">Required Skills</label>
+                        <div class="tags-input">
+                            <span class="tag">React <span>&times;</span></span>
+                            <span class="tag">JavaScript <span>&times;</span></span>
+                            <input type="text" id="tag-input" placeholder="Type skills and press Enter">
+                        </div>
+                        <div class="form-info">Press Enter to add skills, or select from suggested skills as you type</div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-rupee-sign"></i> Budget & Timeline</h2>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="budget-type">Budget Type*</label>
+                                <select id="budget-type" class="form-control" required>
+                                    <option value="fixed">Fixed Price</option>
+                                    <option value="hourly">Hourly Rate</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="budget-amount">Budget Amount (₹)*</label>
+                                <input type="number" id="budget-amount" class="form-control" placeholder="E.g., 25000" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="timeline">Project Timeline*</label>
+                                <select id="timeline" class="form-control" required>
+                                    <option value="" disabled selected>Select timeline</option>
+                                    <option value="less-than-week">Less than a week</option>
+                                    <option value="one-two-weeks">1-2 weeks</option>
+                                    <option value="two-four-weeks">2-4 weeks</option>
+                                    <option value="one-three-months">1-3 months</option>
+                                    <option value="more-than-three">More than 3 months</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="experience-level">Required Experience Level</label>
+                                <select id="experience-level" class="form-control">
+                                    <option value="entry">Entry Level</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="expert">Expert</option>
+                                    <option value="any">Any Level</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="karma-info">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <p><strong>Karma Fee System:</strong> Your commission fee drops as your Karma increases. Current commission: 7%</p>
+                            <p>Higher Karma scores from reviews, mentorship, and community contributions reduce your fees.</p>
+                        </div>
+                    </div>
+
+                    <div class="fee-breakdown">
+                        <h3>Fee Breakdown</h3>
+                        <div class="fee-item">
+                            <span>Project Budget</span>
+                            <span>₹25,000</span>
+                        </div>
+                        <div class="fee-item">
+                            <span>YuvaWorks Fee (7%)</span>
+                            <span>- ₹1,750</span>
+                        </div>
+                        <div class="fee-item fee-total">
+                            <span>You Receive</span>
+                            <span>₹23,250</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-cog"></i> Additional Options</h2>
+                    <div class="form-group">
+                        <label>Project Visibility</label>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="featured-project">
+                            <label for="featured-project">Make project featured (₹500)</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Structure</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="radio" name="payment-structure" id="milestone-payment" checked>
+                                <label for="milestone-payment">Milestone-based Payment</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="payment-structure" id="full-payment">
+                                <label for="full-payment">Full Payment on Completion</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Escrow Protection</label>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="use-escrow" checked>
+                            <label for="use-escrow">Use YuvaWorks Escrow System</label>
+                        </div>
+                        <div class="form-info">Our escrow system protects both you and freelancers by holding funds securely until work is completed</div>
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <button type="button" class="btn btn-outline">Save as Draft</button>
+                    <button type="submit" class="btn btn-primary animate-pulse">Post Project</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>YuvaWorks</h3>
+                    <p>Connecting talented freelancers with great clients. Fair pay and transparent processes for everyone.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>For Clients</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">How to Hire</a></li>
+                        <li><a href="#">Talent Marketplace</a></li>
+                        <li><a href="#">Project Catalog</a></li>
+                        <li><a href="#">Enterprise Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>For Freelancers</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Find Work</a></li>
+                        <li><a href="#">Direct Contracts</a></li>
+                        <li><a href="#">Karma System</a></li>
+                        <li><a href="#">Fair Pay Estimator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help & Support</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 YuvaWorks. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tags Input functionality
+            const tagInput = document.getElementById('tag-input');
+            const tagsContainer = document.querySelector('.tags-input');
+
+            tagInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && this.value.trim() !== '') {
+                    e.preventDefault();
+                    const tag = document.createElement('span');
+                    tag.className = 'tag';
+                    tag.innerHTML = this.value.trim() + ' <span>&times;</span>';
+                    tagsContainer.insertBefore(tag, this);
+                    this.value = '';
+
+                    // Add event listener to remove tag
+                    tag.querySelector('span').addEventListener('click', function() {
+                        tagsContainer.removeChild(tag);
+                    });
+                }
+            });
+
+            // Remove existing tags
+            document.querySelectorAll('.tag span').forEach(closeBtn => {
+                closeBtn.addEventListener('click', function() {
+                    this.parentElement.remove();
+                });
+            });
+
+            // Budget fee calculator
+            const budgetInput = document.getElementById('budget-amount');
+
+            budgetInput.addEventListener('input', function() {
+                const budget = parseFloat(this.value) || 0;
+                const fee = budget * 0.07;
+                const receives = budget - fee;
+
+                document.querySelectorAll('.fee-item')[0].querySelector('span:last-child').textContent = '₹' + budget.toLocaleString();
+                document.querySelectorAll('.fee-item')[1].querySelector('span:last-child').textContent = '- ₹' + fee.toLocaleString();
+                document.querySelector('.fee-total').querySelector('span:last-child').textContent = '₹' + receives.toLocaleString();
+            });
+
+            // Prevent form submission (for demo)
+            document.querySelector('form').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Collect form data
+                const projectTitle = document.getElementById('project-title').value;
+                const projectDescription = document.getElementById('project-description').value;
+                const projectCategory = document.getElementById('project-category').value;
+                const budgetAmount = parseFloat(document.getElementById('budget-amount').value);
+                const timelineValue = document.getElementById('timeline').value;
+                const experienceLevel = document.getElementById('experience-level').value;
+
+                // Collect tags/skills
+                const tagElements = document.querySelectorAll('.tag');
+                const tags = Array.from(tagElements).map(tag => {
+                    // Extract just the text without the X button
+                    return tag.textContent.trim().replace('×', '').trim();
+                });
+
+                // Format duration based on timeline selection
+                let duration;
+                switch (timelineValue) {
+                    case 'less-than-week':
+                        duration = 'short';
+                        break;
+                    case 'one-two-weeks':
+                    case 'two-four-weeks':
+                        duration = 'medium';
+                        break;
+                    case 'one-three-months':
+                    case 'more-than-three':
+                        duration = 'long';
+                        break;
+                    default:
+                        duration = 'medium';
+                }
+
+                // Format experience level 
+                let formattedExperience;
+                switch (experienceLevel) {
+                    case 'entry':
+                        formattedExperience = 'beginner';
+                        break;
+                    case 'intermediate':
+                        formattedExperience = 'intermediate';
+                        break;
+                    case 'expert':
+                        formattedExperience = 'expert';
+                        break;
+                    default:
+                        formattedExperience = 'intermediate';
+                }
+
+                // Determine budget category
+                let budgetCategory;
+                if (budgetAmount < 15000) {
+                    budgetCategory = 'low';
+                } else if (budgetAmount < 50000) {
+                    budgetCategory = 'medium';
+                } else {
+                    budgetCategory = 'high';
+                }
+
+                // Create the job object
+                const newJob = {
+                    id: Date.now(), // Use timestamp as unique ID
+                    title: projectTitle,
+                    description: projectDescription,
+                    price: budgetAmount,
+                    postedDays: 0, // Just posted today
+                    category: projectCategory,
+                    experienceLevel: formattedExperience,
+                    duration: duration,
+                    budget: budgetCategory,
+                    tags: tags
+                };
+
+                // Store the job in localStorage
+                let existingJobs = JSON.parse(localStorage.getItem('yuvaWorks_jobs') || '[]');
+                existingJobs.unshift(newJob); // Add to the beginning of the array
+                localStorage.setItem('yuvaWorks_jobs', JSON.stringify(existingJobs));
+
+                // Show success message
+                alert('Project posted successfully! Redirecting to jobs page...');
+
+                // Redirect to browse jobs page
+                setTimeout(() => {
+                    window.location.href = 'browse-jobs.html'; // Update this if your filename is different
+                }, 1000);
+            });
+
+            // Animation on scroll
+            const sections = document.querySelectorAll('.form-section');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+
+</html>
