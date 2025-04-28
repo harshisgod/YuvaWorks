@@ -483,6 +483,17 @@
             display: none;
         }
         
+        /* New styles for name input field */
+        .input-group.name-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .input-group.name-group .input-wrapper {
+            position: relative;
+            flex: 1;
+        }
+        
         @media (max-width: 576px) {
             .signin-card {
                 padding: 2rem;
@@ -490,6 +501,10 @@
             }
             .header {
                 padding: 1rem 1.5rem;
+            }
+            .input-group.name-group {
+                flex-direction: column;
+                gap: 1.5rem;
             }
         }
     </style>
@@ -500,9 +515,9 @@
 
 <body>
     <header class="header">
-        <a href="index.html" class="logo">Yuva<span>Works</span></a>
+        <a href="index1.html" class="logo">Yuva<span>Works</span></a>
         <nav class="nav-links">
-            <a href="index.html">Home</a>
+            <a href="index1.html">Home</a>
             <a href="browse-jobs.html">Browse Jobs</a>
             <a href="aboutus.html">About Us</a>
             <a href="contactus.html">Contact</a>
@@ -520,6 +535,19 @@
             <div class="signin-header">
                 <h1>Sign Up</h1>
                 <p>Welcome to YuvaWorks!</p>
+            </div>
+
+            <div class="input-group name-group">
+                <div class="input-wrapper">
+                    <input type="text" id="firstName" placeholder=" " required>
+                    <label for="firstName">First Name</label>
+                    <div class="form-error" id="firstName-error">First name is required</div>
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" id="lastName" placeholder=" " required>
+                    <label for="lastName">Last Name</label>
+                    <div class="form-error" id="lastName-error">Last name is required</div>
+                </div>
             </div>
 
             <div class="input-group">
@@ -633,18 +661,39 @@
                 }
             });
         });
+        
 
-        // Form validation
+        // Form validation and signup process
         const signinBtn = document.getElementById('signin-btn');
 
         signinBtn.addEventListener('click', (e) => {
             e.preventDefault();
             let isValid = true;
 
+            const firstName = document.getElementById('firstName');
+            const lastName = document.getElementById('lastName');
             const email = document.getElementById('email');
             const password = document.getElementById('password');
+            const firstNameError = document.getElementById('firstName-error');
+            const lastNameError = document.getElementById('lastName-error');
             const emailError = document.getElementById('email-error');
             const passwordError = document.getElementById('password-error');
+
+            // Validate first name
+            if (firstName.value.trim() === '') {
+                firstNameError.style.display = 'block';
+                isValid = false;
+            } else {
+                firstNameError.style.display = 'none';
+            }
+
+            // Validate last name
+            if (lastName.value.trim() === '') {
+                lastNameError.style.display = 'block';
+                isValid = false;
+            } else {
+                lastNameError.style.display = 'none';
+            }
 
             // Validate email
             if (!validateEmail(email.value)) {
@@ -666,14 +715,86 @@
                 // Show loading state
                 signinBtn.classList.add('loading');
 
-                // Simulate API call
+                // Mock user data storage
+                const userData = {
+                    firstName: firstName.value.trim(),
+                    lastName: lastName.value.trim(),
+                    email: email.value.trim(),
+                    isLoggedIn: true,
+                    profilePic: 'https://i.pravatar.cc/150?u=' + email.value.trim() // Generate avatar based on email
+                };
+
+                // Store user data in localStorage
+                localStorage.setItem('yuvaworks_user', JSON.stringify(userData));
+
+                // Simulate API call with a delay
                 setTimeout(() => {
                     signinBtn.classList.remove('loading');
 
                     // Show OTP verification (for demo purposes)
                     document.getElementById('otp-section').style.display = 'flex';
+
+                    // Add event listeners to OTP inputs for verification
+                    let otpComplete = true;
+                    
+                    // Function to verify OTP completion
+                    const checkOtpComplete = () => {
+                        otpComplete = Array.from(otpInputs).every(input => input.value.trim() !== '');
+                        if (otpComplete) {
+                            // Redirect to homepage after short delay
+                            setTimeout(() => {
+                                window.location.href = 'home.html';
+                            }, 500);
+                        }
+                    };
+
+                    // Add event listeners to OTP inputs
+                    otpInputs.forEach(input => {
+                        input.addEventListener('input', checkOtpComplete);
+                    });
+
+                    // Auto-fill OTP for demo purposes (remove in production)
+                    setTimeout(() => {
+                        otpInputs.forEach((input, i) => {
+                            input.value = i + 1;
+                        });
+                        checkOtpComplete();
+                    }, 1500);
                 }, 1500);
             }
+        });
+
+        // Social sign-in handlers - Simplified for demo
+        const handleSocialSignIn = (provider) => {
+            // Create a mock user for demo
+            const userData = {
+                firstName: provider === 'google' ? 'Google' : (provider === 'facebook' ? 'Facebook' : 'LinkedIn'),
+                lastName: 'User',
+                email: `${provider}.user@example.com`,
+                isLoggedIn: true,
+                profilePic: `https://i.pravatar.cc/150?u=${provider}` // Generate avatar based on provider
+            };
+
+            // Store user data
+            localStorage.setItem('yuvaworks_user', JSON.stringify(userData));
+            
+            // Redirect to homepage
+            window.location.href = 'index1.html';
+        };
+
+        // Google Sign-In Button handler
+        document.getElementById('google-signin-btn').addEventListener('click', () => {
+            handleSocialSignIn('google');
+        });
+
+        // Facebook Sign-In Button handler
+        document.getElementById('facebook-signin-btn').addEventListener('click', () => {
+            handleSocialSignIn('facebook');
+        });
+
+        // LinkedIn Sign-In Button handler
+        document.getElementById('linkedin-signin-btn').addEventListener('click', () => {
+            handleSocialSignIn('linkedin');
         });
 
         // Email validation helper function
@@ -700,13 +821,12 @@
                 }, 3000);
             }, 1500);
         });
-
         // Redirect to Google login page
         const googleSignInButton = document.getElementById('google-signin-btn');
         googleSignInButton.addEventListener('click', () => {
             const googleLoginUrl = "https://accounts.google.com/o/oauth2/v2/auth?" +
                 "client_id=52657429929-bs3uuieuo4pmm8kf7afo8788kbvrf68l.apps.googleusercontent.com&" + // Replace with your actual Client ID
-                "redirect_uri=https://yuva-works.vercel.app/.com/auth/google/callback&" + // Replace with your redirect URI
+                "redirect_uri=https://yuva-works.vercel.app/auth/google/callback&" + // Replace with your correct redirect URI
                 "response_type=token&" +
                 "scope=email profile";
             window.location.href = googleLoginUrl;
@@ -735,5 +855,5 @@
         });
     </script>
 </body>
-
+        
 </html>
