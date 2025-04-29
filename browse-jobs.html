@@ -57,7 +57,7 @@
         .nav-links a {
             text-decoration: none;
             color: var(--text-light);
-            font-size: 1rem;
+            font-size: 1rem; /* Fixed font-size */
         }
         
         .auth-buttons {
@@ -229,7 +229,106 @@
             background-color: var(--card-bg);
             border-radius: 8px;
         }
-        
+
+        /* Dropdown Menu Styling */
+.dropdown-menu {
+    position: absolute;
+    top: 110%; /* Adjusted for spacing below the profile picture */
+    right: 0;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    min-width: 200px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.dropdown-menu.active {
+    display: block;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu ul li {
+    margin-bottom: 0.5rem;
+}
+
+.dropdown-menu ul li:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown-menu ul li a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+}
+
+.dropdown-menu ul li a:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* Profile Picture Styling with Box */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    position: relative;
+    padding: 0.5rem 1rem; /* Add padding inside the box */
+    background-color: var(--card-bg); /* Box background color */
+    border: 1px solid var(--secondary-color); /* Border around the box */
+    border-radius: 8px; /* Rounded corners for the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+.user-profile:hover {
+    background-color: var(--secondary-color); /* Change background on hover */
+    border-color: var(--text-light); /* Change border color on hover */
+    color: var(--text-light); /* Change text color on hover */
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--secondary-color);
+}
+
+.user-profile span {
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease; /* Smooth text color transition */
+}
+
+.user-profile:hover span {
+    color: white; /* Change text color on hover */
+}
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @media (max-width: 768px) {
             .filter-container {
                 grid-template-columns: 1fr;
@@ -245,7 +344,7 @@
     <nav class="navbar">
         <div class="logo-container">
             <div class="logo">
-                <a href="index.html" style="text-decoration: none; color: var(--secondary-color);">
+                <a href="#" style="text-decoration: none; color: var(--secondary-color);">
                     Yuva<span style="color: var(--text-light);">Works</span>
                 </a>
             </div>
@@ -256,9 +355,25 @@
                 <a href="fair-pay.html">Fair Pay</a>
             </div>
         </div>
-        <div class="auth-buttons">
+        <div class="auth-buttons" id="auth-buttons">
             <a href="login.html" class="btn btn-outline">Log In</a>
             <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+        <div class="user-profile" id="user-profile" style="display: none; position: relative;">
+            <img src="" alt="Profile Picture" id="profile-pic">
+            <span id="user-name"></span>
+            <div class="dropdown-menu" id="dropdown-menu">
+                <ul>
+                    <li><a href="profile.html">My Profile</a></li>
+                    <li><a href="applications.html">My Applications</a></li>
+                    <li><a href="projects-posted.html">Projects Posted</a></li>
+                    <li><a href="saved-jobs.html">Saved Jobs</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                    <li><a href="bonus-rewards.html">My Bonus/Rewards</a></li>
+                    <li><a href="referrals.html">My Referrals</a></li>
+                    <li><a href="#" id="logout-btn">Logout</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -321,7 +436,7 @@
 
     <script>
         // Sample jobs data (this would be populated from your backend)
-        let jobs = [{
+        let jobs = [ {
             id: 1,
             title: "Full Stack E-commerce Website Development",
             description: "Looking for an experienced developer to build a responsive e-commerce website with product listings, shopping cart, and payment integration.",
@@ -387,7 +502,7 @@
             duration: "short",
             budget: "low",
             tags: ["Logo Design", "Branding", "Adobe Illustrator"]
-        }];
+        } ];
 
         // Elements
         const jobsContainer = document.getElementById('jobs-container');
@@ -512,21 +627,94 @@
             }
         }
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            // Load jobs from storage if available
-            loadJobsFromStorage();
+        // Check if user is logged in
+function checkUserLogin() {
+    const userData = localStorage.getItem("yuvaworks_user");
 
-            // Render all jobs initially
-            renderJobs(jobs);
+    if (userData) {
+        // User is logged in
+        const user = JSON.parse(userData);
 
-            // Listen for messages from job posting page
-            window.addEventListener('message', (event) => {
-                if (event.data.type === 'newJob') {
-                    addNewJob(event.data.job);
-                }
-            });
-        });
+        // Hide auth buttons and show profile
+        document.getElementById("auth-buttons").style.display = "none";
+        document.getElementById("user-profile").style.display = "flex";
+
+        // Set user profile info
+        document.getElementById("profile-pic").src = user.profilePic;
+        document.getElementById("user-name").textContent = `${user.firstName} ${user.lastName}`;
+    } else {
+        // User is not logged in
+        document.getElementById("auth-buttons").style.display = "flex";
+        document.getElementById("user-profile").style.display = "none";
+    }
+}
+
+// Toggle dropdown menu
+const userProfile = document.getElementById("user-profile");
+const dropdownMenu = document.getElementById("dropdown-menu");
+
+if (userProfile && dropdownMenu) {
+    userProfile.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("active");
+    });
+
+    // Close dropdown menu when clicking outside
+    document.addEventListener("click", (e) => {
+        if (!userProfile.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove("active");
+        }
+    });
+}
+
+// Logout functionality
+const logoutButton = document.getElementById("logout-btn");
+if (logoutButton) {
+    logoutButton.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Clear user data from localStorage
+        localStorage.removeItem("yuvaworks_user");
+
+        // Redirect to the login page
+        window.location.href = "index.html";
+    });
+}
+
+// Redirect to the appropriate page when clicking the logo
+const logoLink = document.querySelector(".logo a");
+
+if (logoLink) {
+    logoLink.addEventListener("click", (e) => {
+        const userData = localStorage.getItem("yuvaworks_user");
+
+        if (!userData) {
+            // User is not logged in, redirect to index.html
+            window.location.href = "index.html";
+        } else {
+            // User is logged in, redirect to home.html
+            window.location.href = "home.html";
+        }
+    });
+}
+
+// Initialize
+document.addEventListener("DOMContentLoaded", () => {
+    // Load jobs from storage if available
+    loadJobsFromStorage();
+
+    // Render all jobs initially
+    renderJobs(jobs);
+
+    // Check login status
+    checkUserLogin();
+
+    // Listen for messages from job posting page
+    window.addEventListener("message", (event) => {
+        if (event.data.type === "newJob") {
+            addNewJob(event.data.job);
+        }
+    });
+});
     </script>
 </body>
 
