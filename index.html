@@ -2,516 +2,521 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YuvaWorks - Freelancing Platform for Indians</title>
-    <style>
-         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #60a5fa;
-            --dark: #111827;
-            --darker: #030712;
-            --light: #e5e7eb;
-            --accent: #8b5cf6;
-            --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--darker);
-            color: var(--light);
-            overflow-x: hidden;
-        }
-        /* Animation for elements coming into view */
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-            100% {
-                background-position: 1000px 0;
-            }
-        }
-        
-        .animated {
-            animation: fadeInUp 0.6s ease-out forwards;
-            opacity: 0;
-        }
-        
-        .delay-1 {
-            animation-delay: 0.2s;
-        }
-        
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-        
-        .delay-3 {
-            animation-delay: 0.6s;
-        }
-        
-        header {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YuvaWorks - Freelancing Platform for Indians</title>
+<style>
+:root {
+--primary: #2563eb;
+--primary-dark: #1d4ed8;
+--secondary: #60a5fa;
+--dark: #111827;
+--darker: #030712;
+--light: #e5e7eb;
+--accent: #8b5cf6;
+--success: #10b981;
+--danger: #ef4444;
+--warning: #f59e0b;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+background-color: var(--darker);
+color: var(--light);
+overflow-x: hidden;
+}
+/* Animation for elements coming into view */
+
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes pulse {
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.05);
+}
+100% {
+transform: scale(1);
+}
+}
+
+@keyframes shimmer {
+0% {
+background-position: -1000px 0;
+}
+100% {
+background-position: 1000px 0;
+}
+}
+
+.animated {
+animation: fadeInUp 0.6s ease-out forwards;
+opacity: 0;
+}
+
+.delay-1 {
+animation-delay: 0.2s;
+}
+
+.delay-2 {
+animation-delay: 0.4s;
+}
+
+.delay-3 {
+animation-delay: 0.6s;
+}
+
+header {
+background-color: var(--dark);
+padding: 20px 5%;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+position: sticky;
+top: 0;
+z-index: 100;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.logo {
+display: flex;
+align-items: center;
+gap: 10px;
+font-weight: bold;
+font-size: 24px;
+color: var(--secondary);
+transition: all 0.3s ease;
+}
+
+.logo span {
+color: var(--primary);
+}
+
+.logo:hover {
+transform: scale(1.05);
+}
+
+nav ul {
+display: flex;
+list-style: none;
+gap: 30px;
+}
+
+nav a {
+color: var(--light);
+text-decoration: none;
+font-weight: 500;
+padding: 8px 15px;
+border-radius: 5px;
+transition: all 0.3s ease;
+position: relative;
+}
+
+nav a:after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: 0;
+left: 0;
+background-color: var(--primary);
+transition: width 0.3s ease;
+}
+
+nav a:hover:after {
+width: 100%;
+}
+
+nav a:hover {
+color: var(--primary);
+}
+
+.auth-buttons {
+display: flex;
+gap: 15px;
+}
+
+.btn {
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+font-weight: 600;
+transition: all 0.3s ease;
+border: none;
+}
+
+.btn-primary {
+background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+color: white;
+}
+
+.btn-primary:hover {
+transform: translateY(-3px);
+box-shadow: 0 7px 15px rgba(37, 99, 235, 0.3);
+}
+
+.btn-outline {
+background: transparent;
+color: var(--primary);
+border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+background-color: var(--primary);
+color: white;
+}
+/* Hero Section */
+
+.hero {
+height: 85vh;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 5%;
+background: linear-gradient(135deg, var(--darker), var(--dark));
+position: relative;
+overflow: hidden;
+}
+
+.hero-content {
+width: 50%;
+z-index: 1;
+}
+
+.hero-image {
+width: 45%;
+z-index: 1;
+}
+
+.hero-image img {
+width: 100%;
+border-radius: 10px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+animation: pulse 3s infinite;
+}
+
+.hero h1 {
+font-size: 3.5rem;
+margin-bottom: 20px;
+line-height: 1.2;
+}
+
+.hero h1 span {
+color: var(--primary);
+position: relative;
+}
+
+.hero h1 span:after {
+content: '';
+position: absolute;
+width: 100%;
+height: 5px;
+bottom: 5px;
+left: 0;
+background-color: var(--accent);
+z-index: -1;
+opacity: 0.5;
+}
+
+.hero p {
+font-size: 1.1rem;
+margin-bottom: 30px;
+opacity: 0.9;
+line-height: 1.6;
+}
+
+.hero-buttons {
+display: flex;
+gap: 20px;
+}
+
+.search-bar {
+margin-top: 30px;
+background-color: rgba(255, 255, 255, 0.1);
+border-radius: 30px;
+padding: 5px;
+display: flex;
+overflow: hidden;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar input {
+flex: 1;
+padding: 15px 20px;
+border: none;
+background: transparent;
+color: var(--light);
+font-size: 16px;
+outline: none;
+}
+
+.search-bar input::placeholder {
+color: rgba(255, 255, 255, 0.6);
+}
+
+.search-bar button {
+padding: 15px 25px;
+background: var(--primary);
+color: white;
+border: none;
+border-radius: 25px;
+cursor: pointer;
+font-weight: 600;
+transition: all 0.3s ease;
+}
+
+.search-bar button:hover {
+background: var(--primary-dark);
+}
+/* Floating particles */
+
+.particles {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+}
+
+.particle {
+position: absolute;
+display: block;
+background: var(--primary);
+border-radius: 50%;
+opacity: 0.3;
+animation: float 15s infinite linear;
+}
+
+@keyframes float {
+0% {
+transform: translateY(0) rotate(0deg);
+opacity: 0.3;
+}
+50% {
+opacity: 0.6;
+}
+100% {
+transform: translateY(-500px) rotate(360deg);
+opacity: 0;
+}
+}
+/* Categories Section */
+
+.categories {
+padding: 80px 5%;
+background-color: var(--dark);
+}
+
+.section-title {
+text-align: center;
+margin-bottom: 50px;
+position: relative;
+}
+
+.section-title h2 {
+font-size: 2.5rem;
+display: inline-block;
+position: relative;
+}
+
+.section-title h2:after {
+content: '';
+position: absolute;
+width: 80px;
+height: 4px;
+background: var(--primary);
+bottom: -15px;
+left: 50%;
+transform: translateX(-50%);
+}
+
+.categories-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 25px;
+}
+
+.category-card {
+background: linear-gradient(145deg, #192133, #131b29);
+border-radius: 10px;
+padding: 25px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+transition: all 0.3s ease;
+text-align: center;
+cursor: pointer;
+position: relative;
+overflow: hidden;
+}
+
+.category-card::before {
+content: '';
+position: absolute;
+left: 0;
+top: 0;
+width: 5px;
+height: 0;
+background: var(--primary);
+transition: all 0.3s ease;
+}
+
+.category-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.category-card:hover::before {
+height: 100%;
+}
+
+.category-icon {
+font-size: 3rem;
+margin-bottom: 15px;
+color: var(--secondary);
+transition: all 0.3s ease;
+}
+
+.category-card:hover .category-icon {
+transform: scale(1.15);
+color: var(--primary);
+}
+
+.category-card h3 {
+margin-bottom: 15px;
+font-size: 1.5rem;
+}
+
+.category-card p {
+color: #aaa;
+font-size: 0.9rem;
+line-height: 1.6;
+}
+
+.stats {
+display: flex;
+justify-content: space-around;
+margin-top: 15px;
+font-size: 0.85rem;
+}
+
+.stats span {
+display: block;
+color: var(--primary);
+font-weight: bold;
+margin-top: 5px;
+}
+/* How It Works Section */
+
+.how-it-works {
+padding: 80px 5%;
+background-color: var(--darker);
+position: relative;
+}
+
+.steps {
+display: flex;
+justify-content: space-between;
+margin-top: 50px;
+flex-wrap: wrap;
+}
+
+.step {
+flex: 1;
+min-width: 250px;
+text-align: center;
+padding: 20px;
+position: relative;
+}
+
+.step-number {
+width: 60px;
+height: 60px;
+border-radius: 50%;
+background: var(--primary);
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.5rem;
+font-weight: bold;
+margin: 0 auto 20px;
+position: relative;
+z-index: 2;
+}
+
+.step:not(:last-child)::after {
+content: '';
+position: absolute;
+top: 30px;
+right: -30%;
+width: 60%;
+height: 3px;
+background: linear-gradient(90deg, var(--primary), transparent);
+}
+
+.step h3 {
+margin-bottom: 15px;
+color: var(--secondary);
+}
+
+.step p {
+color: #aaa;
+line-height: 1.6;
+}
+/* Features Section */
+
+.features {
+padding: 80px 5%;
             background-color: var(--dark);
-            padding: 20px 5%;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: bold;
-            font-size: 24px;
-            color: var(--secondary);
-            transition: all 0.3s ease;
-        }
-        
-        .logo span {
-            color: var(--primary);
-        }
-        
-        .logo:hover {
-            transform: scale(1.05);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        nav a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        nav a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-        
-        nav a:hover:after {
-            width: 100%;
-        }
-        
-        nav a:hover {
-            color: var(--primary);
-        }
-        
-        .auth-buttons {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .btn {
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(37, 99, 235, 0.3);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        /* Hero Section */
-        
-        .hero {
-            height: 85vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5%;
-            background: linear-gradient(135deg, var(--darker), var(--dark));
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            width: 50%;
-            z-index: 1;
-        }
-        
-        .hero-image {
-            width: 45%;
-            z-index: 1;
-        }
-        
-        .hero-image img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            animation: pulse 3s infinite;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero h1 span {
-            color: var(--primary);
-            position: relative;
-        }
-        
-        .hero h1 span:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 5px;
-            bottom: 5px;
-            left: 0;
-            background-color: var(--accent);
-            z-index: -1;
-            opacity: 0.5;
-        }
-        
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .search-bar {
-            margin-top: 30px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 5px;
-            display: flex;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .search-bar input {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            background: transparent;
-            color: var(--light);
-            font-size: 16px;
-            outline: none;
-        }
-        
-        .search-bar input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        .search-bar button {
-            padding: 15px 25px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .search-bar button:hover {
-            background: var(--primary-dark);
-        }
-        /* Floating particles */
-        
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        .particle {
-            position: absolute;
-            display: block;
-            background: var(--primary);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: float 15s infinite linear;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0.3;
-            }
-            50% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-500px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        /* Categories Section */
-        
-        .categories {
-            padding: 80px 5%;
-            background-color: var(--dark);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            display: inline-block;
-            position: relative;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background: var(--primary);
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-        
-        .category-card {
-            background: linear-gradient(145deg, #192133, #131b29);
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            text-align: center;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .category-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 5px;
-            height: 0;
-            background: var(--primary);
-            transition: all 0.3s ease;
-        }
-        
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .category-card:hover::before {
-            height: 100%;
-        }
-        
-        .category-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-            transition: all 0.3s ease;
-        }
-        
-        .category-card:hover .category-icon {
-            transform: scale(1.15);
-            color: var(--primary);
-        }
-        
-        .category-card h3 {
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-        
-        .category-card p {
-            color: #aaa;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-        
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 15px;
-            font-size: 0.85rem;
-        }
-        
-        .stats span {
-            display: block;
-            color: var(--primary);
-            font-weight: bold;
-            margin-top: 5px;
-        }
-        /* How It Works Section */
-        
-        .how-it-works {
-            padding: 80px 5%;
-            background-color: var(--darker);
-            position: relative;
-        }
-        
-        .steps {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
-            flex-wrap: wrap;
-        }
-        
-        .step {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-        }
-        
-        .step-number {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 20px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .step:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            top: 30px;
-            right: -30%;
-            width: 60%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), transparent);
-        }
-        
-        .step h3 {
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-        
-        .step p {
-            color: #aaa;
-            line-height: 1.6;
-        }
-        /* Features Section */
-        
-        .features {
-            padding: 80px 5%;
             background: linear-gradient(135deg, var(--dark), var(--darker));
             color: var(--light);
             text-align: center;
-        }
-        
-        .features-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .feature-card {
+}
+
+.features-container {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+margin-top: 50px;
+}
+
+.feature-card {
+            background: rgba(17, 24, 39, 0.8);
             background: linear-gradient(145deg, #1f2937, #111827);
-            border-radius: 15px;
-            padding: 30px;
-            transition: all 0.3s ease;
+border-radius: 15px;
+padding: 30px;
+transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(96, 165, 250, 0.1);
+border: 1px solid rgba(96, 165, 250, 0.1);
+            backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
+}
+
+.feature-card:hover {
+transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            border-color: rgba(96, 165, 250, 0.3);
-        }
-        
+border-color: rgba(96, 165, 250, 0.3);
+}
+
         .feature-card::before {
             content: '';
             position: absolute;
@@ -530,25 +535,27 @@
             opacity: 0.2;
         }
         
-        .feature-icon {
+.feature-icon {
+            font-size: 2.5rem;
             font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
+color: var(--primary);
+margin-bottom: 20px;
             z-index: 1;
             position: relative;
-        }
-        
-        .feature-card h3 {
+}
+
+.feature-card h3 {
             font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
+margin-bottom: 15px;
+            font-size: 1.5rem;
+color: var(--secondary);
             z-index: 1;
             position: relative;
-        }
-        
-        .feature-card p {
-            color: #aaa;
-            line-height: 1.6;
+}
+
+.feature-card p {
+color: #aaa;
+line-height: 1.6;
             z-index: 1;
             position: relative;
         }
@@ -562,1707 +569,2174 @@
         .feature-card:hover h3 {
             color: var(--primary);
             transition: all 0.3s ease;
-        }
-        /* Karma System Section */
-        
-        .karma-system {
-            padding: 80px 5%;
-            background-color: var(--darker);
-            text-align: center;
-        }
-        
-        .karma-table {
-            width: 80%;
-            margin: 50px auto;
-            border-collapse: collapse;
-            background: rgba(17, 24, 39, 0.5);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .karma-table th,
-        .karma-table td {
-            padding: 15px 20px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .karma-table th {
-            background-color: var(--primary);
-            color: white;
-            font-weight: 600;
-        }
-        
-        .karma-table tr:nth-child(even) {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        
-        .karma-table tr:hover {
-            background-color: rgba(37, 99, 235, 0.1);
-        }
-        
-        .progress-container {
-            height: 30px;
-            background-color: #2d3748;
-            border-radius: 15px;
-            position: relative;
-            overflow: hidden;
-            margin: 30px auto;
-            width: 80%;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 15px;
-            width: 0;
-            transition: width 1.5s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-        }
-        /* Testimonials Section */
-        
-        .testimonials {
-            padding: 80px 5%;
-            background-color: var(--dark);
-            overflow: hidden;
-        }
-        
-        .testimonial-carousel {
-            margin-top: 50px;
-            display: flex;
-            gap: 30px;
-            overflow-x: hidden;
-            padding: 20px 0;
-        }
-        
-        .testimonial-card {
-            min-width: 350px;
-            background: linear-gradient(145deg, #192133, #131b29);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-        }
-        
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 0;
-            font-size: 5rem;
-            color: rgba(96, 165, 250, 0.1);
-            font-family: Georgia, serif;
-        }
-        
-        .testimonial-content {
-            margin-bottom: 20px;
-            line-height: 1.7;
-            font-style: italic;
-            color: #bbb;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid var(--primary);
-        }
-        
-        .author-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .author-info h4 {
-            color: var(--secondary);
-            margin-bottom: 5px;
-        }
-        
-        .author-rating {
-            color: var(--warning);
-            margin-top: 5px;
-        }
-        /* Fair Pay Estimator */
-        
-        .fair-pay {
-            padding: 80px 5%;
-            background-color: var(--darker);
-        }
-        
-        .estimator-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .estimator-form {
-            flex: 1;
-            min-width: 300px;
-            background: rgba(17, 24, 39, 0.8);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--secondary);
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            color: var(--light);
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            border-color: var(--primary);
-            background-color: rgba(255, 255, 255, 0.1);
-            outline: none;
-        }
-        
-        .filter-select {
-            background-color: #1a1a1a;
-            /* Dark background color */
-            color: #e0e0e0;
-            /* Light text color */
-            border: 1px solid #333;
-            /* Border color */
-            border-radius: 5px;
-            padding: 10px;
-            font-size: 1rem;
-            appearance: none;
-            /* Remove default dropdown arrow */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23e0e0e0' viewBox='0 0 16 16'%3E%3Cpath d='M8 12L2 6h12z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 10px center;
-            background-size: 12px;
-            transition: all 0.3s ease;
-        }
-        
-        .filter-select:focus {
-            outline: none;
-            border-color: #4285f4;
-            /* Highlight border color on focus */
-            background-color: #222;
-            /* Slightly lighter background on focus */
-        }
-        
-        .filter-select option {
-            background-color: #1a1a1a;
-            /* Dark background for options */
-            color: #e0e0e0;
-            /* Light text color for options */
-        }
-        
-        .estimator-results {
-            flex: 1;
-            min-width: 300px;
-            background: rgba(17, 24, 39, 0.8);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .result-card {
-            background: rgba(37, 99, 235, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--primary);
-        }
-        
-        .result-card h4 {
-            color: var(--secondary);
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .result-card p {
-            margin-bottom: 10px;
-            color: #aaa;
-        }
-        
-        .price-range {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin: 20px 0;
-        }
-        
-        .market-comparison {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px dashed rgba(255, 255, 255, 0.1);
-        }
-        
-        .market-item {
-            text-align: center;
-        }
-        
-        .market-item span {
-            display: block;
-            margin-top: 5px;
-            font-weight: bold;
-        }
-        
-        .market-low {
-            color: var(--danger);
-        }
-        
-        .market-average {
-            color: var(--warning);
-        }
-        
-        .market-high {
-            color: var(--success);
-        }
-        /* CTA Section */
-        
-        .cta {
-            padding: 80px 5%;
-            background: linear-gradient(135deg, var(--primary-dark), var(--accent));
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .btn-cta {
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-        
-        .cta-shape {
-            position: absolute;
-            opacity: 0.2;
-            z-index: 0;
-        }
-        
-        .cta-shape-1 {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: white;
-            top: -150px;
-            left: -100px;
-        }
-        
-        .cta-shape-2 {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: white;
-            bottom: -100px;
-            right: -50px;
-        }
-        /* Footer */
-        
-        footer {
-            background-color: var(--dark);
-            padding: 60px 5% 30px;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: var(--secondary);
-        }
-        
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: var(--secondary);
-            position: relative;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 3px;
-            background: var(--primary);
-            bottom: -10px;
-            left: 0;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #aaa;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: block;
-            position: relative;
-            padding-left: 15px;
-        }
-        
-        .footer-links a::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary);
-            font-size: 12px;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-            transform: translateX(5px);
-        }
-        
-        .footer-links a:hover::before {
-            opacity: 1;
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            background-color: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-        /* Escrow System Section */
-        
-        .escrow-system {
-            padding: 80px 5%;
-            background-color: var(--dark);
-        }
-        
-        .escrow-steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-top: 50px;
-            position: relative;
-        }
-        
-        .escrow-step {
-            flex: 1;
-            min-width: 200px;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .escrow-line {
-            position: absolute;
-            top: 35px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            z-index: 0;
-        }
-        
-        .escrow-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: var(--dark);
-            border: 3px solid var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: var(--primary);
-            font-size: 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .escrow-step h4 {
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-        
-        .escrow-card {
-            margin-top: 50px;
-            background: rgba(17, 24, 39, 0.8);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .escrow-header {
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            padding: 20px;
-            color: white;
-            text-align: center;
-        }
-        
-        .escrow-body {
-            padding: 30px;
-        }
-        
-        .escrow-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .escrow-feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        
-        .escrow-feature-icon {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-top: 5px;
-        }
-    </style>
+}
+/* Karma System Section */
+
+.karma-system {
+padding: 80px 5%;
+background-color: var(--darker);
+text-align: center;
+}
+
+.karma-table {
+width: 80%;
+margin: 50px auto;
+border-collapse: collapse;
+background: rgba(17, 24, 39, 0.5);
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.karma-table th,
+.karma-table td {
+padding: 15px 20px;
+text-align: center;
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.karma-table th {
+background-color: var(--primary);
+color: white;
+font-weight: 600;
+}
+
+.karma-table tr:nth-child(even) {
+background-color: rgba(255, 255, 255, 0.05);
+}
+
+.karma-table tr:hover {
+background-color: rgba(37, 99, 235, 0.1);
+}
+
+.progress-container {
+height: 30px;
+background-color: #2d3748;
+border-radius: 15px;
+position: relative;
+overflow: hidden;
+margin: 30px auto;
+width: 80%;
+}
+
+.progress-bar {
+height: 100%;
+background: linear-gradient(90deg, var(--primary), var(--accent));
+border-radius: 15px;
+width: 0;
+transition: width 1.5s ease-in-out;
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-weight: 600;
+}
+/* Testimonials Section */
+
+.testimonials {
+padding: 80px 5%;
+background-color: var(--dark);
+overflow: hidden;
+}
+
+.testimonial-carousel {
+margin-top: 50px;
+display: flex;
+gap: 30px;
+overflow-x: hidden;
+padding: 20px 0;
+}
+
+.testimonial-card {
+min-width: 350px;
+background: linear-gradient(145deg, #192133, #131b29);
+padding: 30px;
+border-radius: 15px;
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+position: relative;
+transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.testimonial-card::before {
+content: '"';
+position: absolute;
+top: 10px;
+left: 0;
+font-size: 5rem;
+color: rgba(96, 165, 250, 0.1);
+font-family: Georgia, serif;
+}
+
+.testimonial-content {
+margin-bottom: 20px;
+line-height: 1.7;
+font-style: italic;
+color: #bbb;
+}
+
+.testimonial-author {
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
+.author-avatar {
+width: 60px;
+height: 60px;
+border-radius: 50%;
+overflow: hidden;
+border: 3px solid var(--primary);
+}
+
+.author-avatar img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.author-info h4 {
+color: var(--secondary);
+margin-bottom: 5px;
+}
+
+.author-rating {
+color: var(--warning);
+margin-top: 5px;
+}
+/* Fair Pay Estimator */
+
+.fair-pay {
+padding: 80px 5%;
+background-color: var(--darker);
+}
+
+.estimator-container {
+display: flex;
+flex-wrap: wrap;
+gap: 30px;
+margin-top: 50px;
+}
+
+.estimator-form {
+flex: 1;
+min-width: 300px;
+background: rgba(17, 24, 39, 0.8);
+padding: 30px;
+border-radius: 15px;
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+margin-bottom: 20px;
+}
+
+.form-group label {
+display: block;
+margin-bottom: 8px;
+color: var(--secondary);
+font-weight: 500;
+}
+
+.form-control {
+width: 100%;
+padding: 12px 15px;
+background-color: rgba(255, 255, 255, 0.05);
+border: 1px solid rgba(255, 255, 255, 0.1);
+border-radius: 5px;
+color: var(--light);
+font-size: 16px;
+transition: all 0.3s ease;
+}
+
+.form-control:focus {
+border-color: var(--primary);
+background-color: rgba(255, 255, 255, 0.1);
+outline: none;
+}
+
+.filter-select {
+background-color: #1a1a1a;
+/* Dark background color */
+color: #e0e0e0;
+/* Light text color */
+border: 1px solid #333;
+/* Border color */
+border-radius: 5px;
+padding: 10px;
+font-size: 1rem;
+appearance: none;
+/* Remove default dropdown arrow */
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23e0e0e0' viewBox='0 0 16 16'%3E%3Cpath d='M8 12L2 6h12z'/%3E%3C/svg%3E");
+background-repeat: no-repeat;
+background-position: right 10px center;
+background-size: 12px;
+transition: all 0.3s ease;
+}
+
+.filter-select:focus {
+outline: none;
+border-color: #4285f4;
+/* Highlight border color on focus */
+background-color: #222;
+/* Slightly lighter background on focus */
+}
+
+.filter-select option {
+background-color: #1a1a1a;
+/* Dark background for options */
+color: #e0e0e0;
+/* Light text color for options */
+}
+
+.estimator-results {
+flex: 1;
+min-width: 300px;
+background: rgba(17, 24, 39, 0.8);
+padding: 30px;
+border-radius: 15px;
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.result-card {
+background: rgba(37, 99, 235, 0.1);
+border-radius: 10px;
+padding: 20px;
+margin-bottom: 20px;
+border-left: 4px solid var(--primary);
+}
+
+.result-card h4 {
+color: var(--secondary);
+margin-bottom: 15px;
+display: flex;
+justify-content: space-between;
+}
+
+.result-card p {
+margin-bottom: 10px;
+color: #aaa;
+}
+
+.price-range {
+font-size: 1.5rem;
+font-weight: bold;
+color: var(--primary);
+margin: 20px 0;
+}
+
+.market-comparison {
+display: flex;
+justify-content: space-between;
+margin-top: 20px;
+padding-top: 20px;
+border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.market-item {
+text-align: center;
+}
+
+.market-item span {
+display: block;
+margin-top: 5px;
+font-weight: bold;
+}
+
+.market-low {
+color: var(--danger);
+}
+
+.market-average {
+color: var(--warning);
+}
+
+.market-high {
+color: var(--success);
+}
+/* CTA Section */
+
+.cta {
+padding: 80px 5%;
+background: linear-gradient(135deg, var(--primary-dark), var(--accent));
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+
+.cta h2 {
+font-size: 2.5rem;
+margin-bottom: 20px;
+}
+
+.cta p {
+font-size: 1.2rem;
+margin-bottom: 40px;
+max-width: 700px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.cta-buttons {
+display: flex;
+justify-content: center;
+gap: 20px;
+flex-wrap: wrap;
+}
+
+.btn-cta {
+padding: 12px 30px;
+border-radius: 30px;
+font-size: 1.1rem;
+letter-spacing: 1px;
+}
+
+.cta-shape {
+position: absolute;
+opacity: 0.2;
+z-index: 0;
+}
+
+.cta-shape-1 {
+width: 300px;
+height: 300px;
+border-radius: 50%;
+background: white;
+top: -150px;
+left: -100px;
+}
+
+.cta-shape-2 {
+width: 200px;
+height: 200px;
+border-radius: 50%;
+background: white;
+bottom: -100px;
+right: -50px;
+}
+/* Footer */
+
+footer {
+background-color: var(--dark);
+padding: 60px 5% 30px;
+}
+
+.footer-content {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+gap: 40px;
+margin-bottom: 40px;
+}
+
+.footer-column {
+flex: 1;
+min-width: 200px;
+}
+
+.footer-logo {
+font-size: 1.5rem;
+font-weight: bold;
+margin-bottom: 20px;
+color: var(--secondary);
+}
+
+.footer-column h3 {
+font-size: 1.2rem;
+margin-bottom: 20px;
+color: var(--secondary);
+position: relative;
+}
+
+.footer-column h3::after {
+content: '';
+position: absolute;
+width: 40px;
+height: 3px;
+background: var(--primary);
+bottom: -10px;
+left: 0;
+}
+
+.footer-links {
+list-style: none;
+}
+
+.footer-links li {
+margin-bottom: 12px;
+}
+
+.footer-links a {
+color: #aaa;
+text-decoration: none;
+transition: all 0.3s ease;
+display: block;
+position: relative;
+padding-left: 15px;
+}
+
+.footer-links a::before {
+content: '→';
+position: absolute;
+left: 0;
+top: 50%;
+transform: translateY(-50%);
+color: var(--primary);
+font-size: 12px;
+opacity: 0;
+transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+color: var(--primary);
+transform: translateX(5px);
+}
+
+.footer-links a:hover::before {
+opacity: 1;
+}
+
+.footer-social {
+display: flex;
+gap: 15px;
+margin-top: 20px;
+}
+
+.social-icon {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+background-color: rgba(255, 255, 255, 0.1);
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--light);
+text-decoration: none;
+transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+background-color: var(--primary);
+transform: translateY(-5px);
+}
+
+.footer-bottom {
+text-align: center;
+padding-top: 30px;
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+color: #aaa;
+font-size: 0.9rem;
+}
+/* Escrow System Module */
+
+.escrow-system {
+padding: 80px 5%;
+background-color: var(--dark);
+}
+
+.escrow-steps {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin-top: 50px;
+position: relative;
+}
+
+.escrow-step {
+flex: 1;
+min-width: 200px;
+padding: 20px;
+text-align: center;
+position: relative;
+z-index: 1;
+}
+
+.escrow-line {
+position: absolute;
+top: 35px;
+left: 0;
+width: 100%;
+height: 3px;
+background: linear-gradient(90deg, var(--primary), var(--accent));
+z-index: 0;
+}
+
+.escrow-icon {
+width: 70px;
+height: 70px;
+border-radius: 50%;
+background: var(--dark);
+border: 3px solid var(--primary);
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto 20px;
+color: var(--primary);
+font-size: 1.5rem;
+position: relative;
+z-index: 2;
+}
+
+.escrow-step h4 {
+color: var(--secondary);
+margin-bottom: 15px;
+}
+
+.escrow-card {
+margin-top: 50px;
+background: rgba(17, 24, 39, 0.8);
+border-radius: 15px;
+overflow: hidden;
+box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.escrow-header {
+background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+padding: 20px;
+color: white;
+text-align: center;
+}
+
+.escrow-body {
+padding: 30px;
+}
+
+.escrow-features {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 20px;
+}
+
+.escrow-feature {
+display: flex;
+align-items: flex-start;
+gap: 15px;
+}
+
+.escrow-feature-icon {
+color: var(--primary);
+font-size: 1.5rem;
+margin-top: 5px;
+}
+/* Contract Templates Section */
+
+.contracts {
+padding: 80px 5%;
+background-color: var(--darker);
+}
+
+.templates-container {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 30px;
+margin-top: 50px;
+}
+
+.template-card {
+background: rgba(17, 24, 39, 0.8);
+border-radius: 15px;
+overflow: hidden;
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+transition: all 0.3s ease;
+}
+
+.template-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.template-header {
+background: var(--primary);
+padding: 20px;
+color: white;
+position: relative;
+overflow: hidden;
+}
+
+.template-header h3 {
+position: relative;
+z-index: 1;
+}
+
+.template-shape {
+position: absolute;
+width: 100px;
+height: 100px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 50%;
+top: -50px;
+right: -50px;
+}
+
+.template-body {
+padding: 20px;
+}
+
+.template-features {
+list-style: none;
+margin-bottom: 20px;
+}
+
+.template-features li {
+padding: 8px 0;
+position: relative;
+border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.template-features li:last-child {
+border-bottom: none;
+}
+
+.template-features li::before {
+content: '✓';
+color: var(--success);
+margin-right: 10px;
+}
+
+.template-footer {
+padding: 15px 20px;
+background: rgba(17, 24, 39, 0.5);
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.template-price {
+font-size: 1.2rem;
+font-weight: bold;
+color: var(--secondary);
+}
+/* Milestone Payment Section */
+
+.milestone-payment {
+padding: 80px 5%;
+background-color: var(--dark);
+}
+
+.milestone-container {
+display: flex;
+flex-wrap: wrap;
+gap: 30px;
+margin-top: 50px;
+}
+
+.milestone-info {
+flex: 1;
+min-width: 300px;
+}
+
+.milestone-card {
+flex: 1;
+min-width: 300px;
+background: rgba(17, 24, 39, 0.8);
+border-radius: 15px;
+padding: 30px;
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.milestone-list {
+list-style: none;
+counter-reset: milestone-counter;
+}
+
+.milestone-item {
+position: relative;
+padding: 20px 20px 20px 70px;
+margin-bottom: 15px;
+background: rgba(255, 255, 255, 0.05);
+border-radius: 10px;
+counter-increment: milestone-counter;
+}
+
+.milestone-item::before {
+content: counter(milestone-counter);
+position: absolute;
+left: 20px;
+top: 50%;
+transform: translateY(-50%);
+width: 40px;
+height: 40px;
+background: var(--primary);
+color: white;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+}
+
+.milestone-status {
+position: absolute;
+right: 20px;
+top: 20px;
+font-size: 0.9rem;
+}
+
+.status-pending {
+color: var(--warning);
+}
+
+.status-completed {
+color: var(--success);
+}
+
+.milestone-progress {
+margin: 25px 0;
+height: 8px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 4px;
+overflow: hidden;
+}
+
+.milestone-progress-bar {
+height: 100%;
+background: linear-gradient(90deg, var(--primary), var(--accent));
+width: 75%;
+}
+
+.milestone-total {
+display: flex;
+justify-content: space-between;
+padding-top: 20px;
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+font-size: 1.2rem;
+font-weight: bold;
+}
+/* Jobs Browse Section */
+
+.jobs-browse {
+padding: 80px 5%;
+background-color: var(--darker);
+}
+
+.jobs-filters {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+margin-bottom: 30px;
+background: rgba(17, 24, 39, 0.5);
+padding: 20px;
+border-radius: 10px;
+}
+
+.filter-group {
+flex: 1;
+min-width: 200px;
+}
+
+.filter-group label {
+display: block;
+margin-bottom: 8px;
+color: var(--secondary);
+font-weight: 500;
+}
+
+.job-search-bar {
+width: 100%;
+display: flex;
+margin-bottom: 30px;
+}
+
+.job-search-bar input {
+flex: 1;
+padding: 15px;
+border: none;
+background: rgba(255, 255, 255, 0.05);
+border-radius: 5px 0 0 5px;
+color: var(--light);
+font-size: 16px;
+}
+
+.job-search-bar button {
+padding: 15px 25px;
+background: var(--primary);
+color: white;
+border: none;
+border-radius: 0 5px 5px 0;
+cursor: pointer;
+font-weight: 600;
+}
+
+.jobs-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+gap: 25px;
+margin-top: 30px;
+}
+
+.job-card {
+background: rgba(17, 24, 39, 0.8);
+border-radius: 10px;
+padding: 25px;
+position: relative;
+transition: all 0.3s ease;
+border-left: 5px solid transparent;
+}
+
+.job-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+border-left-color: var(--primary);
+}
+
+.job-header {
+display: flex;
+justify-content: space-between;
+margin-bottom: 15px;
+}
+
+.job-title {
+font-size: 1.2rem;
+color: var(--secondary);
+margin-bottom: 10px;
+}
+
+.job-price {
+color: var(--primary);
+font-weight: bold;
+font-size: 1.2rem;
+}
+
+.job-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+margin: 15px 0;
+}
+
+.job-tag {
+background: rgba(37, 99, 235, 0.2);
+color: var(--primary);
+padding: 5px 12px;
+border-radius: 20px;
+font-size: 0.8rem;
+}
+
+.job-footer {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 15px;
+padding-top: 15px;
+border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.job-client {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.client-avatar {
+width: 35px;
+height: 35px;
+border-radius: 50%;
+overflow: hidden;
+}
+
+.client-avatar img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.job-posted {
+font-size: 0.85rem;
+color: #aaa;
+}
+/* Pagination */
+
+.pagination {
+display: flex;
+justify-content: center;
+margin-top: 40px;
+}
+
+.pagination-item {
+width: 40px;
+height: 40px;
+border-radius: 5px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 5px;
+background: rgba(17, 24, 39, 0.5);
+color: var(--light);
+text-decoration: none;
+transition: all 0.3s ease;
+}
+
+.pagination-item:hover,
+.pagination-item.active {
+background: var(--primary);
+}
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+.hero {
+flex-direction: column;
+height: auto;
+padding: 80px 5%;
+}
+.hero-content,
+.hero-image {
+width: 100%;
+margin-bottom: 40px;
+}
+.step:not(:last-child)::after {
+display: none;
+}
+.escrow-line {
+display: none;
+}
+}
+
+@media (max-width: 768px) {
+.nav-items {
+display: none;
+}
+.auth-buttons {
+display: none;
+}
+.mobile-menu-btn {
+display: block;
+}
+.hero h1 {
+font-size: 2.5rem;
+}
+.section-title h2 {
+font-size: 2rem;
+}
+}
+/* Animation for scroll */
+
+.reveal {
+position: relative;
+opacity: 0;
+transform: translateY(30px);
+transition: all 1s ease;
+}
+
+.reveal.active {
+opacity: 1;
+transform: translateY(0);
+}
+/* Mobile Menu */
+
+.mobile-menu-btn {
+display: none;
+background: transparent;
+border: none;
+color: var(--light);
+font-size: 1.5rem;
+cursor: pointer;
+}
+
+.mobile-menu {
+position: fixed;
+top: 0;
+left: -100%;
+width: 80%;
+height: 100vh;
+background: var(--dark);
+z-index: 1000;
+padding: 50px 30px;
+transition: all 0.5s ease;
+overflow-y: auto;
+}
+
+.mobile-menu.active {
+left: 0;
+box-shadow: 5px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu-close {
+position: absolute;
+top: 20px;
+right: 20px;
+background: transparent;
+border: none;
+color: var(--light);
+font-size: 1.5rem;
+cursor: pointer;
+}
+
+.mobile-nav {
+margin-top: 50px;
+}
+
+.mobile-nav ul {
+list-style: none;
+}
+
+.mobile-nav li {
+margin-bottom: 15px;
+}
+
+.mobile-nav a {
+color: var(--light);
+text-decoration: none;
+font-size: 1.2rem;
+display: block;
+padding: 10px 0;
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-auth-buttons {
+margin-top: 30px;
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+background: rgba(0, 0, 0, 0.7);
+z-index: 999;
+opacity: 0;
+visibility: hidden;
+transition: all 0.5s ease;
+}
+
+.overlay.active {
+opacity: 1;
+visibility: visible;
+}
+</style>
 </head>
 
 <body>
-    <!-- Header -->
-    <header>
-        <a href="#" class="logo">Yuva<span>Works</span></a>
-        <nav class="nav-items">
-            <ul>
-                <li><a href="#categories">Categories</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#karma-system">Karma System</a></li>
-                <li><a href="browse-jobs.html">Browse Jobs</a></li>
-                <li><a href="#escrow-system">Escrow System</a></li>
-                <li><a href="#fair-pay">Fair Pay</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            <a href="login.html">
-                <button class="btn btn-outline">Log In</button>
-            </a>
-            <a href="signup.html">
-                <button class="btn btn-primary">Sign Up</button>
-            </a>
-        </div>
-        <button class="mobile-menu-btn">☰</button>
-    </header>
+<!-- Header -->
+<header>
+<a href="#" class="logo">Yuva<span>Works</span></a>
+<nav class="nav-items">
+<ul>
+<li><a href="#categories">Categories</a></li>
+<li><a href="#how-it-works">How It Works</a></li>
+<li><a href="#karma-system">Karma System</a></li>
+<li><a href="browse-jobs.html">Browse Jobs</a></li>
+<li><a href="#escrow-system">Escrow System</a></li>
+<li><a href="#fair-pay">Fair Pay</a></li>
+</ul>
+</nav>
+<div class="auth-buttons">
+<a href="login.html">
+<button class="btn btn-outline">Log In</button>
+</a>
+<a href="signup.html">
+<button class="btn btn-primary">Sign Up</button>
+</a>
+</div>
+<button class="mobile-menu-btn">☰</button>
+</header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu">
-        <button class="mobile-menu-close">✕</button>
-        <div class="mobile-logo">
-            <a href="#" class="logo">Yuva<span>Works</span></a>
-        </div>
-        <nav class="mobile-nav">
-            <ul>
-                <li><a href="#categories">Categories</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#karma-system">Karma System</a></li>
-                <li><a href="browse-jobs.html">Browse Jobs</a></li>
-                <li><a href="#escrow-system">Escrow System</a></li>
-                <li><a href="#fair-pay">Fair Pay</a></li>
-            </ul>
-        </nav>
-        <div class="mobile-auth-buttons">
-            <a href="login.html">
-                <button class="btn btn-outline">Log In</button>
-            </a>
-            <a href="signup.html">
-                <button class="btn btn-primary">Sign Up</button>
-            </a>
-        </div>
-    </div>
-    <div class="overlay"></div>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+<button class="mobile-menu-close">✕</button>
+<div class="mobile-logo">
+<a href="#" class="logo">Yuva<span>Works</span></a>
+</div>
+<nav class="mobile-nav">
+<ul>
+<li><a href="#categories">Categories</a></li>
+<li><a href="#how-it-works">How It Works</a></li>
+<li><a href="#karma-system">Karma System</a></li>
+<li><a href="browse-jobs.html">Browse Jobs</a></li>
+<li><a href="#escrow-system">Escrow System</a></li>
+<li><a href="#fair-pay">Fair Pay</a></li>
+</ul>
+</nav>
+<div class="mobile-auth-buttons">
+<a href="login.html">
+<button class="btn btn-outline">Log In</button>
+</a>
+<a href="signup.html">
+<button class="btn btn-primary">Sign Up</button>
+</a>
+</div>
+</div>
+<div class="overlay"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content animated">
-            <h1>Unlock Your Potential with <span>YuvaWorks</span></h1>
-            <p>India's premier freelancing platform connecting talented professionals with businesses. Discover projects, earn fairly, and build your career with our unique Karma system.</p>
-            <div class="search-bar">
-                <input type="text" placeholder="Search for projects or skills...">
-                <button>Search</button>
-            </div>
-        </div>
-        <div class="hero-image animated delay-1">
-            <img src="/assets/yw.png" alt="YuvaWorks Freelancers">
-        </div>
-        <div class="particles">
-            <span class="particle" style="width: 15px; height: 15px; top: 10%; left: 45%; animation-duration: 15s;"></span>
-            <span class="particle" style="width: 20px; height: 20px; top: 20%; left: 75%; animation-duration: 18s;"></span>
-            <span class="particle" style="width: 25px; height: 25px; top: 40%; left: 15%; animation-duration: 20s;"></span>
-            <span class="particle" style="width: 10px; height: 10px; top: 60%; left: 85%; animation-duration: 12s;"></span>
-            <span class="particle" style="width: 15px; height: 15px; top: 80%; left: 25%; animation-duration: 16s;"></span>
-            <span class="particle" style="width: 18px; height: 18px; top: 30%; left: 65%; animation-duration: 14s;"></span>
-        </div>
-    </section>
+<!-- Hero Section -->
+<section class="hero">
+<div class="hero-content animated">
+<h1>Unlock Your Potential with <span>YuvaWorks</span></h1>
+<p>India's premier freelancing platform connecting talented professionals with businesses. Discover projects, earn fairly, and build your career with our unique Karma system.</p>
+<div class="hero-buttons">
+<button class="btn btn-primary">Find Work</button>
+<button class="btn btn-outline">Hire Talent</button>
+</div>
+<div class="search-bar">
+<input type="text" placeholder="Search for projects or skills...">
+<button>Search</button>
+</div>
+</div>
+<div class="hero-image animated delay-1">
+<img src="/assets/yw.png" alt="YuvaWorks Freelancers">
+</div>
+<div class="particles">
+<span class="particle" style="width: 15px; height: 15px; top: 10%; left: 45%; animation-duration: 15s;"></span>
+<span class="particle" style="width: 20px; height: 20px; top: 20%; left: 75%; animation-duration: 18s;"></span>
+<span class="particle" style="width: 25px; height: 25px; top: 40%; left: 15%; animation-duration: 20s;"></span>
+<span class="particle" style="width: 10px; height: 10px; top: 60%; left: 85%; animation-duration: 12s;"></span>
+<span class="particle" style="width: 15px; height: 15px; top: 80%; left: 25%; animation-duration: 16s;"></span>
+<span class="particle" style="width: 18px; height: 18px; top: 30%; left: 65%; animation-duration: 14s;"></span>
+</div>
+</section>
 
-    <!-- Categories Section -->
-    <section class="categories" id="categories">
-        <div class="section-title reveal">
-            <h2>Explore Categories</h2>
-        </div>
-        <div class="categories-grid">
-            <div class="category-card reveal">
-                <div class="category-icon">💻</div>
-                <h3>Web Development</h3>
-                <p>Website design, front-end, back-end development, and full-stack solutions.</p>
-                <div class="stats">
-                    <div>
-                        Avg. Rate
-                        <span>₹2,500/hr</span>
-                    </div>
-                    <div>
-                        Projects
-                        <span>5,400+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="category-card reveal delay-1">
-                <div class="category-icon">📱</div>
-                <h3>Mobile Development</h3>
-                <p>Native and cross-platform mobile app development for Android and iOS.</p>
-                <div class="stats">
-                    <div>
-                        Avg. Rate
-                        <span>₹2,800/hr</span>
-                    </div>
-                    <div>
-                        Projects
-                        <span>3,200+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="category-card reveal delay-2">
-                <div class="category-icon">✍️</div>
-                <h3>Content Writing</h3>
-                <p>Blog posts, articles, copywriting, technical writing, and content strategy.</p>
-                <div class="stats">
-                    <div>
-                        Avg. Rate
-                        <span>₹1,500/hr</span>
-                    </div>
-                    <div>
-                        Projects
-                        <span>6,800+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="category-card reveal">
-                <div class="category-icon">🎨</div>
-                <h3>Graphic Design</h3>
-                <p>Logos, illustrations, UI/UX design, branding, and visual identity.</p>
-                <div class="stats">
-                    <div>
-                        Avg. Rate
-                        <span>₹2,000/hr</span>
-                    </div>
-                    <div>
-                        Projects
-                        <span>4,900+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="category-card reveal delay-1">
-                <div class="category-icon">🔍</div>
-                <h3>Digital Marketing</h3>
-                <p>SEO, SEM, social media marketing, email campaigns, and analytics.</p>
-                <div class="stats">
-                    <div>
-                        Avg. Rate
-                        <span>₹1,800/hr</span>
-                    </div>
-                    <div>
-                        Projects
-                        <span>3,500+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="category-card reveal delay-2">
-                <div class="category-icon">🔐</div>
-                <h3>Cybersecurity</h3>
-                <p>Security audits, penetration testing, vulnerability assessment, and secure coding.</p>
-                <div class="stats">
-                    <div>
-                        Avg. Rate
-                        <span>₹3,500/hr</span>
-                    </div>
-                    <div>
-                        Projects
-                        <span>1,200+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="category-card reveal">
-                <div class="category-icon">📊</div>
-                <h3>Data Science</h3>
-                <p>Data analysis, machine learning, AI solutions, and statistical modeling.</p>
-                <div class="stats">
-                    <div>
-                        Avg. Rate
-                        <span>₹3,200/hr</span>
-                    </div>
-                    <div>
-                        Projects
-                        <span>2,100+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="category-card reveal delay-1">
-                <div class="category-icon">🎬</div>
-                <h3>Video Production</h3>
-                <p>Video editing, animation, motion graphics, and visual effects.</p>
-                <div class="stats">
-                    <div>
-                        Avg. Rate
-                        <span>₹2,300/hr</span>
-                    </div>
-                    <div>
-                        Projects
-                        <span>1,800+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="category-card reveal delay-2">
-                <div class="category-icon">🔊</div>
-                <h3>Audio Services</h3>
-                <p>Voice over, music production, podcast editing, and audio mastering.</p>
-                <div class="stats">
-                    <div>
-                        Avg. Rate
-                        <span>₹1,600/hr</span>
-                    </div>
-                    <div>
-                        Projects
-                        <span>1,500+</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Categories Section -->
+<section class="categories" id="categories">
+<div class="section-title reveal">
+<h2>Explore Categories</h2>
+</div>
+<div class="categories-grid">
+<div class="category-card reveal">
+<div class="category-icon">💻</div>
+<h3>Web Development</h3>
+<p>Website design, front-end, back-end development, and full-stack solutions.</p>
+<div class="stats">
+<div>
+Avg. Rate
+<span>₹2,500/hr</span>
+</div>
+<div>
+Projects
+<span>5,400+</span>
+</div>
+</div>
+</div>
+<div class="category-card reveal delay-1">
+<div class="category-icon">📱</div>
+<h3>Mobile Development</h3>
+<p>Native and cross-platform mobile app development for Android and iOS.</p>
+<div class="stats">
+<div>
+Avg. Rate
+<span>₹2,800/hr</span>
+</div>
+<div>
+Projects
+<span>3,200+</span>
+</div>
+</div>
+</div>
+<div class="category-card reveal delay-2">
+<div class="category-icon">✍️</div>
+<h3>Content Writing</h3>
+<p>Blog posts, articles, copywriting, technical writing, and content strategy.</p>
+<div class="stats">
+<div>
+Avg. Rate
+<span>₹1,500/hr</span>
+</div>
+<div>
+Projects
+<span>6,800+</span>
+</div>
+</div>
+</div>
+<div class="category-card reveal">
+<div class="category-icon">🎨</div>
+<h3>Graphic Design</h3>
+<p>Logos, illustrations, UI/UX design, branding, and visual identity.</p>
+<div class="stats">
+<div>
+Avg. Rate
+<span>₹2,000/hr</span>
+</div>
+<div>
+Projects
+<span>4,900+</span>
+</div>
+</div>
+</div>
+<div class="category-card reveal delay-1">
+<div class="category-icon">🔍</div>
+<h3>Digital Marketing</h3>
+<p>SEO, SEM, social media marketing, email campaigns, and analytics.</p>
+<div class="stats">
+<div>
+Avg. Rate
+<span>₹1,800/hr</span>
+</div>
+<div>
+Projects
+<span>3,500+</span>
+</div>
+</div>
+</div>
+<div class="category-card reveal delay-2">
+<div class="category-icon">🔐</div>
+<h3>Cybersecurity</h3>
+<p>Security audits, penetration testing, vulnerability assessment, and secure coding.</p>
+<div class="stats">
+<div>
+Avg. Rate
+<span>₹3,500/hr</span>
+</div>
+<div>
+Projects
+<span>1,200+</span>
+</div>
+</div>
+</div>
+<div class="category-card reveal">
+<div class="category-icon">📊</div>
+<h3>Data Science</h3>
+<p>Data analysis, machine learning, AI solutions, and statistical modeling.</p>
+<div class="stats">
+<div>
+Avg. Rate
+<span>₹3,200/hr</span>
+</div>
+<div>
+Projects
+<span>2,100+</span>
+</div>
+</div>
+</div>
+<div class="category-card reveal delay-1">
+<div class="category-icon">🎬</div>
+<h3>Video Production</h3>
+<p>Video editing, animation, motion graphics, and visual effects.</p>
+<div class="stats">
+<div>
+Avg. Rate
+<span>₹2,300/hr</span>
+</div>
+<div>
+Projects
+<span>1,800+</span>
+</div>
+</div>
+</div>
+<div class="category-card reveal delay-2">
+<div class="category-icon">🔊</div>
+<h3>Audio Services</h3>
+<p>Voice over, music production, podcast editing, and audio mastering.</p>
+<div class="stats">
+<div>
+Avg. Rate
+<span>₹1,600/hr</span>
+</div>
+<div>
+Projects
+<span>1,500+</span>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-    <!-- How It Works -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="section-title reveal">
-            <h2>How YuvaWorks Works</h2>
-        </div>
-        <div class="steps">
-            <div class="step reveal">
-                <div class="step-number">1</div>
-                <h3>Create Your Profile</h3>
-                <p>Sign up and showcase your skills, portfolio, and experience to stand out from the crowd.</p>
-            </div>
-            <div class="step reveal delay-1">
-                <div class="step-number">2</div>
-                <h3>Find Opportunities</h3>
-                <p>Browse projects or get matched with clients looking for your specific skills and expertise.</p>
-            </div>
-            <div class="step reveal delay-2">
-                <div class="step-number">3</div>
-                <h3>Submit Proposals</h3>
-                <p>Send customized proposals that highlight how your skills meet the client's specific needs.</p>
-            </div>
-            <div class="step reveal delay-3">
-                <div class="step-number">4</div>
-                <h3>Get Paid Securely</h3>
-                <p>Work with confidence using our milestone-based payments and escrow system.</p>
-            </div>
-        </div>
-    </section>
+<!-- How It Works -->
+<section class="how-it-works" id="how-it-works">
+<div class="section-title reveal">
+<h2>How YuvaWorks Works</h2>
+</div>
+<div class="steps">
+<div class="step reveal">
+<div class="step-number">1</div>
+<h3>Create Your Profile</h3>
+<p>Sign up and showcase your skills, portfolio, and experience to stand out from the crowd.</p>
+</div>
+<div class="step reveal delay-1">
+<div class="step-number">2</div>
+<h3>Find Opportunities</h3>
+<p>Browse projects or get matched with clients looking for your specific skills and expertise.</p>
+</div>
+<div class="step reveal delay-2">
+<div class="step-number">3</div>
+<h3>Submit Proposals</h3>
+<p>Send customized proposals that highlight how your skills meet the client's specific needs.</p>
+</div>
+<div class="step reveal delay-3">
+<div class="step-number">4</div>
+<h3>Get Paid Securely</h3>
+<p>Work with confidence using our milestone-based payments and escrow system.</p>
+</div>
+</div>
+</section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="section-title reveal">
-            <h2>Why Choose YuvaWorks</h2>
-        </div>
-        <div class="features-container">
-            <div class="feature-card reveal">
-                <div class="feature-icon">🛡️</div>
-                <h3>Secure Payments</h3>
-                <p>Our escrow system ensures you get paid for completed work while protecting clients' investments.</p>
-            </div>
-            <div class="feature-card reveal delay-1">
-                <div class="feature-icon">📝</div>
-                <h3>Contract Templates</h3>
-                <p>Use our legally-vetted contract templates to protect your rights and define project terms clearly.</p>
-            </div>
-            <div class="feature-card reveal delay-2">
-                <div class="feature-icon">⭐</div>
-                <h3>Karma Fee System</h3>
-                <p>Give back to the community through reviews and mentorship to reduce your platform commission.</p>
-            </div>
-            <div class="feature-card reveal">
-                <div class="feature-icon">💰</div>
-                <h3>Fair Pay Estimator</h3>
-                <p>Know your worth with our tool that shows what similar freelancers charge for comparable work.</p>
-            </div>
-            <div class="feature-card reveal delay-1">
-                <div class="feature-icon">🚀</div>
-                <h3>Skill Development</h3>
-                <p>Access exclusive training resources and certifications to enhance your professional skills.</p>
-            </div>
-            <div class="feature-card reveal delay-2">
-                <div class="feature-icon">🤝</div>
-                <h3>Community Support</h3>
-                <p>Connect with fellow freelancers, share experiences, and grow together as professionals.</p>
-            </div>
-        </div>
-    </section>
+<!-- Features Section -->
+<section class="features">
+<div class="section-title reveal">
+<h2>Why Choose YuvaWorks</h2>
+</div>
+<div class="features-container">
+<div class="feature-card reveal">
+<div class="feature-icon">🛡️</div>
+<h3>Secure Payments</h3>
+<p>Our escrow system ensures you get paid for completed work while protecting clients' investments.</p>
+</div>
+<div class="feature-card reveal delay-1">
+<div class="feature-icon">📝</div>
+<h3>Contract Templates</h3>
+<p>Use our legally-vetted contract templates to protect your rights and define project terms clearly.</p>
+</div>
+<div class="feature-card reveal delay-2">
+<div class="feature-icon">⭐</div>
+<h3>Karma Fee System</h3>
+<p>Give back to the community through reviews and mentorship to reduce your platform commission.</p>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon">💰</div>
+<h3>Fair Pay Estimator</h3>
+<p>Know your worth with our tool that shows what similar freelancers charge for comparable work.</p>
+</div>
+<div class="feature-card reveal delay-1">
+<div class="feature-icon">🚀</div>
+<h3>Skill Development</h3>
+<p>Access exclusive training resources and certifications to enhance your professional skills.</p>
+</div>
+<div class="feature-card reveal delay-2">
+<div class="feature-icon">🤝</div>
+<h3>Community Support</h3>
+<p>Connect with fellow freelancers, share experiences, and grow together as professionals.</p>
+</div>
+</div>
+</section>
 
-    <!-- Karma System Section -->
-    <section class="karma-system" id="karma-system">
-        <div class="section-title reveal">
-            <h2>Karma Fee System</h2>
-        </div>
-        <p class="reveal">The more you contribute to our community, the less commission you pay. It's that simple!</p>
+<!-- Karma System Section -->
+<section class="karma-system" id="karma-system">
+<div class="section-title reveal">
+<h2>Karma Fee System</h2>
+</div>
+<p class="reveal">The more you contribute to our community, the less commission you pay. It's that simple!</p>
 
-        <div class="progress-container reveal">
-            <div class="progress-bar" style="width: 75%">75% Karma Score</div>
-        </div>
+<div class="progress-container reveal">
+<div class="progress-bar" style="width: 75%">75% Karma Score</div>
+</div>
 
-        <table class="karma-table reveal">
-            <thead>
-                <tr>
-                    <th>Karma Level</th>
-                    <th>Requirements</th>
-                    <th>Platform Fee</th>
-                    <th>Benefits</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Bronze</td>
-                    <td>New members</td>
-                    <td>15%</td>
-                    <td>Basic features</td>
-                </tr>
-                <tr>
-                    <td>Silver</td>
-                    <td>10+ reviews & 5+ mentoring hours</td>
-                    <td>12%</td>
-                    <td>Priority support</td>
-                </tr>
-                <tr>
-                    <td>Gold</td>
-                    <td>25+ reviews & 15+ mentoring hours</td>
-                    <td>8%</td>
-                    <td>Featured profile</td>
-                </tr>
-                <tr>
-                    <td>Platinum</td>
-                    <td>50+ reviews & 30+ mentoring hours</td>
-                    <td>5%</td>
-                    <td>Early access to projects</td>
-                </tr>
-                <tr>
-                    <td>Diamond</td>
-                    <td>100+ reviews & 50+ mentoring hours</td>
-                    <td>3%</td>
-                    <td>All premium features</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+<table class="karma-table reveal">
+<thead>
+<tr>
+<th>Karma Level</th>
+<th>Requirements</th>
+<th>Platform Fee</th>
+<th>Benefits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bronze</td>
+<td>New members</td>
+<td>15%</td>
+<td>Basic features</td>
+</tr>
+<tr>
+<td>Silver</td>
+<td>10+ reviews & 5+ mentoring hours</td>
+<td>12%</td>
+<td>Priority support</td>
+</tr>
+<tr>
+<td>Gold</td>
+<td>25+ reviews & 15+ mentoring hours</td>
+<td>8%</td>
+<td>Featured profile</td>
+</tr>
+<tr>
+<td>Platinum</td>
+<td>50+ reviews & 30+ mentoring hours</td>
+<td>5%</td>
+<td>Early access to projects</td>
+</tr>
+<tr>
+<td>Diamond</td>
+<td>100+ reviews & 50+ mentoring hours</td>
+<td>3%</td>
+<td>All premium features</td>
+</tr>
+</tbody>
+</table>
+</section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="section-title reveal">
-            <h2>What Our Users Say</h2>
-        </div>
-        <div class="testimonial-carousel">
-            <div class="testimonial-card reveal">
-                <div class="testimonial-content">
-                    "YuvaWorks has completely transformed my freelancing career. The karma system rewards my contributions to the community, and the secure payment system means I never worry about getting paid."
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Raghav Sharma">
-                    </div>
-                    <div class="author-info">
-                        <h4>Raghav Sharma</h4>
-                        <p>Web Developer</p>
-                        <div class="author-rating">★★★★★</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card reveal delay-1">
-                <div class="testimonial-content">
-                    "As a client, I appreciate the transparency in pricing and the quality of talent on YuvaWorks. The contract templates saved me time and the milestone payments kept everything on track."
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Krish Tanwar">
-                    </div>
-                    <div class="author-info">
-                        <h4>Krish Tanwar</h4>
-                        <p>Startup Founder</p>
-                        <div class="author-rating">★★★★★</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card reveal delay-2">
-                <div class="testimonial-content">
-                    "The fair pay estimator helped me price my services competitively. I've increased my rates by 30% and clients are still happy because they know they're getting value for their money."
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Harsh Vardhan">
-                    </div>
-                    <div class="author-info">
-                        <h4>Harsh Vardhan</h4>
-                        <p>Graphic Designer</p>
-                        <div class="author-rating">★★★★★</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Testimonials Section -->
+<section class="testimonials">
+<div class="section-title reveal">
+<h2>What Our Users Say</h2>
+</div>
+<div class="testimonial-carousel">
+<div class="testimonial-card reveal">
+<div class="testimonial-content">
+"YuvaWorks has completely transformed my freelancing career. The karma system rewards my contributions to the community, and the secure payment system means I never worry about getting paid."
+</div>
+<div class="testimonial-author">
+<div class="author-avatar">
+<img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Raghav Sharma">
+</div>
+<div class="author-info">
+<h4>Raghav Sharma</h4>
+<p>Web Developer</p>
+<div class="author-rating">★★★★★</div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal delay-1">
+<div class="testimonial-content">
+"As a client, I appreciate the transparency in pricing and the quality of talent on YuvaWorks. The contract templates saved me time and the milestone payments kept everything on track."
+</div>
+<div class="testimonial-author">
+<div class="author-avatar">
+<img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Krish Tanwar">
+</div>
+<div class="author-info">
+<h4>Krish Tanwar</h4>
+<p>Startup Founder</p>
+<div class="author-rating">★★★★★</div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal delay-2">
+<div class="testimonial-content">
+"The fair pay estimator helped me price my services competitively. I've increased my rates by 30% and clients are still happy because they know they're getting value for their money."
+</div>
+<div class="testimonial-author">
+<div class="author-avatar">
+<img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Harsh Vardhan">
+</div>
+<div class="author-info">
+<h4>Harsh Vardhan</h4>
+<p>Graphic Designer</p>
+<div class="author-rating">★★★★★</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-    <!-- Fair Pay Estimator -->
-    <section class="fair-pay" id="fair-pay">
-        <div class="section-title reveal">
-            <h2>Fair Pay Estimator</h2>
-        </div>
-        <div class="estimator-container">
-            <div class="estimator-form reveal">
-                <div class="form-group">
-                    <label for="skill-category">Skill Category</label>
-                    <select id="skill-category" class="form-control" style="background-color: #111827;">
-                        <option value="">Select a category</option>
-                        <option value="web-development">Web Development</option>
-                        <option value="mobile-development">Mobile Development</option>
-                        <option value="content-writing">Content Writing</option>
-                        <option value="graphic-design">Graphic Design</option>
-                        <option value="digital-marketing">Digital Marketing</option>
-                        <option value="data-science">Data Science</option>
-                        <option value="video-production">Video Production</option>
-                        <option value="audio-services">Audio Services</option>
-                        <option value="cybersecurity">Cybersecurity</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="experience-level">Experience Level</label>
-                    <select id="experience-level" class="form-control" style="background-color: #111827;">
-                        <option value="">Select experience level</option>
-                        <option value="entry">Entry (0-2 years)</option>
-                        <option value="intermediate">Intermediate (2-5 years)</option>
-                        <option value="expert">Expert (5-10 years)</option>
-                        <option value="specialist">Specialist (10+ years)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="project-complexity">Project Complexity</label>
-                    <select id="project-complexity" class="form-control" style="background-color:#111827;">
-                        <option value="">Select complexity</option>
-                        <option value="basic">Basic</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="complex">Complex</option>
-                        <option value="expert">Expert</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="project-duration">Project Duration</label>
-                    <select id="project-duration" class="form-control" style="background-color: #111827;"> 
-                        <option value="">Select duration</option>
-                        <option value="less-week">Less than a week</option>
-                        <option value="1-2-weeks">1-2 weeks</option>
-                        <option value="2-4-weeks">2-4 weeks</option>
-                        <option value="1-3-months">1-3 months</option>
-                        <option value="3-plus-months">3+ months</option>
-                    </select>
-                </div>
-                <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" id="pricebtn">Calculate Fair Rate</button>
-            </div>
-            <div class="estimator-results reveal delay-1">
-                <h3>Estimated Fair Pay Range</h3>
-                <div class="price-range">₹2,500 - ₹3,200 per hour</div>
-                <div class="result-card">
-                    <h4>Project-Based Estimate <span>Mid-Level Complexity</span></h4>
-                    <p>For a project of this scope and complexity:</p>
-                    <div class="price-range">₹45,000 - ₹75,000</div>
-                </div>
-                <div class="market-comparison">
-                    <div class="market-item">
-                        <div>Market Low</div>
-                        <span class="market-low">₹1,800/hr</span>
-                    </div>
-                    <div class="market-item">
-                        <div>Market Average</div>
-                        <span class="market-average">₹2,700/hr</span>
-                    </div>
-                    <div class="market-item">
-                        <div>Market High</div>
-                        <span class="market-high">₹3,800/hr</span>
-                    </div>
-                </div>
-                <p style="margin-top: 20px; color: #aaa;" class="days">Based on 150+ similar projects completed on YuvaWorks in the last 30 days.</p>
-            </div>
-        </div>
-    </section>
-    <!-- Escrow System Section -->
-    <section class="escrow-system" id="escrow-system">
-        <div class="section-title reveal">
-            <h2>Secure Escrow Payment System</h2>
-        </div>
-        <div class="escrow-steps">
-            <div class="escrow-line"></div>
-            <div class="escrow-step reveal">
-                <div class="escrow-icon">1</div>
-                <h4>Client Funds Escrow</h4>
-                <p>Client securely deposits project funds into YuvaWorks escrow account.</p>
-            </div>
-            <div class="escrow-step reveal delay-1">
-                <div class="escrow-icon">2</div>
-                <h4>Work in Progress</h4>
-                <p>Freelancer works on the project knowing that funds are secured.</p>
-            </div>
-            <div class="escrow-step reveal delay-2">
-                <div class="escrow-icon">3</div>
-                <h4>Milestone Completion</h4>
-                <p>Each milestone is reviewed and approved by the client.</p>
-            </div>
-            <div class="escrow-step reveal delay-3">
-                <div class="escrow-icon">4</div>
-                <h4>Payment Release</h4>
-                <p>Funds are released to the freelancer upon milestone approval.</p>
-            </div>
-        </div>
+<!-- Fair Pay Estimator -->
+<section class="fair-pay" id="fair-pay">
+<div class="section-title reveal">
+<h2>Fair Pay Estimator</h2>
+</div>
+<div class="estimator-container">
+<div class="estimator-form reveal">
+<div class="form-group">
+<label for="skill-category">Skill Category</label>
+<select id="skill-category" class="form-control" style="background-color: #111827;">
+<option value="">Select a category</option>
+<option value="web-development">Web Development</option>
+<option value="mobile-development">Mobile Development</option>
+<option value="content-writing">Content Writing</option>
+<option value="graphic-design">Graphic Design</option>
+<option value="digital-marketing">Digital Marketing</option>
+<option value="data-science">Data Science</option>
+<option value="video-production">Video Production</option>
+<option value="audio-services">Audio Services</option>
+<option value="cybersecurity">Cybersecurity</option>
+</select>
+</div>
+<div class="form-group">
+<label for="experience-level">Experience Level</label>
+<select id="experience-level" class="form-control" style="background-color: #111827;">
+<option value="">Select experience level</option>
+<option value="entry">Entry (0-2 years)</option>
+<option value="intermediate">Intermediate (2-5 years)</option>
+<option value="expert">Expert (5-10 years)</option>
+<option value="specialist">Specialist (10+ years)</option>
+</select>
+</div>
+<div class="form-group">
+<label for="project-complexity">Project Complexity</label>
+<select id="project-complexity" class="form-control" style="background-color:#111827;">
+<option value="">Select complexity</option>
+<option value="basic">Basic</option>
+<option value="intermediate">Intermediate</option>
+<option value="complex">Complex</option>
+<option value="expert">Expert</option>
+</select>
+</div>
+<div class="form-group">
+<label for="project-duration">Project Duration</label>
+<select id="project-duration" class="form-control" style="background-color: #111827;"> 
+<option value="">Select duration</option>
+<option value="less-week">Less than a week</option>
+<option value="1-2-weeks">1-2 weeks</option>
+<option value="2-4-weeks">2-4 weeks</option>
+<option value="1-3-months">1-3 months</option>
+<option value="3-plus-months">3+ months</option>
+</select>
+</div>
+<button class="btn btn-primary" style="width: 100%; margin-top: 20px;" id="pricebtn">Calculate Fair Rate</button>
+</div>
+<div class="estimator-results reveal delay-1">
+<h3>Estimated Fair Pay Range</h3>
+<div class="price-range">₹2,500 - ₹3,200 per hour</div>
+<div class="result-card">
+<h4>Project-Based Estimate <span>Mid-Level Complexity</span></h4>
+<p>For a project of this scope and complexity:</p>
+<div class="price-range">₹45,000 - ₹75,000</div>
+</div>
+<div class="market-comparison">
+<div class="market-item">
+<div>Market Low</div>
+<span class="market-low">₹1,800/hr</span>
+</div>
+<div class="market-item">
+<div>Market Average</div>
+<span class="market-average">₹2,700/hr</span>
+</div>
+<div class="market-item">
+<div>Market High</div>
+<span class="market-high">₹3,800/hr</span>
+</div>
+</div>
+<p style="margin-top: 20px; color: #aaa;" class="days">Based on 150+ similar projects completed on YuvaWorks in the last 30 days.</p>
+</div>
+</div>
+</section>
+<!-- Escrow System Section -->
+<section class="escrow-system" id="escrow-system">
+<div class="section-title reveal">
+<h2>Secure Escrow Payment System</h2>
+</div>
+<div class="escrow-steps">
+<div class="escrow-line"></div>
+<div class="escrow-step reveal">
+<div class="escrow-icon">1</div>
+<h4>Client Funds Escrow</h4>
+<p>Client securely deposits project funds into YuvaWorks escrow account.</p>
+</div>
+<div class="escrow-step reveal delay-1">
+<div class="escrow-icon">2</div>
+<h4>Work in Progress</h4>
+<p>Freelancer works on the project knowing that funds are secured.</p>
+</div>
+<div class="escrow-step reveal delay-2">
+<div class="escrow-icon">3</div>
+<h4>Milestone Completion</h4>
+<p>Each milestone is reviewed and approved by the client.</p>
+</div>
+<div class="escrow-step reveal delay-3">
+<div class="escrow-icon">4</div>
+<h4>Payment Release</h4>
+<p>Funds are released to the freelancer upon milestone approval.</p>
+</div>
+</div>
 
-        <div class="escrow-card reveal">
-            <div class="escrow-header">
-                <h3>Why Use Our Escrow System?</h3>
-            </div>
-            <div class="escrow-body">
-                <div class="escrow-features">
-                    <div class="escrow-feature">
-                        <div class="escrow-feature-icon">🔒</div>
-                        <div>
-                            <h4>Payment Security</h4>
-                            <p>Your money is held securely until you're satisfied with the work.</p>
-                        </div>
-                    </div>
-                    <div class="escrow-feature">
-                        <div class="escrow-feature-icon">💹</div>
-                        <div>
-                            <h4>No Hidden Fees</h4>
-                            <p>Transparent fee structure with no surprises or hidden charges.</p>
-                        </div>
-                    </div>
-                    <div class="escrow-feature">
-                        <div class="escrow-feature-icon">⚡</div>
-                        <div>
-                            <h4>Fast Payments</h4>
-                            <p>Quick release of funds upon milestone approval (24-48 hrs).</p>
-                        </div>
-                    </div>
-                    <div class="escrow-feature">
-                        <div class="escrow-feature-icon">🛡️</div>
-                        <div>
-                            <h4>Dispute Resolution</h4>
-                            <p>Fair and impartial resolution process if issues arise.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="escrow-card reveal">
+<div class="escrow-header">
+<h3>Why Use Our Escrow System?</h3>
+</div>
+<div class="escrow-body">
+<div class="escrow-features">
+<div class="escrow-feature">
+<div class="escrow-feature-icon">🔒</div>
+<div>
+<h4>Payment Security</h4>
+<p>Your money is held securely until you're satisfied with the work.</p>
+</div>
+</div>
+<div class="escrow-feature">
+<div class="escrow-feature-icon">💹</div>
+<div>
+<h4>No Hidden Fees</h4>
+<p>Transparent fee structure with no surprises or hidden charges.</p>
+</div>
+</div>
+<div class="escrow-feature">
+<div class="escrow-feature-icon">⚡</div>
+<div>
+<h4>Fast Payments</h4>
+<p>Quick release of funds upon milestone approval (24-48 hrs).</p>
+</div>
+</div>
+<div class="escrow-feature">
+<div class="escrow-feature-icon">🛡️</div>
+<div>
+<h4>Dispute Resolution</h4>
+<p>Fair and impartial resolution process if issues arise.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Add the button here -->
+<div style="text-align: center; margin-top: 30px;">
+<a href="escrow.html">
+<button class="btn btn-primary" style="padding: 15px 30px; font-size: 1.2rem;">Proceed to Escrow Payment</button>
+</a>
+</div>
+</section>
 
-    <!-- Contract Templates Section -->
-    <section class="contracts">
-        <div class="section-title reveal">
-            <h2>Contract Templates</h2>
-        </div>
-        <div class="templates-container">
-            <div class="template-card reveal">
-                <div class="template-header">
-                    <h3>Basic Project Contract</h3>
-                    <div class="template-shape"></div>
-                </div>
-                <div class="template-body">
-                    <ul class="template-features">
-                        <li>Project scope definition</li>
-                        <li>Payment terms & schedule</li>
-                        <li>Basic deliverable timeline</li>
-                        <li>Simple revision policy</li>
-                        <li>Standard confidentiality clause</li>
-                    </ul>
-                </div>
-                <div class="template-footer">
-                    <div class="template-price">Free</div>
-                    <a href="basic-contract.html">
-                        <button class="btn btn-outline">View Details</button>
-                    </a>
-                </div>
-            </div>
+<!-- Contract Templates Section -->
+<section class="contracts">
+<div class="section-title reveal">
+<h2>Contract Templates</h2>
+</div>
+<div class="templates-container">
+<div class="template-card reveal">
+<div class="template-header">
+<h3>Basic Project Contract</h3>
+<div class="template-shape"></div>
+</div>
+<div class="template-body">
+<ul class="template-features">
+<li>Project scope definition</li>
+<li>Payment terms & schedule</li>
+<li>Basic deliverable timeline</li>
+<li>Simple revision policy</li>
+<li>Standard confidentiality clause</li>
+</ul>
+</div>
+<div class="template-footer">
+<div class="template-price">Free</div>
+<a href="basic-contract.html">
+<button class="btn btn-outline">View Details</button>
+</a>
+</div>
+</div>
 
-            <div class="template-card reveal delay-1">
-                <div class="template-header">
-                    <h3>Professional Contract</h3>
-                    <div class="template-shape"></div>
-                </div>
-                <div class="template-body">
-                    <ul class="template-features">
-                        <li>Detailed scope of work</li>
-                        <li>Milestone-based payments</li>
-                        <li>Advanced timeline with deadlines</li>
-                        <li>Comprehensive revision policy</li>
-                        <li>IP rights & ownership clauses</li>
-                        <li>Non-disclosure agreement</li>
-                    </ul>
-                </div>
-                <div class="template-footer">
-                    <div class="template-price">₹1,500</div>
-                    <a href="professional-contract.html">
-                        <button class="btn btn-outline">View Details</button>
-                    </a>
-                </div>
-            </div>
+<div class="template-card reveal delay-1">
+<div class="template-header">
+<h3>Professional Contract</h3>
+<div class="template-shape"></div>
+</div>
+<div class="template-body">
+<ul class="template-features">
+<li>Detailed scope of work</li>
+<li>Milestone-based payments</li>
+<li>Advanced timeline with deadlines</li>
+<li>Comprehensive revision policy</li>
+<li>IP rights & ownership clauses</li>
+<li>Non-disclosure agreement</li>
+</ul>
+</div>
+<div class="template-footer">
+<div class="template-price">₹1,500</div>
+<a href="professional-contract.html">
+<button class="btn btn-outline">View Details</button>
+</a>
+</div>
+</div>
 
-            <div class="template-card reveal delay-2">
-                <div class="template-header">
-                    <h3>Enterprise Contract</h3>
-                    <div class="template-shape"></div>
-                </div>
-                <div class="template-body">
-                    <ul class="template-features">
-                        <li>Complex project management terms</li>
-                        <li>Customizable payment structure</li>
-                        <li>Advanced IP and licensing options</li>
-                        <li>Legal compliance guarantees</li>
-                        <li>Maintenance & support clauses</li>
-                        <li>Exit strategies & termination</li>
-                        <li>Liability & indemnification</li>
-                    </ul>
-                </div>
-                <div class="template-footer">
-                    <div class="template-price">₹3,500</div>
-                    <a href="enterprise-contract.html">
-                        <button class="btn btn-outline">View Details</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="template-card reveal delay-2">
+<div class="template-header">
+<h3>Enterprise Contract</h3>
+<div class="template-shape"></div>
+</div>
+<div class="template-body">
+<ul class="template-features">
+<li>Complex project management terms</li>
+<li>Customizable payment structure</li>
+<li>Advanced IP and licensing options</li>
+<li>Legal compliance guarantees</li>
+<li>Maintenance & support clauses</li>
+<li>Exit strategies & termination</li>
+<li>Liability & indemnification</li>
+</ul>
+</div>
+<div class="template-footer">
+<div class="template-price">₹3,500</div>
+<a href="enterprise-contract.html">
+<button class="btn btn-outline">View Details</button>
+</a>
+</div>
+</div>
+</div>
+</section>
 
-    <!-- Milestone Payment Section -->
-    <section class="milestone-payment">
-        <div class="section-title reveal">
-            <h2>Milestone-Based Payments</h2>
-        </div>
-        <div class="milestone-container">
-            <div class="milestone-info reveal">
-                <h3>Why Use Milestones?</h3>
-                <p>Milestone-based payments break down the project into manageable chunks, ensuring both parties are protected throughout the process.</p>
-                <div style="margin: 30px 0;">
-                    <h4 style="color: var(--secondary); margin-bottom: 15px;">Benefits for Freelancers:</h4>
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
-                            <span style="color: var(--success); position: absolute; left: 0;">✓</span> Steady cash flow throughout the project
-                        </li>
-                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
-                            <span style="color: var(--success); position: absolute; left: 0;">✓</span> Clear deliverables and expectations
-                        </li>
-                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
-                            <span style="color: var(--success); position: absolute; left: 0;">✓</span> Protection against scope creep
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="color: var(--secondary); margin-bottom: 15px;">Benefits for Clients:</h4>
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
-                            <span style="color: var(--success); position: absolute; left: 0;">✓</span> Pay only for completed and approved work
-                        </li>
-                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
-                            <span style="color: var(--success); position: absolute; left: 0;">✓</span> Track project progress easily
-                        </li>
-                        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
-                            <span style="color: var(--success); position: absolute; left: 0;">✓</span> Better budget management
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="milestone-card reveal delay-1">
-                <h3 style="margin-bottom: 20px;">Project Milestones</h3>
-                <ul class="milestone-list">
-                    <li class="milestone-item" data-status="completed">
-                        <div class="milestone-header">
-                            <h4>Project Planning & Design</h4>
-                            <span class="milestone-status status-completed" title="This milestone is completed.">Completed</span>
-                        </div>
-                        <p class="milestone-details">Initial wireframes, mockups, and project plan.</p>
-                        <div class="milestone-actions">
-                            <span>20% of total</span>
-                            <span>₹20,000</span>
-                        </div>
-                    </li>
-                    <li class="milestone-item" data-status="completed">
-                        <div class="milestone-header">
-                            <h4>Frontend Development</h4>
-                            <span class="milestone-status status-completed" title="This milestone is completed.">Completed</span>
-                        </div>
-                        <p class="milestone-details">HTML, CSS, and responsive design implementation.</p>
-                        <div class="milestone-actions">
-                            <span>30% of total</span>
-                            <span>₹30,000</span>
-                        </div>
-                    </li>
-                    <li class="milestone-item" data-status="in-progress">
-                        <div class="milestone-header">
-                            <h4>Backend Integration</h4>
-                            <div class="milestone-status status-pending" title="This milestone is in progress.">In Progress</span>
-                            </div>
-                            <p class="milestone-details">Server-side logic and databaseconnectivity.</p>
-                            <div class="milestone-actions">
-                                <span>25% of total</span>
-                                <span>₹25,000</span>
-                            </div>
-                    </li>
-                    <li class="milestone-item" data-status="pending">
-                        <div class="milestone-header">
-                            <h4>Testing & Launch</h4>
-                            <span class="milestone-status status-pending" title="This milestone is pending.">Pending</span>
-                        </div>
-                        <p class="milestone-details">QA testing, bug fixes, and final deployment.</p>
-                        <div class="milestone-actions">
-                            <span>25% of total</span>
-                            <span>₹25,000</span>
-                        </div>
-                    </li>
-                </ul>
-                <div class="milestone-progress">
-                    <div class="milestone-progress-bar" style="width: 75%;"></div>
-                </div>
-                <div class="milestone-total">
-                    <span>Total Project Value:</span>
-                    <span>₹100,000</span>
-                </div>
-                </div>
-            </div>
-    </section>
+<!-- Milestone Payment Section -->
+<section class="milestone-payment">
+<div class="section-title reveal">
+<h2>Milestone-Based Payments</h2>
+</div>
+<div class="milestone-container">
+<div class="milestone-info reveal">
+<h3>Why Use Milestones?</h3>
+<p>Milestone-based payments break down the project into manageable chunks, ensuring both parties are protected throughout the process.</p>
+<div style="margin: 30px 0;">
+<h4 style="color: var(--secondary); margin-bottom: 15px;">Benefits for Freelancers:</h4>
+<ul style="list-style: none;">
+<li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+<span style="color: var(--success); position: absolute; left: 0;">✓</span> Steady cash flow throughout the project
+</li>
+<li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+<span style="color: var(--success); position: absolute; left: 0;">✓</span> Clear deliverables and expectations
+</li>
+<li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+<span style="color: var(--success); position: absolute; left: 0;">✓</span> Protection against scope creep
+</li>
+</ul>
+</div>
+<div>
+<h4 style="color: var(--secondary); margin-bottom: 15px;">Benefits for Clients:</h4>
+<ul style="list-style: none;">
+<li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+<span style="color: var(--success); position: absolute; left: 0;">✓</span> Pay only for completed and approved work
+</li>
+<li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+<span style="color: var(--success); position: absolute; left: 0;">✓</span> Track project progress easily
+</li>
+<li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+<span style="color: var(--success); position: absolute; left: 0;">✓</span> Better budget management
+</li>
+</ul>
+</div>
+</div>
+<div class="milestone-card reveal delay-1">
+<h3 style="margin-bottom: 20px;">Project Milestones</h3>
+<ul class="milestone-list">
+<li class="milestone-item" data-status="completed">
+<div class="milestone-header">
+<h4>Project Planning & Design</h4>
+                            <span class="milestone-status status-completed" ```html <h4>Project Planning & Design</h4>
+<span class="milestone-status status-completed" title="This milestone is completed.">Completed</span>
+</div>
+<p class="milestone-details">Initial wireframes, mockups, and project plan.</p>
+<div class="milestone-actions">
+<span>20% of total</span>
+<span>₹20,000</span>
+</div>
+</li>
+<li class="milestone-item" data-status="completed">
+<div class="milestone-header">
+<h4>Frontend Development</h4>
+<span class="milestone-status status-completed" title="This milestone is completed.">Completed</span>
+</div>
+<p class="milestone-details">HTML, CSS, and responsive design implementation.</p>
+<div class="milestone-actions">
+<span>30% of total</span>
+<span>₹30,000</span>
+</div>
+</li>
+<li class="milestone-item" data-status="in-progress">
+<div class="milestone-header">
+<h4>Backend Integration</h4>
+<div class="milestone-status status-pending" title="This milestone is in progress.">In Progress</span>
+</div>
+<p class="milestone-details">Server-side logic and databaseconnectivity.</p>
+<div class="milestone-actions">
+<span>25% of total</span>
+<span>₹25,000</span>
+</div>
+</li>
+<li class="milestone-item" data-status="pending">
+<div class="milestone-header">
+<h4>Testing & Launch</h4>
+<span class="milestone-status status-pending" title="This milestone is pending.">Pending</span>
+</div>
+<p class="milestone-details">QA testing, bug fixes, and final deployment.</p>
+<div class="milestone-actions">
+<span>25% of total</span>
+<span>₹25,000</span>
+</div>
+</li>
+</ul>
+<div class="milestone-progress">
+<div class="milestone-progress-bar" style="width: 50%;"></div>
+</div>
+<div class="milestone-total">
+<span>Total Project Value:</span>
+<span>₹100,000</span>
+</div>
+</div>
+</div>
+</section>
 
-    <!-- Jobs Browse Section -->
-    <section class="jobs-browse " id="jobs-browse ">
-        <div class="section-title reveal ">
-            <h2>Browse Available Jobs</h2>
-        </div>
-        <div class="job-search-bar reveal">
-            <input type="text" placeholder="Search for jobs by skill, keyword, or category..." id="job-search-input">
-            <select class="form-control filter-select" id="job-category-dropdown">
-                <option value="">All Categories</option>
-                <option value="web-development">Web Development</option>
-                <option value="mobile-development">Mobile Development</option>
-                <option value="content-writing">Content Writing</option>
-                <option value="graphic-design">Graphic Design</option>
-                <option value="digital-marketing">Digital Marketing</option>
-                <option value="data-science">Data Science</option>
-                <option value="cybersecurity">Cybersecurity</option>
-                <option value="video-production">Video Production</option>
-                <option value="audio-services">Audio Services</option>
-            </select>
-            <button id="search-button">Search</button>
-        </div>
-        <div class="jobs-filters reveal ">
-            <div class="filter-group ">
-                <label>Category</label>
-                <select class="form-control filter-select ">
-                    <option value=" ">All Categories</option>
-                    <option value="web-development ">Web Development</option>
-                    <option value="mobile-development ">Mobile Development</option>
-                    <option value="content-writing ">Content Writing</option>
-                    <option value="graphic-design ">Graphic Design</option>
-                    <option value="digital-marketing ">Digital Marketing</option>
-                    <option value="data-science ">Data Science</option>
-                    <option value="cybersecurity ">Cybersecurity</option>
-                    <option value="video-production ">Video Production</option>
-                    <option value="audio-services ">Audio Services</option>
-                </select>
-            </div>
-        </div>
+<!-- Jobs Browse Section -->
+<section class="jobs-browse " id="jobs-browse ">
+<div class="section-title reveal ">
+<h2>Browse Available Jobs</h2>
+</div>
+<div class="job-search-bar reveal ">
+<input type="text " placeholder="Search for jobs by skill, keyword, or category... ">
+<button>Search</button>
+</div>
+<div class="jobs-filters reveal ">
+<div class="filter-group ">
+<label>Category</label>
+<select class="form-control filter-select ">
+<option value=" ">All Categories</option>
+<option value="web-development ">Web Development</option>
+<option value="mobile-development ">Mobile Development</option>
+<option value="content-writing ">Content Writing</option>
+<option value="graphic-design ">Graphic Design</option>
+<option value="digital-marketing ">Digital Marketing</option>
+<option value="data-science ">Data Science</option>
+<option value="cybersecurity ">Cybersecurity</option>
+<option value="video-production ">Video Production</option>
+<option value="audio-services ">Audio Services</option>
+</select>
+</div>
+</div>
 
-        <div class="jobs-grid ">
-            <div class="job-card reveal ">
-                <div class="job-header ">
-                    <span>Posted 2 days ago</span>
-                    <span class="job-price ">₹45,000</span>
-                </div>
-                <h3 class="job-title ">Full Stack E-commerce Website Development</h3>
-                <p>Looking for an experienced developer to build a responsive e-commerce website with product listings, shopping cart, and payment integration.</p>
-                <div class="job-tags ">
-                    <span class="job-tag ">React</span>
-                    <span class="job-tag ">Node.js</span>
-                    <span class="job-tag ">MongoDB</span>
-                    <span class="job-tag ">Payment API</span>
-                </div>
-                <div class="job-footer ">
-                    <div class="job-client ">
-                        <div class="client-avatar ">
-                            <img src="https://randomuser.me/api/portraits/men/50.jpg " alt="Client ">
-                        </div>
-                        <div>TechSolutions Ltd</div>
-                    </div>
-                    <div class="job-posted ">New Delhi</div>
-                </div>
-            </div>
+<div class="jobs-grid ">
+<div class="job-card reveal ">
+<div class="job-header ">
+<span>Posted 2 days ago</span>
+<span class="job-price ">₹45,000</span>
+</div>
+<h3 class="job-title ">Full Stack E-commerce Website Development</h3>
+<p>Looking for an experienced developer to build a responsive e-commerce website with product listings, shopping cart, and payment integration.</p>
+<div class="job-tags ">
+<span class="job-tag ">React</span>
+<span class="job-tag ">Node.js</span>
+<span class="job-tag ">MongoDB</span>
+<span class="job-tag ">Payment API</span>
+</div>
+<div class="job-footer ">
+<div class="job-client ">
+<div class="client-avatar ">
+<img src="https://randomuser.me/api/portraits/men/50.jpg " alt="Client ">
+</div>
+<div>TechSolutions Ltd</div>
+</div>
+<div class="job-posted ">New Delhi</div>
+</div>
+</div>
 
-            <div class="job-card reveal delay-1 ">
-                <div class="job-header ">
-                    <span>Posted 4 days ago</span>
-                    <span class="job-price ">₹25,000</span>
-                </div>
-                <h3 class="job-title ">Content Writing for Technology Blog</h3>
-                <p>Need a tech-savvy content writer to create 10 detailed blog posts about emerging technologies and digital transformation.</p>
-                <div class="job-tags ">
-                    <span class="job-tag ">Content Writing</span>
-                    <span class="job-tag ">Technology</span>
-                    <span class="job-tag ">SEO</span>
-                    <span class="job-tag ">Blog Posts</span>
-                </div>
-                <div class="job-footer ">
-                    <div class="job-client ">
-                        <div class="client-avatar ">
-                            <img src="https://randomuser.me/api/portraits/women/55.jpg " alt="Client ">
-                        </div>
-                        <div>TechBlog Media</div>
-                    </div>
-                    <div class="job-posted ">Bengaluru</div>
-                </div>
-            </div>
+<div class="job-card reveal delay-1 ">
+<div class="job-header ">
+<span>Posted 4 days ago</span>
+<span class="job-price ">₹25,000</span>
+</div>
+<h3 class="job-title ">Content Writing for Technology Blog</h3>
+<p>Need a tech-savvy content writer to create 10 detailed blog posts about emerging technologies and digital transformation.</p>
+<div class="job-tags ">
+<span class="job-tag ">Content Writing</span>
+<span class="job-tag ">Technology</span>
+<span class="job-tag ">SEO</span>
+<span class="job-tag ">Blog Posts</span>
+</div>
+<div class="job-footer ">
+<div class="job-client ">
+<div class="client-avatar ">
+<img src="https://randomuser.me/api/portraits/women/55.jpg " alt="Client ">
+</div>
+<div>TechBlog Media</div>
+</div>
+<div class="job-posted ">Bengaluru</div>
+</div>
+</div>
 
-            <div class="job-card reveal delay-2 ">
-                <div class="job-header ">
-                    <span>Posted 1 day ago</span>
-                    <span class="job-price ">₹35,000</span>
-                </div>
-                <h3 class="job-title ">Mobile App UI/UX Design</h3>
-                <p>Seeking a talented UI/UX designer to create modern and intuitive designs for a health and fitness mobile application.</p>
-                <div class="job-tags ">
-                    <span class="job-tag ">UI/UX</span>
-                    <span class="job-tag ">Mobile App</span>
-                    <span class="job-tag ">Figma</span>
-                    <span class="job-tag ">Adobe XD</span>
-                </div>
-                <div class="job-footer ">
-                    <div class="job-client ">
-                        <div class="client-avatar ">
-                            <img src="https://randomuser.me/api/portraits/men/60.jpg " alt="Client ">
-                        </div>
-                        <div>FitTech Innovations</div>
-                    </div>
-                    <div class="job-posted ">Mumbai</div>
-                </div>
-            </div>
+<div class="job-card reveal delay-2 ">
+<div class="job-header ">
+<span>Posted 1 day ago</span>
+<span class="job-price ">₹35,000</span>
+</div>
+<h3 class="job-title ">Mobile App UI/UX Design</h3>
+<p>Seeking a talented UI/UX designer to create modern and intuitive designs for a health and fitness mobile application.</p>
+<div class="job-tags ">
+<span class="job-tag ">UI/UX</span>
+<span class="job-tag ">Mobile App</span>
+<span class="job-tag ">Figma</span>
+<span class="job-tag ">Adobe XD</span>
+</div>
+<div class="job-footer ">
+<div class="job-client ">
+<div class="client-avatar ">
+<img src="https://randomuser.me/api/portraits/men/60.jpg " alt="Client ">
+</div>
+<div>FitTech Innovations</div>
+</div>
+<div class="job-posted ">Mumbai</div>
+</div>
+</div>
 
-            <div class="job-card reveal ">
-                <div class="job-header ">
-                    <span>Posted 3 days ago</span>
-                    <span class="job-price ">₹60,000</span>
-                </div>
-                <h3 class="job-title ">Data Analysis and Visualization Project</h3>
-                <p>Looking for a data scientist to analyze customer data, create visualizations, and provide actionable insights for our e-commerce business.</p>
-                <div class="job-tags ">
-                    <span class="job-tag ">Python</span>
-                    <span class="job-tag ">Data Analysis</span>
-                    <span class="job-tag ">Tableau</span>
-                    <span class="job-tag ">Machine Learning</span>
-                </div>
-                <div class="job-footer ">
-                    <div class="job-client ">
-                        <div class="client-avatar ">
-                            <img src="https://randomuser.me/api/portraits/women/65.jpg " alt="Client ">
-                        </div>
-                        <div>DataDriven Solutions</div>
-                    </div>
-                    <div class="job-posted ">Hyderabad</div>
-                </div>
-            </div>
+<div class="job-card reveal ">
+<div class="job-header ">
+<span>Posted 3 days ago</span>
+<span class="job-price ">₹60,000</span>
+</div>
+<h3 class="job-title ">Data Analysis and Visualization Project</h3>
+<p>Looking for a data scientist to analyze customer data, create visualizations, and provide actionable insights for our e-commerce business.</p>
+<div class="job-tags ">
+<span class="job-tag ">Python</span>
+<span class="job-tag ">Data Analysis</span>
+<span class="job-tag ">Tableau</span>
+<span class="job-tag ">Machine Learning</span>
+</div>
+<div class="job-footer ">
+<div class="job-client ">
+<div class="client-avatar ">
+<img src="https://randomuser.me/api/portraits/women/65.jpg " alt="Client ">
+</div>
+<div>DataDriven Solutions</div>
+</div>
+<div class="job-posted ">Hyderabad</div>
+</div>
+</div>
 
-            <div class="job-card reveal delay-1 ">
-                <div class="job-header ">
-                    <span>Posted 5 days ago</span>
-                    <span class="job-price ">₹20,000</span>
-                </div>
-                <h3 class="job-title ">Social Media Marketing Campaign</h3>
-                <p>Need a marketing expert to develop and execute a comprehensive social media marketing strategy for our new product launch.</p>
-                <div class="job-tags ">
-                    <span class="job-tag ">Social Media</span>
-                    <span class="job-tag ">Digital Marketing</span>
-                    <span class="job-tag ">Content Strategy</span>
-                    <span class="job-tag ">Analytics</span>
-                </div>
-                <div class="job-footer ">
-                    <div class="job-client ">
-                        <div class="client-avatar ">
-                            <img src="https://randomuser.me/api/portraits/men/70.jpg " alt="Client ">
-                        </div>
-                        <div>Brand Elevate</div>
-                    </div>
-                    <div class="job-posted ">Chennai</div>
-                </div>
-            </div>
+<div class="job-card reveal delay-1 ">
+<div class="job-header ">
+<span>Posted 5 days ago</span>
+<span class="job-price ">₹20,000</span>
+</div>
+<h3 class="job-title ">Social Media Marketing Campaign</h3>
+<p>Need a marketing expert to develop and execute a comprehensive social media marketing strategy for our new product launch.</p>
+<div class="job-tags ">
+<span class="job-tag ">Social Media</span>
+<span class="job-tag ">Digital Marketing</span>
+<span class="job-tag ">Content Strategy</span>
+<span class="job-tag ">Analytics</span>
+</div>
+<div class="job-footer ">
+<div class="job-client ">
+<div class="client-avatar ">
+<img src="https://randomuser.me/api/portraits/men/70.jpg " alt="Client ">
+</div>
+<div>Brand Elevate</div>
+</div>
+<div class="job-posted ">Chennai</div>
+</div>
+</div>
 
-            <div class="job-card reveal delay-2 ">
-                <div class="job-header ">
-                    <span>Posted 2 days ago</span>
-                </div>
-                <h3 class="job-title ">Cybersecurity Audit and Assessment</h3>
-                <p>Seeking a cybersecurity expert to conduct a comprehensive security audit, identify vulnerabilities, and provide recommendations.</p>
-                <div class="job-tags ">
-                    <span class="job-tag ">Cybersecurity</span>
-                    <span class="job-tag ">Penetration Testing</span>
-                    <span class="job-tag ">Risk Assessment</span>
-                    <span class="job-tag ">Security Protocols</span>
-                </div>
-                <div class="job-footer ">
-                    <div class="job-client ">
-                        <div class="client-avatar ">
-                            <img src="https://randomuser.me/api/portraits/women/75.jpg " alt="Client ">
-                        </div>
-                        <div>SecureNet Solutions</div>
-                    </div>
-                    <div class="job-posted ">Pune</div>
-                </div>
-            </div>
-        </div>
+<div class="job-card reveal delay-2 ">
+<div class="job-header ">
+<span>Posted 2 days ago</span>
+</div>
+<h3 class="job-title ">Cybersecurity Audit and Assessment</h3>
+<p>Seeking a cybersecurity expert to conduct a comprehensive security audit, identify vulnerabilities, and provide recommendations.</p>
+<div class="job-tags ">
+<span class="job-tag ">Cybersecurity</span>
+<span class="job-tag ">Penetration Testing</span>
+<span class="job-tag ">Risk Assessment</span>
+<span class="job-tag ">Security Protocols</span>
+</div>
+<div class="job-footer ">
+<div class="job-client ">
+<div class="client-avatar ">
+<img src="https://randomuser.me/api/portraits/women/75.jpg " alt="Client ">
+</div>
+<div>SecureNet Solutions</div>
+</div>
+<div class="job-posted ">Pune</div>
+</div>
+</div>
+</div>
 
-        <div class="pagination reveal ">
-            <a href="browse-jobs.html " class="pagination-item ">More</a>
-        </div>
-    </section>
+<div class="pagination reveal ">
+<a href="browse-jobs.html " class="pagination-item ">More</a>
+</div>
+</section>
 
-    <!-- Call to Action -->
-    <section class="cta ">
-        <div class="cta-shape cta-shape-1 "></div>
-        <div class="cta-shape cta-shape-2 "></div>
-        <div class="reveal ">
-            <h2>Ready to Start Your Journey?</h2>
-            <p>Join YuvaWorks today and connect with clients and talent from across India. Whether you're looking to hire or get hired, we've got you covered.</p>
-            <div class="cta-buttons ">
-                <a href="signup.html "><button class="btn btn-primary btn-cta ">Sign Up as Freelancer</button></a>
-                <a href="postproject.html "><button class="btn btn-outline btn-cta " style="background: rgba(255, 255, 255, 0.1); border-color: white; color: white; ">Post a Project</button></a>
-            </div>
-        </div>
-    </section>
+<!-- Call to Action -->
+<section class="cta ">
+<div class="cta-shape cta-shape-1 "></div>
+<div class="cta-shape cta-shape-2 "></div>
+<div class="reveal ">
+<h2>Ready to Start Your Journey?</h2>
+<p>Join YuvaWorks today and connect with clients and talent from across India. Whether you're looking to hire or get hired, we've got you covered.</p>
+<div class="cta-buttons ">
+<a href="signup.html "><button class="btn btn-primary btn-cta ">Sign Up as Freelancer</button></a>
+<a href="postproject.html "><button class="btn btn-outline btn-cta " style="background: rgba(255, 255, 255, 0.1); border-color: white; color: white; ">Post a Project</button></a>
+</div>
+</div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content ">
-            <div class="footer-column ">
-                <div class="footer-logo ">Yuva<span style="color: var(--primary); ">Works</span></div>
-                <p style="color: #aaa; margin-bottom: 20px; ">India's premier freelancing platform connecting talented professionals with businesses nationwide.</p>
-                <div class="footer-social ">
-                    <a href="# " class="social-icon ">f</a>
-                    <a href="# " class="social-icon ">in</a>
-                    <a href="# " class="social-icon ">tw</a>
-                    <a href="# " class="social-icon ">ig</a>
-                </div>
-            </div>
-            <div class="footer-column ">
-                <h3>For Freelancers</h3>
-                <ul class="footer-links ">
-                    <li><a href="# ">Find Work</a></li>
-                    <li><a href="# ">Karma System</a></li>
-                    <li><a href="# ">Community Support</a></li>
-                    <li><a href="# ">Learning Resources</a></li>
-                    <li><a href="# ">Success Stories</a></li>
-                </ul>
-            </div>
-            <div class="footer-column ">
-                <h3>For Clients</h3>
-                <ul class="footer-links ">
-                    <li><a href="postproject.html ">Post a Job</a></li>
-                    <li><a href="# ">How to Hire</a></li```html
-                    <li><a href="# ">Enterprise Solutions</a></li>
-                    <li><a href="# ">Success Stories</a></li>
-                    <li><a href="# ">Talent Scout</a></li>
-                </ul>
-            </div>
-            <div class="footer-column ">
-                <h3>Resources</h3>
-                <ul class="footer-links ">
-                    <li><a href="# ">Help Center</a></li>
-                    <li><a href="# ">Contract Templates</a></li>
-                    <li><a href="# ">Fair Pay Calculator</a></li>
-                    <li><a href="# ">Blog & Articles</a></li>
-                    <li><a href="# ">API Documentation</a></li>
-                </ul>
-            </div>
-            <div class="footer-column ">
-                <h3>Company</h3>
-                <ul class="footer-links ">
-                    <li><a href="aboutus.html ">About Us</a></li>
-                    <li><a href="# ">Leadership</a></li>
-                    <li><a href="# ">Careers</a></li>
-                    <li><a href="# ">Press & Media</a></li>
-                    <li><a href="contactus.html ">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom ">
-            <p>&copy; 2025 YuvaWorks. All rights reserved. | <a href="# " style="color: #aaa; text-decoration: none; ">Privacy Policy</a> | <a href="# " style="color: #aaa; text-decoration: none; ">Terms of Service</a></p>
-        </div>
-    </footer>
-
-
-    <!-- JavaScript -->
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const overlay = document.querySelector('.overlay');
-        const mobileMenuClose = document.querySelector('.mobile-menu-close');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-
-        mobileMenuClose.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        overlay.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        // Scroll Reveal Animation
-        window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('load', revealOnScroll);
-
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal');
-
-            for (let i = 0; i < reveals.length; i++) {
-                const windowHeight = window.innerHeight;
-                const revealTop = reveals[i].getBoundingClientRect().top;
-                const revealPoint = 150;
-
-                if (revealTop < windowHeight - revealPoint) {
-                    reveals[i].classList.add('active');
-                }
-            }
-        }
-
-        // Testimonial Carousel
-        const carousel = document.querySelector('.testimonial-carousel');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        carousel.addEventListener('mousedown', (e) => {
-            isDown = true;
-            carousel.classList.add('active');
-            startX = e.pageX - carousel.offsetLeft;
-            scrollLeft = carousel.scrollLeft;
-        });
-
-        carousel.addEventListener('mouseleave', () => {
-            isDown = false;
-            carousel.classList.remove('active');
-        });
-
-        carousel.addEventListener('mouseup', () => {
-            isDown = false;
-            carousel.classList.remove('active');
-        });
-
-        carousel.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - carousel.offsetLeft;
-            const walk = (x - startX) * 2;
-            carousel.scrollLeft = scrollLeft - walk;
-        });
-
-        // Auto-scroll carousel
-        let scrollAmount = 0;
-        const scrollSpeed = 2;
-        const distance = 3000;
-
-        function autoScroll() {
-            carousel.scrollLeft += scrollSpeed;
-            scrollAmount += scrollSpeed;
-
-            if (scrollAmount >= distance) {
-                carousel.scrollLeft = 0;
-                scrollAmount = 0;
-            }
-
-            requestAnimationFrame(autoScroll);
-        }
-
-        // Start auto-scroll after 3 seconds
-        setTimeout(() => {
-            requestAnimationFrame(autoScroll);
-        }, 3000);
-
-        // Progress bar animation for Karma system
-        const progressBar = document.querySelector('.progress-bar');
-        setTimeout(() => {
-            progressBar.style.width = '75%';
-        }, 1000);
-
-        // Fair Pay Estimator
-        document.querySelector('.estimator-form .btn-primary').addEventListener('click', function() {
-            // This would normally calculate based on the inputs
-            // For demo purposes, we'll just show the existing results
-            document.querySelector('.estimator-results').style.display = 'block';
-        });
+<!-- Footer -->
+<footer>
+<div class="footer-content ">
+<div class="footer-column ">
+<div class="footer-logo ">Yuva<span style="color: var(--primary); ">Works</span></div>
+<p style="color: #aaa; margin-bottom: 20px; ">India's premier freelancing platform connecting talented professionals with businesses nationwide.</p>
+<div class="footer-social ">
+<a href="# " class="social-icon ">f</a>
+<a href="# " class="social-icon ">in</a>
+<a href="# " class="social-icon ">tw</a>
+<a href="# " class="social-icon ">ig</a>
+</div>
+</div>
+<div class="footer-column ">
+<h3>For Freelancers</h3>
+<ul class="footer-links ">
+<li><a href="# ">Find Work</a></li>
+<li><a href="# ">Karma System</a></li>
+<li><a href="# ">Community Support</a></li>
+<li><a href="# ">Learning Resources</a></li>
+<li><a href="# ">Success Stories</a></li>
+</ul>
+</div>
+<div class="footer-column ">
+<h3>For Clients</h3>
+<ul class="footer-links ">
+<li><a href="postproject.html ">Post a Job</a></li>
+<li><a href="# ">How to Hire</a></li>
+<li><a href="# ">Enterprise Solutions</a></li>
+<li><a href="# ">Success Stories</a></li>
+<li><a href="# ">Talent Scout</a></li>
+</ul>
+</div>
+<div class="footer-column ">
+<h3>Resources</h3>
+<ul class="footer-links ">
+<li><a href="# ">Help Center</a></li>
+<li><a href="# ">Contract Templates</a></li>
+<li><a href="# ">Fair Pay Calculator</a></li>
+<li><a href="# ">Blog & Articles</a></li>
+<li><a href="# ">API Documentation</a></li>
+</ul>
+</div>
+<div class="footer-column ">
+<h3>Company</h3>
+<ul class="footer-links ">
+<li><a href="aboutus.html ">About Us</a></li>
+<li><a href="# ">Leadership</a></li>
+<li><a href="# ">Careers</a></li>
+<li><a href="# ">Press & Media</a></li>
+<li><a href="contactus.html ">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom ">
+<p>&copy; 2025 YuvaWorks. All rights reserved. | <a href="# " style="color: #aaa; text-decoration: none; ">Privacy Policy</a> | <a href="# " style="color: #aaa; text-decoration: none; ">Terms of Service</a></p>
+</div>
+</footer>
 
 
-        // Milestone progress bar animation
-        const milestoneProgressBar = document.querySelector('.milestone-progress-bar');
-        setTimeout(() => {
-            milestoneProgressBar.style.width = '50%';
-        }, 1000);
+<!-- JavaScript -->
+<script>
+// Mobile Menu Toggle
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const mobileMenu = document.querySelector('.mobile-menu');
+const overlay = document.querySelector('.overlay');
+const mobileMenuClose = document.querySelector('.mobile-menu-close');
 
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="# "]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+mobileMenuBtn.addEventListener('click', () => {
+mobileMenu.classList.add('active');
+overlay.classList.add('active');
+document.body.style.overflow = 'hidden';
+});
 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+mobileMenuClose.addEventListener('click', () => {
+mobileMenu.classList.remove('active');
+overlay.classList.remove('active');
+document.body.style.overflow = 'auto';
+});
 
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
+overlay.addEventListener('click', () => {
+mobileMenu.classList.remove('active');
+overlay.classList.remove('active');
+document.body.style.overflow = 'auto';
+});
 
-                    // Close mobile menu if open
-                    if (mobileMenu.classList.contains('active')) {
-                        mobileMenu.classList.remove('active');
-                        overlay.classList.remove('active');
-                        document.body.style.overflow = 'auto';
-                    }
-                }
-            });
-        });
+// Scroll Reveal Animation
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
 
-        document.getElementById('search-button').addEventListener('click', function () {
-            const searchInput = document.getElementById('job-search-input').value.toLowerCase();
-            const selectedCategory = document.getElementById('job-category-dropdown').value;
+function revealOnScroll() {
+const reveals = document.querySelectorAll('.reveal');
 
-            const jobCards = document.querySelectorAll('.job-card');
+for (let i = 0; i < reveals.length; i++) {
+const windowHeight = window.innerHeight;
+const revealTop = reveals[i].getBoundingClientRect().top;
+const revealPoint = 150;
 
-            jobCards.forEach(card => {
-                const title = card.querySelector('.job-title').textContent.toLowerCase();
-                const tags = Array.from(card.querySelectorAll('.job-tag')).map(tag => tag.textContent.toLowerCase());
-                const categoryMatch = selectedCategory === '' || tags.includes(selectedCategory);
-                const searchMatch = searchInput === '' || title.includes(searchInput);
+if (revealTop < windowHeight - revealPoint) {
+reveals[i].classList.add('active');
+}
+}
+}
 
-                if (categoryMatch && searchMatch) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    </script>
-    <script src="init.js "></script>
+// Testimonial Carousel
+const carousel = document.querySelector('.testimonial-carousel');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+carousel.addEventListener('mousedown', (e) => {
+isDown = true;
+carousel.classList.add('active');
+startX = e.pageX - carousel.offsetLeft;
+scrollLeft = carousel.scrollLeft;
+});
+
+carousel.addEventListener('mouseleave', () => {
+isDown = false;
+carousel.classList.remove('active');
+});
+
+carousel.addEventListener('mouseup', () => {
+isDown = false;
+carousel.classList.remove('active');
+});
+
+carousel.addEventListener('mousemove', (e) => {
+if (!isDown) return;
+e.preventDefault();
+const x = e.pageX - carousel.offsetLeft;
+const walk = (x - startX) * 2;
+carousel.scrollLeft = scrollLeft - walk;
+});
+
+// Auto-scroll carousel
+let scrollAmount = 0;
+const scrollSpeed = 2;
+const distance = 3000;
+
+function autoScroll() {
+carousel.scrollLeft += scrollSpeed;
+scrollAmount += scrollSpeed;
+
+if (scrollAmount >= distance) {
+carousel.scrollLeft = 0;
+scrollAmount = 0;
+}
+
+requestAnimationFrame(autoScroll);
+}
+
+// Start auto-scroll after 3 seconds
+setTimeout(() => {
+requestAnimationFrame(autoScroll);
+}, 3000);
+
+// Progress bar animation for Karma system
+const progressBar = document.querySelector('.progress-bar');
+setTimeout(() => {
+progressBar.style.width = '75%';
+}, 1000);
+
+// Fair Pay Estimator
+document.querySelector('.estimator-form .btn-primary').addEventListener('click', function() {
+// This would normally calculate based on the inputs
+// For demo purposes, we'll just show the existing results
+document.querySelector('.estimator-results').style.display = 'block';
+});
+
+
+// Milestone progress bar animation
+const milestoneProgressBar = document.querySelector('.milestone-progress-bar');
+setTimeout(() => {
+milestoneProgressBar.style.width = '50%';
+}, 1000);
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="# "]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+
+const targetId = this.getAttribute('href');
+if (targetId === '#') return;
+
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 100,
+behavior: 'smooth'
+});
+
+// Close mobile menu if open
+if (mobileMenu.classList.contains('active')) {
+mobileMenu.classList.remove('active');
+overlay.classList.remove('active');
+document.body.style.overflow = 'auto';
+}
+}
+});
+});
+</script>
+<script src="init.js "></script>
 </body>
 
 </html>
