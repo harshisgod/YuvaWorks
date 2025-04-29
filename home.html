@@ -412,6 +412,33 @@
                 display: block;
             }
         }
+        /* Stylized Escrow Button */
+        
+        .btn-escrow {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, var(--blue-accent), var(--accent-color));
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-escrow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, var(--accent-color), var(--blue-light));
+        }
+        
+        .btn-escrow i {
+            font-size: 1.5rem;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -478,6 +505,13 @@
             </div>
         </div>
     </main>
+    <div id="escrow-button-container" style="text-align: center; margin-top: 30px; display: none;">
+        <a href="escrow.html">
+            <button class="btn btn-escrow">
+                <i class="fas fa-wallet"></i> Proceed to Escrow Payment
+            </button>
+        </a>
+    </div>
 
     <script>
         // Check if user is logged in
@@ -499,11 +533,17 @@
                 // Set welcome message
                 document.getElementById('welcome-name').textContent = user.firstName;
                 document.getElementById('welcome-message').classList.add('active');
+
+                // Show the escrow button
+                document.getElementById('escrow-button-container').style.display = 'block';
             } else {
                 // User is not logged in
                 document.getElementById('auth-buttons').style.display = 'flex';
                 document.getElementById('user-profile').style.display = 'none';
                 document.getElementById('welcome-message').classList.remove('active');
+
+                // Hide the escrow button
+                document.getElementById('escrow-button-container').style.display = 'none';
             }
         }
 
