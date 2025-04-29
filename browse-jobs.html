@@ -2,533 +2,745 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yuva Works - Browse Jobs</title>
-<style>
-:root {
---primary-color: #3367d6;
---secondary-color: #4285f4;
---dark-bg: #0e1217;
---card-bg: #171c24;
---text-light: #e0e0e0;
---text-muted: #a0a0a0;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuva Works - Browse Jobs</title>
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    rel="stylesheet"
+    />
+    <style>
+         :root {
+            --primary-color: #3367d6;
+            --secondary-color: #4285f4;
+            --dark-bg: #0e1217;
+            --card-bg: #171c24;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: rgba(14, 18, 23, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 1rem; /* Fixed font-size */
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border: none;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .page-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 0.75rem auto;
+        }
+        
+        .search-bar {
+            display: flex;
+            margin-bottom: 2rem;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 4px 0 0 4px;
+            border: none;
+            background-color: var(--card-bg);
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        
+        .search-button {
+            padding: 0.75rem 2rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .filter-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .filter-label {
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .filter-select {
+            padding: 0.75rem;
+            background-color: var(--card-bg);
+            border: 1px solid #2c3341;
+            border-radius: 4px;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+        
+        .jobs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .job-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .posted-date {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        
+        .job-price {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .job-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .job-description {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            flex-grow: 1;
+        }
+        
+        .job-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+        
+        .job-tag {
+            padding: 0.25rem 0.75rem;
+            background-color: rgba(66, 133, 244, 0.15);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--secondary-color);
+        }
+        
+        .no-jobs {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+        }
+
+        /* Profile Picture Styling */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    position: relative;
 }
 
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.user-profile img {
+    width: 40px; /* Keep the profile picture small */
+    height: 40px;
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover; /* Ensure the image fits within the circle */
+    border: 2px solid var(--secondary-color); /* Add a border for better visibility */
 }
 
-body {
-background-color: var(--dark-bg);
-color: var(--text-light);
+.user-profile span {
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 500;
 }
 
-.navbar {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1rem 5%;
-background-color: rgba(14, 18, 23, 0.95);
-position: sticky;
-top: 0;
-z-index: 100;
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    position: absolute;
+    top: 110%; /* Adjusted for spacing below the profile picture */
+    right: 0;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    min-width: 240px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
 }
 
-.logo-container {
-display: flex;
-align-items: center;
+.dropdown-menu.active {
+    display: block;
 }
 
-.logo {
-font-size: 1.5rem;
-font-weight: bold;
-margin-right: 1rem;
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.nav-links {
-display: flex;
-gap: 1.5rem;
+.dropdown-menu ul li {
+    margin-bottom: 0.5rem;
 }
 
-.nav-links a {
-text-decoration: none;
-color: var(--text-light);
-font-size: 1rem;
+.dropdown-menu ul li:last-child {
+    margin-bottom: 0;
 }
 
-.auth-buttons {
-display: flex;
-gap: 1rem;
+.dropdown-menu ul li a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.btn {
-padding: 0.5rem 1.25rem;
-border-radius: 4px;
-font-weight: 500;
-cursor: pointer;
-transition: all 0.3s ease;
-text-decoration: none;
+.dropdown-menu ul li a i {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
 }
 
-.btn-outline {
-background: transparent;
-border: 1px solid var(--secondary-color);
-color: var(--secondary-color);
+.dropdown-menu ul li a:hover {
+    background-color: var(--secondary-color);
+    color: white;
 }
 
-.btn-primary {
-background-color: var(--secondary-color);
-border: none;
-color: white;
+.dropdown-menu ul li a:hover i {
+    color: white;
 }
 
-.container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 2rem 1rem;
-}
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.page-title {
-text-align: center;
-margin-bottom: 2rem;
-position: relative;
-}
-
-.page-title::after {
-content: "";
-display: block;
-width: 80px;
-height: 4px;
-background-color: var(--secondary-color);
-margin: 0.75rem auto;
-}
-
-.search-bar {
-display: flex;
-margin-bottom: 2rem;
-}
-
-.search-input {
-flex: 1;
-padding: 0.75rem;
-border-radius: 4px 0 0 4px;
-border: none;
-background-color: var(--card-bg);
-color: var(--text-light);
-font-size: 1rem;
-}
-
-.search-button {
-padding: 0.75rem 2rem;
-background-color: var(--secondary-color);
-color: white;
-border: none;
-border-radius: 0 4px 4px 0;
-cursor: pointer;
-font-size: 1rem;
-}
-
-.filter-container {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 1rem;
-margin-bottom: 2rem;
-}
-
-.filter-group {
-display: flex;
-flex-direction: column;
-}
-
-.filter-label {
-margin-bottom: 0.5rem;
-color: var(--secondary-color);
-}
-
-.filter-select {
-padding: 0.75rem;
-background-color: var(--card-bg);
-border: 1px solid #2c3341;
-border-radius: 4px;
-color: var(--text-light);
-cursor: pointer;
-}
-
-.jobs-container {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-gap: 1.5rem;
-}
-
-.job-card {
-background-color: var(--card-bg);
-border-radius: 8px;
-padding: 1.5rem;
-display: flex;
-flex-direction: column;
-transition: transform 0.3s ease;
-position: relative;
-}
-
-.job-card:hover {
-transform: translateY(-5px);
-}
-
-.job-header {
-display: flex;
-justify-content: space-between;
-margin-bottom: 1rem;
-}
-
-.posted-date {
-font-size: 0.875rem;
-color: var(--text-muted);
-}
-
-.job-price {
-font-size: 1.25rem;
-color: var(--secondary-color);
-font-weight: bold;
-}
-
-.job-title {
-font-size: 1.25rem;
-margin-bottom: 1rem;
-color: var(--secondary-color);
-}
-
-.job-description {
-margin-bottom: 1.5rem;
-color: var(--text-muted);
-flex-grow: 1;
-}
-
-.job-tags {
-display: flex;
-flex-wrap: wrap;
-gap: 0.5rem;
-margin-top: auto;
-}
-
-.job-tag {
-padding: 0.25rem 0.75rem;
-background-color: rgba(66, 133, 244, 0.15);
-border-radius: 50px;
-font-size: 0.75rem;
-color: var(--secondary-color);
-}
-
-.no-jobs {
-grid-column: 1 / -1;
-text-align: center;
-padding: 3rem;
-background-color: var(--card-bg);
-border-radius: 8px;
-}
-
-@media (max-width: 768px) {
-.filter-container {
-grid-template-columns: 1fr;
-}
-.jobs-container {
-grid-template-columns: 1fr;
-}
-}
-</style>
+        @media (max-width: 768px) {
+            .filter-container {
+                grid-template-columns: 1fr;
+            }
+            .jobs-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-<nav class="navbar">
-<div class="logo-container">
-<div class="logo">
-<a href="index.html" style="text-decoration: none; color: var(--secondary-color);">
-Yuva<span style="color: var(--text-light);">Works</span>
-</a>
-</div>
-<div class="nav-links">
-<a href="how-it-works.html">How It Works</a>
-<a href="index.html#karma-system">Karma System</a>
-<a href="browse-jobs.html">Browse Jobs</a>
-                <a href="index.html#fair-pay">Fair Pay</a>
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo">
+                <a href="#" style="text-decoration: none; color: var(--secondary-color);">
+                    Yuva<span style="color: var(--text-light);">Works</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="how-it-works.html">How It Works</a>
+                <a href="index.html#karma-system">Karma System</a>
+                <a href="browse-jobs.html">Browse Jobs</a>
                 <a href="fair-pay.html">Fair Pay</a>
-</div>
-</div>
-<div class="auth-buttons">
-<a href="login.html" class="btn btn-outline">Log In</a>
-<a href="signup.html" class="btn btn-primary">Sign Up</a>
-</div>
-</nav>
+            </div>
+        </div>
+        <div class="auth-buttons" id="auth-buttons">
+            <a href="login.html" class="btn btn-outline">Log In</a>
+            <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+        <div class="user-profile" id="user-profile" style="display: none; position: relative;">
+            <img src="" alt="Profile Picture" id="profile-pic">
+            <span id="user-name"></span>
+            <div class="dropdown-menu" id="dropdown-menu">
+                <ul>
+                    <li>
+                        <a href="profile.html">
+                            <i class="fas fa-user"></i> My Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="applications.html">
+                            <i class="fas fa-file-alt"></i> My Applications
+                        </a>
+                    </li>
+                    <li>
+                        <a href="projects-posted.html">
+                            <i class="fas fa-briefcase"></i> Projects Posted
+                        </a>
+                    </li>
+                    <li>
+                        <a href="saved-jobs.html">
+                            <i class="fas fa-bookmark"></i> Saved Jobs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bonus-rewards.html">
+                            <i class="fas fa-gift"></i> My Bonus/Rewards
+                        </a>
+                    </li>
+                    <li>
+                        <a href="referrals.html">
+                            <i class="fas fa-users"></i> My Referrals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<div class="container">
-<h1 class="page-title">Browse Available Jobs</h1>
+    <div class="container">
+        <h1 class="page-title">Browse Available Jobs</h1>
 
-<div class="search-bar">
-<input type="text" class="search-input" id="search-input" placeholder="Search for jobs by skill, keyword, or category...">
-<button class="search-button" id="search-button">Search</button>
-</div>
+        <div class="search-bar">
+            <input type="text" class="search-input" id="search-input" placeholder="Search for jobs by skill, keyword, or category...">
+            <button class="search-button" id="search-button">Search</button>
+        </div>
 
-<div class="filter-container">
-<div class="filter-group">
-<label class="filter-label">Category</label>
-<select class="filter-select" id="category-filter">
-<option value="all">All Categories</option>
-<option value="web-development">Web Development</option>
-<option value="mobile-app">Mobile App Development</option>
-<option value="graphic-design">Graphic Design</option>
-<option value="content-writing">Content Writing</option>
-<option value="digital-marketing">Digital Marketing</option>
-</select>
-</div>
+        <div class="filter-container">
+            <div class="filter-group">
+                <label class="filter-label">Category</label>
+                <select class="filter-select" id="category-filter">
+                    <option value="all">All Categories</option>
+                    <option value="web-development">Web Development</option>
+                    <option value="mobile-app">Mobile App Development</option>
+                    <option value="graphic-design">Graphic Design</option>
+                    <option value="content-writing">Content Writing</option>
+                    <option value="digital-marketing">Digital Marketing</option>
+                </select>
+            </div>
 
-<div class="filter-group">
-<label class="filter-label">Experience Level</label>
-<select class="filter-select" id="experience-filter">
-<option value="all">All Levels</option>
-<option value="beginner">Beginner</option>
-<option value="intermediate">Intermediate</option>
-<option value="expert">Expert</option>
-</select>
-</div>
+            <div class="filter-group">
+                <label class="filter-label">Experience Level</label>
+                <select class="filter-select" id="experience-filter">
+                    <option value="all">All Levels</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="expert">Expert</option>
+                </select>
+            </div>
 
-<div class="filter-group">
-<label class="filter-label">Project Length</label>
-<select class="filter-select" id="duration-filter">
-<option value="all">Any Duration</option>
-<option value="short">Short-term (< 1 week)</option>
-<option value="medium">Medium-term (1-4 weeks)</option>
-<option value="long">Long-term (1+ months)</option>
-</select>
-</div>
+            <div class="filter-group">
+                <label class="filter-label">Project Length</label>
+                <select class="filter-select" id="duration-filter">
+                    <option value="all">Any Duration</option>
+                    <option value="short">Short-term (< 1 week)</option>
+                    <option value="medium">Medium-term (1-4 weeks)</option>
+                    <option value="long">Long-term (1+ months)</option>
+                </select>
+            </div>
 
-<div class="filter-group">
-<label class="filter-label">Budget Range</label>
-<select class="filter-select" id="budget-filter">
-<option value="all">Any Budget</option>
-<option value="low">₹1,000 - ₹15,000</option>
-<option value="medium">₹15,000 - ₹50,000</option>
-<option value="high">₹50,000+</option>
-</select>
-</div>
-</div>
+            <div class="filter-group">
+                <label class="filter-label">Budget Range</label>
+                <select class="filter-select" id="budget-filter">
+                    <option value="all">Any Budget</option>
+                    <option value="low">₹1,000 - ₹15,000</option>
+                    <option value="medium">₹15,000 - ₹50,000</option>
+                    <option value="high">₹50,000+</option>
+                </select>
+            </div>
+        </div>
 
-<div class="jobs-container" id="jobs-container">
-<!-- Jobs will be dynamically loaded here -->
-</div>
-</div>
+        <div class="jobs-container" id="jobs-container">
+            <!-- Jobs will be dynamically loaded here -->
+        </div>
+    </div>
 
-<script>
-// Sample jobs data (this would be populated from your backend)
-let jobs = [{
-id: 1,
-title: "Full Stack E-commerce Website Development",
-description: "Looking for an experienced developer to build a responsive e-commerce website with product listings, shopping cart, and payment integration.",
-price: 45000,
-postedDays: 2,
-category: "web-development",
-experienceLevel: "expert",
-duration: "medium",
-budget: "medium",
-tags: ["React", "Node.js", "MongoDB", "Payment API"]
-}, {
-id: 2,
-title: "Content Writing for Technology Blog",
-description: "Need a tech-savvy content writer to create 10 detailed blog posts about emerging technologies and digital transformation.",
-price: 25000,
-postedDays: 4,
-category: "content-writing",
-experienceLevel: "intermediate",
-duration: "medium",
-budget: "medium",
-tags: ["Tech Writing", "SEO", "Blog Posts"]
-}, {
-id: 3,
-title: "Mobile App UI/UX Design",
-description: "Seeking a talented UI/UX designer to create modern and intuitive designs for a health and fitness mobile application.",
-price: 35000,
-postedDays: 1,
-category: "mobile-app",
-experienceLevel: "expert",
-duration: "short",
-budget: "medium",
-tags: ["UI/UX", "Mobile App", "Figma", "Adobe XD"]
-}, {
-id: 4,
-title: "Digital Marketing Campaign for New Product Launch",
-description: "Looking for a digital marketing expert to create and execute a comprehensive marketing strategy for our new SaaS product launch.",
-price: 60000,
-postedDays: 3,
-category: "digital-marketing",
-experienceLevel: "expert",
-duration: "long",
-budget: "high",
-tags: ["SEM", "Social Media", "Email Marketing", "Analytics"]
-}, {
-id: 5,
-title: "WordPress Blog Redesign",
-description: "Need to revamp an existing WordPress blog with a modern design, improved navigation, and mobile responsiveness.",
-price: 18000,
-postedDays: 5,
-category: "web-development",
-experienceLevel: "intermediate",
-duration: "short",
-budget: "medium",
-tags: ["WordPress", "CSS", "Responsive Design"]
-}, {
-id: 6,
-title: "Logo Design for Tech Startup",
-description: "Seeking a creative graphic designer to create a modern, minimalist logo for our AI-based tech startup.",
-price: 12000,
-postedDays: 2,
-category: "graphic-design",
-experienceLevel: "intermediate",
-duration: "short",
-budget: "low",
-tags: ["Logo Design", "Branding", "Adobe Illustrator"]
-}];
+    <script>
+        // Sample jobs data (this would be populated from your backend)
+        let jobs = [ {
+            id: 1,
+            title: "Full Stack E-commerce Website Development",
+            description: "Looking for an experienced developer to build a responsive e-commerce website with product listings, shopping cart, and payment integration.",
+            price: 45000,
+            postedDays: 2,
+            category: "web-development",
+            experienceLevel: "expert",
+            duration: "medium",
+            budget: "medium",
+            tags: ["React", "Node.js", "MongoDB", "Payment API"]
+        }, {
+            id: 2,
+            title: "Content Writing for Technology Blog",
+            description: "Need a tech-savvy content writer to create 10 detailed blog posts about emerging technologies and digital transformation.",
+            price: 25000,
+            postedDays: 4,
+            category: "content-writing",
+            experienceLevel: "intermediate",
+            duration: "medium",
+            budget: "medium",
+            tags: ["Tech Writing", "SEO", "Blog Posts"]
+        }, {
+            id: 3,
+            title: "Mobile App UI/UX Design",
+            description: "Seeking a talented UI/UX designer to create modern and intuitive designs for a health and fitness mobile application.",
+            price: 35000,
+            postedDays: 1,
+            category: "mobile-app",
+            experienceLevel: "expert",
+            duration: "short",
+            budget: "medium",
+            tags: ["UI/UX", "Mobile App", "Figma", "Adobe XD"]
+        }, {
+            id: 4,
+            title: "Digital Marketing Campaign for New Product Launch",
+            description: "Looking for a digital marketing expert to create and execute a comprehensive marketing strategy for our new SaaS product launch.",
+            price: 60000,
+            postedDays: 3,
+            category: "digital-marketing",
+            experienceLevel: "expert",
+            duration: "long",
+            budget: "high",
+            tags: ["SEM", "Social Media", "Email Marketing", "Analytics"]
+        }, {
+            id: 5,
+            title: "WordPress Blog Redesign",
+            description: "Need to revamp an existing WordPress blog with a modern design, improved navigation, and mobile responsiveness.",
+            price: 18000,
+            postedDays: 5,
+            category: "web-development",
+            experienceLevel: "intermediate",
+            duration: "short",
+            budget: "medium",
+            tags: ["WordPress", "CSS", "Responsive Design"]
+        }, {
+            id: 6,
+            title: "Logo Design for Tech Startup",
+            description: "Seeking a creative graphic designer to create a modern, minimalist logo for our AI-based tech startup.",
+            price: 12000,
+            postedDays: 2,
+            category: "graphic-design",
+            experienceLevel: "intermediate",
+            duration: "short",
+            budget: "low",
+            tags: ["Logo Design", "Branding", "Adobe Illustrator"]
+        } ];
 
-// Elements
-const jobsContainer = document.getElementById('jobs-container');
-const searchInput = document.getElementById('search-input');
-const searchButton = document.getElementById('search-button');
-const categoryFilter = document.getElementById('category-filter');
-const experienceFilter = document.getElementById('experience-filter');
-const durationFilter = document.getElementById('duration-filter');
-const budgetFilter = document.getElementById('budget-filter');
+        // Elements
+        const jobsContainer = document.getElementById('jobs-container');
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const categoryFilter = document.getElementById('category-filter');
+        const experienceFilter = document.getElementById('experience-filter');
+        const durationFilter = document.getElementById('duration-filter');
+        const budgetFilter = document.getElementById('budget-filter');
 
-// Function to render jobs
-function renderJobs(jobsToRender) {
-jobsContainer.innerHTML = '';
+        // Function to render jobs
+        function renderJobs(jobsToRender) {
+            jobsContainer.innerHTML = '';
 
-if (jobsToRender.length === 0) {
-jobsContainer.innerHTML = `
-                   <div class="no-jobs">
-                       <h3>No jobs found matching your criteria</h3>
-                       <p>Try adjusting your filters or search terms</p>
-                   </div>
-               `;
-return;
+            if (jobsToRender.length === 0) {
+                jobsContainer.innerHTML = `
+                    <div class="no-jobs">
+                        <h3>No jobs found matching your criteria</h3>
+                        <p>Try adjusting your filters or search terms</p>
+                    </div>
+                `;
+                return;
+            }
+
+            jobsToRender.forEach(job => {
+                const jobCard = document.createElement('div');
+                jobCard.className = 'job-card';
+
+                const tagsHTML = job.tags.map(tag => `<span class="job-tag">${tag}</span>`).join('');
+
+                jobCard.innerHTML = `
+                    <div class="job-header">
+                        <span class="posted-date">Posted ${job.postedDays} day${job.postedDays !== 1 ? 's' : ''} ago</span>
+                        <span class="job-price">₹${job.price.toLocaleString()}</span>
+                    </div>
+                    <h3 class="job-title">${job.title}</h3>
+                    <p class="job-description">${job.description}</p>
+                    <div class="job-tags">
+                        ${tagsHTML}
+                    </div>
+                `;
+
+                jobsContainer.appendChild(jobCard);
+            });
+        }
+
+        // Function to filter jobs
+        function filterJobs() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const categoryValue = categoryFilter.value;
+            const experienceValue = experienceFilter.value;
+            const durationValue = durationFilter.value;
+            const budgetValue = budgetFilter.value;
+
+            const filteredJobs = jobs.filter(job => {
+                // Search term matching
+                const matchesSearch =
+                    job.title.toLowerCase().includes(searchTerm) ||
+                    job.description.toLowerCase().includes(searchTerm) ||
+                    job.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+
+                // Category matching
+                const matchesCategory = categoryValue === 'all' || job.category === categoryValue;
+
+                // Experience level matching
+                const matchesExperience = experienceValue === 'all' || job.experienceLevel === experienceValue;
+
+                // Duration matching
+                const matchesDuration = durationValue === 'all' || job.duration === durationValue;
+
+                // Budget matching
+                const matchesBudget = budgetValue === 'all' || job.budget === budgetValue;
+
+                return matchesSearch && matchesCategory && matchesExperience && matchesDuration && matchesBudget;
+            });
+
+            renderJobs(filteredJobs);
+        }
+
+        // Add event listeners
+        searchButton.addEventListener('click', filterJobs);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                filterJobs();
+            }
+        });
+
+        categoryFilter.addEventListener('change', filterJobs);
+        experienceFilter.addEventListener('change', filterJobs);
+        durationFilter.addEventListener('change', filterJobs);
+        budgetFilter.addEventListener('change', filterJobs);
+
+        // Function to add a new job (to be called from job posting page)
+        function addNewJob(job) {
+            // Generate a unique ID
+            const newId = Math.max(...jobs.map(j => j.id)) + 1;
+            job.id = newId;
+
+            // Add posted days (today = 0)
+            job.postedDays = 0;
+
+            // Add the job to the array
+            jobs.unshift(job);
+
+            // Re-render the jobs
+            filterJobs();
+
+            // Optionally, save to localStorage or send to server
+            saveJobsToStorage();
+        }
+
+        // Function to save jobs to localStorage
+        function saveJobsToStorage() {
+            localStorage.setItem('yuvaWorks_jobs', JSON.stringify(jobs));
+        }
+
+        // Function to load jobs from localStorage
+        function loadJobsFromStorage() {
+            const storedJobs = localStorage.getItem('yuvaWorks_jobs');
+            if (storedJobs) {
+                jobs = JSON.parse(storedJobs);
+            }
+        }
+
+        // Check if user is logged in
+function checkUserLogin() {
+    const userData = localStorage.getItem("yuvaworks_user");
+
+    if (userData) {
+        // User is logged in
+        const user = JSON.parse(userData);
+
+        // Hide auth buttons and show profile
+        document.getElementById("auth-buttons").style.display = "none";
+        document.getElementById("user-profile").style.display = "flex";
+
+        // Set user profile info
+        document.getElementById("profile-pic").src = user.profilePic;
+        document.getElementById("user-name").textContent = `${user.firstName} ${user.lastName}`;
+    } else {
+        // User is not logged in
+        document.getElementById("auth-buttons").style.display = "flex";
+        document.getElementById("user-profile").style.display = "none";
+    }
 }
 
-jobsToRender.forEach(job => {
-const jobCard = document.createElement('div');
-jobCard.className = 'job-card';
+// Toggle dropdown menu
+const userProfile = document.getElementById("user-profile");
+const dropdownMenu = document.getElementById("dropdown-menu");
 
-const tagsHTML = job.tags.map(tag => `<span class="job-tag">${tag}</span>`).join('');
+if (userProfile && dropdownMenu) {
+    userProfile.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("active");
+    });
 
-jobCard.innerHTML = `
-                   <div class="job-header">
-                       <span class="posted-date">Posted ${job.postedDays} day${job.postedDays !== 1 ? 's' : ''} ago</span>
-                       <span class="job-price">₹${job.price.toLocaleString()}</span>
-                   </div>
-                   <h3 class="job-title">${job.title}</h3>
-                   <p class="job-description">${job.description}</p>
-                   <div class="job-tags">
-                       ${tagsHTML}
-                   </div>
-               `;
-
-jobsContainer.appendChild(jobCard);
-});
+    // Close dropdown menu when clicking outside
+    document.addEventListener("click", (e) => {
+        if (!userProfile.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove("active");
+        }
+    });
 }
 
-// Function to filter jobs
-function filterJobs() {
-const searchTerm = searchInput.value.toLowerCase();
-const categoryValue = categoryFilter.value;
-const experienceValue = experienceFilter.value;
-const durationValue = durationFilter.value;
-const budgetValue = budgetFilter.value;
+// Logout functionality
+const logoutButton = document.getElementById("logout-btn");
+if (logoutButton) {
+    logoutButton.addEventListener("click", function (e) {
+        e.preventDefault();
 
-const filteredJobs = jobs.filter(job => {
-// Search term matching
-const matchesSearch =
-job.title.toLowerCase().includes(searchTerm) ||
-job.description.toLowerCase().includes(searchTerm) ||
-job.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+        // Clear user data from localStorage
+        localStorage.removeItem("yuvaworks_user");
 
-// Category matching
-const matchesCategory = categoryValue === 'all' || job.category === categoryValue;
-
-// Experience level matching
-const matchesExperience = experienceValue === 'all' || job.experienceLevel === experienceValue;
-
-// Duration matching
-const matchesDuration = durationValue === 'all' || job.duration === durationValue;
-
-// Budget matching
-const matchesBudget = budgetValue === 'all' || job.budget === budgetValue;
-
-return matchesSearch && matchesCategory && matchesExperience && matchesDuration && matchesBudget;
-});
-
-renderJobs(filteredJobs);
+        // Redirect to the login page
+        window.location.href = "index.html";
+    });
 }
 
-// Add event listeners
-searchButton.addEventListener('click', filterJobs);
-searchInput.addEventListener('keypress', (e) => {
-if (e.key === 'Enter') {
-filterJobs();
-}
-});
+// Redirect to the appropriate page when clicking the logo
+const logoLink = document.querySelector(".logo a");
 
-categoryFilter.addEventListener('change', filterJobs);
-experienceFilter.addEventListener('change', filterJobs);
-durationFilter.addEventListener('change', filterJobs);
-budgetFilter.addEventListener('change', filterJobs);
+if (logoLink) {
+    logoLink.addEventListener("click", (e) => {
+        const userData = localStorage.getItem("yuvaworks_user");
 
-// Function to add a new job (to be called from job posting page)
-function addNewJob(job) {
-// Generate a unique ID
-const newId = Math.max(...jobs.map(j => j.id)) + 1;
-job.id = newId;
-
-// Add posted days (today = 0)
-job.postedDays = 0;
-
-// Add the job to the array
-jobs.unshift(job);
-
-// Re-render the jobs
-filterJobs();
-
-// Optionally, save to localStorage or send to server
-saveJobsToStorage();
-}
-
-// Function to save jobs to localStorage
-function saveJobsToStorage() {
-localStorage.setItem('yuvaWorks_jobs', JSON.stringify(jobs));
-}
-
-// Function to load jobs from localStorage
-function loadJobsFromStorage() {
-const storedJobs = localStorage.getItem('yuvaWorks_jobs');
-if (storedJobs) {
-jobs = JSON.parse(storedJobs);
-}
+        if (!userData) {
+            // User is not logged in, redirect to index.html
+            window.location.href = "index.html";
+        } else {
+            // User is logged in, redirect to home.html
+            window.location.href = "home.html";
+        }
+    });
 }
 
 // Initialize
-document.addEventListener('DOMContentLoaded', () => {
-// Load jobs from storage if available
-loadJobsFromStorage();
+document.addEventListener("DOMContentLoaded", () => {
+    // Load jobs from storage if available
+    loadJobsFromStorage();
 
-// Render all jobs initially
-renderJobs(jobs);
+    // Render all jobs initially
+    renderJobs(jobs);
 
-// Listen for messages from job posting page
-window.addEventListener('message', (event) => {
-if (event.data.type === 'newJob') {
-addNewJob(event.data.job);
-}
+    // Check login status
+    checkUserLogin();
+
+    // Listen for messages from job posting page
+    window.addEventListener("message", (event) => {
+        if (event.data.type === "newJob") {
+            addNewJob(event.data.job);
+        }
+    });
 });
-});
-</script>
+    </script>
 </body>
 
 </html>
