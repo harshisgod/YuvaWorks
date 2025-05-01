@@ -2,197 +2,6 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YuvaWorks - Home</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-         :root {
-            --primary-color: #0a192f;
-            --accent-color: #64ffda;
-            --secondary-color: #112240;
-            --text-color: #ccd6f6;
-            --blue-accent: #5671f5;
-            --blue-light: #8492fe;
-        }
-        
-        body {
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-        }
-        
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 3rem;
-            background-color: rgba(10, 25, 47, 0.9);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--blue-light);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo span {
-            color: var(--accent-color);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-links a:hover {
-            color: var(--blue-light);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--blue-light);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .hero-section {
-            padding: 9rem 2rem 5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            min-height: 100vh;
-            background: radial-gradient(circle at 50% 50%, var(--primary-color), #060d1b);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: white;
-            line-height: 1.2;
-        }
-        
-        .hero-title span {
-            background: linear-gradient(90deg, var(--blue-accent), var(--accent-color));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            color: rgba(204, 214, 246, 0.8);
-            line-height: 1.6;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .cta-btn {
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .primary-btn {
-            background: linear-gradient(90deg, var(--blue-accent), var(--blue-light));
-            color: white;
-            border: none;
-        }
-        
-        .secondary-btn {
-            background-color: transparent;
-            color: var(--text-color);
-            border: 1px solid rgba(204, 214, 246, 0.3);
-        }
-        
-        .cta-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .btn-escrow {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: white;
-            background: linear-gradient(135deg, var(--blue-accent), var(--accent-color));
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .btn-escrow:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-            background: linear-gradient(135deg, var(--accent-color), var(--blue-light));
-        }
-        
-        .btn-escrow i {
-            font-size: 1.5rem;
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YuvaWorks - Home</title>
@@ -345,6 +154,8 @@ transform: translateY(0);
 
 .dropdown-menu ul {
 list-style: none;
+            padding: 0;
+            margin: 0;
 }
 
 .dropdown-menu ul li {
@@ -608,13 +419,6 @@ display: block;
 </head>
 
 <body>
-    <header class="header">
-        <a href="home.html" class="logo">Yuva<span>Works</span></a>
-        <nav class="nav-links">
-            <a href="home.html">Home</a>
-            <a href="browse-jobs.html">Browse Jobs</a>
-            <a href="aboutus.html">About Us</a>
-            <a href="contactus.html">Contact</a>
 <header class="header">
 <a href="home.html" class="logo">Yuva<span>Works</span></a>
 <nav class="nav-links">
@@ -622,76 +426,38 @@ display: block;
 <a href="browse-jobs.html">Browse Jobs</a>
 <a href="aboutus.html">About Us</a>
 <a href="contactus.html">Contact</a>
-<a href="referral.html">Referrals</a>
-            <!-- New Referrals Tab -->
-</nav>
-    </header>
 
-    <main class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">Find Your Dream Job with <span>YuvaWorks</span></h1>
-            <p class="hero-subtitle">Connect with top employers, explore thousands of opportunities, and take the next step in your career journey.</p>
-
-            <div class="cta-buttons">
-                <a href="browse-jobs.html"><button class="cta-btn primary-btn">Browse Jobs</button></a>
-                <a href="postproject.html"><button class="cta-btn secondary-btn">For Employers</button></a>
-            <!-- Auth buttons (shown when user is not logged in) -->
-            <div class="auth-buttons" id="auth-buttons">
-                <a href="login.html" class="auth-btn login-btn">Login</a>
-                <a href="signup.html" class="auth-btn signup-btn">Sign Up</a>
+<!-- Auth buttons (shown when user is not logged in) -->
+<div class="auth-buttons" id="auth-buttons">
+<a href="login.html" class="auth-btn login-btn">Login</a>
+<a href="signup.html" class="auth-btn signup-btn">Sign Up</a>
 </div>
-        <!-- Auth buttons (shown when user is not logged in) -->
-        <div class="auth-buttons" id="auth-buttons">
-            <a href="login.html" class="auth-btn login-btn">Login</a>
-            <a href="signup.html" class="auth-btn signup-btn">Sign Up</a>
-        </div>
 
-            <!-- User profile (shown when user is logged in) -->
+<!-- User profile (shown when user is logged in) -->
             <div class="user-profile" id="user-profile" style="display: none;">
                 <img src="assets/kj.png" alt="Profile" class="profile-pic" id="profile-pic">
                 <span class="user-name" id="user-name"></span>
-                <i class="fas fa-chevron-down" style="margin-left: 5px; font-size: 0.8rem;"></i>
-        <!-- User profile (shown when user is logged in) -->
-        <div class="user-profile" id="user-profile" style="display: none;">
-            <img src="assets/kj.png" alt="Profile" class="profile-pic" id="profile-pic">
-            <span class="user-name" id="user-name"></span>
-            <i class="fas fa-chevron-down" style="margin-left: 5px; font-size: 0.8rem;"></i>
+            <div class="user-profile" id="user-profile" style="display: flex;">
+                <img src="assets/default-profile.png" alt="Profile" class="profile-pic" id="profile-pic">
+                <span class="user-name" id="user-name">John Doe</span>
+<i class="fas fa-chevron-down" style="margin-left: 5px; font-size: 0.8rem;"></i>
 
-                <div class="dropdown-menu" id="profile-dropdown">
-                    <ul>
-                        <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
-                        <li><a href="applications.html"><i class="fas fa-file-alt"></i> My Applications</a></li>
-                        <li><a href="saved-jobs.html"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
-                        <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
-                        <li><a href="bonus.html"><i class="fas fa-gift"></i> My Bonus/Rewards</a></li>
-                        <li><a href="referral.html"><i class="fas fa-users"></i> My Referrals</a></li>
-                        <!-- New Referral Tab -->
-                        <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                    </ul>
-                </div>
-            <div class="dropdown-menu" id="profile-dropdown">
-                <ul>
-                    <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
-                    <li><a href="applications.html"><i class="fas fa-file-alt"></i> My Applications</a></li>
-                    <li><a href="saved-jobs.html"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
-                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
-                    <li><a href="bonus.html"><i class="fas fa-gift"></i> My Bonus/Rewards</a></li>
-                    <li><a href="referral.html"><i class="fas fa-users"></i> My Referrals</a></li>
-                    <!-- New Referral Tab -->
-                    <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                </ul>
+<div class="dropdown-menu" id="profile-dropdown">
+<ul>
+<li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+<li><a href="applications.html"><i class="fas fa-file-alt"></i> My Applications</a></li>
+<li><a href="projects-posted.html"><i class="fas fa-bookmark"></i> Projects Posted</a></li>
+                        <!-- Updated -->
+<li><a href="saved-jobs.html"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
+                        
+<li><a href="bonus.html"><i class="fas fa-gift"></i> My Bonus/Rewards</a></li>
+<li><a href="referral.html"><i class="fas fa-users"></i> My Referrals</a></li>
+                        <!-- New Option -->
+<li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+</ul>
 </div>
-        </nav>
 </div>
-    </main>
-
-    <div id="escrow-button-container" style="text-align: center; margin-top: 30px;">
-        <a href="escrow.html">
-            <button class="btn btn-escrow">
-                <i class="fas fa-wallet"></i> Proceed to Escrow Payment
-            </button>
-        </a>
-    </div>
+</nav>
 </header>
 
 <main class="hero-section">
@@ -719,72 +485,95 @@ display: block;
 </main>
 
 <script>
-// Check if user is logged in
-function checkUserLogin() {
-const userData = localStorage.getItem('yuvaworks_user');
+        // Check if user is logged in
+        function checkUserLogin() {
+            const userData = localStorage.getItem('yuvaworks_user');
 
-if (userData) {
-// User is logged in
-const user = JSON.parse(userData);
+            if (userData) {
+                // User is logged in
+                const user = JSON.parse(userData);
 
-// Hide auth buttons and show profile
-document.getElementById('auth-buttons').style.display = 'none';
-document.getElementById('user-profile').style.display = 'flex';
+                // Hide auth buttons and show profile
+                document.getElementById('auth-buttons').style.display = 'none';
+                document.getElementById('user-profile').style.display = 'flex';
 
-// Set user profile info
-document.getElementById('profile-pic').src = user.profilePic;
-document.getElementById('user-name').textContent = `${user.firstName} ${user.lastName}`;
+                // Set user profile info
+                document.getElementById('profile-pic').src = user.profilePic;
+                document.getElementById('user-name').textContent = `${user.firstName} ${user.lastName}`;
 
-// Set welcome message
-document.getElementById('welcome-name').textContent = user.firstName;
-document.getElementById('welcome-message').classList.add('active');
-} else {
-// User is not logged in
-document.getElementById('auth-buttons').style.display = 'flex';
-document.getElementById('user-profile').style.display = 'none';
-document.getElementById('welcome-message').classList.remove('active');
-}
-}
+                // Set welcome message
+                document.getElementById('welcome-name').textContent = user.firstName;
+                document.getElementById('welcome-message').classList.add('active');
+            } else {
+                // User is not logged in
+                document.getElementById('auth-buttons').style.display = 'flex';
+                document.getElementById('user-profile').style.display = 'none';
+                document.getElementById('welcome-message').classList.remove('active');
+            }
+        }
 
-// Check login status when page loads
-document.addEventListener('DOMContentLoaded', function() {
-checkUserLogin();
+        // Check login status when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            checkUserLogin();
 
-// Toggle dropdown menu
+            // Toggle dropdown menu
+        document.addEventListener('DOMContentLoaded', function () {
 const userProfile = document.getElementById('user-profile');
-const dropdown = document.getElementById('profile-dropdown');
+            const dropdown = document.getElementById('profile-dropdown');
+            const dropdownMenu = document.getElementById('profile-dropdown');
+            const logoutBtn = document.getElementById('logout-btn');
 
-userProfile.addEventListener('click', function(e) {
-e.stopPropagation();
-dropdown.classList.toggle('active');
+            userProfile.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdown.classList.toggle('active');
+            // Toggle dropdown menu visibility
+            userProfile.addEventListener('click', function (event) {
+                event.stopPropagation(); // Prevent click from propagating to the document
+                dropdownMenu.classList.toggle('active');
 });
 
-// Close dropdown when clicking elsewhere
-document.addEventListener('click', function() {
-dropdown.classList.remove('active');
+            // Close dropdown when clicking elsewhere
+            document.addEventListener('click', function() {
+                dropdown.classList.remove('active');
+            // Close dropdown menu when clicking outside
+            document.addEventListener('click', function () {
+                dropdownMenu.classList.remove('active');
 });
 
-// Handle logout
-document.getElementById('logout-btn').addEventListener('click', function(e) {
-e.preventDefault();
+            // Handle logout
+            document.getElementById('logout-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+            // Load the saved profile picture from localStorage
+            const profilePicElement = document.getElementById('profile-pic');
+            const savedPicture = localStorage.getItem('yuvaworks_profile_picture');
+            if (savedPicture) {
+                profilePicElement.src = savedPicture;
+            }
 
-// Clear user data
-localStorage.removeItem('yuvaworks_user');
+            // Logout functionality
+            logoutBtn.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default link behavior
+
+                // Clear user data
+                localStorage.removeItem('yuvaworks_user');
+                // Clear user-related data from localStorage or sessionStorage
+                localStorage.clear();
+                sessionStorage.clear();
 
 // Redirect to index.html
 window.location.href = 'index.html';
 });
 });
 
-// Sticky header effect
-window.addEventListener('scroll', () => {
-const header = document.querySelector('.header');
-if (window.scrollY > 50) {
-header.classList.add('scrolled');
-} else {
-header.classList.remove('scrolled');
-}
-});
+        // Sticky header effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
 </script>
 </body>
 
