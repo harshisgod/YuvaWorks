@@ -172,6 +172,8 @@
             position: relative;
             z-index: 2;
             padding: 3rem;
+            position: relative;
+            /* Ensure the close button is positioned relative to the card */
         }
         
         .signin-header {
@@ -507,6 +509,53 @@
                 gap: 1.5rem;
             }
         }
+        
+        .close-button-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: var(--accent-color);
+            text-decoration: none;
+            background-color: var(--secondary-color);
+            padding: 10px 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+        
+        .close-button-container:hover {
+            background-color: var(--blue-light);
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        .signin-container {
+            position: relative;
+            /* Ensure the close button is positioned relative to the container */
+        }
+        
+        .close-button-card {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: var(--accent-color);
+            text-decoration: none;
+            background-color: var(--secondary-color);
+            padding: 10px 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+        
+        .close-button-card:hover {
+            background-color: var(--blue-light);
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Include Google Identity Services Library -->
@@ -524,6 +573,7 @@
     </header>
 
     <div class="signin-container">
+
         <div class="floating-shapes">
             <div class="shape"></div>
             <div class="shape"></div>
@@ -531,6 +581,8 @@
         </div>
 
         <div class="signin-card">
+            <!-- Close Button -->
+            <a href="index.html" class="close-button-card" title="Go back to Home Page">&times;</a>
             <div class="signin-header">
                 <h1>Login</h1>
                 <p>Welcome back to YuvaWorks!</p>
