@@ -1130,9 +1130,18 @@
         
         .templates-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 50px;
+            justify-items: center;
+            /* Center-align the grid items */
+            max-width: 1200px;
+            /* Set a max-width to control the container size */
+            margin-left: auto;
+            /* Center the container itself */
+            margin-right: auto;
+            padding: 0 20px;
+            /* Add some padding on the sides */
         }
         
         .template-card {
@@ -1141,6 +1150,10 @@
             overflow: hidden;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease;
+            width: 100%;
+            /* Make cards take full width of their grid cell */
+            max-width: 350px;
+            /* Set maximum width for each card */
         }
         
         .template-card:hover {
@@ -2534,60 +2547,60 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content ">
-            <div class="footer-column ">
-                <div class="footer-logo ">Yuva<span style="color: var(--primary); ">Works</span></div>
-                <p style="color: #aaa; margin-bottom: 20px; ">India's premier freelancing platform connecting talented professionals with businesses nationwide.</p>
-                <div class="footer-social ">
-                    <a href="# " class="social-icon ">f</a>
-                    <a href="# " class="social-icon ">in</a>
-                    <a href="# " class="social-icon ">tw</a>
-                    <a href="# " class="social-icon ">ig</a>
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">Yuva<span style="color: var(--primary);">Works</span></div>
+                <p style="color: #aaa; margin-bottom: 20px;">India's premier freelancing platform connecting talented professionals with businesses nationwide.</p>
+                <div class="footer-social">
+                    <a href="comingsoon.html" class="social-icon">f</a>
+                    <a href="comingsoon.html" class="social-icon">in</a>
+                    <a href="comingsoon.html" class="social-icon">tw</a>
+                    <a href="comingsoon.html" class="social-icon">ig</a>
                 </div>
             </div>
-            <div class="footer-column ">
+            <div class="footer-column">
                 <h3>For Freelancers</h3>
-                <ul class="footer-links ">
-                    <li><a href="# ">Find Work</a></li>
-                    <li><a href="# ">Karma System</a></li>
-                    <li><a href="# ">Community Support</a></li>
-                    <li><a href="# ">Learning Resources</a></li>
-                    <li><a href="# ">Success Stories</a></li>
+                <ul class="footer-links">
+                    <li><a href="#categories">Find Work</a></li>
+                    <li><a href="index.html#karma-system">Karma System</a></li>
+                    <li><a href="comingsoon.html">Community Support</a></li>
+                    <li><a href="comingsoon.html">Learning Resources</a></li>
+                    <li><a href="comingsoon.html">Success Stories</a></li>
                 </ul>
             </div>
-            <div class="footer-column ">
+            <div class="footer-column">
                 <h3>For Clients</h3>
-                <ul class="footer-links ">
-                    <li><a href="postproject.html ">Post a Job</a></li>
-                    <li><a href="# ">How to Hire</a></li>
-                    <li><a href="# ">Enterprise Solutions</a></li>
-                    <li><a href="# ">Success Stories</a></li>
-                    <li><a href="# ">Talent Scout</a></li>
+                <ul class="footer-links">
+                    <li><a href="login.html">Post a Job</a></li>
+                    <li><a href="comingsoon.html">How to Hire</a></li>
+                    <li><a href="comingsoon.html">Enterprise Solutions</a></li>
+                    <li><a href="comingsoon.html">Success Stories</a></li>
+                    <li><a href="comingsoon.html">Talent Scout</a></li>
                 </ul>
             </div>
-            <div class="footer-column ">
+            <div class="footer-column">
                 <h3>Resources</h3>
-                <ul class="footer-links ">
-                    <li><a href="# ">Help Center</a></li>
-                    <li><a href="# ">Contract Templates</a></li>
-                    <li><a href="# ">Fair Pay Calculator</a></li>
-                    <li><a href="# ">Blog & Articles</a></li>
-                    <li><a href="# ">API Documentation</a></li>
+                <ul class="footer-links">
+                    <li><a href="comingsoon.html">Help Center</a></li>
+                    <li><a href="index.html#section.contracts">Contract Templates</a></li>
+                    <li><a href="fairpay.html">Fair Pay Calculator</a></li>
+                    <li><a href="comingsoon.html">Blog & Articles</a></li>
+                    <li><a href="comingsoon.html">API Documentation</a></li>
                 </ul>
             </div>
-            <div class="footer-column ">
+            <div class="footer-column">
                 <h3>Company</h3>
-                <ul class="footer-links ">
-                    <li><a href="aboutus.html ">About Us</a></li>
-                    <li><a href="# ">Leadership</a></li>
-                    <li><a href="# ">Careers</a></li>
-                    <li><a href="# ">Press & Media</a></li>
-                    <li><a href="contactus.html ">Contact Us</a></li>
+                <ul class="footer-links">
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="comingsoon.html">Leadership</a></li>
+                    <li><a href="comingsoon.html">Careers</a></li>
+                    <li><a href="comingsoon.html">Press & Media</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom ">
-            <p>&copy; 2025 YuvaWorks. All rights reserved. | <a href="# " style="color: #aaa; text-decoration: none; ">Privacy Policy</a> | <a href="# " style="color: #aaa; text-decoration: none; ">Terms of Service</a></p>
+        <div class="footer-bottom">
+            <p>&copy; 2025 YuvaWorks. All rights reserved. | <a href="comingsoon.html" style="color: #aaa; text-decoration: none;">Privacy Policy</a> | <a href="comingsoon.html" style="color: #aaa; text-decoration: none;">Terms of Service</a></p>
         </div>
     </footer>
 
