@@ -516,10 +516,6 @@
                     <li><a href="browse-jobs.html">Browse Jobs</a></li>
                     <li><a href="#">Fair Pay</a></li>
                 </ul>
-                <div class="auth-buttons">
-                    <button class="btn btn-outline">Log In</button>
-                    <button class="btn btn-primary">Sign Up</button>
-                </div>
             </nav>
         </div>
     </header>
@@ -741,6 +737,27 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Check if the user is logged in
+            const userData = localStorage.getItem('yuvaworks_user');
+
+            if (!userData) {
+                // Redirect to login page if no user data is found
+                window.location.href = 'login.html';
+                return; // Stop further execution
+            }
+
+            const parsedUserData = JSON.parse(userData);
+
+            if (!parsedUserData.isLoggedIn) {
+                // Redirect to login page if the user is not logged in
+                window.location.href = 'login.html';
+                return; // Stop further execution
+            }
+
+            // If logged in, continue with the rest of the page logic
+            console.log('User is logged in:', parsedUserData);
+
+            // Rest of the code for the page...
             // Tags Input functionality
             const tagInput = document.getElementById('tag-input');
             const tagsContainer = document.querySelector('.tags-input');
