@@ -47,6 +47,8 @@
         
         .container {
             padding: 80px 5%;
+            position: relative;
+            /* Ensure the close button is positioned relative to the container */
         }
         
         .points-balance {
@@ -189,6 +191,27 @@
             font-size: 0.9rem;
             color: #aaa;
         }
+        
+        .close-button-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: var(--accent);
+            text-decoration: none;
+            background-color: var(--dark);
+            padding: 10px 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+        
+        .close-button-container:hover {
+            background-color: var(--primary);
+            color: var(--light);
+            transform: scale(1.1);
+        }
     </style>
 </head>
 
@@ -198,6 +221,9 @@
     </header>
 
     <div class="container">
+        <!-- Close Button -->
+        <a href="index.html" class="close-button-container" title="Go back to Home Page">&times;</a>
+
         <!-- Points Balance -->
         <div class="points-balance">
             <h1>Your Points Balance: 1,250</h1>
@@ -353,6 +379,7 @@
             💬
         </button>
     </div>
+
 
     <script>
         // Toggle AI Chat iframe visibility
