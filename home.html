@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"="width=device-width, initial-scale=1.0">
     <title>YuvaWorks - Home</title>
     <style>
         * {
@@ -320,9 +320,15 @@
         
         .cta-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
+            /* Adjust the spacing between buttons */
             justify-content: center;
             flex-wrap: wrap;
+        }
+        
+        .cta-buttons a {
+            margin: 0.5rem;
+            /* Add margin around each button for better spacing */
         }
         
         .cta-btn {
@@ -414,6 +420,54 @@
                 display: block;
             }
         }
+        /* Modal Styles */
+        
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Semi-transparent background */
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+            animation: fadeIn 0.3s ease-in-out;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 10px;
+        }
+        
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-button:hover {
+            color: var(--accent-color);
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -466,7 +520,7 @@
 
             <div class="cta-buttons">
                 <a href="browse-jobs.html"><button class="cta-btn primary-btn">Browse Jobs</button></a>
-                <a href="postproject.html"><button class="cta-btn secondary-btn">Post a Project</button></a>
+                <a href="#" class="cta-btn secondary-btn">Post a Project</a>
             </div>
 
             <!-- Escrow Button -->
@@ -483,6 +537,14 @@
             </div>
         </div>
     </main>
+
+    <!-- Modal for Post a Project -->
+    <div id="post-project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <iframe src="postproject.html" frameborder="0" class="modal-iframe"></iframe>
+        </div>
+    </div>
 
     <!-- AI Chat Button -->
     <div id="ai-chat-container">
@@ -690,6 +752,41 @@
                 // User is not logged in, keep the button redirecting to the login page
                 escrowRedirectBtn.href = "login.html";
             }
+        });
+    </script>
+
+    <script>
+        // JavaScript for Modal Behavior
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('post-project-modal');
+            const closeButton = document.querySelector('.close-button');
+            const postProjectButton = document.querySelector('.cta-btn.secondary-btn'); // Button to open the modal
+
+            // Function to open the modal
+            function openModal() {
+                modal.style.display = 'flex';
+            }
+
+            // Function to close the modal
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            // Open the modal when the "Post a Project" button is clicked
+            postProjectButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+                openModal();
+            });
+
+            // Close the modal when the close button is clicked
+            closeButton.addEventListener('click', closeModal);
+
+            // Close the modal when clicking outside the modal content
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
         });
     </script>
 </body>
