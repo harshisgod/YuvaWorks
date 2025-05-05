@@ -242,6 +242,22 @@
 </head>
 
 <body>
+    <script>
+        // Check if user is logged in
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('yuvaWorks_loggedIn');
+            if (!isLoggedIn || isLoggedIn !== 'true') {
+                // Save the current URL to redirect back after login
+                localStorage.setItem('yuvaWorks_redirectUrl', window.location.href);
+                // Redirect to login page
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Run auth check when page loads
+        document.addEventListener('DOMContentLoaded', checkAuth);
+    </script>
+
     <nav class="navbar">
         <div class="logo-container">
             <div class="logo">
@@ -256,10 +272,7 @@
                 <a href="fairpay.html">Fair Pay</a>
             </div>
         </div>
-        <div class="auth-buttons">
-            <a href="login.html" class="btn btn-outline">Log In</a>
-            <a href="signup.html" class="btn btn-primary">Sign Up</a>
-        </div>
+        
     </nav>
 
     <div class="container">
