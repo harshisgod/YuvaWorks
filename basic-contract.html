@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Project Contract - YuvaWorks</title>
     <style>
-        :root {
+         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
             --secondary: #60a5fa;
@@ -18,7 +18,7 @@
             --danger: #ef4444;
             --warning: #f59e0b;
         }
-
+        
         body {
             background-color: var(--darker);
             color: var(--light);
@@ -32,8 +32,8 @@
             margin: 0;
             padding: 0;
         }
-
         /* Ensure the header spans the full width */
+        
         header {
             background-color: var(--dark);
             padding: 20px 5%;
@@ -45,7 +45,7 @@
             top: 0;
             z-index: 10;
         }
-
+        
         .logo {
             font-size: 24px;
             font-weight: bold;
@@ -53,24 +53,25 @@
             text-decoration: none;
             transition: color 0.3s ease;
         }
-
+        
         .logo:hover {
             color: var(--primary);
         }
-
         /* Center the contract details section without a box */
+        
         .contract-details {
             width: 90%;
             max-width: 800px;
             margin: 40px auto;
             padding: 40px;
-            background: rgba(17, 24, 39, 0.9); /* Semi-transparent background */
+            background: rgba(17, 24, 39, 0.9);
+            /* Semi-transparent background */
             border-radius: 10px;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
             color: var(--light);
         }
-
         /* Style the contract heading */
+        
         .contract-details h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
@@ -79,13 +80,13 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
         /* Style the contract features list */
+        
         .contract-details ul {
             list-style: none;
             padding: 0;
         }
-
+        
         .contract-details ul li {
             margin-bottom: 10px;
             padding-left: 20px;
@@ -93,7 +94,7 @@
             font-size: 1.1rem;
             color: var(--light);
         }
-
+        
         .contract-details ul li::before {
             content: '✓';
             position: absolute;
@@ -101,8 +102,8 @@
             color: var(--success);
             font-weight: bold;
         }
-
         /* Enhance the button styling */
+        
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
@@ -118,14 +119,14 @@
             text-align: center;
             text-decoration: none;
         }
-
+        
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 7px 15px rgba(37, 99, 235, 0.5);
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
         }
-
         /* Ensure the footer spans the full width */
+        
         footer {
             background-color: var(--dark);
             padding: 20px 5%;
@@ -134,8 +135,8 @@
             font-size: 0.9rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         /* Add a gradient overlay to the bubbles */
+        
         .bubbles {
             position: fixed;
             top: 0;
@@ -146,7 +147,7 @@
             overflow: hidden;
             background: linear-gradient(135deg, var(--dark), var(--darker));
         }
-
+        
         .bubbles span {
             position: absolute;
             display: block;
@@ -158,7 +159,7 @@
             animation: bubble 10s linear infinite;
             bottom: -150px;
         }
-
+        
         .bubbles span:nth-child(1) {
             left: 10%;
             width: 80px;
@@ -166,7 +167,7 @@
             animation-duration: 8s;
             animation-delay: 0s;
         }
-
+        
         .bubbles span:nth-child(2) {
             left: 20%;
             width: 60px;
@@ -174,7 +175,7 @@
             animation-duration: 6s;
             animation-delay: 2s;
         }
-
+        
         .bubbles span:nth-child(3) {
             left: 30%;
             width: 100px;
@@ -182,7 +183,7 @@
             animation-duration: 12s;
             animation-delay: 4s;
         }
-
+        
         .bubbles span:nth-child(4) {
             left: 50%;
             width: 120px;
@@ -190,7 +191,7 @@
             animation-duration: 10s;
             animation-delay: 6s;
         }
-
+        
         .bubbles span:nth-child(5) {
             left: 70%;
             width: 90px;
@@ -198,7 +199,7 @@
             animation-duration: 7s;
             animation-delay: 8s;
         }
-
+        
         .bubbles span:nth-child(6) {
             left: 85%;
             width: 150px;
@@ -206,7 +207,7 @@
             animation-duration: 15s;
             animation-delay: 10s;
         }
-
+        
         .bubbles span:nth-child(7) {
             left: 40%;
             width: 70px;
@@ -214,7 +215,7 @@
             animation-duration: 9s;
             animation-delay: 3s;
         }
-
+        
         .bubbles span:nth-child(8) {
             left: 60%;
             width: 110px;
@@ -222,17 +223,15 @@
             animation-duration: 11s;
             animation-delay: 5s;
         }
-
+        
         @keyframes bubble {
             0% {
                 transform: translateY(0) scale(1);
                 opacity: 0.6;
             }
-
             50% {
                 opacity: 1;
             }
-
             100% {
                 transform: translateY(-1200px) scale(0.8);
                 opacity: 0;
@@ -271,9 +270,32 @@
         <a href="assets/basic-contract.pdf" class="btn-primary" target="_blank">Download Contract</a>
     </section>
 
+    <!-- AI Chat Button -->
+    <div id="ai-chat-container">
+        <iframe id="ai-chat-iframe" src="https://www.chatbase.co/chatbot-iframe/WUpdiya0H_6UQAbH37ndm" frameborder="0" style="width: 350px; height: 500px; border: none; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); display: none; position: fixed; bottom: 80px; right: 20px; z-index: 1000;">
+        </iframe>
+        <button id="ai-chat-button" style="position: fixed; bottom: 20px; right: 20px; background: #2563eb; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; z-index: 1000;">
+            💬
+        </button>
+    </div>
+
     <footer>
         <p>&copy; 2025 YuvaWorks. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Toggle AI Chat iframe visibility
+        const chatButton = document.getElementById('ai-chat-button');
+        const chatIframe = document.getElementById('ai-chat-iframe');
+
+        chatButton.addEventListener('click', () => {
+            if (chatIframe.style.display === 'none' || chatIframe.style.display === '') {
+                chatIframe.style.display = 'block';
+            } else {
+                chatIframe.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>
