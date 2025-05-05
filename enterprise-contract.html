@@ -103,107 +103,107 @@
             text-align: center;
             color: #aaa;
         }
-
+        
         .bubbles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-    background: linear-gradient(135deg, var(--dark), var(--darker));
-}
-
-.bubbles span {
-    position: absolute;
-    display: block;
-    width: 80px;
-    height: 80px;
-    background: var(--primary);
-    opacity: 0.5;
-    border-radius: 50%;
-    animation: bubble 15s linear infinite;
-    bottom: -150px;
-}
-
-.bubbles span:nth-child(1) {
-    left: 10%;
-    width: 120px;
-    height: 120px;
-    animation-duration: 12s;
-    animation-delay: 0s;
-}
-
-.bubbles span:nth-child(2) {
-    left: 20%;
-    width: 100px;
-    height: 100px;
-    animation-duration: 10s;
-    animation-delay: 2s;
-}
-
-.bubbles span:nth-child(3) {
-    left: 30%;
-    width: 140px;
-    height: 140px;
-    animation-duration: 18s;
-    animation-delay: 4s;
-}
-
-.bubbles span:nth-child(4) {
-    left: 50%;
-    width: 160px;
-    height: 160px;
-    animation-duration: 20s;
-    animation-delay: 6s;
-}
-
-.bubbles span:nth-child(5) {
-    left: 70%;
-    width: 110px;
-    height: 110px;
-    animation-duration: 14s;
-    animation-delay: 8s;
-}
-
-.bubbles span:nth-child(6) {
-    left: 85%;
-    width: 180px;
-    height: 180px;
-    animation-duration: 22s;
-    animation-delay: 10s;
-}
-
-.bubbles span:nth-child(7) {
-    left: 40%;
-    width: 90px;
-    height: 90px;
-    animation-duration: 16s;
-    animation-delay: 3s;
-}
-
-.bubbles span:nth-child(8) {
-    left: 60%;
-    width: 130px;
-    height: 130px;
-    animation-duration: 19s;
-    animation-delay: 5s;
-}
-
-@keyframes bubble {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.5;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-1200px) scale(0.8);
-        opacity: 0;
-    }
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+        }
+        
+        .bubbles span {
+            position: absolute;
+            display: block;
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            opacity: 0.5;
+            border-radius: 50%;
+            animation: bubble 15s linear infinite;
+            bottom: -150px;
+        }
+        
+        .bubbles span:nth-child(1) {
+            left: 10%;
+            width: 120px;
+            height: 120px;
+            animation-duration: 12s;
+            animation-delay: 0s;
+        }
+        
+        .bubbles span:nth-child(2) {
+            left: 20%;
+            width: 100px;
+            height: 100px;
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+        
+        .bubbles span:nth-child(3) {
+            left: 30%;
+            width: 140px;
+            height: 140px;
+            animation-duration: 18s;
+            animation-delay: 4s;
+        }
+        
+        .bubbles span:nth-child(4) {
+            left: 50%;
+            width: 160px;
+            height: 160px;
+            animation-duration: 20s;
+            animation-delay: 6s;
+        }
+        
+        .bubbles span:nth-child(5) {
+            left: 70%;
+            width: 110px;
+            height: 110px;
+            animation-duration: 14s;
+            animation-delay: 8s;
+        }
+        
+        .bubbles span:nth-child(6) {
+            left: 85%;
+            width: 180px;
+            height: 180px;
+            animation-duration: 22s;
+            animation-delay: 10s;
+        }
+        
+        .bubbles span:nth-child(7) {
+            left: 40%;
+            width: 90px;
+            height: 90px;
+            animation-duration: 16s;
+            animation-delay: 3s;
+        }
+        
+        .bubbles span:nth-child(8) {
+            left: 60%;
+            width: 130px;
+            height: 130px;
+            animation-duration: 19s;
+            animation-delay: 5s;
+        }
+        
+        @keyframes bubble {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1200px) scale(0.8);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
@@ -242,6 +242,29 @@
     <footer>
         <p>&copy; 2025 YuvaWorks. All rights reserved.</p>
     </footer>
+
+    <!-- AI Chat Button -->
+    <div id="ai-chat-container">
+        <iframe id="ai-chat-iframe" src="https://www.chatbase.co/chatbot-iframe/WUpdiya0H_6UQAbH37ndm" frameborder="0" style="width: 350px; height: 500px; border: none; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); display: none; position: fixed; bottom: 80px; right: 20px; z-index: 1000;">
+        </iframe>
+        <button id="ai-chat-button" style="position: fixed; bottom: 20px; right: 20px; background: #2563eb; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; z-index: 1000;">
+            💬
+        </button>
+    </div>
+
+    <script>
+        // Toggle AI Chat iframe visibility
+        const chatButton = document.getElementById('ai-chat-button');
+        const chatIframe = document.getElementById('ai-chat-iframe');
+
+        chatButton.addEventListener('click', () => {
+            if (chatIframe.style.display === 'none' || chatIframe.style.display === '') {
+                chatIframe.style.display = 'block';
+            } else {
+                chatIframe.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>
