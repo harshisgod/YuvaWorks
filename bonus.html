@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Project Contract - YuvaWorks</title>
+    <title>Bonus & Rewards System - YuvaWorks</title>
     <style>
          :root {
             --primary: #2563eb;
@@ -23,16 +23,9 @@
             background-color: var(--darker);
             color: var(--light);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Center the content and ensure proper spacing */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            min-height: 100vh;
             margin: 0;
             padding: 0;
         }
-        /* Ensure the header spans the full width */
         
         header {
             background-color: var(--dark);
@@ -40,235 +33,317 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 10;
         }
         
         .logo {
             font-size: 24px;
             font-weight: bold;
             color: var(--secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
         }
         
-        .logo:hover {
+        .logo span {
             color: var(--primary);
         }
-        /* Center the contract details section without a box */
         
-        .contract-details {
-            width: 90%;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 40px;
-            background: rgba(17, 24, 39, 0.9);
-            /* Semi-transparent background */
-            border-radius: 10px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        .container {
+            padding: 80px 5%;
+        }
+        
+        .points-balance {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .points-balance h1 {
+            font-size: 3rem;
+            color: var(--primary);
+        }
+        
+        .points-balance p {
+            font-size: 1.2rem;
             color: var(--light);
         }
-        /* Style the contract heading */
         
-        .contract-details h1 {
-            font-size: 2.5rem;
+        .activity-history {
+            margin-bottom: 50px;
+        }
+        
+        .activity-history h2 {
+            font-size: 2rem;
             margin-bottom: 20px;
             color: var(--secondary);
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        /* Style the contract features list */
-        
-        .contract-details ul {
-            list-style: none;
-            padding: 0;
         }
         
-        .contract-details ul li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-            font-size: 1.1rem;
+        .activity-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--dark);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .activity-table th,
+        .activity-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .activity-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .activity-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .activity-table tr:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+        
+        .redeem-section {
+            margin-bottom: 50px;
+        }
+        
+        .redeem-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .reward-card {
+            background: linear-gradient(145deg, #1f2937, #111827);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .reward-card h3 {
+            font-size: 1.5rem;
             color: var(--light);
         }
         
-        .contract-details ul li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--success);
-            font-weight: bold;
+        .reward-card p {
+            font-size: 1rem;
+            color: #aaa;
         }
-        /* Enhance the button styling */
         
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        .btn-redeem {
+            background: var(--primary);
             color: white;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1.1rem;
             transition: all 0.3s ease;
-            display: block;
-            margin: 20px auto;
+        }
+        
+        .btn-redeem:hover {
+            background: var(--primary-dark);
+        }
+        
+        .badges-section {
             text-align: center;
-            text-decoration: none;
         }
         
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(37, 99, 235, 0.5);
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        .badges-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
         }
-        /* Ensure the footer spans the full width */
         
-        footer {
-            background-color: var(--dark);
-            padding: 20px 5%;
+        .badges-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .badge-card {
+            background: linear-gradient(145deg, #1f2937, #111827);
+            border-radius: 15px;
+            padding: 20px;
             text-align: center;
-            color: #aaa;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        /* Add a gradient overlay to the bubbles */
-        
-        .bubbles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--dark), var(--darker));
+            width: 200px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
-        .bubbles span {
-            position: absolute;
-            display: block;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            opacity: 0.6;
-            border-radius: 50%;
-            animation: bubble 10s linear infinite;
-            bottom: -150px;
-        }
-        
-        .bubbles span:nth-child(1) {
-            left: 10%;
+        .badge-card img {
             width: 80px;
             height: 80px;
-            animation-duration: 8s;
-            animation-delay: 0s;
+            margin-bottom: 10px;
         }
         
-        .bubbles span:nth-child(2) {
-            left: 20%;
-            width: 60px;
-            height: 60px;
-            animation-duration: 6s;
-            animation-delay: 2s;
+        .badge-card h3 {
+            font-size: 1.2rem;
+            color: var(--light);
         }
         
-        .bubbles span:nth-child(3) {
-            left: 30%;
-            width: 100px;
-            height: 100px;
-            animation-duration: 12s;
-            animation-delay: 4s;
-        }
-        
-        .bubbles span:nth-child(4) {
-            left: 50%;
-            width: 120px;
-            height: 120px;
-            animation-duration: 10s;
-            animation-delay: 6s;
-        }
-        
-        .bubbles span:nth-child(5) {
-            left: 70%;
-            width: 90px;
-            height: 90px;
-            animation-duration: 7s;
-            animation-delay: 8s;
-        }
-        
-        .bubbles span:nth-child(6) {
-            left: 85%;
-            width: 150px;
-            height: 150px;
-            animation-duration: 15s;
-            animation-delay: 10s;
-        }
-        
-        .bubbles span:nth-child(7) {
-            left: 40%;
-            width: 70px;
-            height: 70px;
-            animation-duration: 9s;
-            animation-delay: 3s;
-        }
-        
-        .bubbles span:nth-child(8) {
-            left: 60%;
-            width: 110px;
-            height: 110px;
-            animation-duration: 11s;
-            animation-delay: 5s;
-        }
-        
-        @keyframes bubble {
-            0% {
-                transform: translateY(0) scale(1);
-                opacity: 0.6;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-1200px) scale(0.8);
-                opacity: 0;
-            }
+        .badge-card p {
+            font-size: 0.9rem;
+            color: #aaa;
         }
     </style>
 </head>
 
 <body>
-    <div class="bubbles">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
     <header>
         <a href="index.html" class="logo">Yuva<span>Works</span></a>
     </header>
 
-    <section class="contract-details">
-        <h1>Basic Project Contract</h1>
-        <p>The Basic Project Contract is designed for small-scale projects with straightforward requirements. It ensures clarity and simplicity for both freelancers and clients.</p>
-        <h2>Features</h2>
-        <ul>
-            <li>Project scope definition</li>
-            <li>Payment terms & schedule</li>
-            <li>Basic deliverable timeline</li>
-            <li>Simple revision policy</li>
-            <li>Standard confidentiality clause</li>
-        </ul>
-        <p>This contract is ideal for freelancers and clients who want a quick and easy agreement for small projects. It ensures both parties are on the same page without unnecessary complexity.</p>
-        <a href="assets/basic-contract.pdf" class="btn-primary" target="_blank">Download Contract</a>
-    </section>
+    <div class="container">
+        <!-- Points Balance -->
+        <div class="points-balance">
+            <h1>Your Points Balance: 1,250</h1>
+            <p>Earn more points by completing activities and redeem them for exciting rewards!</p>
+        </div>
+
+        <!-- Activity History -->
+        <div class="activity-history">
+            <h2>Recent Activity</h2>
+            <table class="activity-table">
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Points</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Completed Project</td>
+                        <td>+200</td>
+                        <td>April 25, 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Left a Review</td>
+                        <td>+30</td>
+                        <td>April 24, 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Redeemed Reward</td>
+                        <td>-500</td>
+                        <td>April 23, 2025</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Redeem Rewards Section -->
+        <div class="redeem-section">
+            <h2>Redeem Rewards</h2>
+
+            <!-- Amazon -->
+            <div class="reward-card">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="assets/amazon.jpeg" alt="Amazon Logo" style="width: 50px; height: auto;">
+                    <div>
+                        <h3>Amazon Gift Voucher</h3>
+                        <p>Redeem 1,000 points for a ₹500 Amazon gift voucher.</p>
+                    </div>
+                </div>
+                <button class="btn-redeem">Redeem</button>
+            </div>
+
+            <!-- Flipkart -->
+            <div class="reward-card">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="assets/flipkart.jpeg" alt="Flipkart Logo" style="width: 50px; height: auto;">
+                    <div>
+                        <h3>Flipkart Gift Voucher</h3>
+                        <p>Redeem 1,000 points for a ₹500 Flipkart gift voucher.</p>
+                    </div>
+                </div>
+                <button class="btn-redeem">Redeem</button>
+            </div>
+
+            <!-- Myntra -->
+            <div class="reward-card">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="assets/myntra.jpeg" alt="Myntra Logo" style="width: 50px; height: auto;">
+                    <div>
+                        <h3>Myntra Gift Voucher</h3>
+                        <p>Redeem 1,000 points for a ₹500 Myntra gift voucher.</p>
+                    </div>
+                </div>
+                <button class="btn-redeem">Redeem</button>
+            </div>
+
+            <!-- Swiggy -->
+            <div class="reward-card">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="assets/swiggy.jpeg" alt="Swiggy Logo" style="width: 50px; height: auto;">
+                    <div>
+                        <h3>Swiggy Gift Voucher</h3>
+                        <p>Redeem 800 points for a ₹400 Swiggy gift voucher.</p>
+                    </div>
+                </div>
+                <button class="btn-redeem">Redeem</button>
+            </div>
+
+            <!-- Zomato -->
+            <div class="reward-card">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="assets/zomato.jpeg" alt="Zomato Logo" style="width: 50px; height: auto;">
+                    <div>
+                        <h3>Zomato Gift Voucher</h3>
+                        <p>Redeem 800 points for a ₹400 Zomato gift voucher.</p>
+                    </div>
+                </div>
+                <button class="btn-redeem">Redeem</button>
+            </div>
+
+            <!-- Paytm -->
+            <div class="reward-card">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="assets/paytm.jpeg" alt="Paytm Logo" style="width: 50px; height: auto;">
+                    <div>
+                        <h3>Paytm Wallet Credit</h3>
+                        <p>Redeem 1,200 points for ₹600 Paytm wallet credit.</p>
+                    </div>
+                </div>
+                <button class="btn-redeem">Redeem</button>
+            </div>
+        </div>
+
+        <!-- Badges Section -->
+        <div class="badges-section">
+            <h2>Your Badges</h2>
+            <div class="badges-container">
+                <div class="badge-card">
+                    <div class="badge-icon" style="font-size: 3rem; margin-bottom: 10px;">🏆</div>
+                    <h3>Top Freelancer</h3>
+                    <p>Awarded for completing 10+ projects successfully.</p>
+                </div>
+                <div class="badge-card">
+                    <div class="badge-icon" style="font-size: 3rem; margin-bottom: 10px;">🌟</div>
+                    <h3>Community Helper</h3>
+                    <p>Awarded for leaving 20+ reviews.</p>
+                </div>
+                <div class="badge-card">
+                    <div class="badge-icon" style="font-size: 3rem; margin-bottom: 10px;">💼</div>
+                    <h3>Business Pro</h3>
+                    <p>Awarded for earning ₹1,00,000+ on the platform.</p>
+                </div>
+                <div class="badge-card">
+                    <div class="badge-icon" style="font-size: 3rem; margin-bottom: 10px;">🚀</div>
+                    <h3>Fast Starter</h3>
+                    <p>Awarded for completing your first project within a week.</p>
+                </div>
+                <div class="badge-card">
+                    <div class="badge-icon" style="font-size: 3rem; margin-bottom: 10px;">🤝</div>
+                    <h3>Trusted Partner</h3>
+                    <p>Awarded for maintaining a 5-star rating for 3 months.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- AI Chat Button -->
     <div id="ai-chat-container">
@@ -278,10 +353,6 @@
             💬
         </button>
     </div>
-
-    <footer>
-        <p>&copy; 2025 YuvaWorks. All rights reserved.</p>
-    </footer>
 
     <script>
         // Toggle AI Chat iframe visibility
@@ -296,6 +367,10 @@
             }
         });
     </script>
+
+    <footer>
+        <p>&copy; 2025 YuvaWorks. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
