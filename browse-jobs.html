@@ -5,10 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yuva Works - Browse Jobs</title>
-    <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    rel="stylesheet"
-    />
     <style>
          :root {
             --primary-color: #3367d6;
@@ -61,7 +57,7 @@
         .nav-links a {
             text-decoration: none;
             color: var(--text-light);
-            font-size: 1rem; /* Fixed font-size */
+            font-size: 1rem;
         }
         
         .auth-buttons {
@@ -233,100 +229,7 @@
             background-color: var(--card-bg);
             border-radius: 8px;
         }
-
-        /* Profile Picture Styling */
-.user-profile {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    position: relative;
-}
-
-.user-profile img {
-    width: 40px; /* Keep the profile picture small */
-    height: 40px;
-    border-radius: 50%; /* Make it circular */
-    object-fit: cover; /* Ensure the image fits within the circle */
-    border: 2px solid var(--secondary-color); /* Add a border for better visibility */
-}
-
-.user-profile span {
-    color: var(--text-light);
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-/* Dropdown Menu Styling */
-.dropdown-menu {
-    position: absolute;
-    top: 110%; /* Adjusted for spacing below the profile picture */
-    right: 0;
-    background-color: var(--card-bg);
-    border-radius: 8px;
-    padding: 1rem;
-    min-width: 240px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    display: none;
-    z-index: 1000;
-    animation: fadeIn 0.3s ease;
-}
-
-.dropdown-menu.active {
-    display: block;
-}
-
-.dropdown-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.dropdown-menu ul li {
-    margin-bottom: 0.5rem;
-}
-
-.dropdown-menu ul li:last-child {
-    margin-bottom: 0;
-}
-
-.dropdown-menu ul li a {
-    text-decoration: none;
-    color: var(--text-light);
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.dropdown-menu ul li a i {
-    font-size: 1.2rem;
-    color: var(--secondary-color);
-}
-
-.dropdown-menu ul li a:hover {
-    background-color: var(--secondary-color);
-    color: white;
-}
-
-.dropdown-menu ul li a:hover i {
-    color: white;
-}
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        
         @media (max-width: 768px) {
             .filter-container {
                 grid-template-columns: 1fr;
@@ -342,7 +245,7 @@
     <nav class="navbar">
         <div class="logo-container">
             <div class="logo">
-                <a href="#" style="text-decoration: none; color: var(--secondary-color);">
+                <a href="index.html" style="text-decoration: none; color: var(--secondary-color);">
                     Yuva<span style="color: var(--text-light);">Works</span>
                 </a>
             </div>
@@ -353,52 +256,9 @@
                 <a href="fair-pay.html">Fair Pay</a>
             </div>
         </div>
-        <div class="auth-buttons" id="auth-buttons">
+        <div class="auth-buttons">
             <a href="login.html" class="btn btn-outline">Log In</a>
             <a href="signup.html" class="btn btn-primary">Sign Up</a>
-        </div>
-        <div class="user-profile" id="user-profile" style="display: none; position: relative;">
-            <img src="" alt="Profile Picture" id="profile-pic">
-            <span id="user-name"></span>
-            <div class="dropdown-menu" id="dropdown-menu">
-                <ul>
-                    <li>
-                        <a href="profile.html">
-                            <i class="fas fa-user"></i> My Profile
-                        </a>
-                    </li>
-                    <li>
-                        <a href="applications.html">
-                            <i class="fas fa-file-alt"></i> My Applications
-                        </a>
-                    </li>
-                    <li>
-                        <a href="projects-posted.html">
-                            <i class="fas fa-briefcase"></i> Projects Posted
-                        </a>
-                    </li>
-                    <li>
-                        <a href="saved-jobs.html">
-                            <i class="fas fa-bookmark"></i> Saved Jobs
-                        </a>
-                    </li>
-                    <li>
-                        <a href="bonus-rewards.html">
-                            <i class="fas fa-gift"></i> My Bonus/Rewards
-                        </a>
-                    </li>
-                    <li>
-                        <a href="referrals.html">
-                            <i class="fas fa-users"></i> My Referrals
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" id="logout-btn">
-                            <i class="fas fa-sign-out-alt"></i> Logout
-                        </a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 
@@ -459,9 +319,18 @@
         </div>
     </div>
 
+    <!-- AI Chat Button -->
+    <div id="ai-chat-container">
+        <iframe id="ai-chat-iframe" src="https://www.chatbase.co/chatbot-iframe/WUpdiya0H_6UQAbH37ndm" frameborder="0" style="width: 350px; height: 500px; border: none; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); display: none; position: fixed; bottom: 80px; right: 20px; z-index: 1000;">
+        </iframe>
+        <button id="ai-chat-button" style="position: fixed; bottom: 20px; right: 20px; background: #2563eb; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; z-index: 1000;">
+            💬
+        </button>
+    </div>
+
     <script>
         // Sample jobs data (this would be populated from your backend)
-        let jobs = [ {
+        let jobs = [{
             id: 1,
             title: "Full Stack E-commerce Website Development",
             description: "Looking for an experienced developer to build a responsive e-commerce website with product listings, shopping cart, and payment integration.",
@@ -527,7 +396,7 @@
             duration: "short",
             budget: "low",
             tags: ["Logo Design", "Branding", "Adobe Illustrator"]
-        } ];
+        }];
 
         // Elements
         const jobsContainer = document.getElementById('jobs-container');
@@ -652,94 +521,33 @@
             }
         }
 
-        // Check if user is logged in
-function checkUserLogin() {
-    const userData = localStorage.getItem("yuvaworks_user");
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load jobs from storage if available
+            loadJobsFromStorage();
 
-    if (userData) {
-        // User is logged in
-        const user = JSON.parse(userData);
+            // Render all jobs initially
+            renderJobs(jobs);
 
-        // Hide auth buttons and show profile
-        document.getElementById("auth-buttons").style.display = "none";
-        document.getElementById("user-profile").style.display = "flex";
+            // Listen for messages from job posting page
+            window.addEventListener('message', (event) => {
+                if (event.data.type === 'newJob') {
+                    addNewJob(event.data.job);
+                }
+            });
+        });
 
-        // Set user profile info
-        document.getElementById("profile-pic").src = user.profilePic;
-        document.getElementById("user-name").textContent = `${user.firstName} ${user.lastName}`;
-    } else {
-        // User is not logged in
-        document.getElementById("auth-buttons").style.display = "flex";
-        document.getElementById("user-profile").style.display = "none";
-    }
-}
+        // Toggle AI Chat iframe visibility
+        const chatButton = document.getElementById('ai-chat-button');
+        const chatIframe = document.getElementById('ai-chat-iframe');
 
-// Toggle dropdown menu
-const userProfile = document.getElementById("user-profile");
-const dropdownMenu = document.getElementById("dropdown-menu");
-
-if (userProfile && dropdownMenu) {
-    userProfile.addEventListener("click", () => {
-        dropdownMenu.classList.toggle("active");
-    });
-
-    // Close dropdown menu when clicking outside
-    document.addEventListener("click", (e) => {
-        if (!userProfile.contains(e.target) && !dropdownMenu.contains(e.target)) {
-            dropdownMenu.classList.remove("active");
-        }
-    });
-}
-
-// Logout functionality
-const logoutButton = document.getElementById("logout-btn");
-if (logoutButton) {
-    logoutButton.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        // Clear user data from localStorage
-        localStorage.removeItem("yuvaworks_user");
-
-        // Redirect to the login page
-        window.location.href = "index.html";
-    });
-}
-
-// Redirect to the appropriate page when clicking the logo
-const logoLink = document.querySelector(".logo a");
-
-if (logoLink) {
-    logoLink.addEventListener("click", (e) => {
-        const userData = localStorage.getItem("yuvaworks_user");
-
-        if (!userData) {
-            // User is not logged in, redirect to index.html
-            window.location.href = "index.html";
-        } else {
-            // User is logged in, redirect to home.html
-            window.location.href = "home.html";
-        }
-    });
-}
-
-// Initialize
-document.addEventListener("DOMContentLoaded", () => {
-    // Load jobs from storage if available
-    loadJobsFromStorage();
-
-    // Render all jobs initially
-    renderJobs(jobs);
-
-    // Check login status
-    checkUserLogin();
-
-    // Listen for messages from job posting page
-    window.addEventListener("message", (event) => {
-        if (event.data.type === "newJob") {
-            addNewJob(event.data.job);
-        }
-    });
-});
+        chatButton.addEventListener('click', () => {
+            if (chatIframe.style.display === 'none' || chatIframe.style.display === '') {
+                chatIframe.style.display = 'block';
+            } else {
+                chatIframe.style.display = 'none';
+            }
+        });
     </script>
 </body>
 
