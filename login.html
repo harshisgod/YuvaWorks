@@ -787,13 +787,17 @@
                 // Store user data in localStorage
                 localStorage.setItem('yuvaworks_user', JSON.stringify(userData));
 
-                // Simulate API call with a delay
-                setTimeout(() => {
-                    signinBtn.classList.remove('loading');
+                // Add this after successful login validation
+                localStorage.setItem('yuvaWorks_loggedIn', 'true');
 
-                    // Redirect to home.html
-                    window.location.href = 'home.html';
-                }, 1500);
+                // Check if there's a redirect URL
+                const redirectUrl = localStorage.getItem('yuvaWorks_redirectUrl');
+                if (redirectUrl) {
+                    localStorage.removeItem('yuvaWorks_redirectUrl'); // Clear the stored URL
+                    window.location.href = redirectUrl;
+                } else {
+                    window.location.href = 'index.html'; // Default redirect
+                }
             }
         });
 
@@ -898,6 +902,12 @@
                 chatIframe.style.display = 'none';
             }
         });
+
+        function logout() {
+            localStorage.removeItem('yuvaWorks_loggedIn');
+            localStorage.removeItem('yuvaWorks_redirectUrl');
+            window.location.href = 'login.html';
+        }
     </script>
 </body>
 
