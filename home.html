@@ -741,6 +741,22 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const profilePicElement = document.getElementById('profile-pic');
+
+            // Load the saved profile picture from localStorage
+            const savedPicture = localStorage.getItem('yuvaworks_profile_picture');
+
+            // If no picture is saved, use the default 'noprofile.webp'
+            if (savedPicture) {
+                profilePicElement.src = savedPicture;
+            } else {
+                profilePicElement.src = 'assets/noprofile.webp'; // Path to the default profile picture
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
             const escrowRedirectBtn = document.getElementById('escrow-redirect-btn');
 
             // Check if the user is logged in
