@@ -46,6 +46,8 @@
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 2rem;
+            position: relative;
+            /* Ensure the close button is positioned relative to the container */
         }
         
         .referral-header {
@@ -122,7 +124,7 @@
         
         .stats .card p {
             font-size: 1rem;
-            color: var(--text-color);
+            color: var (--text-color);
         }
         
         .leaderboard {
@@ -162,6 +164,48 @@
         .leaderboard td {
             color: var(--text-color);
         }
+        
+        .close-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: var(--accent-color);
+            text-decoration: none;
+            background-color: var(--secondary-color);
+            padding: 10px 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+        
+        .close-button:hover {
+            background-color: var(--blue-light);
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        .close-button-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: var(--accent-color);
+            text-decoration: none;
+            background-color: var(--secondary-color);
+            padding: 10px 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+        
+        .close-button-container:hover {
+            background-color: var(--blue-light);
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
     </style>
 </head>
 
@@ -171,6 +215,9 @@
     </header>
 
     <div class="container">
+        <!-- Close Button -->
+        <a href="index.html" class="close-button-container" title="Go back to Home Page">&times;</a>
+
         <!-- Referral Header -->
         <div class="referral-header">
             <h1>Invite Your Friends & Earn Rewards</h1>
