@@ -2280,7 +2280,7 @@
                             <span style="color: var(--success); position: absolute; left: 0;">✓</span> Pay only for completed and approved work
                         </li>
                         <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
-                            <span style="color: var(--success); position: absolute; left: 0;">✓</span> Track project progress easily
+                            <span style="color: var (--success); position: absolute; left: 0;">✓</span> Track project progress easily
                         </li>
                         <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
                             <span style="color: var(--success); position: absolute; left: 0;">✓</span> Better budget management
@@ -2289,7 +2289,7 @@
                 </div>
             </div>
             <div class="milestone-card reveal delay-1">
-                <h3 style```html <h3 style="margin-bottom: 20px;">Project Milestones</h3>
+                <h3 style="margin-bottom: 20px;">Project Milestones</h3>
                 <ul class="milestone-list">
                     <li class="milestone-item" data-status="completed">
                         <div class="milestone-header">
@@ -2597,6 +2597,14 @@
         </div>
     </footer>
 
+    <!-- AI Chat Button -->
+    <div id="ai-chat-container">
+        <iframe id="ai-chat-iframe" src="https://www.chatbase.co/chatbot-iframe/WUpdiya0H_6UQAbH37ndm" frameborder="0" style="width: 350px; height: 500px; border: none; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); display: none; position: fixed; bottom: 80px; right: 20px; z-index: 1000;">
+        </iframe>
+        <button id="ai-chat-button" style="position: fixed; bottom: 20px; right: 20px; background: #2563eb; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; z-index: 1000;">
+            💬
+        </button>
+    </div>
 
     <!-- JavaScript -->
     <script>
@@ -2738,6 +2746,18 @@
                     }
                 }
             });
+        });
+
+        // Toggle AI Chat iframe visibility
+        const chatButton = document.getElementById('ai-chat-button');
+        const chatIframe = document.getElementById('ai-chat-iframe');
+
+        chatButton.addEventListener('click', () => {
+            if (chatIframe.style.display === 'none' || chatIframe.style.display === '') {
+                chatIframe.style.display = 'block';
+            } else {
+                chatIframe.style.display = 'none';
+            }
         });
     </script>
     <script src="init.js "></script>
