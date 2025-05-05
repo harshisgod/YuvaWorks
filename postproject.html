@@ -499,27 +499,51 @@
                 font-size: 0.9rem;
             }
         }
+        /* Modal Styles */
+        
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Semi-transparent background */
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            padding: 30px;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+            animation: fadeIn 0.3s ease-in-out;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-button:hover {
+            color: var(--primary-color);
+        }
     </style>
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <a href="index.html">Yuva</a>
-                    <a href="index.html">Works</a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="how-it-works.html">How It Works</a></li>
-                    <li><a href="#">Karma System</a></li>
-                    <li><a href="browse-jobs.html">Browse Jobs</a></li>
-                    <li><a href="#">Fair Pay</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
     <main>
         <div class="container">
             <div class="page-title">
@@ -679,53 +703,6 @@
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>YuvaWorks</h3>
-                    <p>Connecting talented freelancers with great clients. Fair pay and transparent processes for everyone.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>For Clients</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">How to Hire</a></li>
-                        <li><a href="#">Talent Marketplace</a></li>
-                        <li><a href="#">Project Catalog</a></li>
-                        <li><a href="#">Enterprise Solutions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>For Freelancers</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Find Work</a></li>
-                        <li><a href="#">Direct Contracts</a></li>
-                        <li><a href="#">Karma System</a></li>
-                        <li><a href="#">Fair Pay Estimator</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Help & Support</a></li>
-                        <li><a href="#">Success Stories</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 YuvaWorks. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
     <!-- AI Chat Button -->
     <div id="ai-chat-container">
         <iframe id="ai-chat-iframe" src="https://www.chatbase.co/chatbot-iframe/WUpdiya0H_6UQAbH37ndm" frameborder="0" style="width: 350px; height: 500px; border: none; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); display: none; position: fixed; bottom: 80px; right: 20px; z-index: 1000;">
@@ -733,6 +710,36 @@
         <button id="ai-chat-button" style="position: fixed; bottom: 20px; right: 20px; background: #2563eb; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; z-index: 1000;">
             💬
         </button>
+    </div>
+
+    <div id="post-project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="page-title">
+                <h1 class="animate__animated animate__fadeInDown">Post a Project</h1>
+                <p>Tell us what you need and find the perfect freelancer for your project</p>
+            </div>
+            <form class="post-project-form">
+                <!-- Existing form content goes here -->
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-file-alt"></i> Project Details</h2>
+                    <div class="form-group">
+                        <label for="project-title">Project Title*</label>
+                        <input type="text" id="project-title" class="form-control" placeholder="E.g., Full Stack E-commerce Website Development" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="project-description">Project Description*</label>
+                        <textarea id="project-description" class="form-control" placeholder="Provide a detailed description of your project, requirements, and expectations..." required></textarea>
+                        <div class="form-info">Be clear and specific about what you need to get the best responses</div>
+                    </div>
+                </div>
+                <!-- Add the rest of the form sections here -->
+                <div class="form-footer">
+                    <button type="button" class="btn btn-outline">Save as Draft</button>
+                    <button type="submit" class="btn btn-primary animate-pulse">Post Project</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script>
