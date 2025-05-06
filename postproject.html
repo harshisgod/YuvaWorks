@@ -512,46 +512,39 @@
                 font-size: 0.9rem;
             }
         }
-        /* Modal Styles */
-        
+
         .modal {
             display: none;
-            /* Hidden by default */
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
-            /* Semi-transparent background */
-            z-index: 1000;
             justify-content: center;
             align-items: center;
+            z-index: 1000;
         }
-        
+
         .modal-content {
-            background-color: var(--secondary-color);
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            padding: 20px;
             border-radius: 10px;
-            padding: 30px;
             width: 90%;
-            max-width: 800px;
-            position: relative;
-            animation: fadeIn 0.3s ease-in-out;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
-        
+
         .close-button {
-            position: absolute;
-            top: 15px;
-            right: 15px;
+            float: right;
             font-size: 1.5rem;
-            color: var(--text-light);
             cursor: pointer;
-            transition: color 0.3s;
+            color: var(--text-color);
         }
-        
+
         .close-button:hover {
-            color: var(--primary-color);
+            color: var(--accent-color);
         }
     </style>
 </head>
@@ -564,7 +557,7 @@
                 <p>Tell us what you need and find the perfect freelancer for your project</p>
             </div>
 
-            <form class="post-project-form">
+            <form class="post-project-form" target="_blank">
                 <div class="form-section">
                     <h2 class="section-title"><i class="fas fa-file-alt"></i> Project Details</h2>
                     <div class="form-group">
@@ -713,38 +706,25 @@
                     <button type="submit" class="btn btn-primary animate-pulse">Post Project</button>
                 </div>
             </form>
+
+            <h3>Build a Website</h3>
+            <p><strong>Description:</strong> Create a responsive website for a business.</p>
+            <p><strong>Category:</strong> Web Development</p>
+
+            <h3>Design a Logo</h3>
+            <p><strong>Description:</strong> Create a modern logo for a startup.</p>
+            <p><strong>Category:</strong> Graphic Design</p>
         </div>
     </main>
 
-
-
-    <div id="post-project-modal" class="modal">
+    <div id="project-modal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
-            <div class="page-title">
-                <h1 class="animate__animated animate__fadeInDown">Post a Project</h1>
-                <p>Tell us what you need and find the perfect freelancer for your project</p>
-            </div>
-            <form class="post-project-form">
-                <!-- Existing form content goes here -->
-                <div class="form-section">
-                    <h2 class="section-title"><i class="fas fa-file-alt"></i> Project Details</h2>
-                    <div class="form-group">
-                        <label for="project-title">Project Title*</label>
-                        <input type="text" id="project-title" class="form-control" placeholder="E.g., Full Stack E-commerce Website Development" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="project-description">Project Description*</label>
-                        <textarea id="project-description" class="form-control" placeholder="Provide a detailed description of your project, requirements, and expectations..." required></textarea>
-                        <div class="form-info">Be clear and specific about what you need to get the best responses</div>
-                    </div>
-                </div>
-                <!-- Add the rest of the form sections here -->
-                <div class="form-footer">
-                    <button type="button" class="btn btn-outline">Save as Draft</button>
-                    <button type="submit" class="btn btn-primary animate-pulse">Post Project</button>
-                </div>
-            </form>
+            <h3 id="modal-title"></h3>
+            <p><strong>Description:</strong> <span id="modal-description"></span></p>
+            <p><strong>Category:</strong> <span id="modal-category"></span></p>
+            <p><strong>Budget:</strong> ₹<span id="modal-budget"></span></p>
+            <p><strong>Timeline:</strong> <span id="modal-timeline"></span></p>
         </div>
     </div>
 
@@ -812,94 +792,34 @@
             });
 
             // Prevent form submission (for demo)
-            document.querySelector('form').addEventListener('submit', function(e) {
-                e.preventDefault();
+            document.querySelector('form').addEventListener('submit', function (e) {
+                e.preventDefault(); // Prevent default form submission
 
-                // Collect form data
-                const projectTitle = document.getElementById('project-title').value;
-                const projectDescription = document.getElementById('project-description').value;
+                // Get project details from the form
+                const projectTitle = document.getElementById('project-title').value.trim();
+                const projectDescription = document.getElementById('project-description').value.trim();
                 const projectCategory = document.getElementById('project-category').value;
-                const budgetAmount = parseFloat(document.getElementById('budget-amount').value);
-                const timelineValue = document.getElementById('timeline').value;
-                const experienceLevel = document.getElementById('experience-level').value;
+                const budgetAmount = document.getElementById('budget-amount').value.trim();
+                const timeline = document.getElementById('timeline').value;
 
-                // Collect tags/skills
-                const tagElements = document.querySelectorAll('.tag');
-                const tags = Array.from(tagElements).map(tag => {
-                    // Extract just the text without the X button
-                    return tag.textContent.trim().replace('×', '').trim();
-                });
-
-                // Format duration based on timeline selection
-                let duration;
-                switch (timelineValue) {
-                    case 'less-than-week':
-                        duration = 'short';
-                        break;
-                    case 'one-two-weeks':
-                    case 'two-four-weeks':
-                        duration = 'medium';
-                        break;
-                    case 'one-three-months':
-                    case 'more-than-three':
-                        duration = 'long';
-                        break;
-                    default:
-                        duration = 'medium';
+                if (!projectTitle || !projectDescription || !projectCategory || !budgetAmount || !timeline) {
+                    alert('Please fill in all required fields.');
+                    return; // Stop further execution if fields are empty
                 }
 
-                // Format experience level 
-                let formattedExperience;
-                switch (experienceLevel) {
-                    case 'entry':
-                        formattedExperience = 'beginner';
-                        break;
-                    case 'intermediate':
-                        formattedExperience = 'intermediate';
-                        break;
-                    case 'expert':
-                        formattedExperience = 'expert';
-                        break;
-                    default:
-                        formattedExperience = 'intermediate';
-                }
-
-                // Determine budget category
-                let budgetCategory;
-                if (budgetAmount < 15000) {
-                    budgetCategory = 'low';
-                } else if (budgetAmount < 50000) {
-                    budgetCategory = 'medium';
-                } else {
-                    budgetCategory = 'high';
-                }
-
-                // Create the job object
-                const newJob = {
-                    id: Date.now(), // Use timestamp as unique ID
+                // Save project data to localStorage
+                const postedProjects = JSON.parse(localStorage.getItem('posted_projects')) || [];
+                postedProjects.push({
                     title: projectTitle,
                     description: projectDescription,
-                    price: budgetAmount,
-                    postedDays: 0, // Just posted today
                     category: projectCategory,
-                    experienceLevel: formattedExperience,
-                    duration: duration,
-                    budget: budgetCategory,
-                    tags: tags
-                };
+                    budget: budgetAmount,
+                    timeline: timeline,
+                });
+                localStorage.setItem('posted_projects', JSON.stringify(postedProjects));
 
-                // Store the job in localStorage
-                let existingJobs = JSON.parse(localStorage.getItem('yuvaWorks_jobs') || '[]');
-                existingJobs.unshift(newJob); // Add to the beginning of the array
-                localStorage.setItem('yuvaWorks_jobs', JSON.stringify(existingJobs));
-
-                // Show success message
-                alert('Project posted successfully! Redirecting to jobs page...');
-
-                // Redirect to browse jobs page
-                setTimeout(() => {
-                    window.location.href = 'browse-jobs.html'; // Update this if your filename is different
-                }, 1000);
+                // Redirect to the "Posted Projects" page in a new tab
+                window.open('posted-projects.html', '_blank');
             });
 
             // Animation on scroll
@@ -931,6 +851,58 @@
             } else {
                 chatIframe.style.display = 'none';
             }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const postedProjects = JSON.parse(localStorage.getItem('posted_projects')) || [];
+            const container = document.querySelector('.container');
+            const modal = document.getElementById('project-modal');
+            const closeButton = document.querySelector('.close-button');
+
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const modalCategory = document.getElementById('modal-category');
+            const modalBudget = document.getElementById('modal-budget');
+            const modalTimeline = document.getElementById('modal-timeline');
+
+            if (postedProjects.length === 0) {
+                container.innerHTML = '<p>No projects have been posted yet.</p>';
+                return;
+            }
+
+            postedProjects.forEach((project, index) => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                projectCard.innerHTML = `
+                    <h3>${project.title}</h3>
+                    <p><strong>Category:</strong> ${project.category}</p>
+                    <p><strong>Budget:</strong> ₹${project.budget}</p>
+                `;
+                projectCard.addEventListener('click', () => {
+                    // Populate modal with project details
+                    modalTitle.textContent = project.title;
+                    modalDescription.textContent = project.description;
+                    modalCategory.textContent = project.category;
+                    modalBudget.textContent = project.budget;
+                    modalTimeline.textContent = project.timeline;
+
+                    // Show modal
+                    modal.style.display = 'flex';
+                });
+                container.appendChild(projectCard);
+            });
+
+            // Close modal when the close button is clicked
+            closeButton.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            // Close modal when clicking outside the modal content
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
         });
     </script>
 </body>
