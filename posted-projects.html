@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details - YuvaWorks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --accent-color: #64ffda;
+            --secondary-color: #112240;
+            --text-color: #ccd6f6;
+            --blue-accent: #5671f5;
+            --primary-bg: #0a0f29;
+            --card-bg: #141b41;
+            --text-primary: #ffffff;
+            --text-secondary: #8790ab;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif; /* Sleek and modern font */
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 2rem; /* Larger logo */
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .container {
+            max-width: 80%; /* Occupies more horizontal space */
+            margin: 2rem auto;
+            padding: 3rem 4rem; /* Balanced padding for a rectangular shape */
+            background-color: var(--card-bg);
+            border-radius: 15px; /* Slightly rounded corners */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow for better focus */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+            font-size: 2.5rem; /* Larger font size for the title */
+            font-weight: 700;
+        }
+
+        p {
+            margin: 1rem 0; /* Increased spacing between paragraphs */
+            font-size: 1.2rem; /* Slightly larger font size */
+            line-height: 1.8; /* Improved readability */
+        }
+
+        p strong {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 15px 35px; /* Larger button for better usability */
+            background-color: var(--accent-color);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 8px; /* More rounded button */
+            font-size: 1.2rem; /* Larger font size for the button */
+            text-align: center;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background-color: var(--blue-accent);
+            transform: translateY(-3px); /* Slight lift effect on hover */
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        #project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            padding: 30px;
+            border-radius: 15px;
+            width: 95%;
+            max-width: 800px; /* Increased width */
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-edit {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-edit:hover {
+            background-color: var(--blue-accent);
+        }
+
+        .btn-delete {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: transparent; /* Transparent background */
+            color: #ff4d4d; /* Red color for the trash icon */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem; /* Slightly larger icon size */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s ease;
+        }
+
+        .btn-delete:hover {
+            color: #ff1a1a; /* Darker red on hover */
+        }
+
+        .close-button {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .close-button:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            Yuva<span>Works</span>
+        </a>
+    </header>
+
+    <div class="container">
+        <h1>Posted Projects</h1>
+        <div id="projects-container"></div>
+    </div>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modal-title"></h3>
+            <p><strong>Description:</strong> <span id="modal-description"></span></p>
+            <p><strong>Category:</strong> <span id="modal-category"></span></p>
+            <p><strong>Budget:</strong> ₹<span id="modal-budget"></span></p>
+            <p><strong>Timeline:</strong> <span id="modal-timeline"></span></p>
+            <button id="edit-button" class="btn-edit">Edit Project</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const postedProjects = JSON.parse(localStorage.getItem('posted_projects')) || [];
+            const projectsContainer = document.getElementById('projects-container');
+            const modal = document.getElementById('project-modal');
+            const closeButton = document.querySelector('.close-button');
+            const editButton = document.getElementById('edit-button');
+
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const modalCategory = document.getElementById('modal-category');
+            const modalBudget = document.getElementById('modal-budget');
+            const modalTimeline = document.getElementById('modal-timeline');
+
+            let currentProjectIndex = null;
+
+            if (postedProjects.length === 0) {
+                projectsContainer.innerHTML = '<p>No projects have been posted yet.</p>';
+                return;
+            }
+
+            postedProjects.forEach((project, index) => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                projectCard.innerHTML = `
+                    <h3>${project.title}</h3>
+                    <p><strong>Category:</strong> ${project.category}</p>
+                    <p><strong>Budget:</strong> ₹${project.budget}</p>
+                    <button class="btn-delete" data-index="${index}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                projectCard.addEventListener('click', () => {
+                    // Populate modal with project details
+                    modalTitle.textContent = project.title;
+                    modalDescription.textContent = project.description;
+                    modalCategory.textContent = project.category;
+                    modalBudget.textContent = project.budget;
+                    modalTimeline.textContent = project.timeline;
+
+                    // Save the current project index for editing
+                    currentProjectIndex = index;
+
+                    // Show modal
+                    modal.style.display = 'flex';
+                });
+
+                // Add delete functionality
+                const deleteButton = projectCard.querySelector('.btn-delete');
+                deleteButton.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent triggering the modal
+                    const projectIndex = parseInt(deleteButton.getAttribute('data-index'), 10);
+
+                    // Remove the project from the array
+                    postedProjects.splice(projectIndex, 1);
+
+                    // Update localStorage
+                    localStorage.setItem('posted_projects', JSON.stringify(postedProjects));
+
+                    // Reload the page to reflect changes
+                    window.location.reload();
+                });
+
+                projectsContainer.appendChild(projectCard);
+            });
+
+            // Close modal when the close button is clicked
+            closeButton.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            // Close modal when clicking outside the modal content
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Handle Edit Button Click
+            editButton.addEventListener('click', () => {
+                const project = postedProjects[currentProjectIndex];
+
+                // Replace modal content with an edit form
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h3>Edit Project</h3>
+                        <form id="edit-form">
+                            <label for="edit-title">Title:</label>
+                            <input type="text" id="edit-title" value="${project.title}" required>
+                            
+                            <label for="edit-description">Description:</label>
+                            <textarea id="edit-description" required>${project.description}</textarea>
+                            
+                            <label for="edit-category">Category:</label>
+                            <input type="text" id="edit-category" value="${project.category}" required>
+                            
+                            <label for="edit-budget">Budget:</label>
+                            <input type="number" id="edit-budget" value="${project.budget}" required>
+                            
+                            <label for="edit-timeline">Timeline:</label>
+                            <input type="text" id="edit-timeline" value="${project.timeline}" required>
+                            
+                            <button type="submit" class="btn-edit">Save Changes</button>
+                        </form>
+                    </div>
+                `;
+
+                // Handle Save Changes
+                const editForm = document.getElementById('edit-form');
+                editForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    // Update project details
+                    project.title = document.getElementById('edit-title').value;
+                    project.description = document.getElementById('edit-description').value;
+                    project.category = document.getElementById('edit-category').value;
+                    project.budget = document.getElementById('edit-budget').value;
+                    project.timeline = document.getElementById('edit-timeline').value;
+
+                    // Save updated projects to localStorage
+                    localStorage.setItem('posted_projects', JSON.stringify(postedProjects));
+
+                    // Reload the page to reflect changes
+                    window.location.reload();
+                });
+
+                // Close modal when the close button is clicked
+                document.querySelector('.close-button').addEventListener('click', () => {
+                    modal.style.display = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
