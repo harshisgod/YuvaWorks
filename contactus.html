@@ -19,6 +19,15 @@
             --danger: #ff3366;
             --gray: #718096;
             --gray-dark: #2d3748;
+            /* Add light theme variables */
+            --light-bg: #ffffff;
+            --light-secondary: #f8fafc;
+            --light-text: #1a202c;
+            --light-text-secondary: #4a5568;
+            --light-border: #e2e8f0;
+            --light-primary: #3182ce;
+            --light-accent: #4299e1;
+            --light-hover: #ebf8ff;
         }
         
         * {
@@ -124,6 +133,8 @@
             font-size: 1.8rem;
             background: linear-gradient(45deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
+            background-clip: text;
+            background-clip: text;
             background-clip: text;
             color: transparent;
             font-weight: 800;
@@ -467,7 +478,7 @@
         
         .features {
             padding: 5rem 5%;
-            background-color: var(--dark);
+            background-color: var (--dark);
         }
         
         .features-grid {
@@ -1391,6 +1402,233 @@
                 flex-direction: column;
             }
         }
+        /* Add theme toggle styles */
+        
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--light);
+            font-size: 0.9rem;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 15px;
+        }
+        /* Light theme styles */
+        
+        body.light-theme {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+        
+        body.light-theme header {
+            background-color: var(--light-secondary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.light-theme .logo h1 {
+            background: linear-gradient(45deg, var(--light-primary), var(--light-accent));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        
+        body.light-theme nav ul li a {
+            color: var(--light-text);
+        }
+        
+        body.light-theme .theme-toggle {
+            background: var(--light-hover);
+            color: var(--light-text);
+            border: 1px solid var(--light-border);
+        }
+        
+        body.light-theme .contact-section {
+            background: linear-gradient(135deg, var(--light-bg), var(--light-secondary));
+        }
+        
+        body.light-theme .contact-form-container {
+            background: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--light-border);
+        }
+        
+        body.light-theme .contact-item {
+            background: white;
+            border: 1px solid var(--light-border);
+        }
+        
+        body.light-theme .contact-text h3,
+        body.light-theme .contact-text a {
+            color: var(--light-text);
+        }
+        /* Update the light theme styles in your CSS */
+        
+        body.light-theme {
+            background-color: #f8fafc;
+            color: #1a202c;
+        }
+        
+        body.light-theme header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        body.light-theme .logo h1 {
+            background: linear-gradient(45deg, #3182ce, #4299e1);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        
+        body.light-theme .search-bar input {
+            background-color: #f1f5f9;
+            color: #1a202c;
+            border: 1px solid #e2e8f0;
+        }
+        
+        body.light-theme .search-bar button {
+            color: #3182ce;
+        }
+        
+        body.light-theme nav ul li a {
+            color: #2d3748;
+        }
+        
+        body.light-theme nav ul li a:hover {
+            color: #3182ce;
+            background-color: #ebf8ff;
+        }
+        
+        body.light-theme .contact-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        body.light-theme .contact-info h2 {
+            background: linear-gradient(45deg, #2563eb, #3182ce);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        
+        body.light-theme .contact-info p {
+            color: #4a5568;
+        }
+        
+        body.light-theme .contact-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        body.light-theme .contact-text h3 {
+            color: #2d3748;
+        }
+        
+        body.light-theme .contact-text a,
+        body.light-theme .contact-text p {
+            color: #4a5568;
+        }
+        
+        body.light-theme .contact-form-container {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+        
+        body.light-theme .contact-form-header h2 {
+            color: #2d3748;
+        }
+        
+        body.light-theme .contact-form-header p {
+            color: #4a5568;
+        }
+        
+        body.light-theme .form-group label {
+            color: #2d3748;
+        }
+        
+        body.light-theme .form-group input,
+        body.light-theme .form-group textarea {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #1a202c;
+        }
+        
+        body.light-theme .form-group input:focus,
+        body.light-theme .form-group textarea:focus {
+            border-color: #3182ce;
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+        }
+        
+        body.light-theme .submit-btn {
+            background: linear-gradient(45deg, #3182ce, #4299e1);
+        }
+        
+        body.light-theme .social-link-contact {
+            background-color: #f1f5f9;
+            color: #3182ce;
+        }
+        
+        body.light-theme .social-link-contact:hover {
+            background-color: #3182ce;
+            color: white;
+        }
+        
+        body.light-theme footer {
+            background-color: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        body.light-theme .footer-logo h2 {
+            background: linear-gradient(45deg, #3182ce, #4299e1);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        
+        body.light-theme .footer-logo p,
+        body.light-theme .footer-links ul li a {
+            color: #4a5568;
+        }
+        
+        body.light-theme .footer-links h3 {
+            color: #2d3748;
+        }
+        
+        body.light-theme .social-link {
+            background-color: #f1f5f9;
+            color: #3182ce;
+        }
+        
+        body.light-theme .newsletter-form input {
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            color: #1a202c;
+        }
+        
+        body.light-theme .newsletter-form button {
+            background-color: #3182ce;
+        }
+        
+        body.light-theme .copyright {
+            color: #4a5568;
+        }
+        
+        body.light-theme .footer-bottom-links a {
+            color: #4a5568;
+        }
+        
+        body.light-theme .theme-toggle {
+            background: #f1f5f9;
+            color: #2d3748;
+            border: 1px solid #e2e8f0;
+        }
+        
+        body.light-theme .theme-toggle:hover {
+            background: #e2e8f0;
+            color: #3182ce;
+        }
     </style>
 </head>
 
@@ -1406,8 +1644,13 @@
         </div>
         <nav>
             <ul>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-sun"></i>
+                    <span>Light Mode</span>
+                </button>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="browse-jobs.html">Browse Jobs</a></li>
+
                 <li><a href="how-it-works.html">How it Works</a></li>
             </ul>
         </nav>
@@ -1586,7 +1829,6 @@
                 window.location.href = mailtoLink;
 
                 // Alternative: For production use EmailJS or similar service
-                // This requires adding the EmailJS library to your project
                 /* 
                 emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
                     from_name: name,
@@ -1594,29 +1836,40 @@
                     subject: subject,
                     message: message,
                     to_email: "kunalj6988@gmail.com"
-                }).then(
-                    function(response) {
-                        alert("Message sent successfully!");
-                        $('#contactForm')[0].reset();
-                    },
-                    function(error) {
-                        alert("Failed to send message. Please try again.");
-                    }
-                );
+                }).then(function(response) {
+                    alert('Message sent successfully!');
+                }, function(error) {
+                    alert('Failed to send message. Please try again later.');
+                });
                 */
             });
+        });
+    </script>
 
-            // Toggle AI Chat iframe visibility
-            const chatButton = document.getElementById('ai-chat-button');
-            const chatIframe = document.getElementById('ai-chat-iframe');
+    <!-- Theme Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const icon = themeToggle.querySelector('i');
+            const text = themeToggle.querySelector('span');
 
-            chatButton.addEventListener('click', () => {
-                if (chatIframe.style.display === 'none' || chatIframe.style.display === '') {
-                    chatIframe.style.display = 'block';
-                } else {
-                    chatIframe.style.display = 'none';
-                }
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            body.classList.toggle('light-theme', savedTheme === 'light');
+            updateThemeButton(savedTheme === 'light');
+
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('light-theme');
+                const isLight = body.classList.contains('light-theme');
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+                updateThemeButton(isLight);
             });
+
+            function updateThemeButton(isLight) {
+                icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+                text.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+            }
         });
     </script>
 </body>
