@@ -2,1528 +2,807 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YuvaWorks - My Profile</title>
-<style>
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: 'Poppins', sans-serif;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-:root {
---primary-color: #0a192f;
---accent-color: #64ffda;
---secondary-color: #112240;
---text-color: #ccd6f6;
---blue-accent: #5671f5;
---blue-light: #8492fe;
-}
-
-body {
-background-color: var(--primary-color);
-color: var(--text-color);
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-overflow-x: hidden;
-}
-
-.header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1.5rem 3rem;
-background-color: rgba(10, 25, 47, 0.9);
-position: fixed;
-width: 100%;
-top: 0;
-z-index: 1000;
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-transition: all 0.3s ease;
-}
-
-.header.scrolled {
-padding: 1rem 3rem;
-background-color: rgba(10, 25, 47, 0.95);
-}
-
-.logo {
-font-size: 2rem;
-font-weight: 700;
-color: var(--blue-light);
-text-decoration: none;
-display: flex;
-align-items: center;
-}
-
-.logo span {
-color: var(--accent-color);
-}
-
-.nav-links {
-display: flex;
-gap: 2rem;
-}
-
-.nav-links a {
-color: var(--text-color);
-text-decoration: none;
-font-weight: 500;
-font-size: 1rem;
-transition: color 0.3s ease;
-position: relative;
-}
-
-.nav-links a:hover {
-color: var(--blue-light);
-}
-
-.nav-links a::after {
-content: '';
-position: absolute;
-bottom: -5px;
-left: 0;
-width: 0;
-height: 2px;
-background-color: var(--blue-light);
-transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-width: 100%;
-}
-
-.profile-container {
-display: flex;
-flex-direction: column;
-padding: 8rem 3rem 3rem;
-max-width: 1200px;
-margin: 0 auto;
-width: 100%;
-position: relative;
-}
-
-.profile-header {
-display: flex;
-align-items: center;
-margin-bottom: 3rem;
-position: relative;
-}
-
-.profile-header h1 {
-font-size: 2.5rem;
-color: var(--accent-color);
-margin-bottom: 0.5rem;
-}
-
-.profile-header p {
-font-size: 1.1rem;
-opacity: 0.8;
-}
-
-.profile-picture-container {
-position: relative;
-margin-right: 2rem;
-}
-
-.profile-picture {
-width: 150px;
-height: 150px;
-border-radius: 50%;
-object-fit: cover;
-border: 4px solid var(--accent-color);
-box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-.change-photo-btn {
-position: absolute;
-bottom: 0;
-right: 0;
-background: var(--blue-accent);
-color: white;
-border: none;
-border-radius: 50%;
-width: 40px;
-height: 40px;
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-transition: all 0.3s ease;
-}
-
-.change-photo-btn:hover {
-background: var(--blue-light);
-transform: scale(1.1);
-}
-
-.profile-type-badge {
-background: linear-gradient(90deg, var(--blue-accent), var(--blue-light));
-color: white;
-padding: 0.5rem 1rem;
-border-radius: 20px;
-font-weight: 500;
-position: absolute;
-top: -20px;
-right: 0;
-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.profile-content {
-display: grid;
-grid-template-columns: 1fr 2fr;
-gap: 2rem;
-}
-
-.profile-sidebar {
-background-color: var(--secondary-color);
-border-radius: 15px;
-padding: 2rem;
-height: fit-content;
-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.sidebar-section {
-margin-bottom: 2rem;
-}
-
-.sidebar-section:last-child {
-margin-bottom: 0;
-}
-
-.sidebar-section h3 {
-color: var(--accent-color);
-font-size: 1.3rem;
-margin-bottom: 1rem;
-padding-bottom: 0.5rem;
-border-bottom: 2px solid rgba(100, 255, 218, 0.2);
-}
-
-.profile-info-item {
-margin-bottom: 1rem;
-}
-
-.profile-info-item label {
-display: block;
-font-size: 0.9rem;
-color: var(--accent-color);
-margin-bottom: 0.3rem;
-}
-
-.profile-info-item p {
-font-size: 1rem;
-}
-
-.skill-tags {
-display: flex;
-flex-wrap: wrap;
-gap: 0.5rem;
-margin-top: 0.5rem;
-}
-
-.skill-tag {
-background: rgba(100, 255, 218, 0.1);
-border: 1px solid var(--accent-color);
-color: var(--accent-color);
-padding: 0.3rem 0.8rem;
-border-radius: 15px;
-font-size: 0.9rem;
-display: flex;
-align-items: center;
-gap: 0.5rem;
-}
-
-.remove-skill {
-background: none;
-border: none;
-color: var(--accent-color);
-cursor: pointer;
-font-size: 1rem;
-padding: 0;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.add-skill-form {
-display: flex;
-margin-top: 1rem;
-}
-
-.add-skill-input {
-flex: 1;
-padding: 0.5rem;
-border: 1px solid rgba(100, 255, 218, 0.3);
-background: rgba(255, 255, 255, 0.05);
-border-radius: 4px 0 0 4px;
-color: var(--text-color);
-}
-
-.add-skill-input:focus {
-outline: none;
-border-color: var(--blue-light);
-}
-
-.add-skill-btn {
-background: var(--blue-accent);
-color: white;
-border: none;
-padding: 0.5rem 1rem;
-border-radius: 0 4px 4px 0;
-cursor: pointer;
-}
-
-.profile-main {
-display: flex;
-flex-direction: column;
-gap: 2rem;
-}
-
-.main-section {
-background-color: var(--secondary-color);
-border-radius: 15px;
-padding: 2rem;
-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.main-section h2 {
-color: var(--accent-color);
-font-size: 1.5rem;
-margin-bottom: 1.5rem;
-padding-bottom: 0.5rem;
-border-bottom: 2px solid rgba(100, 255, 218, 0.2);
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-
-.edit-button {
-background: var(--blue-accent);
-color: white;
-border: none;
-padding: 0.5rem 1rem;
-border-radius: 5px;
-font-size: 0.9rem;
-cursor: pointer;
-transition: all 0.3s ease;
-display: flex;
-align-items: center;
-gap: 0.5rem;
-}
-
-.edit-button:hover {
-background: var(--blue-light);
-}
-
-.form-group {
-margin-bottom: 1.5rem;
-}
-
-.form-group label {
-display: block;
-margin-bottom: 0.5rem;
-font-size: 1rem;
-color: var(--accent-color);
-}
-
-.form-control {
-width: 100%;
-padding: 0.8rem 1rem;
-border: 1px solid rgba(100, 255, 218, 0.3);
-background: rgba(255, 255, 255, 0.05);
-border-radius: 5px;
-color: var(--text-color);
-font-size: 1rem;
-}
-
-.form-control:focus {
-outline: none;
-border-color: var(--blue-light);
-}
-
-textarea.form-control {
-min-height: 120px;
-resize: vertical;
-}
-
-.save-btn {
-background: linear-gradient(90deg, var(--blue-accent), var(--blue-light));
-color: white;
-padding: 0.8rem 2rem;
-border: none;
-border-radius: 5px;
-font-size: 1rem;
-font-weight: 500;
-cursor: pointer;
-transition: all 0.3s ease;
-margin-top: 1rem;
-display: inline-flex;
-align-items: center;
-gap: 0.5rem;
-}
-
-.save-btn:hover {
-transform: translateY(-3px);
-box-shadow: 0 5px 15px rgba(86, 113, 245, 0.4);
-}
-
-.save-btn:active {
-transform: translateY(-1px);
-}
-
-.cancel-btn {
-background: transparent;
-color: var(--text-color);
-padding: 0.8rem 2rem;
-border: 1px solid var(--text-color);
-border-radius: 5px;
-font-size: 1rem;
-font-weight: 500;
-cursor: pointer;
-transition: all 0.3s ease;
-margin-top: 1rem;
-margin-left: 1rem;
-}
-
-.cancel-btn:hover {
-background: rgba(255, 255, 255, 0.05);
-}
-
-.project-card {
-background: rgba(255, 255, 255, 0.05);
-border-radius: 10px;
-padding: 1.5rem;
-margin-bottom: 1.5rem;
-border-left: 4px solid var(--blue-light);
-position: relative;
-}
-
-.project-card:last-child {
-margin-bottom: 0;
-}
-
-.project-card h3 {
-font-size: 1.2rem;
-color: var(--blue-light);
-margin-bottom: 0.5rem;
-}
-
-.project-meta {
-display: flex;
-gap: 2rem;
-margin-bottom: 1rem;
-font-size: 0.9rem;
-color: rgba(204, 214, 246, 0.7);
-}
-
-.project-meta span {
-display: flex;
-align-items: center;
-gap: 0.3rem;
-}
-
-.project-description {
-margin-bottom: 1rem;
-line-height: 1.6;
-}
-
-.project-tags {
-display: flex;
-flex-wrap: wrap;
-gap: 0.5rem;
-}
-
-.project-tag {
-background: rgba(86, 113, 245, 0.1);
-border: 1px solid var(--blue-light);
-color: var(--blue-light);
-padding: 0.2rem 0.6rem;
-border-radius: 15px;
-font-size: 0.8rem;
-}
-
-.project-actions {
-position: absolute;
-top: 1.5rem;
-right: 1.5rem;
-display: flex;
-gap: 0.5rem;
-}
-
-.project-action-btn {
-background: none;
-border: none;
-color: var(--text-color);
-cursor: pointer;
-font-size: 1rem;
-padding: 0.3rem;
-border-radius: 4px;
-transition: all 0.3s ease;
-}
-
-.project-action-btn:hover {
-background: rgba(255, 255, 255, 0.1);
-}
-
-.add-project-btn {
-background: rgba(100, 255, 218, 0.1);
-border: 1px dashed var(--accent-color);
-color: var(--accent-color);
-padding: 1rem;
-border-radius: 10px;
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 0.5rem;
-font-size: 1rem;
-cursor: pointer;
-transition: all 0.3s ease;
-}
-
-.add-project-btn:hover {
-background: rgba(100, 255, 218, 0.2);
-}
-
-.modal {
-display: none;
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: rgba(0, 0, 0, 0.7);
-z-index: 1100;
-justify-content: center;
-align-items: center;
-padding: 1rem;
-}
-
-.modal-content {
-background-color: var(--secondary-color);
-border-radius: 15px;
-max-width: 700px;
-width: 100%;
-max-height: 90vh;
-overflow-y: auto;
-padding: 2rem;
-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-position: relative;
-}
-
-.modal-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 1.5rem;
-padding-bottom: 1rem;
-border-bottom: 1px solid rgba(100, 255, 218, 0.2);
-}
-
-.modal-header h2 {
-color: var(--accent-color);
-font-size: 1.5rem;
-margin: 0;
-border: none;
-}
-
-.close-modal {
-background: none;
-border: none;
-color: var(--text-color);
-font-size: 1.5rem;
-cursor: pointer;
-padding: 0.5rem;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.close-modal:hover {
-color: var(--accent-color);
-}
-
-.modal-body {
-margin-bottom: 1.5rem;
-}
-
-.modal-footer {
-display: flex;
-justify-content: flex-end;
-gap: 1rem;
-padding-top: 1rem;
-border-top: 1px solid rgba(100, 255, 218, 0.2);
-}
-
-.profile-type-selector {
-margin-bottom: 2rem;
-}
-
-.type-radio-group {
-display: flex;
-gap: 1rem;
-margin-top: 0.5rem;
-}
-
-.type-radio-item {
-flex: 1;
-}
-
-.type-radio-item input[type="radio"] {
-display: none;
-}
-
-.type-radio-item label {
-display: block;
-background: rgba(255, 255, 255, 0.05);
-border: 2px solid transparent;
-padding: 1rem;
-border-radius: 8px;
-text-align: center;
-cursor: pointer;
-transition: all 0.3s ease;
-}
-
-.type-radio-item input[type="radio"]:checked + label {
-border-color: var(--blue-light);
-background: rgba(86, 113, 245, 0.1);
-}
-
-.type-radio-item label .icon {
-font-size: 2rem;
-margin-bottom: 0.5rem;
-display: block;
-}
-
-.type-radio-item label .text {
-font-weight: 500;
-}
-
-.conditional-field {
-display: none;
-}
-
-.field-row {
-display: flex;
-gap: 1rem;
-}
-
-.field-row .form-group {
-flex: 1;
-}
-
-@media (max-width: 992px) {
-.profile-content {
-grid-template-columns: 1fr;
-}
-
-.profile-container {
-padding: 8rem 2rem 2rem;
-}
-}
-
-@media (max-width: 768px) {
-.profile-header {
-flex-direction: column;
-text-align: center;
-}
-
-.profile-picture-container {
-margin-right: 0;
-margin-bottom: 1.5rem;
-}
-
-.profile-type-badge {
-position: static;
-margin-top: 1rem;
-display: inline-block;
-}
-
-.field-row {
-flex-direction: column;
-gap: 0;
-}
-
-.header {
-padding: 1rem;
-}
-
-.nav-links {
-gap: 1rem;
-}
-
-.logo {
-font-size: 1.5rem;
-}
-}
-
-@media (max-width: 576px) {
-.profile-container {
-padding: 7rem 1rem 1rem;
-}
-
-.profile-header h1 {
-font-size: 2rem;
-}
-
-.main-section h2 {
-flex-direction: column;
-align-items: flex-start;
-gap: 1rem;
-}
-
-.project-meta {
-flex-direction: column;
-gap: 0.5rem;
-}
-
-.project-actions {
-position: static;
-margin-top: 1rem;
-}
-
-.project-card {
-padding: 1rem;
-}
-}
-
-/* Background Circles */
-.bg-circles {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-overflow: hidden;
-z-index: -1;
-}
-
-.bg-circle {
-position: absolute;
-border-radius: 50%;
-opacity: 0.3;
-filter: blur(60px);
-}
-
-.bg-circle-1 {
-width: 600px;
-height: 600px;
-background: radial-gradient(circle, rgba(86, 113, 245, 0.8) 0%, rgba(86, 113, 245, 0.2) 70%);
-top: -150px;
-left: -150px;
-animation: float 25s infinite alternate ease-in-out;
-}
-
-.bg-circle-2 {
-width: 500px;
-height: 500px;
-background: radial-gradient(circle, rgba(100, 255, 218, 0.8) 0%, rgba(100, 255, 218, 0.2) 70%);
-bottom: -100px;
-right: -100px;
-animation: float-reverse 30s infinite alternate ease-in-out;
-}
-
-.bg-circle-3 {
-width: 700px;
-height: 700px;
-background: radial-gradient(circle, rgba(132, 146, 254, 0.6) 0%, rgba(132, 146, 254, 0.1) 70%);
-bottom: 20%;
-left: 20%;
-animation: float 40s infinite alternate ease-in-out;
-}
-
-@keyframes float {
-0% {
-transform: translate(0, 0);
-}
-100% {
-transform: translate(50px, 50px);
-}
-}
-
-@keyframes float-reverse {
-0% {
-transform: translate(0, 0);
-}
-100% {
-transform: translate(-50px, -50px);
-}
-}
-</style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"="width=device-width, initial-scale=1.0">
+    <title>YuvaWorks - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+         :root {
+            --primary-color: #0a192f;
+            --accent-color: #64ffda;
+            --secondary-color: #112240;
+            --text-color: #ccd6f6;
+            --blue-accent: #5671f5;
+            --blue-light: #8492fe;
+        }
+        
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            background-color: rgba(10, 25, 47, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .header.scrolled {
+            padding: 1rem 3rem;
+            background-color: rgba(10, 25, 47, 0.95);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--blue-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--blue-light);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--blue-light);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        /* User profile styles */
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 2rem;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+        }
+        
+        .user-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--accent-color);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 1rem;
+            min-width: 200px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 1000;
+            margin-top: 10px;
+        }
+        
+        .dropdown-menu.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .dropdown-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .dropdown-menu ul li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(204, 214, 246, 0.1);
+        }
+        
+        .dropdown-menu ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-menu ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .dropdown-menu ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .dropdown-menu ul li a i {
+            width: 20px;
+        }
+        /* Login/Signup button */
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .auth-btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .login-btn {
+            background-color: transparent;
+            color: var(--blue-light);
+            border: 1px solid var(--blue-light);
+        }
+        
+        .signup-btn {
+            background-color: var(--blue-light);
+            color: white;
+            border: 1px solid var(--blue-light);
+        }
+        
+        .auth-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        /* Hero section */
+        
+        .hero-section {
+            padding: 9rem 2rem 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 100vh;
+            background: radial-gradient(circle at 50% 50%, var(--primary-color), #060d1b);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            opacity: 0.2;
+            animation: floatAnimation 20s infinite alternate;
+        }
+        
+        .floating-shape:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            background: linear-gradient(45deg, var(--blue-accent), var(--accent-color));
+            animation-duration: 25s;
+        }
+        
+        .floating-shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            width: 250px;
+            height: 250px;
+            border-radius: 60% 40% 30% 70% / 50% 60% 30% 60%;
+            background: linear-gradient(45deg, var(--accent-color), var(--blue-light));
+            animation-duration: 30s;
+            animation-delay: 5s;
+        }
+        
+        .floating-shape:nth-child(3) {
+            bottom: 10%;
+            left: 20%;
+            width: 200px;
+            height: 200px;
+            border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+            background: linear-gradient(45deg, var(--blue-light), var(--blue-accent));
+            animation-duration: 22s;
+            animation-delay: 3s;
+        }
+        
+        @keyframes floatAnimation {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            50% {
+                transform: translate(20px, -30px) rotate(180deg);
+            }
+            100% {
+                transform: translate(-20px, 20px) rotate(360deg);
+            }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+            line-height: 1.2;
+        }
+        
+        .hero-title span {
+            background: linear-gradient(90deg, var(--blue-accent), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: rgba(204, 214, 246, 0.8);
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            /* Adjust the spacing between buttons */
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-buttons a {
+            margin: 0.5rem;
+            /* Add margin around each button for better spacing */
+        }
+        
+        .cta-btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .primary-btn {
+            background: linear-gradient(90deg, var(--blue-accent), var(--blue-light));
+            color: white;
+            border: none;
+        }
+        
+        .secondary-btn {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid rgba(204, 214, 246, 0.3);
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .welcome-message {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            text-align: left;
+            border-left: 4px solid var(--accent-color);
+            display: none;
+        }
+        
+        .welcome-message.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .welcome-message h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .welcome-message p {
+            color: var(--text-color);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        /* Responsive styles */
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem 1.5rem;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                max-width: 300px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        /* Modal Styles */
+        
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Semi-transparent background */
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+            animation: fadeIn 0.3s ease-in-out;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 10px;
+        }
+        
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-button:hover {
+            color: var(--accent-color);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-<div class="bg-circles">
-<div class="bg-circle bg-circle-1"></div>
-<div class="bg-circle bg-circle-2"></div>
-<div class="bg-circle bg-circle-3"></div>
-</div>
-<header class="header">
-<a href="home.html" class="logo">Yuva<span>Works</span></a>
-<nav class="nav-links">
-<a href="home.html">Home</a>
-<a href="browse-jobs.html">Browse Jobs</a>
-<a href="aboutus.html">About Us</a>
-<a href="contactus.html">Contact</a>
-</nav>
-<!-- Navbar Profile Picture -->
-</header>
+    <header class="header">
+        <a href="employer-home.html" class="logo">Yuva<span>Works</span></a>
+        <nav class="nav-links">
+            <a href="employer-home.html">Home</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="contactus.html">Contact</a>
 
-<div class="profile-container">
-<div class="profile-header">
-<!-- Profile Page Picture -->
-<div class="profile-picture-container">
-<img src="assets/noprofile.webp" alt="Profile" class="profile-picture" id="profile-picture" style="border-radius: 50%; transform: scale(1); transition: transform 0.3s ease;">
-<button class="change-photo-btn" id="change-photo-btn">
-<i class="fas fa-camera"></i>
-</button>
-<input type="file" id="photo-upload" style="display: none;" accept="image/*">
-</div>
-<div>
-<h1 id="profile-name">John Doe</h1>
-<p id="profile-title">UI/UX Designer</p>
-<div class="profile-type-badge" id="profile-type-badge">Freelancer</div>
-</div>
-</div>
-<div class="profile-content">
-<div class="profile-sidebar">
-<div class="sidebar-section">
-<h3>Personal Information</h3>
-<div class="profile-info-item">
-<label>Full Name</label>
-<p id="sidebar-name">John Doe</p>
-</div>
-<div class="profile-info-item">
-<label>Email</label>
-<p id="sidebar-email">john.doe@example.com</p>
-</div>
-<div class="profile-info-item conditional-org-info" style="display: none;">
-<label>Organization</label>
-<p id="sidebar-organization">Not specified</p>
-</div>
-<div class="profile-info-item conditional-org-info" style="display: none;">
-<label>Designation</label>
-<p id="sidebar-designation">Not specified</p>
-</div>
-</div>
+            <!-- Auth buttons (shown when user is not logged in) -->
+            <div class="auth-buttons" id="auth-buttons">
+                <a href="login.html" class="auth-btn login-btn">Login</a>
+                <a href="signup.html" class="auth-btn signup-btn">Sign Up</a>
+            </div>
 
-<div class="sidebar-section">
-<h3>Skills</h3>
-<div class="skill-tags" id="skill-tags-container">
-<!-- Skills will be added dynamically -->
-</div>
-<div class="add-skill-form">
-<input type="text" class="add-skill-input" id="new-skill-input" placeholder="Add a skill">
-<button class="add-skill-btn" id="add-skill-btn">
-<i class="fas fa-plus"></i>
-</button>
-</div>
-</div>
-</div>
+            <!-- User profile (shown when user is logged in) -->
+            <div class="user-profile" id="user-profile" style="display: none;">
+                <img src="assets/default-profile.png" alt="Profile" class="profile-pic" id="profile-pic">
+                <span class="user-name" id="user-name"></span>
+                <i class="fas fa-chevron-down" style="margin-left: 5px; font-size: 0.8rem;"></i>
+                <div class="dropdown-menu" id="profile-dropdown">
+                    <ul>
+                        <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                        <li><a href="applications.html"><i class="fas fa-file-alt"></i> My Applications</a></li>
+                        <li><a href="projects-posted.html"><i class="fas fa-bookmark"></i> Projects Posted</a></li>
+                        <li><a href="saved-jobs.html"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
+                        <li><a href="bonus.html"><i class="fas fa-gift"></i> My Bonus/Rewards</a></li>
+                        <li><a href="referral.html"><i class="fas fa-users"></i> My Referrals</a></li>
+                        <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<div class="profile-main">
-<div class="main-section" id="basic-info-section">
-<h2>
-Basic Information
-<button class="edit-button" id="edit-basic-info-btn">
-<i class="fas fa-edit"></i> Edit
-</button>
-</h2>
+    <main class="hero-section">
+        <div class="hero-background">
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+        </div>
 
-<div id="basic-info-display">
-<div class="profile-type-selector">
-<label>Profile Type</label>
-<p id="profile-type-display">Freelancer</p>
-</div>
+        <div class="hero-content">
+            <h1 class="hero-title">Find Your Dream Job with <span>YuvaWorks</span></h1>
+            <p class="hero-subtitle">Connect with top employers, explore thousands of opportunities, and take the next step in your career journey.</p>
 
-<div class="form-group">
-<label>Bio</label>
-<p id="bio-display">No bio provided yet.</p>
-</div>
+            <div class="cta-buttons">
+                <a href="#" class="cta-btn secondary-btn">Post a Project</a>
+            </div>
 
-<div class="conditional-org-details" style="display: none;">
-<div class="form-group">
-<label>Organization Details</label>
-<p id="org-details-display">No organization details provided yet.</p>
-</div>
-</div>
-</div>
+            <!-- Escrow Button -->
+            <div class="cta-buttons">
+                <a href="login.html" id="escrow-redirect-btn">
+                    <button class="cta-btn primary-btn">Proceed to Escrow Payment</button>
+                </a>
+            </div>
 
-<div id="basic-info-form" style="display: none;">
-<div class="profile-type-selector">
-<label>Profile Type</label>
-<div class="type-radio-group">
-<div class="type-radio-item">
-<input type="radio" id="type-freelancer" name="profile-type" value="freelancer" checked>
-<label for="type-freelancer">
-<span class="icon"><i class="fas fa-user"></i></span>
-<span class="text">Freelancer</span>
-</label>
-</div>
-<div class="type-radio-item">
-<input type="radio" id="type-employer" name="profile-type" value="employer">
-<label for="type-employer">
-<span class="icon"><i class="fas fa-building"></i></span>
-<span class="text">Employer</span>
-</label>
-</div>
-</div>
-</div>
+            <!-- Personalized welcome message (shown when user is logged in) -->
+            <div class="welcome-message" id="welcome-message">
+                <h3>Welcome back, <span id="welcome-name"></span>!</h3>
+                <p>Continue exploring job opportunities tailored to your profile. You have <strong>5 new job matches</strong> based on your preferences.</p>
+            </div>
+        </div>
+    </main>
 
-<div class="field-row">
-<div class="form-group">
-<label for="first-name-input">First Name</label>
-<input type="text" class="form-control" id="first-name-input" placeholder="Enter your first name">
-</div>
-<div class="form-group">
-<label for="last-name-input">Last Name</label>
-<input type="text" class="form-control" id="last-name-input" placeholder="Enter your last name">
-</div>
-</div>
+    <!-- Modal for Post a Project -->
+    <div id="post-project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <iframe src="postproject.html" frameborder="0" class="modal-iframe"></iframe>
+        </div>
+    </div>
 
-<div class="form-group">
-<label for="title-input">Professional Title</label>
-<input type="text" class="form-control" id="title-input" placeholder="e.g. UI/UX Designer, Software Developer">
-</div>
-
-<div class="form-group">
-<label for="bio-input">Bio</label>
-<textarea class="form-control" id="bio-input" placeholder="Tell us about yourself..."></textarea>
-</div>
-
-<div id="employer-fields" class="conditional-field">
-<div class="form-group">
-<label for="organization-input">Organization Name</label>
-<input type="text" class="form-control" id="organization-input" placeholder="Enter your organization name">
-</div>
-
-<div class="form-group">
-<label for="designation-input">Your Designation</label>
-<input type="text" class="form-control" id="designation-input" placeholder="e.g. HR Manager, CTO">
-</div>
-
-<div class="form-group">
-<label for="org-details-input">Organization Details</label>
-<textarea class="form-control" id="org-details-input" placeholder="Tell us about your organization..."></textarea>
-</div>
-</div>
-
-<button class="save-btn" id="save-basic-info-btn">
-<i class="fas fa-save"></i> Save Changes
-</button>
-<button class="cancel-btn" id="cancel-basic-info-btn">Cancel</button>
-</div>
-</div>
-
-<div class="main-section">
-<h2>
-Projects & Experience
-<button class="edit-button" id="add-project-btn">
-<i class="fas fa-plus"></i> Add Project
-</button>
-</h2>
-
-<div id="projects-container">
-<!-- Projects will be added dynamically -->
-<div class="add-project-btn" id="add-project-empty">
-<i class="fas fa-plus"></i> Add your first project
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- Add/Edit Project Modal -->
-<div class="modal" id="project-modal">
-<div class="modal-content">
-<div class="modal-header">
-<h2 id="project-modal-title">Add Project</h2>
-<button class="close-modal" id="close-project-modal">
-<i class="fas fa-times"></i>
-</button>
-</div>
-<div class="modal-body">
-<input type="hidden" id="project-id-input">
-<div class="form-group">
-<label for="project-title-input">Project Title</label>
-<input type="text" class="form-control" id="project-title-input" placeholder="Enter project title">
-</div>
-
-<div class="field-row">
-<div class="form-group">
-<label for="project-start-date">Start Date</label>
-<input type="date" class="form-control" id="project-start-date">
-</div>
-<div class="form-group">
-<label for="project-end-date">End Date</label>
-<input type="date" class="form-control" id="project-end-date">
-</div>
-</div>
-
-<div class="form-group">
-<label for="project-description">Description</label>
-<textarea class="form-control" id="project-description" placeholder="Describe your project..."></textarea>
-</div>
-
-<div class="form-group">
-<label for="project-roles">Your Role</label>
-<input type="text" class="form-control" id="project-roles" placeholder="e.g. Lead Developer, UI Designer">
-</div>
-
-<div class="form-group">
-<label for="project-technologies">Technologies Used (comma separated)</label>
-<input type="text" class="form-control" id="project-technologies" placeholder="e.g. React, Node.js, MongoDB">
-</div>
-</div>
-<div class="modal-footer">
-<button class="cancel-btn" id="cancel-project-btn">Cancel</button>
-<button class="save-btn" id="save-project-btn">
-<i class="fas fa-save"></i> Save Project
-</button>
-</div>
-</div>
-</div>
-
-<!-- AI Chat Button -->
-<div id="ai-chat-container">
-    <iframe id="ai-chat-iframe" 
-            src="https://www.chatbase.co/chatbot-iframe/WUpdiya0H_6UQAbH37ndm" 
-            frameborder="0" 
-            style="width: 350px; height: 500px; border: none; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); display: none; position: fixed; bottom: 80px; right: 20px; z-index: 1000;">
+    <!-- AI Chat Button -->
+    <div id="ai-chat-container">
+        <iframe id="ai-chat-iframe" src="https://www.chatbase.co/chatbot-iframe/WUpdiya0H_6UQAbH37ndm" frameborder="0" style="width: 350px; height: 500px; border: none; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); display: none; position: fixed; bottom: 80px; right: 20px; z-index: 1000;">
     </iframe>
-    <button id="ai-chat-button" 
-            style="position: fixed; bottom: 20px; right: 20px; background: #2563eb; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; z-index: 1000;">
+        <button id="ai-chat-button" style="position: fixed; bottom: 20px; right: 20px; background: #2563eb; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; z-index: 1000;">
         💬
     </button>
-</div>
+    </div>
 
-<script>
-    // Toggle AI Chat iframe visibility
-    const chatButton = document.getElementById('ai-chat-button');
-    const chatIframe = document.getElementById('ai-chat-iframe');
+    <script>
+        // Toggle AI Chat iframe visibility
+        const chatButton = document.getElementById('ai-chat-button');
+        const chatIframe = document.getElementById('ai-chat-iframe');
 
-    chatButton.addEventListener('click', () => {
-        if (chatIframe.style.display === 'none' || chatIframe.style.display === '') {
-            chatIframe.style.display = 'block';
-        } else {
-            chatIframe.style.display = 'none';
+        chatButton.addEventListener('click', () => {
+            if (chatIframe.style.display === 'none' || chatIframe.style.display === '') {
+                chatIframe.style.display = 'block';
+            } else {
+                chatIframe.style.display = 'none';
+            }
+        });
+    </script>
+
+    <script>
+        // Check if user is logged in
+        function checkUserLogin() {
+            const userData = localStorage.getItem('yuvaworks_user');
+
+            if (userData) {
+                // User is logged in
+                const user = JSON.parse(userData);
+
+                // Hide auth buttons and show profile
+                document.getElementById('auth-buttons').style.display = 'none';
+                document.getElementById('user-profile').style.display = 'flex';
+
+                // Set user profile info
+                document.getElementById('profile-pic').src = user.profilePic;
+                document.getElementById('user-name').textContent = ${user.firstName} ${user.lastName};
+
+                // Set welcome message
+                document.getElementById('welcome-name').textContent = user.firstName;
+                document.getElementById('welcome-message').classList.add('active');
+            } else {
+                // User is not logged in
+                document.getElementById('auth-buttons').style.display = 'flex';
+                document.getElementById('user-profile').style.display = 'none';
+                document.getElementById('welcome-message').classList.remove('active');
+            }
         }
-    });
-</script>
 
-<script>
-// Function to load user data from localStorage
-function loadUserData() {
-const userData = JSON.parse(localStorage.getItem('yuvaworks_user')) || {};
-const profileData = JSON.parse(localStorage.getItem('yuvaworks_profile')) || {
-profileType: 'freelancer',
-skills: [],
-bio: '',
-organization: '',
-designation: '',
-orgDetails: '',
-projects: []
-};
+        // Check login status when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            checkUserLogin();
 
-// Update UI with user data
-document.getElementById('profile-name').textContent = `${userData.firstName || ''} ${userData.lastName || ''}`.trim() || 'John Doe';
-document.getElementById('sidebar-name').textContent = `${userData.firstName || ''} ${userData.lastName || ''}`.trim() || 'John Doe';
-document.getElementById('sidebar-email').textContent = userData.email || 'john.doe@example.com';
-document.getElementById('profile-title').textContent = profileData.title || 'UI/UX Designer';
-document.getElementById('profile-type-badge').textContent = profileData.profileType === 'employer' ? 'Employer' : 'Freelancer';
-document.getElementById('profile-type-display').textContent = profileData.profileType === 'employer' ? 'Employer' : 'Freelancer';
-document.getElementById('bio-display').textContent = profileData.bio || 'No bio provided yet.';
+            // Toggle dropdown menu
+            document.addEventListener('DOMContentLoaded', function() {
+                const userProfile = document.getElementById('user-profile');
+                const dropdownMenu = document.getElementById('profile-dropdown');
+                const logoutBtn = document.getElementById('logout-btn');
 
-// Set form values
-document.getElementById('first-name-input').value = userData.firstName || '';
-document.getElementById('last-name-input').value = userData.lastName || '';
-document.getElementById('title-input').value = profileData.title || '';
-document.getElementById('bio-input').value = profileData.bio || '';
+                // Toggle dropdown menu visibility
+                userProfile.addEventListener('click', function(event) {
+                    event.stopPropagation(); // Prevent click from propagating to the document
+                    dropdownMenu.classList.toggle('active');
+                });
 
-// Set profile type radio
-if (profileData.profileType === 'employer') {
-document.getElementById('type-employer').checked = true;
-showEmployerFields();
-} else {
-document.getElementById('type-freelancer').checked = true;
-hideEmployerFields();
-}
+                // Close dropdown menu when clicking outside
+                document.addEventListener('click', function() {
+                    dropdownMenu.classList.remove('active');
+                });
 
-// Load organization details if employer
-if (profileData.profileType === 'employer') {
-document.getElementById('sidebar-organization').textContent = profileData.organization || 'Not specified';
-document.getElementById('sidebar-designation').textContent = profileData.designation || 'Not specified';
-document.getElementById('org-details-display').textContent = profileData.orgDetails || 'No organization details provided yet.';
-document.getElementById('organization-input').value = profileData.organization || '';
-document.getElementById('designation-input').value = profileData.designation || '';
-document.getElementById('org-details-input').value = profileData.orgDetails || '';
+                // Handle logout
+                logoutBtn.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default link behavior
 
-// Show organization info in sidebar
-document.querySelectorAll('.conditional-org-info').forEach(el => el.style.display = 'block');
-document.querySelector('.conditional-org-details').style.display = 'block';
-}
+                    // Clear user-related data from localStorage or sessionStorage
+                    localStorage.clear();
+                    sessionStorage.clear();
 
-// Load skills
-loadSkills(profileData.skills);
+                    // Redirect to index.html
+                    window.location.href = 'index.html';
+                });
+            });
 
-// Load projects
-loadProjects(profileData.projects);
-}
+            // Close dropdown when clicking elsewhere
+            document.addEventListener('click', function() {
+                dropdownMenu.classList.remove('active');
+            });
 
-// Function to load skills into UI
-function loadSkills(skills) {
-const skillsContainer = document.getElementById('skill-tags-container');
-skillsContainer.innerHTML = '';
+            // Handle logout
+            document.getElementById('logout-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                // Handle logout
+                document.getElementById('logout-btn').addEventListener('click', function(e) {
+                    e.preventDefault();
 
-if (skills && skills.length > 0) {
-skills.forEach((skill, index) => {
-const skillTag = document.createElement('div');
-skillTag.className = 'skill-tag';
-skillTag.innerHTML = `
-                       ${skill}
-                       <button class="remove-skill" data-index="${index}">
-                           <i class="fas fa-times"></i>
-                       </button>
-                   `;
-skillsContainer.appendChild(skillTag);
-});
+                    // Load the saved profile picture from localStorage
+                    const profilePicElement = document.getElementById('profile-pic');
+                    const savedPicture = localStorage.getItem('yuvaworks_profile_picture');
+                    if (savedPicture) {
+                        profilePicElement.src = savedPicture;
+                    }
+                });
+                event.preventDefault(); // Prevent default link behavior
 
-// Add event listeners to remove buttons
-document.querySelectorAll('.remove-skill').forEach(btn => {
-btn.addEventListener('click', function() {
-removeSkill(parseInt(this.getAttribute('data-index')));
-});
-});
-}
-}
+                // Clear user data
+                localStorage.removeItem('yuvaworks_user');
+                // Clear user-related data from localStorage or sessionStorage
+                localStorage.clear();
+                sessionStorage.clear();
 
-// Function to add a new skill
-function addSkill() {
-const skillInput = document.getElementById('new-skill-input');
-const skill = skillInput.value.trim();
+                // Redirect to index.html
+                window.location.href = 'index.html';
+            });
+        });
 
-if (skill) {
-const profileData = JSON.parse(localStorage.getItem('yuvaworks_profile')) || { skills: [] };
+        // Sticky header effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 
-if (!profileData.skills) {
-profileData.skills = [];
-}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userProfile = document.getElementById('user-profile');
+            const dropdownMenu = document.getElementById('profile-dropdown');
 
-// Add skill if not already exists
-if (!profileData.skills.includes(skill)) {
-profileData.skills.push(skill);
-localStorage.setItem('yuvaworks_profile', JSON.stringify(profileData));
+            // Toggle dropdown menu visibility when clicking on the user profile
+            userProfile.addEventListener('click', function(event) {
+                event.stopPropagation(); // Prevent click from propagating to the document
+                dropdownMenu.classList.toggle('active'); // Toggle the 'active' class
+            });
 
-// Update UI
-loadSkills(profileData.skills);
-skillInput.value = '';
-} else {
-alert('This skill already exists in your profile.');
-}
-}
-}
+            // Close dropdown menu when clicking outside
+            document.addEventListener('click', function() {
+                dropdownMenu.classList.remove('active'); // Remove the 'active' class
+            });
+        });
+    </script>
 
-// Function to remove a skill
-function removeSkill(index) {
-const profileData = JSON.parse(localStorage.getItem('yuvaworks_profile')) || { skills: [] };
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const changePhotoBtn = document.getElementById('change-photo-btn');
+            const photoUploadInput = document.getElementById('photo-upload');
+            const profilePicture = document.getElementById('profile-picture');
 
-if (profileData.skills && index >= 0 && index < profileData.skills.length) {
-profileData.skills.splice(index, 1);
-localStorage.setItem('yuvaworks_profile', JSON.stringify(profileData));
-
-// Update UI
-loadSkills(profileData.skills);
-}
-}
-
-// Function to load projects
-function loadProjects(projects) {
-const projectsContainer = document.getElementById('projects-container');
-projectsContainer.innerHTML = '';
-
-if (projects && projects.length > 0) {
-projects.forEach((project, index) => {
-const projectCard = document.createElement('div');
-projectCard.className = 'project-card';
-projectCard.innerHTML = `
-                       <h3>${project.title || 'Untitled Project'}</h3>
-                       <div class="project-meta">
-                           <span><i class="fas fa-calendar"></i> ${formatDateRange(project.startDate, project.endDate)}</span>
-                           <span><i class="fas fa-user"></i> ${project.role || 'Role not specified'}</span>
-                       </div>
-                       <div class="project-description">
-                           ${project.description || 'No description available.'}
-                       </div>
-                       <div class="project-tags">
-                           ${generateTechTags(project.technologies)}
-                       </div>
-                       <div class="project-actions">
-                           <button class="project-action-btn edit-project" data-index="${index}">
-                               <i class="fas fa-edit"></i>
-                           </button>
-                           <button class="project-action-btn delete-project" data-index="${index}">
-                               <i class="fas fa-trash"></i>
-                           </button>
-                       </div>
-                   `;
-projectsContainer.appendChild(projectCard);
-});
-
-// Add event listeners to project action buttons
-document.querySelectorAll('.edit-project').forEach(btn => {
-btn.addEventListener('click', function() {
-const index = parseInt(this.getAttribute('data-index'));
-openEditProjectModal(index);
-});
-});
-
-document.querySelectorAll('.delete-project').forEach(btn => {
-btn.addEventListener('click', function() {
-const index = parseInt(this.getAttribute('data-index'));
-deleteProject(index);
-});
-});
-} else {
-// Show empty state
-projectsContainer.innerHTML = `
-                   <div class="add-project-btn" id="add-project-empty">
-                       <i class="fas fa-plus"></i> Add your first project
-                   </div>
-               `;
-
-document.getElementById('add-project-empty').addEventListener('click', openAddProjectModal);
-}
-}
-
-// Helper function to format date range
-function formatDateRange(startDate, endDate) {
-const start = startDate ? new Date(startDate).toLocaleDateString() : 'Not specified';
-const end = endDate ? new Date(endDate).toLocaleDateString() : 'Present';
-return `${start} - ${end}`;
-}
-
-// Helper function to generate technology tags HTML
-function generateTechTags(technologies) {
-if (!technologies) return '';
-
-const techArray = typeof technologies === 'string' 
-? technologies.split(',').map(tech => tech.trim()).filter(tech => tech)
-: technologies;
-
-return techArray.map(tech => `<span class="project-tag">${tech}</span>`).join('');
-}
-
-// Function to save basic information
-function saveBasicInfo() {
-const userData = JSON.parse(localStorage.getItem('yuvaworks_user')) || {};
-const profileData = JSON.parse(localStorage.getItem('yuvaworks_profile')) || {};
-
-// Update user data
-userData.firstName = document.getElementById('first-name-input').value.trim();
-userData.lastName = document.getElementById('last-name-input').value.trim();
-
-// Update profile data
-profileData.title = document.getElementById('title-input').value.trim();
-profileData.bio = document.getElementById('bio-input').value.trim();
-profileData.profileType = document.getElementById('type-employer').checked ? 'employer' : 'freelancer';
-
-// Update employer specific fields if applicable
-if (profileData.profileType === 'employer') {
-profileData.organization = document.getElementById('organization-input').value.trim();
-profileData.designation = document.getElementById('designation-input').value.trim();
-profileData.orgDetails = document.getElementById('org-details-input').value.trim();
-}
-
-// Save to localStorage
-localStorage.setItem('yuvaworks_user', JSON.stringify(userData));
-localStorage.setItem('yuvaworks_profile', JSON.stringify(profileData));
-
-// Switch back to display view and reload data
-toggleBasicInfoForm(false);
-loadUserData();
-}
-
-// Function to toggle basic info form visibility
-function toggleBasicInfoForm(show) {
-const displaySection = document.getElementById('basic-info-display');
-const formSection = document.getElementById('basic-info-form');
-
-if (show) {
-displaySection.style.display = 'none';
-formSection.style.display = 'block';
-} else {
-displaySection.style.display = 'block';
-formSection.style.display = 'none';
-}
-}
-
-// Function to show employer fields
-function showEmployerFields() {
-document.getElementById('employer-fields').style.display = 'block';
-}
-
-// Function to hide employer fields
-function hideEmployerFields() {
-document.getElementById('employer-fields').style.display = 'none';
-}
-
-// Function to open add project modal
-function openAddProjectModal() {
-// Clear form
-document.getElementById('project-id-input').value = '';
-document.getElementById('project-title-input').value = '';
-document.getElementById('project-start-date').value = '';
-document.getElementById('project-end-date').value = '';
-document.getElementById('project-description').value = '';
-document.getElementById('project-roles').value = '';
-document.getElementById('project-technologies').value = '';
-
-// Update modal title
-document.getElementById('project-modal-title').textContent = 'Add Project';
-
-// Show modal
-document.getElementById('project-modal').style.display = 'flex';
-}
-
-// Function to open edit project modal
-function openEditProjectModal(index) {
-const profileData = JSON.parse(localStorage.getItem('yuvaworks_profile')) || {};
-const project = profileData.projects && profileData.projects[index];
-
-if (project) {
-// Fill form with project data
-document.getElementById('project-id-input').value = index;
-document.getElementById('project-title-input').value = project.title || '';
-document.getElementById('project-start-date').value = project.startDate || '';
-document.getElementById('project-end-date').value = project.endDate || '';
-document.getElementById('project-description').value = project.description || '';
-document.getElementById('project-roles').value = project.role || '';
-document.getElementById('project-technologies').value = Array.isArray(project.technologies) 
-? project.technologies.join(', ') 
-: project.technologies || '';
-
-// Update modal title
-document.getElementById('project-modal-title').textContent = 'Edit Project';
-
-// Show modal
-document.getElementById('project-modal').style.display = 'flex';
-}
-}
-
-// Function to save project
-function saveProject() {
-const profileData = JSON.parse(localStorage.getItem('yuvaworks_profile')) || {};
-
-if (!profileData.projects) {
-profileData.projects = [];
-}
-
-const projectIdInput = document.getElementById('project-id-input').value;
-const isEdit = projectIdInput !== '';
-const projectIndex = isEdit ? parseInt(projectIdInput) : -1;
-
-// Get project data from form
-const project = {
-title: document.getElementById('project-title-input').value.trim(),
-startDate: document.getElementById('project-start-date').value,
-endDate: document.getElementById('project-end-date').value,
-description: document.getElementById('project-description').value.trim(),
-role: document.getElementById('project-roles').value.trim(),
-technologies: document.getElementById('project-technologies').value.trim().split(',').map(tech => tech.trim()).filter(tech => tech)
-};
-
-// Validate required fields
-if (!project.title) {
-alert('Project title is required.');
-return;
-}
-
-// Save project
-if (isEdit && projectIndex >= 0 && projectIndex < profileData.projects.length) {
-// Update existing project
-profileData.projects[projectIndex] = project;
-} else {
-// Add new project
-profileData.projects.push(project);
-}
-
-// Save to localStorage
-localStorage.setItem('yuvaworks_profile', JSON.stringify(profileData));
-
-// Close modal and reload projects
-closeProjectModal();
-loadProjects(profileData.projects);
-}
-
-// Function to delete project
-function deleteProject(index) {
-if (confirm('Are you sure you want to delete this project?')) {
-const profileData = JSON.parse(localStorage.getItem('yuvaworks_profile')) || {};
-
-if (profileData.projects && index >= 0 && index < profileData.projects.length) {
-profileData.projects.splice(index, 1);
-localStorage.setItem('yuvaworks_profile', JSON.stringify(profileData));
-
-// Reload projects
-loadProjects(profileData.projects);
-}
-}
-}
-
-// Function to close project modal
-function closeProjectModal() {
-document.getElementById('project-modal').style.display = 'none';
-}
-
-// Function to handle profile photo change
-function setupPhotoUpload() {
-const changePhotoBtn = document.getElementById('change-photo-btn');
-const photoUploadInput = document.getElementById('photo-upload');
-const profilePicture = document.getElementById('profile-picture');
-            
+            // Trigger file input when the button is clicked
             changePhotoBtn.addEventListener('click', function() {
-photoUploadInput.click();
-});
-            
+                photoUploadInput.click();
+            });
+
+            // Handle file selection and update the profile picture
             photoUploadInput.addEventListener('change', function() {
-const file = this.files[0];
-if (file) {
-const reader = new FileReader();
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
                     reader.onload = function(e) {
-profilePicture.src = e.target.result;
-                        // Save to localStorage
-localStorage.setItem('yuvaworks_profile_picture', e.target.result);
-};
-reader.readAsDataURL(file);
-}
-});
-            
-            // Load saved profile picture if exists
-const savedPicture = localStorage.getItem('yuvaworks_profile_picture');
-if (savedPicture) {
-profilePicture.src = savedPicture;
-}
-}
+                        // Update the profile picture preview
+                        profilePicture.src = e.target.result;
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-// Load user data
-loadUserData();
+                        // Save the uploaded photo to localStorage
+                        localStorage.setItem('yuvaworks_profile_picture', e.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
 
-// Setup photo upload
-setupPhotoUpload();
+            // Load saved profile picture if it exists
+            const savedPicture = localStorage.getItem('yuvaworks_profile_picture');
+            if (savedPicture) {
+                profilePicture.src = savedPicture;
+            }
+        });
+    </script>
 
-// Profile type change event
-document.querySelectorAll('input[name="profile-type"]').forEach(radio => {
-radio.addEventListener('change', function() {
-if (this.value === 'employer') {
-showEmployerFields();
-} else {
-hideEmployerFields();
-}
-});
-});
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const profilePicElement = document.getElementById('profile-pic');
 
-// Basic info form events
-document.getElementById('edit-basic-info-btn').addEventListener('click', function() {
-toggleBasicInfoForm(true);
-});
+            // Load the saved profile picture from localStorage
+            const savedPicture = localStorage.getItem('yuvaworks_profile_picture');
+            if (savedPicture) {
+                profilePicElement.src = savedPicture;
+            }
+        });
+    </script>
 
-document.getElementById('save-basic-info-btn').addEventListener('click', saveBasicInfo);
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const profilePicElement = document.getElementById('profile-pic');
 
-document.getElementById('cancel-basic-info-btn').addEventListener('click', function() {
-toggleBasicInfoForm(false);
-});
+            // Load the saved profile picture from localStorage
+            const savedPicture = localStorage.getItem('yuvaworks_profile_picture');
 
-// Skills events
-document.getElementById('add-skill-btn').addEventListener('click', addSkill);
+            // If no picture is saved, use the default 'noprofile.webp'
+            if (savedPicture) {
+                profilePicElement.src = savedPicture;
+            } else {
+                profilePicElement.src = 'assets/noprofile.webp'; // Path to the default profile picture
+            }
+        });
+    </script>
 
-document.getElementById('new-skill-input').addEventListener('keypress', function(e) {
-if (e.key === 'Enter') {
-e.preventDefault();
-addSkill();
-}
-});
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const escrowRedirectBtn = document.getElementById('escrow-redirect-btn');
 
-// Project events
-document.getElementById('add-project-btn').addEventListener('click', openAddProjectModal);
+            // Check if the user is logged in
+            const userData = localStorage.getItem('yuvaworks_user');
+            if (userData) {
+                // User is logged in, redirect the button to the escrow page
+                escrowRedirectBtn.href = "escrow.html"; // Replace with the escrow page URL
+            } else {
+                // User is not logged in, keep the button redirecting to the login page
+                escrowRedirectBtn.href = "login.html";
+            }
+        });
+    </script>
 
-document.getElementById('save-project-btn').addEventListener('click', saveProject);
+    <script>
+        // JavaScript for Modal Behavior
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('post-project-modal');
+            const closeButton = document.querySelector('.close-button');
+            const postProjectButton = document.querySelector('.cta-btn.secondary-btn'); // Button to open the modal
 
-document.getElementById('cancel-project-btn').addEventListener('click', closeProjectModal);
+            // Function to open the modal
+            function openModal() {
+                modal.style.display = 'flex';
+            }
 
-document.getElementById('close-project-modal').addEventListener('click', closeProjectModal);
+            // Function to close the modal
+            function closeModal() {
+                modal.style.display = 'none';
+            }
 
-// Header scroll effect
-window.addEventListener('scroll', function() {
-const header = document.querySelector('.header');
-if (window.scrollY > 50) {
-header.classList.add('scrolled');
-} else {
-header.classList.remove('scrolled');
-}
-});
-});
+            // Open the modal when the "Post a Project" button is clicked
+            postProjectButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+                openModal();
+            });
 
-document.addEventListener('DOMContentLoaded', function () {
-const profilePicElement = document.getElementById('profile-pic');
+            // Close the modal when the close button is clicked
+            closeButton.addEventListener('click', closeModal);
 
-// Load the saved profile picture from localStorage
-const savedPicture = localStorage.getItem('yuvaworks_profile_picture');
-
-// If no picture is saved, use the default 'noprofile.webp'
-if (savedPicture) {
-profilePicElement.src = savedPicture;
-} else {
-profilePicElement.src = 'assets/noprofile.webp'; // Path to the default profile picture
-}
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-const profilePicElement = document.getElementById('profile-pic');
-const profilePicture = document.getElementById('profile-picture');
-const changePhotoBtn = document.getElementById('change-photo-btn');
-const photoUploadInput = document.getElementById('photo-upload');
-
-// Load the saved profile picture from localStorage
-const savedPicture = localStorage.getItem('yuvaworks_profile_picture');
-
-// If no picture is saved, use the default 'noprofile.webp'
-if (savedPicture) {
-profilePicElement.src = savedPicture;
-profilePicture.src = savedPicture;
-} else {
-profilePicElement.src = 'assets/noprofile.webp'; // Default profile picture
-profilePicture.src = 'assets/noprofile.webp'; // Default profile picture
-}
-
-// Handle profile photo change
-changePhotoBtn.addEventListener('click', function () {
-photoUploadInput.click();
-});
-
-photoUploadInput.addEventListener('change', function () {
-const file = this.files[0];
-if (file) {
-const reader = new FileReader();
-reader.onload = function (e) {
-profilePicElement.src = e.target.result;
-profilePicture.src = e.target.result;
-
-// Save the uploaded photo to localStorage
-localStorage.setItem('yuvaworks_profile_picture', e.target.result);
-};
-reader.readAsDataURL(file);
-}
-});
-});
-</script>
+            // Close the modal when clicking outside the modal content
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
 </body>
-</html>
+
 </html>
