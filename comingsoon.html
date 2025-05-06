@@ -21,6 +21,15 @@
             --text-color: #ccd6f6;
             --blue-accent: #5671f5;
             --blue-light: #8492fe;
+            /* Add light theme variables */
+            --light-bg: #f0f4f8;
+            --light-secondary-bg: #ffffff;
+            --light-text: #1a202c;
+            --light-text-secondary: #4a5568;
+            --light-accent: #3182ce;
+            --light-border: #e2e8f0;
+            --light-card-bg: #ffffff;
+            --light-hover: #ebf8ff;
         }
         
         body {
@@ -387,6 +396,130 @@
             font-size: 0.95rem;
             line-height: 1.5;
         }
+        
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-color);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 20px;
+        }
+        
+        body.light-theme {
+            background: linear-gradient(135deg, #f6f9fc 0%, #edf2f7 100%);
+            color: var(--light-text);
+        }
+        
+        body.light-theme .header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.light-theme .logo {
+            color: var(--primary-color);
+        }
+        
+        body.light-theme .logo span {
+            color: var(--light-accent);
+        }
+        
+        body.light-theme .nav-links a {
+            color: var(--light-text);
+        }
+        
+        body.light-theme .nav-links a:hover {
+            color: var(--light-accent);
+        }
+        
+        body.light-theme .hero-title {
+            color: var(--light-text);
+        }
+        
+        body.light-theme .hero-subtitle {
+            color: var(--light-text-secondary);
+        }
+        
+        body.light-theme .theme-toggle {
+            background: var(--light-hover);
+            color: var(--light-text);
+            border: 1px solid var(--light-border);
+        }
+        
+        body.light-theme .theme-toggle:hover {
+            background: var(--light-secondary-bg);
+            color: var(--light-accent);
+        }
+        
+        body.light-theme .floating-shape {
+            opacity: 0.1;
+            animation: floatAnimationLight 30s infinite ease-in-out;
+        }
+        
+        body.light-theme .hero-section {
+            background: radial-gradient(circle at 50% 50%, #ffffff, #f0f7ff);
+        }
+        
+        body.light-theme .floating-shape:nth-child(1) {
+            background: linear-gradient(45deg, #60a5fa, #3b82f6);
+            opacity: 0.15;
+            animation-duration: 28s;
+        }
+        
+        body.light-theme .floating-shape:nth-child(2) {
+            background: linear-gradient(45deg, #818cf8, #6366f1);
+            opacity: 0.12;
+            animation-duration: 32s;
+        }
+        
+        body.light-theme .floating-shape:nth-child(3) {
+            background: linear-gradient(45deg, #34d399, #10b981);
+            opacity: 0.1;
+            animation-duration: 24s;
+        }
+        
+        body.light-theme .floating-shape::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.2);
+            filter: blur(5px);
+            border-radius: inherit;
+        }
+        
+        @keyframes floatAnimationLight {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            33% {
+                transform: translate(20px, -30px) rotate(120deg) scale(1.1);
+            }
+            66% {
+                transform: translate(-15px, 25px) rotate(240deg) scale(0.95);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg) scale(1);
+            }
+        }
+        
+        body.light-theme .cta-btn.primary-btn {
+            background: linear-gradient(90deg, var(--light-accent), var(--primary-color));
+            color: white;
+        }
+        
+        body.light-theme .cta-btn.secondary-btn {
+            border: 1px solid var(--light-border);
+            color: var(--light-text);
+        }
         /* Responsive styles */
         
         @media (max-width: 768px) {
@@ -425,28 +558,10 @@
             <a href="aboutus.html">About Us</a>
             <a href="contactus.html">Contact</a>
 
-            <!-- Auth buttons (shown when user is not logged in) -->
-            <div class="auth-buttons" id="auth-buttons">
-                <a href="log.html" class="auth-btn login-btn">Login</a>
-                <a href="signup.html" class="auth-btn signup-btn">Sign Up</a>
-            </div>
-
-            <!-- User profile (shown when user is logged in) -->
-            <div class="user-profile" id="user-profile" style="display: none;">
-                <img src="assets/kj.png" alt="Profile" class="profile-pic" id="profile-pic">
-                <span class="user-name" id="user-name"></span>
-                <i class="fas fa-chevron-down" style="margin-left: 5px; font-size: 0.8rem;"></i>
-
-                <div class="dropdown-menu" id="profile-dropdown">
-                    <ul>
-                        <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
-                        <li><a href="applications.html"><i class="fas fa-file-alt"></i> My Applications</a></li>
-                        <li><a href="saved-jobs.html"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
-                        <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
-                        <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                    </ul>
-                </div>
-            </div>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-sun"></i>
+                <span>Light Mode</span>
+            </button>
         </nav>
     </header>
 
@@ -556,6 +671,34 @@
             } else {
                 chatIframe.style.display = 'none';
             }
+        });
+
+        // Replace the existing theme toggle script
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const icon = themeToggle.querySelector('i');
+            const text = themeToggle.querySelector('span');
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                body.classList.add('light-theme');
+                icon.className = 'fas fa-moon';
+                text.textContent = 'Dark Mode';
+            }
+
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('light-theme');
+                const isLight = body.classList.contains('light-theme');
+
+                // Update icon and text
+                icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+                text.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+
+                // Save preference
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            });
         });
     </script>
 </body>
