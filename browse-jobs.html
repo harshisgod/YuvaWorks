@@ -13,6 +13,14 @@
             --card-bg: #171c24;
             --text-light: #e0e0e0;
             --text-muted: #a0a0a0;
+            /* Light theme variables */
+            --light-bg: #f0f4f8;
+            --light-secondary-bg: #ffffff;
+            --light-text: #1a202c;
+            --light-text-muted: #4a5568;
+            --light-card-bg: #ffffff;
+            --light-border: #e2e8f0;
+            --light-hover: #ebf8ff;
         }
         
         * {
@@ -238,6 +246,61 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-light);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 20px;
+        }
+        
+        body.light-theme {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+        
+        body.light-theme .navbar {
+            background-color: var(--light-secondary-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.light-theme .nav-links a {
+            color: var(--light-text);
+        }
+        
+        body.light-theme .search-input {
+            background-color: var(--light-secondary-bg);
+            border: 1px solid var(--light-border);
+            color: var(--light-text);
+        }
+        
+        body.light-theme .filter-select {
+            background-color: var(--light-secondary-bg);
+            border: 1px solid var(--light-border);
+            color: var(--light-text);
+        }
+        
+        body.light-theme .job-card {
+            background-color: var(--light-card-bg);
+            border: 1px solid var(--light-border);
+        }
+        
+        body.light-theme .job-description {
+            color: var(--light-text-muted);
+        }
+        
+        body.light-theme .theme-toggle {
+            background: var(--light-hover);
+            color: var(--light-text);
+        }
     </style>
 </head>
 
@@ -272,7 +335,10 @@
                 <a href="fairpay.html">Fair Pay</a>
             </div>
         </div>
-        
+        <button class="theme-toggle" id="theme-toggle">
+            <i class="fas fa-sun"></i>
+            <span>Light Mode</span>
+        </button>
     </nav>
 
     <div class="container">
@@ -559,6 +625,32 @@
                 chatIframe.style.display = 'block';
             } else {
                 chatIframe.style.display = 'none';
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const icon = themeToggle.querySelector('i');
+            const text = themeToggle.querySelector('span');
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            body.classList.toggle('light-theme', savedTheme === 'light');
+            updateThemeButton(savedTheme === 'light');
+
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('light-theme');
+                const isLight = body.classList.contains('light-theme');
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+                updateThemeButton(isLight);
+            });
+
+            function updateThemeButton(isLight) {
+                icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+                text.textContent = isLight ? 'Dark Mode' : 'Light Mode';
             }
         });
     </script>
