@@ -301,6 +301,36 @@
             background: var(--light-hover);
             color: var(--light-text);
         }
+        
+        body.light-theme .logo h1 {
+            background: linear-gradient(45deg, #2563eb, #3182ce);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        body.light-theme .logo span {
+            background: none;
+            -webkit-background-clip: initial;
+            background-clip: initial;
+            color: #1a202c;
+        }
+        /* Base logo styles */
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #4285f4, #00c2ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+        
+        .logo span {
+            color: #ffffff;
+            /* Brighter white color for dark mode */
+            transition: color 0.3s ease;
+        }
     </style>
 </head>
 
@@ -324,9 +354,7 @@
     <nav class="navbar">
         <div class="logo-container">
             <div class="logo">
-                <a href="index.html" style="text-decoration: none; color: var(--secondary-color);">
-                    Yuva<span style="color: var(--text-light);">Works</span>
-                </a>
+                <h1>Yuva<span>Works</span></h1>
             </div>
             <div class="nav-links">
                 <a href="how-it-works.html">How It Works</a>
