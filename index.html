@@ -748,7 +748,7 @@
             background-color: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 5px;
-            color: var(--light);
+            color: var (--light);
             font-size: 16px;
             transition: all 0.3s ease;
         }
@@ -1017,11 +1017,14 @@
             color: var(--light);
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 1.2rem;
+            /* Adjust size of icons */
         }
         
         .social-icon:hover {
             background-color: var(--primary);
             transform: translateY(-5px);
+            color: white;
         }
         
         .footer-bottom {
@@ -1625,6 +1628,7 @@
             visibility: visible;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -2551,11 +2555,20 @@
             <div class="footer-column">
                 <div class="footer-logo">Yuva<span style="color: var(--primary);">Works</span></div>
                 <p style="color: #aaa; margin-bottom: 20px;">India's premier freelancing platform connecting talented professionals with businesses nationwide.</p>
+                <!-- Update the footer-social section with proper icons -->
                 <div class="footer-social">
-                    <a href="comingsoon.html" class="social-icon">f</a>
-                    <a href="comingsoon.html" class="social-icon">in</a>
-                    <a href="comingsoon.html" class="social-icon">tw</a>
-                    <a href="comingsoon.html" class="social-icon">ig</a>
+                    <a href="https://www.facebook.com/" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/home?originalSubdomain=in" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://x.com/" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/?hl=en1" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
             <div class="footer-column">
