@@ -645,6 +645,31 @@
                 transform: translateY(0);
             }
         }
+        /* Add these styles in your existing <style> tag */
+        
+        .profile-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .tab-button {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            background: none;
+            color: var(--text-color);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            background-color: var(--blue-accent);
+            color: white;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -674,6 +699,11 @@
             <div class="signin-header">
                 <h1>Sign Up</h1>
                 <p>Welcome to YuvaWorks!</p>
+            </div>
+
+            <div class="profile-tabs">
+                <button type="button" class="tab-button active" data-tab="freelancer">Freelancer</button>
+                <button type="button" class="tab-button" data-tab="employer">Employer</button>
             </div>
 
             <form id="signup-form">
@@ -1108,6 +1138,77 @@
         window.addEventListener('click', (e) => {
             if (e.target === termsModal) {
                 termsModal.style.display = 'none';
+            }
+        });
+
+        // Add this to your existing script
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                const tabId = `${button.dataset.tab}-content`;
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Update the tab switching code
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                // Store the selected user type
+                const userType = button.dataset.tab;
+                localStorage.setItem('selectedUserType', userType);
+            });
+        });
+
+        // Update the sign-up handler to handle both forms
+        signinBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const activeTab = document.querySelector('.tab-button.active');
+            const userType = activeTab.dataset.tab;
+
+            let isValid = true;
+            const userData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                userType: userType,
+                isLoggedIn: true,
+                timestamp: new Date().toISOString()
+            };
+
+            // Validate fields
+            if (!userData.firstName || !userData.lastName || !userData.email ||
+                !document.getElementById('password').value) {
+                isValid = false;
+                // Show validation errors...
+            }
+
+            if (isValid && acceptTermsCheckbox.checked) {
+                // Store user data
+                localStorage.setItem('yuvaworks_user', JSON.stringify(userData));
+
+                // Show loading state
+                signinBtn.classList.add('loading');
+
+                // Redirect based on user type
+                setTimeout(() => {
+                    const redirectPath = userType === 'freelancer' ? 'freelancer-profile.html' : 'employer-profile.html';
+                    window.location.href = redirectPath;
+                }, 1500);
             }
         });
     </script>
