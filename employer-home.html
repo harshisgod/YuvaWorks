@@ -127,7 +127,7 @@
         .user-name {
             font-size: 0.9rem;
             font-weight: 500;
-            color: var(--accent-color);
+            color: var (--accent-color);
         }
         
         .dropdown-menu {
@@ -490,10 +490,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 0.9rem;
+            font-weight: 500;
         }
         
         .theme-toggle:hover {
             background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
         }
         /* Light theme styles */
         
@@ -505,18 +507,22 @@
         body.light-theme .header {
             background-color: var(--light-secondary);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 3rem; /* Reduced padding to match dark theme */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            height: 70px; /* Reduced height to match dark theme */
         }
         
-        body.light-theme .logo {
-            color: var(--light-accent);
-        }
-        
-        body.light-theme .nav-links a {
-            color: var(--light-text);
-        }
-        
-        body.light-theme .nav-links a:hover {
-            color: var(--light-accent);
+        body.light-theme .header.scrolled {
+            padding: 1rem 3rem;
+            background-color: rgba(248, 250, 252, 0.95);
+            height: 70px;
         }
         
         body.light-theme .hero-section {
@@ -532,9 +538,26 @@
         }
         
         body.light-theme .theme-toggle {
-            background: var(--light-hover);
-            color: var (--light-text);
-            border: 1px solid var(--light-border);
+            background: #f1f5f9;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        body.light-theme .theme-toggle:hover {
+            background: #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-color: #cbd5e1;
+            color: #0f172a;
+        }
+        
+        body.light-theme .theme-toggle i {
+            color: #3182ce;
+        }
+        
+        body.light-theme .theme-toggle span {
+            color: #1e293b;
+            font-weight: 500;
         }
         
         body.light-theme .cta-btn.secondary-btn {
@@ -549,7 +572,33 @@
         }
         
         body.light-theme .floating-shape {
-            opacity: 0.1;
+            opacity: 0.25; /* Increased from 0.15 */
+            background: linear-gradient(45deg, 
+                rgba(37, 99, 235, 0.5), /* Increased opacity from 0.3 */
+                rgba(49, 130, 206, 0.5) /* Increased opacity from 0.3 */
+            );
+            filter: blur(1px); /* Reduced blur for sharper edges */
+        }
+        
+        body.light-theme .floating-shape:nth-child(1) {
+            background: linear-gradient(45deg, 
+                rgba(37, 99, 235, 0.4), /* Increased opacity from 0.2 */
+                rgba(49, 130, 206, 0.4)
+            );
+        }
+        
+        body.light-theme .floating-shape:nth-child(2) {
+            background: linear-gradient(45deg, 
+                rgba(49, 130, 206, 0.45), /* Increased opacity from 0.2 */
+                rgba(66, 153, 225, 0.45)
+            );
+        }
+        
+        body.light-theme .floating-shape:nth-child(3) {
+            background: linear-gradient(45deg, 
+                rgba(66, 153, 225, 0.35), /* Increased opacity from 0.2 */
+                rgba(37, 99, 235, 0.35)
+            );
         }
         /* Update light theme hero section styles */
         
@@ -591,10 +640,6 @@
         body.light-theme .cta-btn.primary-btn {
             background: linear-gradient(90deg, #2563eb, #3182ce);
             color: white;
-        }
-        
-        body.light-theme .floating-shape {
-            opacity: 0.05;
         }
         
         body.light-theme .welcome-message {
@@ -656,39 +701,66 @@
         }
         
         body.light-theme .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
             background: white;
             border: 1px solid #e2e8f0;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            padding: 1rem;
+            border-radius: 8px; /* Match dark mode */
+            padding: 1rem; /* Match dark mode padding */
+            min-width: 200px;
+            margin-top: 10px;
+        }
+        
+        body.light-theme .dropdown-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
         
         body.light-theme .dropdown-menu ul li {
+            padding: 0.8rem 0; /* Match dark mode padding */
             border-bottom: 1px solid #f0f7ff;
-            padding: 0.8rem 0;
         }
         
         body.light-theme .dropdown-menu ul li:last-child {
             border-bottom: none;
+            padding-bottom: 0; /* Remove extra padding */
+        }
+        
+        body.light-theme .dropdown-menu ul li:first-child {
+            padding-top: 0; /* Remove extra padding */
         }
         
         body.light-theme .dropdown-menu ul li a {
             color: #4a5568;
+            text-decoration: none;
+            font-size: 0.9rem;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 0;
         }
+
+        /* Add these styles in your light theme section */
+        body.light-theme .nav-links a {
+            color: #1a202c; /* Dark text color */
+            font-weight: 600; /* Makes text bolder */
+        }
+
+        body.light-theme .nav-links a[href="employer-home.html"] {
+            color: #000000; /* Blue accent color */
+            position: relative;
+            padding: 0.5rem 0; /* Remove horizontal padding */
+            font-weight: 700;
+            background-color: transparent; /* Remove background */
+            border-radius: 0; /* Remove border radius */
+        }
+
         
-        body.light-theme .dropdown-menu ul li a:hover {
-            background: #f7fafc;
-            color: #3182ce;
-        }
+
         
-        body.light-theme .dropdown-menu ul li a i {
-            color: #3182ce;
-        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
