@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Project Contract - YuvaWorks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
          :root {
             --primary: #2563eb;
@@ -17,10 +18,21 @@
             --success: #10b981;
             --danger: #ef4444;
             --warning: #f59e0b;
+            /* Light theme variables */
+            --light-bg: #f0f4f8;
+            --light-secondary-bg: #ffffff;
+            --light-gradient-start: #e2e8f0;
+            --light-gradient-end: #f8fafc;
+            --light-text: #1a202c;
+            --light-secondary: #2d3748;
+            --light-card-bg: #f7fafc;
+            --light-border: #e2e8f0;
+            --light-accent: #3182ce;
+            --light-hover: #ebf8ff;
         }
         
         body {
-            background-color: var(--darker);
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
             color: var(--light);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             /* Center the content and ensure proper spacing */
@@ -31,6 +43,106 @@
             min-height: 100vh;
             margin: 0;
             padding: 0;
+        }
+        
+        body.light-theme {
+            background: linear-gradient(135deg, var(--light-gradient-start) 0%, var(--light-gradient-end) 100%);
+            color: var(--light-text);
+        }
+        
+        body.light-theme header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.light-theme .logo {
+            color: var(--primary);
+        }
+        
+        body.light-theme .contract-details {
+            background: var(--light-secondary-bg);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            color: var(--light-text);
+        }
+        
+        body.light-theme .contract-details h1 {
+            color: var(--primary);
+        }
+        
+        body.light-theme .contract-details ul li {
+            color: var(--light-secondary);
+        }
+        
+        body.light-theme footer {
+            background: var(--light-secondary-bg);
+            border-top: 1px solid var(--light-border);
+            color: var(--light-secondary);
+        }
+        
+        body.light-theme .bubbles {
+            background: linear-gradient(135deg, var(--light-gradient-start), var(--light-gradient-end));
+        }
+        
+        body.light-theme .bubbles span {
+            background: var(--light-accent);
+            opacity: 0.3;
+        }
+        
+        body.light-theme .bubbles span:nth-child(even) {
+            background: var(--primary);
+            opacity: 0.2;
+        }
+        
+        body.light-theme .bubbles span:nth-child(4n) {
+            background: var(--secondary);
+            opacity: 0.25;
+        }
+        
+        body.light-theme .bubbles span {
+            animation: lightBubble 10s linear infinite;
+        }
+        
+        @keyframes lightBubble {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-1200px) scale(0.8);
+                opacity: 0;
+            }
+        }
+        /* Theme toggle button styles */
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: 20px;
+        }
+        
+        body.light-theme .theme-toggle {
+            color: var(--light-text);
+        }
+        
+        .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        body.light-theme .theme-toggle:hover {
+            background-color: var(--light-hover);
         }
         /* Ensure the header spans the full width */
         
@@ -237,6 +349,44 @@
                 opacity: 0;
             }
         }
+        /* Add to your existing styles */
+        
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--light);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        body.light-theme .theme-toggle {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--light-text);
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        body.light-theme .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .theme-toggle i {
+            font-size: 1.1rem;
+        }
     </style>
 </head>
 
@@ -253,6 +403,12 @@
     </div>
     <header>
         <a href="index.html" class="logo">Yuva<span>Works</span></a>
+        <div class="nav-controls">
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-sun"></i>
+                <span>Light Mode</span>
+            </button>
+        </div>
     </header>
 
     <section class="contract-details">
@@ -293,6 +449,31 @@
                 chatIframe.style.display = 'block';
             } else {
                 chatIframe.style.display = 'none';
+            }
+        });
+
+        // Replace the existing theme toggle script with this
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const icon = themeToggle.querySelector('i');
+            const text = themeToggle.querySelector('span');
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            body.classList.toggle('light-theme', savedTheme === 'light');
+            updateThemeButton(savedTheme === 'light');
+
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('light-theme');
+                const isLight = body.classList.contains('light-theme');
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+                updateThemeButton(isLight);
+            });
+
+            function updateThemeButton(isLight) {
+                icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+                text.textContent = isLight ? 'Dark Mode' : 'Light Mode';
             }
         });
     </script>
