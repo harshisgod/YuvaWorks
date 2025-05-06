@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escrow Payment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
          :root {
             --primary: #2563eb;
@@ -17,6 +18,14 @@
             --success: #10b981;
             --danger: #ef4444;
             --warning: #f59e0b;
+            /* Light theme variables */
+            --light-bg: #f0f4f8;
+            --light-surface: #ffffff;
+            --light-text: #1a202c;
+            --light-text-secondary: #4a5568;
+            --light-border: #e2e8f0;
+            --light-primary: #3182ce;
+            --light-primary-dark: #2c5282;
         }
         
         * {
@@ -100,10 +109,76 @@
             margin-top: 20px;
             width: 100px;
         }
+        /* Theme toggle button styles */
+        
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            /* Changed from left: 20px to right: 20px */
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            z-index: 1000;
+            /* Added to ensure button stays on top */
+        }
+        /* Light theme styles */
+        
+        body.light-theme {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+        
+        body.light-theme .theme-toggle {
+            background: var(--light-surface);
+            color: var(--light-text);
+            border: 1px solid var(--light-border);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        body.light-theme .escrow-container {
+            background-color: var(--light-surface);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.light-theme .escrow-container h1 {
+            color: var(--light-primary);
+        }
+        
+        body.light-theme .escrow-container p {
+            color: var(--light-text-secondary);
+        }
+        
+        body.light-theme .escrow-container input[type="number"] {
+            background-color: #f7fafc;
+            color: var(--light-text);
+            border: 1px solid var(--light-border);
+        }
+        
+        body.light-theme .escrow-container input[type="number"]::placeholder {
+            color: #a0aec0;
+        }
+        
+        body.light-theme .escrow-container button {
+            background: linear-gradient(135deg, var(--light-primary), var(--light-primary-dark));
+        }
     </style>
 </head>
 
 <body>
+    <button class="theme-toggle" id="theme-toggle">
+        <i class="fas fa-sun"></i>
+        <span>Light Mode</span>
+    </button>
+
     <div class="escrow-container">
         <h1>Secure Escrow Payment</h1>
         <p>Enter the payment details below to proceed with a secure transaction.</p>
@@ -138,6 +213,31 @@
             💬
         </button>
     </div>
+
+    <script>
+        // Add this before the existing AI chat script
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.body.classList.toggle('light-theme', savedTheme === 'light');
+        updateThemeButton(savedTheme === 'light');
+
+        // Theme toggle functionality
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            updateThemeButton(isLight);
+        });
+
+        function updateThemeButton(isLight) {
+            themeIcon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+            themeText.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+        }
+    </script>
 
     <script>
         // Toggle AI Chat iframe visibility
