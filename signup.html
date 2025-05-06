@@ -1011,8 +1011,14 @@
                 setTimeout(() => {
                     signinBtn.classList.remove('loading');
 
-                    // Redirect to homepage
-                    window.location.href = 'home.html';
+                    // Redirect based on user type
+                    setTimeout(() => {
+                        if (userData.userType === 'freelancer') {
+                            window.location.href = 'freelancer-home.html';
+                        } else {
+                            window.location.href = 'employer-home.html';
+                        }
+                    }, 1500);
                 }, 1500);
             }
         });
@@ -1031,8 +1037,8 @@
             // Store user data
             localStorage.setItem('yuvaworks_user', JSON.stringify(userData));
 
-            // Redirect to homepage
-            window.location.href = 'index1.html';
+            // Redirect to home.html
+            window.location.href = 'home.html';
         };
 
         // Google Sign-In Button handler
@@ -1206,8 +1212,11 @@
 
                 // Redirect based on user type
                 setTimeout(() => {
-                    const redirectPath = userType === 'freelancer' ? 'freelancer-profile.html' : 'employer-profile.html';
-                    window.location.href = redirectPath;
+                    if (userData.userType === 'freelancer') {
+                        window.location.href = 'freelancer-home.html';
+                    } else {
+                        window.location.href = 'employer-home.html';
+                    }
                 }, 1500);
             }
         });
