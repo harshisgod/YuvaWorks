@@ -781,23 +781,18 @@
                     lastName: lastName.value.trim(),
                     email: email.value.trim(),
                     isLoggedIn: true,
-                    profilePic: 'https://i.pravatar.cc/150?u=' + email.value.trim() // Generate avatar based on email
+                    profilePic: 'https://i.pravatar.cc/150?u=' + email.value.trim()
                 };
 
                 // Store user data in localStorage
                 localStorage.setItem('yuvaworks_user', JSON.stringify(userData));
-
-                // Add this after successful login validation
                 localStorage.setItem('yuvaWorks_loggedIn', 'true');
 
-                // Check if there's a redirect URL
-                const redirectUrl = localStorage.getItem('yuvaWorks_redirectUrl');
-                if (redirectUrl) {
-                    localStorage.removeItem('yuvaWorks_redirectUrl'); // Clear the stored URL
-                    window.location.href = redirectUrl;
-                } else {
-                    window.location.href = 'index.html'; // Default redirect
-                }
+                // Simulate loading delay
+                setTimeout(() => {
+                    // Redirect to home.html instead of index.html
+                    window.location.href = 'home.html';
+                }, 1500);
             }
         });
 
@@ -814,9 +809,10 @@
 
             // Store user data
             localStorage.setItem('yuvaworks_user', JSON.stringify(userData));
+            localStorage.setItem('yuvaWorks_loggedIn', 'true');
 
-            // Redirect to homepage
-            window.location.href = 'index1.html';
+            // Redirect to home.html
+            window.location.href = 'home.html';
         };
 
         // Google login Button handler
