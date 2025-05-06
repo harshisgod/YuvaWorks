@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"="width=device-width, initial-scale=1.0">
     <title>YuvaWorks - About Us</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -23,12 +23,26 @@
             --text-light: #777;
             --white: #fff;
             --accent: #00c2ff;
+            /* Add light theme colors */
+            --light-primary-bg: #ffffff;
+            --light-secondary-bg: #f8faff;
+            --light-text: #2d3748;
+            --light-text-secondary: #4a5568;
+            --light-accent: #3182ce;
+            --light-border: #e2e8f0;
+            --light-card-bg: #ffffff;
+            --light-hover: #ebf8ff;
         }
         
         body {
             background-color: #000;
             color: var(--white);
             overflow-x: hidden;
+        }
+        
+        body.light-theme {
+            background-color: var(--light-primary-bg);
+            color: var(--light-text);
         }
         
         .navbar {
@@ -45,6 +59,11 @@
             transition: all 0.3s ease;
         }
         
+        body.light-theme .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
         .navbar:hover {
             box-shadow: 0 4px 20px rgba(0, 102, 255, 0.5);
         }
@@ -54,6 +73,10 @@
             font-weight: 700;
             color: var(--white);
             text-decoration: none;
+        }
+        
+        body.light-theme .logo {
+            color: var(--light-text);
         }
         
         .logo span {
@@ -74,6 +97,10 @@
             position: relative;
         }
         
+        body.light-theme .nav-links a {
+            color: var(--light-text-secondary);
+        }
+        
         .nav-links a:after {
             content: '';
             position: absolute;
@@ -91,6 +118,10 @@
         
         .nav-links a:hover {
             color: var(--primary);
+        }
+        
+        body.light-theme .nav-links a:hover {
+            color: var(--light-accent);
         }
         
         .btn {
@@ -169,6 +200,10 @@
             position: relative;
         }
         
+        body.light-theme .about-section {
+            background-color: var(--light-secondary-bg);
+        }
+        
         .about-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -186,6 +221,10 @@
             position: relative;
             display: inline-block;
             padding-bottom: 15px;
+        }
+        
+        body.light-theme .section-title h2 {
+            color: var(--light-text);
         }
         
         .section-title h2:after {
@@ -216,11 +255,19 @@
             color: var(--white);
         }
         
+        body.light-theme .about-text h3 {
+            color: var(--light-text);
+        }
+        
         .about-text p {
             font-size: 16px;
             line-height: 1.8;
             color: #cccccc;
             margin-bottom: 20px;
+        }
+        
+        body.light-theme .about-text p {
+            color: var(--light-text-secondary);
         }
         
         .about-image {
@@ -253,6 +300,10 @@
             background-color: #000;
         }
         
+        body.light-theme .team-section {
+            background-color: var(--light-primary-bg);
+        }
+        
         .team-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -276,6 +327,12 @@
             animation: fadeUp 0.8s forwards;
         }
         
+        body.light-theme .team-member {
+            background: var(--light-card-bg);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--light-border);
+        }
+        
         .team-member:nth-child(1) {
             animation-delay: 0.2s;
         }
@@ -295,6 +352,11 @@
         .team-member:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 102, 255, 0.3);
+        }
+        
+        body.light-theme .team-member:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
         }
         
         .member-image {
@@ -325,9 +387,17 @@
             margin-bottom: 5px;
         }
         
+        body.light-theme .member-info h4 {
+            color: var(--light-text);
+        }
+        
         .member-info p {
             color: #aaa;
             margin-bottom: 15px;
+        }
+        
+        body.light-theme .member-info p {
+            color: var(--light-text-secondary);
         }
         
         .social-links {
@@ -349,15 +419,29 @@
             transition: all 0.3s ease;
         }
         
+        body.light-theme .social-links a {
+            background-color: var(--light-hover);
+            color: var(--light-accent);
+        }
+        
         .social-links a:hover {
             background-color: var(--primary);
             color: var(--white);
             transform: translateY(-3px);
         }
         
+        body.light-theme .social-links a:hover {
+            background-color: var(--light-accent);
+            color: var(--light-primary-bg);
+        }
+        
         .values-section {
             padding: 80px 50px;
             background-color: #001233;
+        }
+        
+        body.light-theme .values-section {
+            background-color: var(--light-secondary-bg);
         }
         
         .values-container {
@@ -384,6 +468,12 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeUp 0.8s forwards;
+        }
+        
+        body.light-theme .value-card {
+            background-color: var(--light-card-bg);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--light-border);
         }
         
         .value-card:nth-child(1) {
@@ -415,6 +505,10 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
         
+        body.light-theme .value-card:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
         .value-card:hover:before {
             background: linear-gradient(45deg, rgba(0, 102, 255, 0.2), transparent);
         }
@@ -433,6 +527,11 @@
             transition: all 0.4s ease;
         }
         
+        body.light-theme .value-icon {
+            background-color: var(--light-hover);
+            color: var(--light-accent);
+        }
+        
         .value-card:hover .value-icon {
             background-color: var(--primary);
             color: var(--white);
@@ -445,10 +544,18 @@
             margin-bottom: 15px;
         }
         
+        body.light-theme .value-card h4 {
+            color: var(--light-text);
+        }
+        
         .value-card p {
             color: #aaa;
             line-height: 1.6;
             font-size: 15px;
+        }
+        
+        body.light-theme .value-card p {
+            color: var(--light-text-secondary);
         }
         
         footer {
@@ -581,6 +688,35 @@
                 font-size: 30px;
             }
         }
+        /* Theme toggle button styles */
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        body.light-theme .theme-toggle {
+            color: var(--light-text);
+            background-color: var(--light-hover);
+        }
+        
+        .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        body.light-theme .theme-toggle:hover {
+            background-color: var(--light-secondary-bg);
+            color: var(--light-accent);
+        }
     </style>
 </head>
 
@@ -589,6 +725,10 @@
         <nav class="navbar">
             <a href="index.html" class="logo">Yuva<span>Works</span></a>
             <div class="nav-links">
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <span>Theme</span>
+                </button>
                 <a href="index.html">Home</a>
                 <a href="contactus.html">Contact</a>
             </div>
@@ -829,6 +969,31 @@
                 chatIframe.style.display = 'none';
             }
         });
+
+        // Theme switcher
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+        const text = themeToggle.querySelector('span');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.classList.toggle('light-theme', savedTheme === 'light');
+            updateThemeButton(savedTheme === 'light');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            const isLight = body.classList.contains('light-theme');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            updateThemeButton(isLight);
+        });
+
+        function updateThemeButton(isLight) {
+            icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+            text.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+        }
     </script>
 </body>
 
