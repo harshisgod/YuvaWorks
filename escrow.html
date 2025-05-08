@@ -138,10 +138,17 @@
         }
         
         body.light-theme .theme-toggle {
-            background: var(--light-surface);
-            color: var(--light-text);
-            border: 1px solid var(--light-border);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            background: #f8fafc;
+            color: #1e293b;
+            border: 2px solid #e2e8f0;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-theme .theme-toggle:hover {
+            background: #f1f5f9;
+            color: #2563eb;
+            border-color: #2563eb;
         }
         
         body.light-theme .escrow-container {
@@ -150,25 +157,58 @@
         }
         
         body.light-theme .escrow-container h1 {
-            color: var(--light-primary);
+            color: #2563eb;
+            font-weight: 700;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         }
         
         body.light-theme .escrow-container p {
-            color: var(--light-text-secondary);
+            color: #374151;
+            font-weight: 500;
+            line-height: 1.6;
         }
         
         body.light-theme .escrow-container input[type="number"] {
-            background-color: #f7fafc;
-            color: var(--light-text);
-            border: 1px solid var(--light-border);
+            background-color: #f8fafc;
+            color: #1a202c;
+            border: 2px solid #e2e8f0;
+            font-weight: 500;
         }
         
         body.light-theme .escrow-container input[type="number"]::placeholder {
-            color: #a0aec0;
+            color: #64748b;
         }
         
         body.light-theme .escrow-container button {
-            background: linear-gradient(135deg, var(--light-primary), var(--light-primary-dark));
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+        }
+        
+        body.light-theme .escrow-container button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        body.light-theme a[href="past-payments.html"] {
+            background: #2563eb;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+        }
+
+        body.light-theme a[href="past-payments.html"]:hover {
+            background: #1d4ed8;
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+        }
+
+        body.light-theme .circle {
+            opacity: 0.08;
+        }
+
+        body.light-theme .yuva-animated-bg {
+            filter: saturate(1.2) brightness(1.1);
         }
 
         .yuva-animated-bg {
@@ -346,3 +386,4 @@
 </body>
 
 </html>
+
