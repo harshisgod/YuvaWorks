@@ -21,6 +21,14 @@ font-family: 'Poppins', sans-serif;
 --text-color: #ccd6f6;
 --blue-accent: #5671f5;
 --blue-light: #8492fe;
+
+/* Light theme variables */
+--light-bg: #ffffff;
+--light-text: #1a202c;
+--light-secondary: #4a5568;
+--light-accent: #3182ce;
+--light-surface: #f3f4f6;
+--light-border: #e2e8f0;
 }
 
 body {
@@ -753,8 +761,72 @@ transform: translate(0, 0);
 transform: translate(-50px, -50px);
 }
 }
+
+/* Add to your existing styles */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 2px solid var(--accent-color);
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--accent-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-right: 2rem;
+}
+
+.theme-toggle i {
+    font-size: 1rem;
+    transition: transform 0.5s ease;
+}
+
+.theme-toggle:hover {
+    background: rgba(100, 255, 218, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+}
+
+.theme-toggle:active {
+    transform: translateY(0);
+}
+
+/* Light theme styles */
+body.light-theme {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+body.light-theme .header {
+    background-color: var(--light-surface);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+body.light-theme .theme-toggle {
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+    border-color: #2563eb;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+}
+
+body.light-theme .theme-toggle:hover {
+    background: rgba(37, 99, 235, 0.15);
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+}
+
+/* Animation for icon rotation */
+.theme-toggle i {
+    transition: transform 0.5s ease;
+}
+
+.theme-toggle:hover i {
+    transform: rotate(360deg);
+}
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/css/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -766,12 +838,16 @@ transform: translate(-50px, -50px);
 <header class="header">
 <a href="freelancer-home.html" class="logo">Yuva<span>Works</span></a>
 <nav class="nav-links">
+<!-- Add theme toggle button -->
+<button class="theme-toggle" id="theme-toggle">
+<i class="fas fa-sun"></i>
+<span>Light Mode</span>
+</button>
 <a href="freelancer-home.html">Home</a>
 <a href="browse-jobs.html" onclick="localStorage.setItem('yuvaWorks_loggedIn', 'true')">Browse Jobs</a>
 <a href="aboutus.html">About Us</a>
 <a href="contactus.html">Contact</a>
 </nav>
-<!-- Navbar Profile Picture -->
 </header>
 
 <div class="profile-container">
@@ -1517,6 +1593,39 @@ localStorage.setItem('yuvaworks_profile_picture', e.target.result);
 reader.readAsDataURL(file);
 }
 });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const themeText = themeToggle.querySelector('span');
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('yuva_theme') || 'dark';
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        themeText.textContent = 'Dark Mode';
+    }
+
+    // Toggle theme
+    themeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('light-theme');
+        const isLight = document.body.classList.contains('light-theme');
+        
+        if (isLight) {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+            themeText.textContent = 'Dark Mode';
+            localStorage.setItem('yuva_theme', 'light');
+        } else {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeText.textContent = 'Light Mode';
+            localStorage.setItem('yuva_theme', 'dark');
+        }
+    });
 });
 </script>
 </body>
