@@ -13,6 +13,9 @@
             --text-color: #ccd6f6;
             --blue-accent: #5671f5;
             --blue-light: #8492fe;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
         }
         body {
             background-color: var(--primary-color);
@@ -20,10 +23,12 @@
             min-height: 100vh;
             margin: 0;
             font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
         }
         .header {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Distribute logo left, nav right */
             align-items: center;
             padding: 1.5rem 3rem;
             background-color: rgba(10, 25, 47, 0.9);
@@ -48,6 +53,7 @@
             display: flex;
             gap: 2rem;
             align-items: center;
+            margin-left: 0; /* Remove auto, keep nav next to logo */
         }
         .nav-links a {
             color: var(--text-color);
@@ -64,7 +70,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-left: 2rem;
+            margin-left: 80px; /* Increased left margin for more space */
+            margin-right: 40px;
             cursor: pointer;
             position: relative;
         }
@@ -142,11 +149,15 @@
             color: var(--accent-color);
             margin-bottom: 1.5rem;
             text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
         .payments-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 1rem;
+            background: transparent;
         }
         .payments-table th, .payments-table td {
             padding: 1rem;
@@ -155,6 +166,10 @@
         .payments-table th {
             background: var(--blue-accent);
             color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
         }
         .payments-table tr:nth-child(even) {
             background: rgba(100,255,218,0.05);
@@ -177,9 +192,16 @@
             color: var(--warning);
             font-weight: 600;
         }
-        @media (max-width: 700px) {
+        @media (max-width: 900px) {
             .main-content { padding: 1rem; }
             .payments-table th, .payments-table td { padding: 0.5rem; font-size: 0.95rem;}
+        }
+        @media (max-width: 600px) {
+            .header { flex-direction: column; padding: 1rem; }
+            .main-content { margin-top: 130px; padding: 0.5rem; }
+            .logo { font-size: 1.3rem; }
+            .nav-links { gap: 1rem; }
+            .payments-table th, .payments-table td { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -190,9 +212,9 @@
             <a href="freelancer-home.html">Home</a>
             <a href="aboutus.html">About Us</a>
             <a href="contactus.html">Contact</a>
-            <div class="user-profile" id="user-profile">
+            <div class="user-profile" id="user-profile" style="margin-left:40px;">
                 <img src="assets/default-profile.png" alt="Profile" class="profile-pic" id="profile-pic">
-                <span class="user-name" id="user-name">John Doe</span>
+                <span class="user-name" id="user-name"></span>
                 <i class="fas fa-chevron-down" style="margin-left: 5px; font-size: 0.8rem;"></i>
                 <div class="dropdown-menu" id="profile-dropdown">
                     <ul>
@@ -254,10 +276,26 @@
         </table>
     </main>
     <script>
-        // Dropdown menu toggle
+        // Show logged-in user's profile info if available
         document.addEventListener('DOMContentLoaded', function() {
             const userProfile = document.getElementById('user-profile');
             const dropdownMenu = document.getElementById('profile-dropdown');
+            const userName = document.getElementById('user-name');
+            const profilePic = document.getElementById('profile-pic');
+
+            // Load user data from localStorage
+            const userData = localStorage.getItem('yuvaworks_user');
+            if (userData) {
+                const user = JSON.parse(userData);
+                userName.textContent = user.firstName + ' ' + user.lastName;
+                if (user.profilePic) {
+                    profilePic.src = user.profilePic;
+                }
+            } else {
+                userName.textContent = "Guest";
+            }
+
+            // Dropdown menu toggle
             userProfile.addEventListener('click', function(event) {
                 event.stopPropagation();
                 dropdownMenu.classList.toggle('active');
