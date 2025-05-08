@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YuvaWorks - Login</title>
     <style>
         * {
@@ -588,6 +588,19 @@
                 <p>Welcome back to YuvaWorks!</p>
             </div>
 
+            <div class="input-group name-group">
+                <div class="input-wrapper">
+                    <input type="text" id="firstName" placeholder=" " required>
+                    <label for="firstName">First Name</label>
+                    <div class="form-error" id="firstName-error">First name is required</div>
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" id="lastName" placeholder=" " required>
+                    <label for="lastName">Last Name</label>
+                    <div class="form-error" id="lastName-error">Last name is required</div>
+                </div>
+            </div>
+
             <div class="input-group">
                 <input type="email" id="email" placeholder=" " required>
                 <label for="email">Email Address</label>
@@ -713,14 +726,34 @@
         // Form validation and login process
         const signinBtn = document.getElementById('signin-btn');
 
-        signinBtn.addEventListener('click', async (e) => {
+        signinBtn.addEventListener('click', (e) => {
             e.preventDefault();
             let isValid = true;
 
+            const firstName = document.getElementById('firstName');
+            const lastName = document.getElementById('lastName');
             const email = document.getElementById('email');
             const password = document.getElementById('password');
+            const firstNameError = document.getElementById('firstName-error');
+            const lastNameError = document.getElementById('lastName-error');
             const emailError = document.getElementById('email-error');
             const passwordError = document.getElementById('password-error');
+
+            // Validate first name
+            if (firstName.value.trim() === '') {
+                firstNameError.style.display = 'block';
+                isValid = false;
+            } else {
+                firstNameError.style.display = 'none';
+            }
+
+            // Validate last name
+            if (lastName.value.trim() === '') {
+                lastNameError.style.display = 'block';
+                isValid = false;
+            } else {
+                lastNameError.style.display = 'none';
+            }
 
             // Validate email
             if (!validateEmail(email.value)) {
@@ -739,42 +772,27 @@
             }
 
             if (isValid) {
+                // Show loading state
                 signinBtn.classList.add('loading');
 
-                try {
-                    const response = await fetch('/api/login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            email: email.value.trim(),
-                            password: password.value
-                        })
-                    });
+                // Mock user data storage
+                const userData = {
+                    firstName: firstName.value.trim(),
+                    lastName: lastName.value.trim(),
+                    email: email.value.trim(),
+                    isLoggedIn: true,
+                    profilePic: 'https://i.pravatar.cc/150?u=' + email.value.trim()
+                };
 
-                    const data = await response.json();
-                    
-                    if (response.ok) {
-                        localStorage.setItem('yuvaworks_user', JSON.stringify({
-                            firstName: data.user.firstName,
-                            lastName: data.user.lastName,
-                            email: data.user.email,
-                            isLoggedIn: true,
-                            userType: data.user.userType
-                        }));
-                        localStorage.setItem('yuvaworks_token', data.token);
-                        
-                        window.location.href = 'home.html';
-                    } else {
-                        throw new Error(data.message || 'Login failed');
-                    }
-                } catch (error) {
-                    console.error('Login error:', error);
-                    alert(error.message || 'Failed to login. Please try again.');
-                } finally {
-                    signinBtn.classList.remove('loading');
-                }
+                // Store user data in localStorage
+                localStorage.setItem('yuvaworks_user', JSON.stringify(userData));
+                localStorage.setItem('yuvaWorks_loggedIn', 'true');
+
+                // Simulate loading delay
+                setTimeout(() => {
+                    // Redirect to home.html instead of index.html
+                    window.location.href = 'home.html';
+                }, 1500);
             }
         });
 
