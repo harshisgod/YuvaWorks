@@ -336,19 +336,28 @@
 
 <body>
     <script>
-        // Check if user is logged in
+        // Replace the existing checkAuth function with:
+
         function checkAuth() {
             const isLoggedIn = localStorage.getItem('yuvaWorks_loggedIn');
+            const referrer = document.referrer;
+            
+            // Allow access if coming from profile.html or if already logged in
+            if (referrer.includes('profile.html') || 
+                referrer.includes('freelancer-home.html') || 
+                (isLoggedIn && isLoggedIn === 'true')) {
+                return; // User is authenticated, allow access
+            }
+            
+            // Only redirect if user is not logged in and not coming from allowed pages
             if (!isLoggedIn || isLoggedIn !== 'true') {
-                // Save the current URL to redirect back after login
                 localStorage.setItem('yuvaWorks_redirectUrl', window.location.href);
-                // Redirect to login page
                 window.location.href = 'login.html';
             }
         }
 
         // Run auth check when page loads
-        document.addEventListener('DOMContentLoaded', checkAuth);
+        window.addEventListener('DOMContentLoaded', checkAuth);
     </script>
 
     <nav class="navbar">
