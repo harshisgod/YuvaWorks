@@ -905,11 +905,49 @@
         });
 
         // Handle Sign Up button click
-        signinBtn.addEventListener('click', async (e) => {
+        signinBtn.addEventListener('click', (e) => {
             e.preventDefault();
 
-            const activeTab = document.querySelector('.tab-button.active');
-            const userType = activeTab.dataset.tab;
+            if (!acceptTermsCheckbox.checked) {
+                const popup = document.createElement('div');
+                popup.classList.add('popup');
+                popup.innerHTML = `
+                    <div class="popup-content">
+                        <p>Please accept the Terms and Conditions to proceed with signup.</p>
+                        <button id="close-popup">OK</button>
+                    </div>
+                `;
+                document.body.appendChild(popup);
+
+                document.getElementById('close-popup').addEventListener('click', () => {
+                    popup.remove();
+                });
+                return;
+            }
+
+            // Check if the terms checkbox is not checked
+            if (!acceptTermsCheckbox.checked) {
+                // Show a popup if terms are not accepted
+                const popup = document.createElement('div');
+                popup.classList.add('popup');
+                popup.innerHTML = `
+                    <div class="popup-content">
+                        <p>You must accept the Terms and Conditions to proceed.</p>
+                        <button id="close-popup">Close</button>
+                    </div>
+                `;
+                document.body.appendChild(popup);
+
+                // Close popup logic
+                const closePopup = document.getElementById('close-popup');
+                closePopup.addEventListener('click', () => {
+                    popup.remove();
+                });
+
+                return;
+            }
+
+            // Proceed with the signup process if terms are accepted
             let isValid = true;
 
             const firstName = document.getElementById('firstName');
@@ -953,45 +991,35 @@
                 passwordError.style.display = 'none';
             }
 
-            if (isValid && acceptTermsCheckbox.checked) {
+            if (isValid) {
+                // Show loading state
                 signinBtn.classList.add('loading');
-                
-                try {
-                    const response = await fetch('/api/signup', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            firstName: firstName.value.trim(),
-                            lastName: lastName.value.trim(),
-                            email: email.value.trim(),
-                            password: password.value,
-                            userType: userType
-                        })
-                    });
 
-                    const data = await response.json();
-                    
-                    if (response.ok) {
-                        localStorage.setItem('yuvaworks_user', JSON.stringify({
-                            firstName: firstName.value.trim(),
-                            lastName: lastName.value.trim(),
-                            email: email.value.trim(),
-                            userType: userType,
-                            isLoggedIn: true
-                        }));
-                        
-                        window.location.href = userType === 'freelancer' ? 'freelancer-home.html' : 'employer-home.html';
-                    } else {
-                        throw new Error(data.message || 'Signup failed');
-                    }
-                } catch (error) {
-                    console.error('Signup error:', error);
-                    alert(error.message || 'Failed to signup. Please try again.');
-                } finally {
+                // Mock user data storage
+                const userData = {
+                    firstName: firstName.value.trim(),
+                    lastName: lastName.value.trim(),
+                    email: email.value.trim(),
+                    isLoggedIn: true,
+                    profilePic: 'https://i.pravatar.cc/150?u=' + email.value.trim() // Generate avatar based on email
+                };
+
+                // Store user data in localStorage
+                localStorage.setItem('yuvaworks_user', JSON.stringify(userData));
+
+                // Simulate API call with a delay
+                setTimeout(() => {
                     signinBtn.classList.remove('loading');
-                }
+
+                    // Redirect based on user type
+                    setTimeout(() => {
+                        if (userData.userType === 'freelancer') {
+                            window.location.href = 'freelancer-home.html';
+                        } else {
+                            window.location.href = 'employer-home.html';
+                        }
+                    }, 1500);
+                }, 1500);
             }
         });
 
