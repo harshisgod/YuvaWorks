@@ -16,6 +16,14 @@
             --success: #10b981;
             --danger: #ef4444;
             --warning: #f59e0b;
+
+            /* Light theme variables */
+            --light-bg: #ffffff;
+            --light-text: #1a202c;
+            --light-secondary: #4a5568;
+            --light-accent: #3182ce;
+            --light-surface: #f3f4f6;
+            --light-border: #e2e8f0;
         }
         body {
             background-color: var(--primary-color);
@@ -66,6 +74,162 @@
         .nav-links a:hover {
             color: var(--blue-light);
         }
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 2px solid var(--accent-color);
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 2rem;
+        }
+
+        .theme-toggle i {
+            font-size: 1rem;
+            transition: transform 0.5s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(100, 255, 218, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+        }
+
+        /* Light theme styles */
+        body.light-theme {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        body.light-theme .header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        body.light-theme .main-content {
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-theme .main-content h2 {
+            color: #1e293b;
+            font-weight: 700;
+        }
+
+        body.light-theme .main-content h2 i {
+            color: #2563eb;
+        }
+
+        body.light-theme .payments-table th {
+            background: #2563eb;
+            color: white;
+            font-weight: 600;
+        }
+
+        body.light-theme .payments-table td {
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        body.light-theme .payments-table tr:nth-child(even) {
+            background: rgba(37, 99, 235, 0.05);
+        }   
+
+        body.light-theme .payments-table tr:nth-child(odd) {
+            background: rgba(59, 130, 246, 0.02);
+        }
+
+        body.light-theme .status-success {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        body.light-theme .status-failed {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        body.light-theme .status-pending {
+            color: #d97706;
+            font-weight: 600;
+        }
+
+        body.light-theme .user-name {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        body.light-theme .dropdown-menu {
+            background: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        body.light-theme .dropdown-menu ul li {
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        body.light-theme .dropdown-menu ul li a {
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        body.light-theme .dropdown-menu ul li a:hover {
+            color: #2563eb;
+        }
+
+        body.light-theme .dropdown-menu ul li a i {
+            color: #2563eb;
+        }
+
+        body.light-theme #yuva-chatbot-btn {
+            background: linear-gradient(135deg, #2563eb 60%, #3b82f6 100%);
+            box-shadow: 0 4px 24px rgba(37, 99, 235, 0.2);
+        }
+
+        body.light-theme .circle {
+            opacity: 0.1;
+        }
+
+        body.light-theme .circle1 {
+            background: radial-gradient(circle, #3b82f6 0%, #2563eb 100%);
+        }
+
+        body.light-theme .circle2 {
+            background: radial-gradient(circle, #60a5fa 0%, #3b82f6 100%);
+        }
+
+        body.light-theme .circle3 {
+            background: radial-gradient(circle, #93c5fd 0%, #60a5fa 100%);
+        }
+
+        body.light-theme .circle4 {
+            background: radial-gradient(circle, #bfdbfe 0%, #93c5fd 100%);
+        }
+
+        body.light-theme .logo {
+            color: #2563eb;
+        }
+
+        body.light-theme .logo span {
+            color: #1d4ed8;
+        }
+
+        body.light-theme .nav-links a {
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        body.light-theme .nav-links a:hover {
+            color: #2563eb;
+        }
+
         .user-profile {
             display: flex;
             align-items: center;
@@ -345,6 +509,11 @@
     <header class="header">
         <a href="freelancer-home.html" class="logo">Yuva<span>Works</span></a>
         <nav class="nav-links">
+            <!-- Add theme toggle button -->
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-sun"></i>
+                <span>Light Mode</span>
+            </button>
             <a href="freelancer-home.html">Home</a>
             <a href="aboutus.html">About Us</a>
             <a href="contactus.html">Contact</a>
@@ -465,6 +634,38 @@
                     !chatbotContainer.contains(e.target)
                 ) {
                     chatbotContainer.classList.remove('active');
+                }
+            });
+
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            const themeText = themeToggle.querySelector('span');
+
+            // Load saved theme
+            const savedTheme = localStorage.getItem('yuva_theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+            }
+
+            // Toggle theme
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('light-theme');
+                const isLight = document.body.classList.contains('light-theme');
+                
+                if (isLight) {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    themeText.textContent = 'Dark Mode';
+                    localStorage.setItem('yuva_theme', 'light');
+                } else {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    themeText.textContent = 'Light Mode';
+                    localStorage.setItem('yuva_theme', 'dark');
                 }
             });
         });
