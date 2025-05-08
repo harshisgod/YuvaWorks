@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Payments - YuvaWorks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --accent-color: #64ffda;
+            --secondary-color: #112240;
+            --text-color: #ccd6f6;
+            --blue-accent: #5671f5;
+            --blue-light: #8492fe;
+        }
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            background-color: rgba(10, 25, 47, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--blue-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .logo span {
+            color: var(--accent-color);
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: var(--blue-light);
+        }
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 2rem;
+            cursor: pointer;
+            position: relative;
+        }
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+        }
+        .user-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--accent-color);
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 1rem;
+            min-width: 200px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 1000;
+            margin-top: 10px;
+        }
+        .dropdown-menu.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .dropdown-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .dropdown-menu ul li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(204, 214, 246, 0.1);
+        }
+        .dropdown-menu ul li:last-child {
+            border-bottom: none;
+        }
+        .dropdown-menu ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .dropdown-menu ul li a:hover {
+            color: var(--accent-color);
+        }
+        .dropdown-menu ul li a i {
+            width: 20px;
+        }
+        .main-content {
+            margin-top: 110px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            background: var(--secondary-color);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .main-content h2 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .payments-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .payments-table th, .payments-table td {
+            padding: 1rem;
+            text-align: left;
+        }
+        .payments-table th {
+            background: var(--blue-accent);
+            color: #fff;
+        }
+        .payments-table tr:nth-child(even) {
+            background: rgba(100,255,218,0.05);
+        }
+        .payments-table tr:nth-child(odd) {
+            background: rgba(84,146,254,0.05);
+        }
+        .payments-table td {
+            color: var(--text-color);
+        }
+        .status-success {
+            color: var(--success);
+            font-weight: 600;
+        }
+        .status-failed {
+            color: var(--danger);
+            font-weight: 600;
+        }
+        .status-pending {
+            color: var(--warning);
+            font-weight: 600;
+        }
+        @media (max-width: 700px) {
+            .main-content { padding: 1rem; }
+            .payments-table th, .payments-table td { padding: 0.5rem; font-size: 0.95rem;}
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="freelancer-home.html" class="logo">Yuva<span>Works</span></a>
+        <nav class="nav-links">
+            <a href="freelancer-home.html">Home</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="contactus.html">Contact</a>
+            <div class="user-profile" id="user-profile">
+                <img src="assets/default-profile.png" alt="Profile" class="profile-pic" id="profile-pic">
+                <span class="user-name" id="user-name">John Doe</span>
+                <i class="fas fa-chevron-down" style="margin-left: 5px; font-size: 0.8rem;"></i>
+                <div class="dropdown-menu" id="profile-dropdown">
+                    <ul>
+                        <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                        <li><a href="applications.html"><i class="fas fa-file-alt"></i> My Applications</a></li>
+                        <li><a href="projects-posted.html"><i class="fas fa-bookmark"></i> Projects Posted</a></li>
+                        <li><a href="saved-jobs.html"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
+                        <li><a href="bonus.html"><i class="fas fa-gift"></i> My Bonus/Rewards</a></li>
+                        <li><a href="referral.html"><i class="fas fa-users"></i> My Referrals</a></li>
+                        <li><a href="escrow.html"><i class="fas fa-wallet"></i> Payment Gateway</a></li>
+                        <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="main-content">
+        <h2><i class="fas fa-history"></i> Past Payments</h2>
+        <table class="payments-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Project</th>
+                    <th>Amount (INR)</th>
+                    <th>Status</th>
+                    <th>Transaction ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2025-05-01</td>
+                    <td>Website Redesign</td>
+                    <td>₹41,500</td>
+                    <td class="status-success">Completed</td>
+                    <td>TXN123456</td>
+                </tr>
+                <tr>
+                    <td>2025-04-18</td>
+                    <td>Mobile App UI</td>
+                    <td>₹24,900</td>
+                    <td class="status-success">Completed</td>
+                    <td>TXN123457</td>
+                </tr>
+                <tr>
+                    <td>2025-04-10</td>
+                    <td>Logo Design</td>
+                    <td>₹6,650</td>
+                    <td class="status-failed">Failed</td>
+                    <td>TXN123458</td>
+                </tr>
+                <tr>
+                    <td>2025-03-29</td>
+                    <td>SEO Optimization</td>
+                    <td>₹9,950</td>
+                    <td class="status-pending">Pending</td>
+                    <td>TXN123459</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <script>
+        // Dropdown menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const userProfile = document.getElementById('user-profile');
+            const dropdownMenu = document.getElementById('profile-dropdown');
+            userProfile.addEventListener('click', function(event) {
+                event.stopPropagation();
+                dropdownMenu.classList.toggle('active');
+            });
+            document.addEventListener('click', function() {
+                dropdownMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
