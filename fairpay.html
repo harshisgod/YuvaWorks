@@ -1488,23 +1488,6 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-        /* Theme Toggle Button */
-        
-        .theme-toggle {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--light);
-            cursor: pointer;
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        
-        .theme-toggle:hover {
-            background-color: var(--primary);
-            color: white;
-        }
         /* Light theme styles */
         
         body.light-theme {
@@ -1583,16 +1566,6 @@
         
         body.light-theme footer a {
             color: #4a5568;
-        }
-        
-        body.light-theme .theme-toggle {
-            background-color: #e5e7eb;
-            color: #4a5568;
-        }
-        
-        body.light-theme .theme-toggle:hover {
-            background-color: #6366f1;
-            color: white;
         }
         
         .mobile-menu {
@@ -1708,12 +1681,6 @@
         <a href="home.html" class="logo">Yuva<span>Works</span></a>
         <nav class="nav-items">
             <ul>
-                <li>
-                    <button class="theme-toggle" id="theme-toggle">
-                        <i class="fas fa-sun"></i>
-                        <span>Light Mode</span>
-                    </button>
-                </li>
                 <li><a href="how-it-works.html">How It Works</a></li>
                 <li><a href="browse-jobs.html">Browse Jobs</a></li>
                 <li><a href="#escrow-system">Escrow System</a></li>
@@ -2059,20 +2026,6 @@
         });
 
         // Dark Mode Toggle (already implemented in the design)
-        // Dark Mode Toggle (already implemented in the design)
-        const darkModeToggle = document.querySelector('.dark-mode-toggle');
-        darkModeToggle.addEventListener('click', () => {
-            // This would normally toggle between light and dark themes
-            // Since we're already in dark mode, we can add an animation effect
-            darkModeToggle.classList.add('active');
-            setTimeout(() => {
-                darkModeToggle.classList.remove('active');
-            }, 500);
-
-            // Toggle dark mode class on body
-            document.body.classList.toggle('light-mode');
-        });
-
         // Milestone progress bar animation
         const milestoneProgressBar = document.querySelector('.milestone-progress-bar');
         setTimeout(() => {
@@ -2114,99 +2067,6 @@
             } else {
                 chatIframe.style.display = 'none';
             }
-        });
-        // Add this to your existing JavaScript section
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeIcon = themeToggle.querySelector('i');
-            const themeText = themeToggle.querySelector('span');
-
-            // Check for saved theme preference
-            let savedTheme = localStorage.getItem('theme') || 'dark';
-
-            function setTheme(theme) {
-                localStorage.setItem('theme', theme);
-                if (theme === 'light') {
-                    document.body.classList.add('light-theme');
-                } else {
-                    document.body.classList.remove('light-theme');
-                }
-                updateThemeButton(theme === 'light');
-            }
-
-            function updateThemeButton(isLightTheme) {
-                if (isLightTheme) {
-                    if (themeIcon) {
-                        themeIcon.classList.remove('fas', 'fa-sun');
-                        themeIcon.classList.add('fas', 'fa-moon');
-                    }
-                    themeText.textContent = 'Dark Mode';
-                } else {
-                    if (themeIcon) {
-                        themeIcon.classList.remove('fas', 'fa-moon');
-                        themeIcon.classList.add('fas', 'fa-sun');
-                    }
-                    themeText.textContent = 'Light Mode';
-                }
-            }
-            setTheme(savedTheme);
-            themeToggle.addEventListener('click', () => {
-                savedTheme = localStorage.getItem('theme') || 'dark';
-                let newTheme = savedTheme === 'dark' ? 'light' : 'dark';
-                setTheme(newTheme);
-            });
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-
-            if (!themeToggle) {
-                console.error('Theme toggle button not found');
-                return;
-            }
-
-            // Initialize theme based on localStorage or default to dark
-            const currentTheme = localStorage.getItem('theme') || 'dark';
-            document.body.classList.toggle('light-theme', currentTheme === 'light');
-
-            // Add click event listener to toggle theme
-            themeToggle.addEventListener('click', () => {
-                // Toggle light-theme class on body
-                document.body.classList.toggle('light-theme');
-
-                // Update localStorage with new theme
-                const isLight = document.body.classList.contains('light-theme');
-                localStorage.setItem('theme', isLight ? 'light' : 'dark');
-
-                // Update button text
-                const buttonText = themeToggle.querySelector('span');
-                if (buttonText) {
-                    buttonText.textContent = isLight ? 'Dark Mode' : 'Light Mode';
-                }
-            });
-        });
-        // Add this as a separate script at the end of your body tag
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeText = themeToggle.querySelector('span');
-
-            // Apply saved theme on load
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            if (savedTheme === 'light') {
-                document.body.classList.add('light-theme');
-                themeText.textContent = 'Dark Mode';
-            }
-
-            // Theme toggle click handler
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('light-theme');
-                const isLight = document.body.classList.contains('light-theme');
-
-                // Update button text
-                themeText.textContent = isLight ? 'Dark Mode' : 'Light Mode';
-
-                // Save preference
-                localStorage.setItem('theme', isLight ? 'light' : 'dark');
-            });
         });
     </script>
     <script src="init.js"></script>
