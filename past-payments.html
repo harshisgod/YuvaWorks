@@ -210,7 +210,7 @@
             z-index: 2001;
             width: 60px;
             height: 60px;
-            background: #2563eb;
+            background: linear-gradient(135deg, #2563eb 60%, #64ffda 100%);
             border-radius: 50%;
             box-shadow: 0 4px 24px rgba(0,0,0,0.18);
             display: flex;
@@ -219,14 +219,18 @@
             cursor: pointer;
             border: none;
             outline: none;
-            transition: background 0.2s;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+            font-size: 2rem;
         }
         #yuva-chatbot-btn:hover {
-            background: #1d4ed8;
+            background: linear-gradient(135deg, #1d4ed8 60%, #64ffda 100%);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+            transform: translateY(-4px) scale(1.05);
         }
         #yuva-chatbot-btn i {
             color: #fff;
             font-size: 2rem;
+            transition: color 0.2s;
         }
         #yuva-chatbot-iframe-container {
             display: none;
@@ -234,13 +238,110 @@
             bottom: 100px;
             right: 32px;
             z-index: 2000;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+            overflow: hidden;
+            background: #fff;
+            animation: chatbot-pop 0.25s cubic-bezier(.4,2,.6,1) both;
         }
         #yuva-chatbot-iframe-container.active {
             display: block;
         }
+        #yuva-chatbot-iframe-container iframe {
+            width: 340px;
+            height: 500px;
+            border: none;
+            border-radius: 16px;
+            background: #fff;
+            transition: box-shadow 0.2s;
+        }
+        @keyframes chatbot-pop {
+            0% { opacity: 0; transform: scale(0.8) translateY(40px);}
+            100% { opacity: 1; transform: scale(1) translateY(0);}
+        }
+        @media (max-width: 600px) {
+            #yuva-chatbot-btn {
+                right: 16px;
+                bottom: 16px;
+                width: 48px;
+                height: 48px;
+                font-size: 1.5rem;
+            }
+            #yuva-chatbot-iframe-container,
+            #yuva-chatbot-iframe-container iframe {
+                right: 8px;
+                bottom: 72px;
+                width: 98vw !important;
+                max-width: 98vw !important;
+                height: 60vh !important;
+                min-width: 0 !important;
+                border-radius: 10px;
+            }
+        }
+        .yuva-animated-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.18;
+            filter: blur(2px);
+            animation-timing-function: ease-in-out;
+        }
+        .circle1 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, #64ffda 0%, #2563eb 100%);
+            left: -120px; top: -120px;
+            animation: float1 12s infinite alternate;
+        }
+        .circle2 {
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, #8492fe 0%, #0a192f 100%);
+            right: -100px; top: 40vh;
+            animation: float2 16s infinite alternate;
+        }
+        .circle3 {
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, #5671f5 0%, #64ffda 100%);
+            left: 60vw; bottom: -80px;
+            animation: float3 18s infinite alternate;
+        }
+        .circle4 {
+            width: 150px; height: 150px;
+            background: radial-gradient(circle, #f59e0b 0%, #ef4444 100%);
+            right: 10vw; bottom: 10vh;
+            animation: float4 14s infinite alternate;
+        }
+
+        @keyframes float1 {
+            0% { transform: translateY(0) scale(1);}
+            100% { transform: translateY(60px) scale(1.1);}
+        }
+        @keyframes float2 {
+            0% { transform: translateY(0) scale(1);}
+            100% { transform: translateY(-80px) scale(1.05);}
+        }
+        @keyframes float3 {
+            0% { transform: translateX(0) scale(1);}
+            100% { transform: translateX(-60px) scale(1.15);}
+        }
+        @keyframes float4 {
+            0% { transform: translateY(0) scale(1);}
+            100% { transform: translateY(40px) scale(0.95);}
+        }
     </style>
 </head>
 <body>
+    <div class="yuva-animated-bg">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+        <div class="circle circle4"></div>
+    </div>
     <header class="header">
         <a href="freelancer-home.html" class="logo">Yuva<span>Works</span></a>
         <nav class="nav-links">
@@ -318,8 +419,7 @@
     <div id="yuva-chatbot-iframe-container">
         <iframe
             src="https://www.chatbase.co/chatbot-iframe/WUpdiya0H_6UQAbH37ndm"
-            title="YuvaWorks Chatbot"
-            style="width:320px;height:480px;border:none;border-radius:14px;box-shadow:0 4px 24px rgba(0,0,0,0.18);background:#fff;">
+            title="YuvaWorks Chatbot">
         </iframe>
     </div>
 
