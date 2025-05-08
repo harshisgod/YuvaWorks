@@ -2,110 +2,90 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect('mongodb+srv://raghav5119052023:raghav5119052023@cluster0.yuxddxw.mongodb.net/yuvaworks?retryWrites=true&w=majority', {
-    dbName: 'yuvaworks'
+mongoose.connect(process.env.MONGO_URI, {
+    dbName: 'yuvaworks',
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 })
-.then(() => {
-    console.log('✅ Successfully connected to MongoDB.');
-})
-.catch((error) => {
-    console.error('❌ Error connecting to MongoDB:', error.message);
-});
+.then(() => console.log('✅ Successfully connected to MongoDB.'))
+.catch((error) => console.error('❌ Error connecting to MongoDB:', error));
 
-// Monitor database connection
-mongoose.connection.on('connected', () => {
-    console.log('Mongoose connected to MongoDB');
-});
+const User = require('./models/User');
 
-mongoose.connection.on('error', (err) => {
-    console.error('Mongoose connection error:', err);
-});
-
-mongoose.connection.on('disconnected', () => {
-    console.log('Mongoose disconnected from MongoDB');
-});
-
-// User Schema
-const userSchema = new mongoose.Schema({
-    firstName: String,
-    lastName: String,
-    email: { type: String, unique: true },
-    password: String,
-    profilePic: String,
-    authProvider: String,
-    createdAt: { type: Date, default: Date.now }
-});
-
-const User = mongoose.model('User', userSchema);
-
-// Registration endpoint
+// Signup endpoint
 app.post('/api/signup', async (req, res) => {
     try {
-        const { firstName, lastName, email, password } = req.body;
+        const { firstName, lastName, email, password, userType } = req.body;
         
-        // Check if user already exists
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: 'Email already registered' });
         }
 
-        // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
-
-        // Create new user
         const user = new User({
             firstName,
             lastName,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            userType
         });
 
         await user.save();
-        res.status(201).json({ message: 'User registered successfully' });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server error' });
-    }
-});
-
-// Google OAuth route handler
-app.post('/auth/google', async (req, res) => {
-    try {
-        const { email, firstName, lastName, profilePic } = req.body;
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
         
-        // Check if user exists
-        let user = await User.findOne({ email });
-        
-        if (!user) {
-            // Create new user if doesn't exist
-            user = new User({
-                firstName,
-                lastName,
-                email,
-                profilePic,
-                authProvider: 'google'
-            });
-            await user.save();
-        }
-        
-        res.status(200).json({ 
-            message: 'Google authentication successful',
+        res.status(201).json({ 
+            message: 'User registered successfully',
+            token,
             user: {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 email: user.email,
-                profilePic: user.profilePic
+                userType: user.userType
             }
         });
     } catch (error) {
-        console.error('Google auth error:', error);
-        res.status(500).json({ message: 'Authentication failed' });
+        console.error('Signup error:', error);
+        res.status(500).json({ message: 'Server error during signup' });
+    }
+});
+
+// Login endpoint
+app.post('/api/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        const isValidPassword = await bcrypt.compare(password, user.password);
+        if (!isValidPassword) {
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
+
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
+        
+        res.status(200).json({ 
+            message: 'Login successful',
+            token,
+            user: {
+                email: user.email,
+                userType: user.userType
+            }
+        });
+    } catch (error) {
+        console.error('Login error:', error);
+        res.status(500).json({ message: 'Server error during login' });
     }
 });
 
