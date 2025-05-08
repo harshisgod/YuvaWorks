@@ -26,6 +26,18 @@
             --text-primary: #ffffff;
             --text-secondary: #8790ab;
             --accent-blue: #4c6fff;
+
+            /* Light theme colors */
+            --light-primary: #ffffff;
+            --light-accent: #2563eb;
+            --light-secondary: #f8fafc;
+            --light-text: #334155;
+            --light-blue-accent: #3b82f6;
+            --light-blue-light: #1d4ed8;
+            --light-hover: #dbeafe;
+            --light-text-primary: #1e293b;
+            --light-text-secondary: #475569;
+            --light-border: #e2e8f0;
         }
         
         body {
@@ -71,16 +83,21 @@
         
         .nav-links {
             display: flex;
+            align-items: center;
             gap: 2rem;
+            margin-left: auto;
         }
         
-        .nav-links a {
+        .nav-links a, .nav-links button {
             color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
             font-size: 1rem;
-            transition: color 0.3s ease;
-            position: relative;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
         }
         
         .nav-links a:hover {
@@ -111,6 +128,10 @@
             background: radial-gradient(circle at 50% 50%, var(--primary-color), #060d1b);
             position: relative;
         }
+
+        body.light-theme .signin-container {
+            background: radial-gradient(circle at 50% 50%, #f0f9ff, #e2e8f0);
+        }
         
         .floating-shapes {
             position: absolute;
@@ -127,6 +148,10 @@
             border-radius: 50%;
             background: radial-gradient(circle at center, rgba(100, 255, 218, 0.3), rgba(100, 255, 218, 0));
             animation: float 15s infinite linear;
+        }
+
+        body.light-theme .shape {
+            background: radial-gradient(circle at center, rgba(37, 99, 235, 0.2), rgba(37, 99, 235, 0));
         }
         
         .shape:nth-child(1) {
@@ -275,7 +300,7 @@
         }
         
         .forgot-password a {
-            color: var (--blue-light);
+            color: var(--blue-light);
             text-decoration: none;
             font-size: 0.9rem;
             transition: color 0.3s ease;
@@ -548,6 +573,11 @@
             align-items: center;
             backdrop-filter: blur(8px);
         }
+
+        body.light-theme .modal {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
         
         .modal-content {
             background-color: rgba(17, 34, 64, 0.95);
@@ -622,6 +652,11 @@
             z-index: 1002;
             backdrop-filter: blur(5px);
         }
+
+        body.light-theme .popup {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+        }
         
         .popup-content {
             background-color: var(--secondary-color);
@@ -670,6 +705,181 @@
             background-color: var(--blue-accent);
             color: white;
         }
+
+        /* Add theme toggle button */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--accent-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+
+        /* Light theme styles */
+        body.light-theme {
+            background-color: var(--light-primary);
+            color: var(--light-text);
+        }
+
+        body.light-theme .header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-theme .logo {
+            color: var(--light-blue-light);
+        }
+
+        body.light-theme .logo span {
+            color: var(--light-accent);
+        }
+
+        body.light-theme .nav-links a {
+            color: var(--light-text);
+        }
+
+        body.light-theme .theme-toggle {
+            background-color: var(--light-hover);
+            color: var(--light-text);
+            border: 1px solid var(--light-border);
+        }
+
+        body.light-theme .theme-toggle:hover {
+            background-color: var(--light-accent);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Light theme styles for signin card */
+        body.light-theme .signin-card {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--light-border);
+        }
+
+        body.light-theme .signin-header h1 {
+            color: var(--light-blue-accent);
+        }
+
+        body.light-theme .signin-header p {
+            color: var(--light-text-secondary);
+        }
+
+        body.light-theme .profile-tabs {
+            background-color: var(--light-hover);
+        }
+
+        body.light-theme .tab-button {
+            color: var(--light-text);
+        }
+
+        body.light-theme .tab-button.active {
+            background-color: var(--light-accent);
+            color: white;
+        }
+
+        body.light-theme .input-group input {
+            background-color: var(--light-secondary);
+            border: 1px solid var(--light-border);
+            color: var(--light-text);
+        }
+
+        body.light-theme .input-group label {
+            color: var(--light-text-secondary);
+            background-color: transparent;
+        }
+
+        body.light-theme .input-group input:focus ~ label {
+            color: var(--light-accent);
+            background-color: white;
+        }
+
+        body.light-theme .password-toggle {
+            color: var(--light-text-secondary);
+        }
+
+        body.light-theme .remember-me label {
+            color: var(--light-text);
+        }
+
+        body.light-theme .forgot-password a {
+            color: var(--light-accent);
+        }
+
+        body.light-theme .terms-btn {
+            border-color: var(--light-accent);
+            color: var(--light-accent);
+        }
+
+        body.light-theme .terms-btn:hover {
+            background-color: var(--light-accent);
+            color: white;
+        }
+
+        body.light-theme .modal-content {
+            background-color: white;
+            color: var(--light-text);
+            border: 1px solid var(--light-border);
+        }
+
+        body.light-theme .modal-content h2 {
+            color: var(--light-blue-accent);
+        }
+
+        body.light-theme .modal-content p,
+        body.light-theme .modal-content li {
+            color: var(--light-text-secondary);
+        }
+
+        body.light-theme .modal-content strong {
+            color: var(--light-text);
+        }
+
+        body.light-theme .social-btn {
+            background-color: var(--light-secondary);
+            border: 1px solid var(--light-border);
+            color: var(--light-text-secondary);
+        }
+
+        body.light-theme .social-btn:hover {
+            background-color: var(--light-accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        body.light-theme .signup-link {
+            color: var(--light-text-secondary);
+        }
+
+        body.light-theme .signup-link a {
+            color: var(--light-accent);
+        }
+
+        body.light-theme .divider::before,
+        body.light-theme .divider::after {
+            background-color: var(--light-border);
+        }
+
+        body.light-theme .divider span {
+            color: var(--light-text-secondary);
+            background-color: white;
+        }
+
+        body.light-theme .otp-verify p {
+            color: var(--light-text);
+        }
+
+        body.light-theme .otp-input {
+            background-color: var(--light-secondary);
+            border: 1px solid var(--light-border);
+            color: var(--light-text);
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -677,12 +887,15 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
-<body>
-    <header class="header">
+<body>    <header class="header">
         <a href="index.html" class="logo">
             Yuva<span>Works</span>
         </a>
         <nav class="nav-links">
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+                <span>Theme</span>
+            </button>
             <a href="contactus.html">Contact Us</a>
             <a href="aboutus.html">About Us</a>
         </nav>
@@ -1220,6 +1433,31 @@
                 }, 1500);
             }
         });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+        const text = themeToggle.querySelector('span');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.classList.toggle('light-theme', savedTheme === 'light');
+            updateThemeButton(savedTheme === 'light');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            const isLight = body.classList.contains('light-theme');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            updateThemeButton(isLight);
+        });
+
+        function updateThemeButton(isLight) {
+            icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+            text.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+        }
     </script>
 </body>
 
