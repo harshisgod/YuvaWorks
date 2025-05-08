@@ -21,6 +21,12 @@
             --text-color: #ccd6f6;
             --blue-accent: #5671f5;
             --blue-light: #8492fe;
+            --light-bg: #ffffff;
+            --light-text: #1a202c;
+            --light-secondary: #4a5568;
+            --light-accent: #3182ce;
+            --light-surface: #f3f4f6;
+            --light-border: #e2e8f0;
         }
         
         body {
@@ -468,14 +474,225 @@
         .close-button:hover {
             color: var(--accent-color);
         }
+
+        /* Update theme toggle button styles */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 2px solid var(--accent-color);
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 2rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .theme-toggle i {
+            font-size: 1rem;
+            transition: transform 0.5s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(100, 255, 218, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+        }
+
+        .theme-toggle:active {
+            transform: translateY(0);
+        }
+
+        /* Light theme styles for the toggle */
+        body.light-theme .theme-toggle {
+            background: rgba(37, 99, 235, 0.1);
+            color: #2563eb;
+            border-color: #2563eb;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+        }
+
+        body.light-theme .theme-toggle:hover {
+            background: rgba(37, 99, 235, 0.15);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Animation for icon rotation */
+        .theme-toggle i {
+            transition: transform 0.5s ease;
+        }
+
+        .theme-toggle:hover i {
+            transform: rotate(360deg);
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .theme-toggle {
+                padding: 8px 16px;
+                margin-right: 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .theme-toggle i {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Light theme styles */
+        body.light-theme {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        body.light-theme .header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-theme .logo {
+            color: var(--light-accent);
+        }
+
+        body.light-theme .logo span {
+            color: #2563eb;
+        }
+
+        body.light-theme .hero-section {
+            background: radial-gradient(circle at 50% 50%, #f8fafc, #f1f5f9);
+        }
+
+        body.light-theme .hero-title {
+            color: var(--light-text);
+        }
+
+        body.light-theme .hero-subtitle {
+            color: var(--light-secondary);
+        }
+
+        body.light-theme .cta-btn.primary-btn {
+            background: linear-gradient(90deg, #2563eb, #3182ce);
+            color: white;
+        }
+
+        body.light-theme .cta-btn.secondary-btn {
+            background-color: transparent;
+            color: var(--light-text);
+            border: 1px solid #cbd5e1;
+        }
+
+        body.light-theme .welcome-message {
+            background-color: white;
+            border-left: 4px solid #2563eb;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-theme .welcome-message h3 {
+            color: #2563eb;
+        }
+
+        body.light-theme .welcome-message p {
+            color: var(--light-text);
+        }
+
+        body.light-theme .user-profile {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        body.light-theme .profile-pic {
+            border-color: #2563eb;
+        }
+
+        body.light-theme .user-name {
+            color: var(--light-text);
+        }
+
+        body.light-theme .dropdown-menu {
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-theme .dropdown-menu ul li {
+            border-bottom-color: #f1f5f9;
+        }
+
+        body.light-theme .dropdown-menu ul li a {
+            color: var(--light-text);
+        }
+
+        body.light-theme .dropdown-menu ul li a:hover {
+            color: #2563eb;
+        }
+
+        body.light-theme .auth-btn.login-btn {
+            color: #2563eb;
+            border-color: #2563eb;
+        }
+
+        body.light-theme .auth-btn.signup-btn {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        body.light-theme .floating-shape {
+            opacity: 0.1;
+        }
+
+        body.light-theme .floating-shape:nth-child(1) {
+            background: linear-gradient(45deg, #2563eb, #3182ce);
+        }
+
+        body.light-theme .floating-shape:nth-child(2) {
+            background: linear-gradient(45deg, #3182ce, #60a5fa);
+        }
+
+        body.light-theme .floating-shape:nth-child(3) {
+            background: linear-gradient(45deg, #60a5fa, #2563eb);
+        }
+
+        body.light-theme .modal-content {
+            background-color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-theme .close-button {
+            color: var(--light-text);
+        }
+
+        body.light-theme .close-button:hover {
+            color: #2563eb;
+        }
+
+        body.light-theme #ai-chat-button {
+            background: #2563eb;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            body.light-theme .header {
+                background-color: rgba(255, 255, 255, 0.98);
+            }
+        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/css/fa.min.css">
 </head>
 
 <body>
     <header class="header">
         <a href="freelancer-home.html" class="logo">Yuva<span>Works</span></a>
         <nav class="nav-links">
+            <!-- Add theme toggle button here -->
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-sun"></i>
+                <span>Light Mode</span>
+            </button>
             <a href="freelancer-home.html">Home</a>
             <a href="aboutus.html">About Us</a>
             <a href="contactus.html">Contact</a>
@@ -795,6 +1012,41 @@
             window.addEventListener('click', function(event) {
                 if (event.target === modal) {
                     closeModal();
+                }
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            const themeText = themeToggle.querySelector('span');
+
+            // Load saved theme
+            const savedTheme = localStorage.getItem('yuva_theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+            }
+
+            // Toggle theme
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('light-theme');
+                const isLight = document.body.classList.contains('light-theme');
+                
+                if (isLight) {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    themeText.textContent = 'Dark Mode';
+                    localStorage.setItem('yuva_theme', 'light');
+                } else {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    themeText.textContent = 'Light Mode';
+                    localStorage.setItem('yuva_theme', 'dark');
                 }
             });
         });
