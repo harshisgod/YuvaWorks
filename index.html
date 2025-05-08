@@ -485,7 +485,7 @@
             padding: 80px 5%;
             background-color: var(--dark);
             background: linear-gradient(135deg, var(--dark), var(--darker));
-            color: var(--light);
+            color: var (--light);
             text-align: center;
         }
         
@@ -1627,6 +1627,387 @@
             opacity: 1;
             visibility: visible;
         }
+        
+        .theme-toggle-button {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+        
+        .theme-toggle-button:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .theme-toggle {
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--primary);
+        }
+        
+        .theme-toggle:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        /* Light theme styles */
+        
+        body.light-theme {
+            background-color: #f9f9f9;
+            color: #334155;
+        }
+        
+        body.light-theme header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        body.light-theme .nav-items a {
+            color: #4a5568;
+            /* Slightly darker text for better readability */
+        }
+        
+        body.light-theme .logo {
+            color: #4338ca;
+            /* A different shade of primary */
+        }
+        
+        body.light-theme .logo span {
+            color: #6366f1;
+            /* A different shade of primary */
+        }
+        
+        body.light-theme .hero {
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+        }
+        
+        body.light-theme .categories {
+            background-color: #e0e0e0;
+        }
+        
+        body.light-theme .how-it-works {
+            background-color: #f0f0f0;
+        }
+        
+        body.light-theme .features {
+            background: #f0f0f0;
+            /* Light background */
+            color: #4a5568;
+            /* Darker text for better readability */
+        }
+        
+        body.light-theme .karma-system {
+            background-color: #e0e0e0;
+            /* Light background */
+        }
+        
+        body.light-theme .testimonials {
+            background-color: #f0f0f0;
+            /* Light background */
+        }
+        
+        body.light-theme .fair-pay {
+            background-color: #e0e0e0;
+            /* Light background */
+        }
+        
+        body.light-theme .escrow-system {
+            background-color: #e0e0e0;
+        }
+        
+        body.light-theme .contracts {
+            background-color: #f0f0f0;
+        }
+        
+        body.light-theme .milestone-payment {
+            background-color: #e0e0e0;
+        }
+        
+        body.light-theme .jobs-browse {
+            background-color: #f0f0f0;
+        }
+        
+        body.light-theme .cta {
+            background: linear-gradient(135deg, #1d4ed8, #8b5cf6);
+            color: #fff;
+        }
+        
+        body.light-theme footer {
+            background-color: #e0e0e0;
+            color: #4a5568;
+            /* Slightly darker text for better readability */
+        }
+        
+        body.light-theme footer .footer-logo {
+            color: #4338ca;
+            /* A different shade of primary */
+        }
+        
+        body.light-theme footer .footer-column h3 {
+            color: #4338ca;
+            /* A different shade of primary */
+        }
+        
+        body.light-theme footer .footer-links a {
+            color: #4a5568;
+            /* Slightly darker text for better readability */
+        }
+        
+        body.light-theme footer .footer-bottom {
+            color: #4a5568;
+            /* Slightly darker text for better readability */
+        }
+        
+        body.light-theme .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #4338ca);
+            /* A different shade of primary */
+            color: white;
+        }
+        
+        body.light-theme .btn-outline {
+            color: #4338ca;
+            /* A different shade of primary */
+            border: 2px solid #4338ca;
+            /* A different shade of primary */
+        }
+        
+        body.light-theme .btn-outline:hover {
+            background-color: #4338ca;
+            /* A different shade of primary */
+            color: white;
+        }
+        
+        body.light-theme .category-card {
+            background: linear-gradient(145deg, #d1d5db, #e5e7eb);
+            /* Lighter background */
+            color: #4a5568;
+            /* Slightly darker text for better readability */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            /* Reduced shadow */
+        }
+        
+        body.light-theme .category-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            /* Reduced shadow */
+        }
+        
+        body.light-theme .category-icon {
+            color: #6366f1;
+            /* A different shade of primary */
+        }
+        
+        body.light-theme .category-card h3 {
+            color: #4a5568;
+            /* Slightly darker text for better readability */
+        }
+        
+        body.light-theme .category-card p {
+            color: #71717a;
+            /* Slightly darker text for better readability */
+        }
+        
+        body.light-theme .stats span {
+            color: #6366f1;
+            /* A different shade of primary */
+        }
+        
+        body.light-theme .escrow-card {
+            background: rgba(229, 231, 235, 0.8);
+            /* Lighter background */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            /* Reduced shadow */
+        }
+        
+        body.light-theme .escrow-header {
+            background: linear-gradient(90deg, #6366f1, #4338ca);
+            /* A different shade of primary */
+            color: white;
+        }
+        
+        body.light-theme .template-card {
+            background: rgba(229, 231, 235, 0.8);
+            /* Lighter background */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            /* Reduced shadow */
+        }
+        
+        body.light-theme .template-header {
+            background: #6366f1;
+            /* A different shade of primary */
+            color: white;
+        }
+        
+        body.light-theme .job-card {
+            background: rgba(229, 231, 235, 0.8);
+            /* Lighter background */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            /* Reduced shadow */
+        }
+        
+        body.light-theme .job-title {
+            color: #4a5568;
+            /* Slightly darker text for better readability */
+        }
+        
+        body.light-theme .job-price {
+            color: #6366f1;
+            /* A different shade of primary */
+        }
+        
+        body.light-theme .job-tag {
+            background: rgba(99, 102, 241, 0.2);
+            /* A different shade of primary */
+            color: #4338ca;
+            /* A different shade of primary */
+        }
+        /* Specific sections */
+        
+        body.light-theme .features {
+            background: #f0f0f0;
+            /* Light background */
+            color: #4a5568;
+            /* Darker text for better readability */
+        }
+        
+        body.light-theme .karma-system {
+            background-color: #e0e0e0;
+            /* Light background */
+        }
+        
+        body.light-theme .testimonial-carousel {
+            background-color: #e0e0e0;
+        }
+        
+        body.light-theme .fair-pay {
+            background-color: #e0e0e0;
+            /* Light background */
+        }
+        
+        body.light-theme .milestone-card {
+            background: rgba(229, 231, 235, 0.8);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.light-theme .jobs-filters {
+            background: rgba(229, 231, 235, 0.5);
+        }
+        
+        body.light-theme .template-footer {
+            background: rgba(229, 231, 235, 0.5);
+            color: #4a5568;
+        }
+        /* Apply light theme to the specified classes */
+        
+        body.light-theme .feature-card {
+            background: #e0e0e0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: #4a5568;
+        }
+        
+        body.light-theme .karma-table {
+            background: #e0e0e0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.light-theme .karma-table th {
+            background-color: #6366f1;
+            color: white;
+        }
+        
+        body.light-theme .karma-table tr {
+            color: #4a5568;
+        }
+        
+        body.light-theme .testimonial-card {
+            background: #f0f0f0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            color: #4a5568;
+        }
+        
+        body.light-theme .estimator-form {
+            background: #e0e0e0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.light-theme .estimator-results {
+            background: #f0f0f0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            color: #4a5568;
+        }
+        
+        body.light-theme .escrow-icon {
+            background: #f0f0f0;
+            border: 3px solid #6366f1;
+            color: #6366f1;
+        }
+        
+        body.light-theme .form-control.filter-select {
+            background-color: #f0f0f0;
+            color: #4a5568;
+            border: 1px solid #ccc;
+        }
+        
+        body.light-theme .pagination a {
+            background: #e0e0e0;
+            color: #4a5568;
+        }
+        
+        body.light-theme .pagination a:hover,
+        body.light-theme .pagination a.active {
+            background: #6366f1;
+            color: white;
+        }
+        
+        body.light-theme .search-bar {
+            background-color: rgba(229, 231, 235, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.light-theme .search-bar input {
+            color: #4a5568;
+        }
+        
+        body.light-theme .search-bar input::placeholder {
+            color: rgba(74, 85, 104, 0.6);
+        }
+        
+        body.light-theme .theme-toggle {
+            background: #e0e0e0;
+            color: #4a5568;
+            border: 2px solid #6366f1;
+        }
+        
+        body.light-theme .theme-toggle:hover {
+            background-color: #6366f1;
+            color: white;
+        }
+        /* Apply light theme to the select elements */
+        
+        body.light-theme select#skill-category.form-control,
+        body.light-theme select#experience-level.form-control,
+        body.light-theme select#project-complexity.form-control,
+        body.light-theme select#project-duration.form-control {
+            background-color: #f0f0f0;
+            color: #4a5568;
+            border: 1px solid #ccc;
+        }
+        
+        body.light-theme select#skill-category.form-control option,
+        body.light-theme select#experience-level.form-control option,
+        body.light-theme select#project-complexity.form-control option,
+        body.light-theme select#project-duration.form-control option {
+            background-color: #f0f0f0;
+            color: #4a5568;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -1646,6 +2027,10 @@
             </ul>
         </nav>
         <div class="auth-buttons">
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-sun"></i>
+                <span>Light Mode</span>
+            </button>
             <a href="login.html">
                 <button class="btn btn-outline">Log In</button>
             </a>
@@ -2044,7 +2429,7 @@
             <div class="estimator-form reveal">
                 <div class="form-group">
                     <label for="skill-category">Skill Category</label>
-                    <select id="skill-category" class="form-control" style="background-color: #111827;">
+                    <select id="skill-category" class="form-control" style="background-color: #dddfe2;">
 <option value="">Select a category</option>
 <option value="web-development">Web Development</option>
 <option value="mobile-development">Mobile Development</option>
@@ -2059,7 +2444,7 @@
                 </div>
                 <div class="form-group">
                     <label for="experience-level">Experience Level</label>
-                    <select id="experience-level" class="form-control" style="background-color: #111827;">
+                    <select id="experience-level" class="form-control" style="background-color: #dddfe2;">
 <option value="">Select experience level</option>
 <option value="entry">Entry (0-2 years)</option>
 <option value="intermediate">Intermediate (2-5 years)</option>
@@ -2069,7 +2454,7 @@
                 </div>
                 <div class="form-group">
                     <label for="project-complexity">Project Complexity</label>
-                    <select id="project-complexity" class="form-control" style="background-color:#111827;">
+                    <select id="project-complexity" class="form-control" style="background-color:#dddfe2;">
 <option value="">Select complexity</option>
 <option value="basic">Basic</option>
 <option value="intermediate">Intermediate</option>
@@ -2079,7 +2464,7 @@
                 </div>
                 <div class="form-group">
                     <label for="project-duration">Project Duration</label>
-                    <select id="project-duration" class="form-control" style="background-color: #111827;"> 
+                    <select id="project-duration" class="form-control" style="background-color: #dddfe2;"> 
 <option value="">Select duration</option>
 <option value="less-week">Less than a week</option>
 <option value="1-2-weeks">1-2 weeks</option>
@@ -2575,7 +2960,7 @@
                 <h3>For Freelancers</h3>
                 <ul class="footer-links">
                     <li><a href="#categories">Find Work</a></li>
-                    <li><a href="index.html#karma-system">Karma System</a></li>
+                    <li><a href="index.html#karma-system">Karma System</li>
                     <li><a href="comingsoon.html">Community Support</a></li>
                     <li><a href="comingsoon.html">Learning Resources</a></li>
                     <li><a href="comingsoon.html">Success Stories</a></li>
@@ -2777,6 +3162,35 @@
                 chatIframe.style.display = 'block';
             } else {
                 chatIframe.style.display = 'none';
+            }
+        });
+
+        // Add this to your existing JavaScript section
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            const themeText = themeToggle.querySelector('span');
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                updateThemeButton(true);
+            } else {
+                updateThemeButton(false);
+            }
+
+            // Theme toggle functionality
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                const isLight = document.body.classList.contains('light-theme');
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+                updateThemeButton(isLight);
+            });
+
+            function updateThemeButton(isLight) {
+                themeIcon.className = isLight ? 'fas ' + (isLight ? 'fa-moon' : 'fa-sun') : 'fas ' + (savedTheme === 'light' ? 'fa-moon' : 'fa-sun');
+                themeText.textContent = isLight ? 'Dark Mode' : 'Light Mode';
             }
         });
     </script>
