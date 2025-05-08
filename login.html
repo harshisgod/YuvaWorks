@@ -115,51 +115,89 @@
             height: 100%;
             overflow: hidden;
             z-index: 0;
+            pointer-events: none;
         }
         
         .shape {
             position: absolute;
             border-radius: 50%;
-            background: radial-gradient(circle at center, rgba(100, 255, 218, 0.3), rgba(100, 255, 218, 0));
-            animation: float 15s infinite linear;
+            opacity: 0.18;
+            filter: blur(2.5px);
+            animation-timing-function: ease-in-out;
         }
         
-        .shape:nth-child(1) {
-            width: 200px;
-            height: 200px;
-            top: -100px;
-            left: -100px;
-            animation-duration: 25s;
+        .shape1 {
+            width: 200px; height: 200px;
+            top: -100px; left: -100px;
+            background: radial-gradient(circle, #64ffda 0%, #2563eb 100%);
+            animation: float1 22s infinite alternate;
         }
         
-        .shape:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            bottom: -50px;
-            right: 10%;
-            animation-duration: 20s;
+        .shape2 {
+            width: 150px; height: 150px;
+            bottom: -50px; right: 10%;
+            background: radial-gradient(circle, #8492fe 0%, #0a192f 100%);
+            animation: float2 18s infinite alternate;
             animation-delay: 2s;
         }
         
-        .shape:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            top: 30%;
-            right: -50px;
-            animation-duration: 18s;
+        .shape3 {
+            width: 100px; height: 100px;
+            top: 30%; right: -50px;
+            background: radial-gradient(circle, #5671f5 0%, #64ffda 100%);
+            animation: float3 16s infinite alternate;
             animation-delay: 5s;
         }
         
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-            100% {
-                transform: translateY(0) rotate(360deg);
-            }
+        .shape4 {
+            width: 120px; height: 120px;
+            left: 20vw; top: 70vh;
+            background: radial-gradient(circle, #8b5cf6 0%, #60a5fa 100%);
+            animation: float4 20s infinite alternate;
+        }
+        
+        .shape5 {
+            width: 180px; height: 180px;
+            right: 30vw; top: 10vh;
+            background: radial-gradient(circle, #10b981 0%, #2563eb 100%);
+            animation: float5 24s infinite alternate;
+        }
+        
+        .shape6 {
+            width: 80px; height: 80px;
+            left: 60vw; bottom: -40px;
+            background: radial-gradient(circle, #f59e0b 0%, #ef4444 100%);
+            animation: float6 19s infinite alternate;
+        }
+        
+        @keyframes float1 {
+            0% { transform: translateY(0) scale(1);}
+            100% { transform: translateY(60px) scale(1.1);}
+        }
+        
+        @keyframes float2 {
+            0% { transform: translateY(0) scale(1);}
+            100% { transform: translateY(-80px) scale(1.05);}
+        }
+        
+        @keyframes float3 {
+            0% { transform: translateX(0) scale(1);}
+            100% { transform: translateX(-60px) scale(1.15);}
+        }
+        
+        @keyframes float4 {
+            0% { transform: translateX(0) scale(1);}
+            100% { transform: translateX(40px) scale(1.08);}
+        }
+        
+        @keyframes float5 {
+            0% { transform: translateY(0) scale(1);}
+            100% { transform: translateY(-50px) scale(1.12);}
+        }
+        
+        @keyframes float6 {
+            0% { transform: translateY(0) scale(1);}
+            100% { transform: translateY(40px) scale(0.95);}
         }
         
         .signin-card {
@@ -585,9 +623,12 @@
     <div class="signin-container">
 
         <div class="floating-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
+            <div class="shape shape1"></div>
+            <div class="shape shape2"></div>
+            <div class="shape shape3"></div>
+            <div class="shape shape4"></div>
+            <div class="shape shape5"></div>
+            <div class="shape shape6"></div>
         </div>
 
         <div class="signin-card">
@@ -602,6 +643,17 @@
             <div class="role-toggle">
                 <button id="freelancer-tab" class="role-btn active">Freelancer</button>
                 <button id="employer-tab" class="role-btn">Employer</button>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="firstName" placeholder=" " required>
+                <label for="firstName">First Name</label>
+                <div class="form-error" id="firstName-error">First name is required</div>
+            </div>
+            <div class="input-group">
+                <input type="text" id="lastName" placeholder=" " required>
+                <label for="lastName">Last Name</label>
+                <div class="form-error" id="lastName-error">Last name is required</div>
             </div>
 
             <div class="input-group">
@@ -724,8 +776,6 @@
             });
         });
 
-
-
         // Form validation and login process
         const signinBtn = document.getElementById('signin-btn');
 
@@ -733,11 +783,29 @@
             e.preventDefault();
             let isValid = true;
 
+            const firstName = document.getElementById('firstName');
+            const lastName = document.getElementById('lastName');
+            const firstNameError = document.getElementById('firstName-error');
+            const lastNameError = document.getElementById('lastName-error');
             const email = document.getElementById('email');
             const password = document.getElementById('password');
             const emailError = document.getElementById('email-error');
             const passwordError = document.getElementById('password-error');
 
+            // Validate first name
+            if (firstName.value.trim() === '') {
+                firstNameError.style.display = 'block';
+                isValid = false;
+            } else {
+                firstNameError.style.display = 'none';
+            }
+            // Validate last name
+            if (lastName.value.trim() === '') {
+                lastNameError.style.display = 'block';
+                isValid = false;
+            } else {
+                lastNameError.style.display = 'none';
+            }
             // Validate email
             if (!validateEmail(email.value)) {
                 emailError.style.display = 'block';
@@ -745,7 +813,6 @@
             } else {
                 emailError.style.display = 'none';
             }
-
             // Validate password
             if (password.value.trim() === '') {
                 passwordError.style.display = 'block';
@@ -760,6 +827,8 @@
 
                 // Mock user data storage
                 const userData = {
+                    firstName: firstName.value.trim(),
+                    lastName: lastName.value.trim(),
                     email: email.value.trim(),
                     isLoggedIn: true,
                     profilePic: 'https://i.pravatar.cc/150?u=' + email.value.trim()
@@ -769,10 +838,16 @@
                 localStorage.setItem('yuvaworks_user', JSON.stringify(userData));
                 localStorage.setItem('yuvaWorks_loggedIn', 'true');
 
+                // Get selected role
+                const role = localStorage.getItem('yuvaWorks_role') || 'freelancer';
+
                 // Simulate loading delay
                 setTimeout(() => {
-                    // Redirect to home.html instead of index.html
-                    window.location.href = 'home.html';
+                    if (role === 'freelancer') {
+                        window.location.href = 'freelancer-home.html';
+                    } else {
+                        window.location.href = 'employer-home.html';
+                    }
                 }, 1500);
             }
         });
