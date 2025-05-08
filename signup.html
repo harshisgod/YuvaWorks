@@ -880,6 +880,67 @@
             border: 1px solid var(--light-border);
             color: var(--light-text);
         }
+
+        .close-link {
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .close-link i {
+            font-size: 1.2rem;
+        }
+
+        .close-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        body.light-theme .close-link {
+            background: var(--light-hover);
+        }
+
+        body.light-theme .close-link:hover {
+            background: var(--light-accent);
+            color: white;
+        }
+
+        .card-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .card-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+            color: var(--accent-color);
+        }
+
+        body.light-theme .card-close {
+            background: var(--light-hover);
+            color: var(--light-text);
+        }
+
+        body.light-theme .card-close:hover {
+            background: var(--light-accent);
+            color: white;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -890,9 +951,7 @@
 <body>    <header class="header">
         <a href="index.html" class="logo">
             Yuva<span>Works</span>
-        </a>
-        <nav class="nav-links">
-            <button class="theme-toggle" id="theme-toggle">
+        </a>        <nav class="nav-links">            <button class="theme-toggle" id="theme-toggle">
                 <i class="fas fa-moon"></i>
                 <span>Theme</span>
             </button>
@@ -906,9 +965,10 @@
             <div class="shape"></div>
             <div class="shape"></div>
             <div class="shape"></div>
-        </div>
-
-        <div class="signin-card">
+        </div>        <div class="signin-card">
+            <a href="index.html" class="card-close">
+                <i class="fas fa-times"></i>
+            </a>
             <div class="signin-header">
                 <h1>Sign Up</h1>
                 <p>Welcome to YuvaWorks!</p>
