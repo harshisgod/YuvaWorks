@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Referral System - YuvaWorks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
          :root {
             --primary-color: #0a192f;
@@ -13,6 +14,18 @@
             --text-color: #ccd6f6;
             --blue-accent: #5671f5;
             --blue-light: #8492fe;
+
+            /* Light theme colors */
+            --light-primary: #ffffff;
+            --light-accent: #2563eb;
+            --light-secondary: #f8fafc;
+            --light-text: #334155;
+            --light-blue-accent: #3b82f6;
+            --light-blue-light: #1d4ed8;
+            --light-hover: #dbeafe;
+            --light-text-primary: #1e293b;
+            --light-text-secondary: #475569;
+            --light-border: #e2e8f0;
         }
         
         body {
@@ -89,16 +102,20 @@
         .referral-link button {
             padding: 0.8rem 1.5rem;
             background-color: var(--accent-color);
-            color: white;
+            color: var(--primary-color);
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(100, 255, 218, 0.2);
         }
         
         .referral-link button:hover {
             background-color: var(--blue-light);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(132, 146, 254, 0.3);
         }
         
         .stats {
@@ -206,12 +223,137 @@
             color: var(--primary-color);
             transform: scale(1.1);
         }
+
+        /* Theme toggle styles */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--accent-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Light theme styles */
+        body.light-theme {
+            background-color: var(--light-primary);
+            color: var(--light-text);
+        }
+
+        body.light-theme header {
+            background-color: var(--light-secondary);
+        }
+
+        body.light-theme .logo {
+            color: var(--light-blue-light);
+        }
+
+        body.light-theme .logo span {
+            color: var(--light-accent);
+        }
+
+        body.light-theme .theme-toggle {
+            background-color: var(--light-hover);
+            color: var(--light-text);
+            border: 1px solid var(--light-border);
+        }
+
+        body.light-theme .theme-toggle:hover {
+            background-color: var(--light-accent);
+            color: white;
+        }
+
+        body.light-theme .referral-header h1 {
+            color: var(--light-accent);
+        }
+
+        body.light-theme .referral-header p {
+            color: var(--light-text);
+        }
+
+        body.light-theme .referral-link {
+            background-color: var(--light-secondary);
+            border: 1px solid var(--light-border);
+        }
+
+        body.light-theme .referral-link input {
+            background-color: white;
+            color: var(--light-text);
+            border: 1px solid var(--light-border);
+        }
+
+        body.light-theme .stats .card {
+            background-color: var(--light-secondary);
+            border: 1px solid var(--light-border);
+        }
+
+        body.light-theme .stats .card h2 {
+            color: var(--light-accent);
+        }
+
+        body.light-theme .stats .card p {
+            color: var(--light-text);
+        }
+
+        body.light-theme .leaderboard h2 {
+            color: var(--light-accent);
+        }
+
+        body.light-theme .leaderboard table {
+            background-color: var(--light-secondary);
+            border: 1px solid var(--light-border);
+        }
+
+        body.light-theme .leaderboard th {
+            background-color: var(--light-accent);
+            color: white;
+        }
+
+        body.light-theme .leaderboard td {
+            color: var(--light-text);
+        }
+
+        body.light-theme .leaderboard tr:hover {
+            background-color: var(--light-hover);
+        }
+
+        body.light-theme .close-button {
+            background-color: var(--light-secondary);
+            color: var(--light-accent);
+        }
+
+        body.light-theme .referral-link button {
+            background-color: var(--light-accent);
+            color: white;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+        }
+
+        body.light-theme .referral-link button:hover {
+            background-color: var(--light-blue-light);
+            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+        }
     </style>
 </head>
 
-<body>
-    <header>
+<body>    <header>
         <a href="index.html" class="logo">Yuva<span>Works</span></a>
+        <nav class="nav-links">
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+                <span>Theme</span>
+            </button>
+        </nav>
     </header>
 
     <div class="container">
@@ -244,30 +386,30 @@
 
         <!-- Leaderboard -->
         <div class="leaderboard">
-            <h2>Top Referrers</h2>
+            <h2>My Referrerals</h2>
             <table>
                 <thead>
                     <tr>
                         <th>Rank</th>
                         <th>Name</th>
-                        <th>Points</th>
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
                         <td>John Doe</td>
-                        <td>5,000</td>
+                        <td>2023-01-01</td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Jane Smith</td>
-                        <td>4,500</td>
+                        <td>2023-01-02</td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>Michael Brown</td>
-                        <td>4,200</td>
+                        <td>2023-01-03</td>
                     </tr>
                 </tbody>
             </table>
@@ -327,6 +469,31 @@
                 chatIframe.style.display = 'none';
             }
         });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+        const text = themeToggle.querySelector('span');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.classList.toggle('light-theme', savedTheme === 'light');
+            updateThemeButton(savedTheme === 'light');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            const isLight = body.classList.contains('light-theme');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            updateThemeButton(isLight);
+        });
+
+        function updateThemeButton(isLight) {
+            icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+            text.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+        }
     </script>
 </body>
 
