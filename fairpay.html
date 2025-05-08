@@ -590,7 +590,7 @@
         
         .testimonials {
             padding: 80px 5%;
-            background-color: var(--dark);
+            background-color: var (--dark);
             overflow: hidden;
         }
         
@@ -645,7 +645,7 @@
             height: 60px;
             border-radius: 50%;
             overflow: hidden;
-            border: 3px solid var(--primary);
+            border: 3px solid var (--primary);
         }
         
         .author-avatar img {
@@ -1488,6 +1488,112 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
+        /* Theme Toggle Button */
+        
+        .theme-toggle {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--light);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        /* Light theme styles */
+        
+        body.light-theme {
+            background-color: #f9f9f9;
+            color: #334155;
+        }
+        
+        body.light-theme header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        body.light-theme .logo {
+            color: #4338ca;
+        }
+        
+        body.light-theme .logo span {
+            color: #6366f1;
+        }
+        
+        body.light-theme nav a {
+            color: #4a5568;
+        }
+        
+        body.light-theme .section-title h2 {
+            color: #334155;
+        }
+        
+        body.light-theme .estimator-form {
+            background: #e5e7eb;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.light-theme .form-group label {
+            color: #4a5568;
+        }
+        
+        body.light-theme .form-control {
+            background-color: #f9f9f9;
+            color: #334155;
+            border: 1px solid #cbd5e0;
+        }
+        
+        body.light-theme .estimator-results {
+            background: #e5e7eb;
+            color: #334155;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.light-theme .result-card {
+            background: rgba(99, 102, 241, 0.1);
+            border-left: 4px solid #6366f1;
+        }
+        
+        body.light-theme .result-card h4 {
+            color: #4a5568;
+        }
+        
+        body.light-theme .cta {
+            background: linear-gradient(135deg, #1d4ed8, #8b5cf6);
+            color: #fff;
+        }
+        
+        body.light-theme footer {
+            background-color: #e5e7eb;
+            color: #4a5568;
+        }
+        
+        body.light-theme footer .footer-logo {
+            color: #4338ca;
+        }
+        
+        body.light-theme footer h3 {
+            color: #4338ca;
+        }
+        
+        body.light-theme footer a {
+            color: #4a5568;
+        }
+        
+        body.light-theme .theme-toggle {
+            background-color: #e5e7eb;
+            color: #4a5568;
+        }
+        
+        body.light-theme .theme-toggle:hover {
+            background-color: #6366f1;
+            color: white;
+        }
         
         .mobile-menu {
             position: fixed;
@@ -1563,6 +1669,36 @@
             opacity: 1;
             visibility: visible;
         }
+        
+        body.light-theme .mobile-menu {
+            background: #e5e7eb;
+            color: #4a5568;
+        }
+        
+        body.light-theme .mobile-menu a {
+            color: #4a5568;
+        }
+        
+        body.light-theme .mobile-menu-close {
+            color: #4a5568;
+        }
+        
+        body.light-theme .mobile-logo a {
+            color: #4338ca;
+        }
+        
+        body.light-theme .mobile-logo span {
+            color: #6366f1;
+        }
+        
+        body.light-theme .mobile-auth-buttons .btn-outline {
+            color: #4338ca;
+            border-color: #4338ca;
+        }
+        
+        body.light-theme .mobile-auth-buttons .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #4338ca);
+        }
     </style>
 </head>
 
@@ -1572,6 +1708,12 @@
         <a href="home.html" class="logo">Yuva<span>Works</span></a>
         <nav class="nav-items">
             <ul>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-sun"></i>
+                        <span>Light Mode</span>
+                    </button>
+                </li>
                 <li><a href="how-it-works.html">How It Works</a></li>
                 <li><a href="browse-jobs.html">Browse Jobs</a></li>
                 <li><a href="#escrow-system">Escrow System</a></li>
@@ -1972,6 +2114,99 @@
             } else {
                 chatIframe.style.display = 'none';
             }
+        });
+        // Add this to your existing JavaScript section
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            const themeText = themeToggle.querySelector('span');
+
+            // Check for saved theme preference
+            let savedTheme = localStorage.getItem('theme') || 'dark';
+
+            function setTheme(theme) {
+                localStorage.setItem('theme', theme);
+                if (theme === 'light') {
+                    document.body.classList.add('light-theme');
+                } else {
+                    document.body.classList.remove('light-theme');
+                }
+                updateThemeButton(theme === 'light');
+            }
+
+            function updateThemeButton(isLightTheme) {
+                if (isLightTheme) {
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fas', 'fa-sun');
+                        themeIcon.classList.add('fas', 'fa-moon');
+                    }
+                    themeText.textContent = 'Dark Mode';
+                } else {
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fas', 'fa-moon');
+                        themeIcon.classList.add('fas', 'fa-sun');
+                    }
+                    themeText.textContent = 'Light Mode';
+                }
+            }
+            setTheme(savedTheme);
+            themeToggle.addEventListener('click', () => {
+                savedTheme = localStorage.getItem('theme') || 'dark';
+                let newTheme = savedTheme === 'dark' ? 'light' : 'dark';
+                setTheme(newTheme);
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+
+            if (!themeToggle) {
+                console.error('Theme toggle button not found');
+                return;
+            }
+
+            // Initialize theme based on localStorage or default to dark
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            document.body.classList.toggle('light-theme', currentTheme === 'light');
+
+            // Add click event listener to toggle theme
+            themeToggle.addEventListener('click', () => {
+                // Toggle light-theme class on body
+                document.body.classList.toggle('light-theme');
+
+                // Update localStorage with new theme
+                const isLight = document.body.classList.contains('light-theme');
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+                // Update button text
+                const buttonText = themeToggle.querySelector('span');
+                if (buttonText) {
+                    buttonText.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+                }
+            });
+        });
+        // Add this as a separate script at the end of your body tag
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeText = themeToggle.querySelector('span');
+
+            // Apply saved theme on load
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                themeText.textContent = 'Dark Mode';
+            }
+
+            // Theme toggle click handler
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                const isLight = document.body.classList.contains('light-theme');
+
+                // Update button text
+                themeText.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+
+                // Save preference
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            });
         });
     </script>
     <script src="init.js"></script>
