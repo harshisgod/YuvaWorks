@@ -21,6 +21,15 @@ font-family: 'Poppins', sans-serif;
 --text-color: #ccd6f6;
 --blue-accent: #5671f5;
 --blue-light: #8492fe;
+
+/* Add these light theme variables to your existing root variables */
+--light-primary: #ffffff;
+--light-secondary: #f8fafc;
+--light-text: #1a202c;
+--light-text-secondary: #4a5568;
+--light-accent: #3182ce;
+--light-hover: #ebf8ff;
+--light-border: #e2e8f0;
 }
 
 body {
@@ -30,6 +39,154 @@ min-height: 100vh;
 display: flex;
 flex-direction: column;
 overflow-x: hidden;
+}
+
+body.light-theme {
+background-color: var(--light-primary);
+color: #2d3748; /* Darker text color for better readability */
+}
+
+body.light-theme .header {
+background-color: #ffffff;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+body.light-theme .nav-links a {
+color: #1a202c; /* Darker color for nav links */
+font-weight: 600;
+}
+
+body.light-theme .nav-links a:hover {
+color: #2563eb; /* Brighter blue on hover */
+}
+
+body.light-theme .profile-header h1 {
+color: #1a202c; /* Darker color for header */
+font-weight: 700;
+}
+
+body.light-theme .profile-header p {
+color: #4a5568; /* Darker secondary text */
+}
+
+body.light-theme .sidebar-section h3 {
+color: #2d3748; /* Darker section headers */
+font-weight: 600;
+border-bottom-color: rgba(37, 99, 235, 0.2);
+}
+
+body.light-theme .profile-info-item label {
+color: #4a5568; /* Darker labels */
+font-weight: 500;
+}
+
+body.light-theme .profile-info-item p {
+color: #1a202c; /* Darker text */
+}
+
+body.light-theme .main-section {
+background-color: #ffffff;
+color: #2d3748; /* Darker text */
+}
+
+body.light-theme .main-section h2 {
+color: #1a202c;
+font-weight: 600;
+border-bottom-color: rgba(37, 99, 235, 0.2);
+}
+
+body.light-theme .form-control {
+color: #1a202c; /* Darker input text */
+background-color: #f8fafc;
+border-color: #e2e8f0;
+}
+
+body.light-theme .form-control:focus {
+border-color: #2563eb;
+}
+
+body.light-theme .form-group label {
+color: #4a5568; /* Darker labels */
+font-weight: 500;
+}
+
+body.light-theme .skill-tag {
+background-color: #edf2f7;
+color: #2563eb;
+border-color: #2563eb;
+font-weight: 500;
+}
+
+body.light-theme .project-card {
+background-color: #f8fafc;
+border-left-color: #2563eb;
+}
+
+body.light-theme .project-card h3 {
+color: #2563eb;
+font-weight: 600;
+}
+
+body.light-theme .project-description {
+color: #4a5568;
+}
+
+body.light-theme .project-meta {
+color: #718096;
+}
+
+body.light-theme .project-tag {
+background-color: #edf2f7;
+color: #2563eb;
+border-color: #2563eb;
+font-weight: 500;
+}
+
+/* Make modal content more visible in light theme */
+body.light-theme .modal-content {
+background-color: #ffffff;
+color: #2d3748;
+}
+
+body.light-theme .modal-header h2 {
+color: #1a202c;
+font-weight: 600;
+}
+
+/* Update profile sidebar in light theme */
+body.light-theme .profile-sidebar {
+background-color: #ffffff;
+color: #2d3748;
+}
+
+/* Make buttons more visible */
+body.light-theme .edit-button {
+background-color: #2563eb;
+color: #ffffff;
+}
+
+body.light-theme .save-btn {
+background: #2563eb;
+color: #ffffff;
+}
+
+body.light-theme .cancel-btn {
+color: #2d3748;
+border-color: #cbd5e1;
+background-color: #f8fafc;
+}
+
+/* Update theme toggle button */
+body.light-theme .theme-toggle {
+background: #f1f5f9;
+color: #1a202c;
+font-weight: 500;
+border: 1px solid #e2e8f0;
+}
+
+body.light-theme .theme-toggle:hover {
+background: #e2e8f0;
+color: #2563eb;
 }
 
 .header {
@@ -67,6 +224,7 @@ color: var(--accent-color);
 .nav-links {
 display: flex;
 gap: 2rem;
+align-items: center;
 }
 
 .nav-links a {
@@ -95,6 +253,27 @@ transition: width 0.3s ease;
 
 .nav-links a:hover::after {
 width: 100%;
+}
+
+.theme-toggle {
+display: flex;
+align-items: center;
+gap: 8px;
+padding: 8px 16px;
+border-radius: 20px;
+border: 1px solid rgba(255, 255, 255, 0.1);
+background: rgba(255, 255, 255, 0.08);
+color: var(--text-color);
+cursor: pointer;
+transition: all 0.3s ease;
+font-size: 0.95rem;
+font-weight: 500;
+margin-right: 1rem;
+}
+
+.theme-toggle:hover {
+background: rgba(255, 255, 255, 0.15);
+transform: translateY(-1px);
 }
 
 .profile-container {
@@ -766,11 +945,14 @@ transform: translate(-50px, -50px);
 <header class="header">
 <a href="employer-home.html" class="logo">Yuva<span>Works</span></a>
 <nav class="nav-links">
+<button class="theme-toggle" id="theme-toggle">
+<i class="fas fa-sun"></i>
+<span>Light Mode</span>
+</button>
 <a href="employer-home.html">Home</a>
 <a href="aboutus.html">About Us</a>
 <a href="contactus.html">Contact</a>
 </nav>
-<!-- Navbar Profile Picture -->
 </header>
 
 <div class="profile-container">
@@ -1516,6 +1698,39 @@ localStorage.setItem('yuvaworks_profile_picture', e.target.result);
 reader.readAsDataURL(file);
 }
 });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const themeText = themeToggle.querySelector('span');
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('yuva_theme') || 'dark';
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        themeText.textContent = 'Dark Mode';
+    }
+
+    // Toggle theme
+    themeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('light-theme');
+        const isLight = document.body.classList.contains('light-theme');
+        
+        if (isLight) {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+            themeText.textContent = 'Dark Mode';
+            localStorage.setItem('yuva_theme', 'light');
+        } else {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeText.textContent = 'Light Mode';
+            localStorage.setItem('yuva_theme', 'dark');
+        }
+    });
 });
 </script>
 </body>
