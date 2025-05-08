@@ -9,6 +9,7 @@
         /* Reuse the CSS from the home page */
         
          :root {
+            /* Dark theme */
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
             --secondary: #60a5fa;
@@ -19,6 +20,18 @@
             --success: #10b981;
             --danger: #ef4444;
             --warning: #f59e0b;
+
+            /* Light theme colors */
+            --light-primary: #ffffff;
+            --light-accent: #2563eb;
+            --light-secondary: #f8fafc;
+            --light-text: #334155;
+            --light-blue-accent: #3b82f6;
+            --light-blue-light: #1d4ed8;
+            --light-hover: #dbeafe;
+            --light-text-primary: #1e293b;
+            --light-text-secondary: #475569;
+            --light-border: #e2e8f0;
         }
         
         body {
@@ -117,46 +130,48 @@
         
         .bubbles span {
             position: absolute;
-            display: block;
-            width: 80px;
-            height: 80px;
-            background: var(--primary);
-            opacity: 0.5;
+            display: block;            width: 80px;
+            height: 80px;            background: var(--primary);
+            opacity: 0.08;
             border-radius: 50%;
-            animation: bubble 15s linear infinite;
-            bottom: -150px;
+            animation: bubble 25s ease-in-out infinite;
+            bottom: -50px;
         }
         
         .bubbles span:nth-child(1) {
             left: 10%;
-            width: 120px;
-            height: 120px;
-            animation-duration: 12s;
+            top: 5%;
+            width: 180px;
+            height: 180px;
+            animation-duration: 30s;
             animation-delay: 0s;
         }
         
         .bubbles span:nth-child(2) {
-            left: 20%;
-            width: 100px;
-            height: 100px;
-            animation-duration: 10s;
-            animation-delay: 2s;
+            right: 15%;
+            top: 30%;
+            width: 150px;
+            height: 150px;
+            animation-duration: 35s;
+            animation-delay: 5s;
         }
         
         .bubbles span:nth-child(3) {
-            left: 30%;
-            width: 140px;
-            height: 140px;
-            animation-duration: 18s;
-            animation-delay: 4s;
+            left: 20%;
+            top: 60%;
+            width: 200px;
+            height: 200px;
+            animation-duration: 40s;
+            animation-delay: 10s;
         }
         
         .bubbles span:nth-child(4) {
-            left: 50%;
+            right: 25%;
+            top: 85%;
             width: 160px;
             height: 160px;
-            animation-duration: 20s;
-            animation-delay: 6s;
+            animation-duration: 45s;
+            animation-delay: 15s;
         }
         
         .bubbles span:nth-child(5) {
@@ -189,37 +204,113 @@
             height: 130px;
             animation-duration: 19s;
             animation-delay: 5s;
-        }
-        
-        @keyframes bubble {
+        }          @keyframes bubble {
             0% {
-                transform: translateY(0) scale(1);
-                opacity: 0.5;
+                transform: translateY(0) translateX(0);
+                opacity: 0.06;
             }
             50% {
-                opacity: 1;
+                transform: translateY(-15px) translateX(15px);
+                opacity: 0.1;
             }
             100% {
-                transform: translateY(-1200px) scale(0.8);
-                opacity: 0;
+                transform: translateY(0) translateX(0);
+                opacity: 0.06;
             }
         }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--accent);
+            color: var(--light);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+
+        /* Light theme styles */
+        body.light-theme {
+            background-color: var(--light-primary);
+            color: var(--light-text);
+        }
+
+        body.light-theme header {
+            background-color: var(--light-secondary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-theme .logo {
+            color: var(--light-blue-light);
+        }
+
+        body.light-theme .logo span {
+            color: var(--light-accent);
+        }
+
+        body.light-theme .theme-toggle {
+            background-color: var(--light-hover);
+            color: var(--light-text);
+            border: 1px solid var(--light-border);
+        }
+
+        body.light-theme .theme-toggle:hover {
+            background-color: var(--light-accent);
+            color: white;
+        }
+
+        body.light-theme .contract-details h1 {
+            color: var(--light-accent);
+        }
+
+        body.light-theme .contract-details p,
+        body.light-theme .contract-details ul li {
+            color: var(--light-text-secondary);
+        }
+
+        body.light-theme .btn-primary {
+            background: linear-gradient(135deg, var(--light-accent), var(--light-blue-light));
+        }
+
+        body.light-theme footer {
+            background-color: var(--light-secondary);
+            color: var(--light-text-secondary);
+        }
+
+        body.light-theme .bubbles {
+            background: linear-gradient(135deg, var(--light-secondary), var(--light-primary));
+        }
+
+        body.light-theme .bubbles span {
+            background: var(--light-accent);
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body>
-    <div class="bubbles">
+<body>    <div class="bubbles">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <header>
+    </div><header>
         <a href="index.html" class="logo">Yuva<span>Works</span></a>
+        <nav class="nav-links">
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+                <span>Theme</span>
+            </button>
+        </nav>
     </header>
 
     <section class="contract-details">
@@ -252,6 +343,31 @@
     </div>
 
     <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+        const text = themeToggle.querySelector('span');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.classList.toggle('light-theme', savedTheme === 'light');
+            updateThemeButton(savedTheme === 'light');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            const isLight = body.classList.contains('light-theme');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            updateThemeButton(isLight);
+        });
+
+        function updateThemeButton(isLight) {
+            icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+            text.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+        }
+        
         // Toggle AI Chat iframe visibility
         const chatButton = document.getElementById('ai-chat-button');
         const chatIframe = document.getElementById('ai-chat-iframe');
