@@ -484,17 +484,6 @@
             margin-top: 0.5rem;
             display: none;
         }
-        /* New styles for name input field */
-        
-        .input-group.name-group {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .input-group.name-group .input-wrapper {
-            position: relative;
-            flex: 1;
-        }
         
         @media (max-width: 576px) {
             .signin-card {
@@ -503,10 +492,6 @@
             }
             .header {
                 padding: 1rem 1.5rem;
-            }
-            .input-group.name-group {
-                flex-direction: column;
-                gap: 1.5rem;
             }
         }
         
@@ -556,6 +541,31 @@
             color: var(--primary-color);
             transform: scale(1.1);
         }
+
+        .role-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        .role-btn {
+            padding: 0.4rem 1.2rem;
+            border: none;
+            border-radius: 18px;
+            background: none;
+            color: var(--blue-light);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            border: 2px solid var(--blue-light);
+        }
+        .role-btn.active, .role-btn:focus {
+            background: linear-gradient(90deg, var(--blue-accent), var(--blue-light));
+            color: #fff;
+            outline: none;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Include Google Identity Services Library -->
@@ -583,22 +593,15 @@
         <div class="signin-card">
             <!-- Close Button -->
             <a href="index.html" class="close-button-card" title="Go back to Home Page">&times;</a>
+
             <div class="signin-header">
                 <h1>Login</h1>
                 <p>Welcome back to YuvaWorks!</p>
             </div>
 
-            <div class="input-group name-group">
-                <div class="input-wrapper">
-                    <input type="text" id="firstName" placeholder=" " required>
-                    <label for="firstName">First Name</label>
-                    <div class="form-error" id="firstName-error">First name is required</div>
-                </div>
-                <div class="input-wrapper">
-                    <input type="text" id="lastName" placeholder=" " required>
-                    <label for="lastName">Last Name</label>
-                    <div class="form-error" id="lastName-error">Last name is required</div>
-                </div>
+            <div class="role-toggle">
+                <button id="freelancer-tab" class="role-btn active">Freelancer</button>
+                <button id="employer-tab" class="role-btn">Employer</button>
             </div>
 
             <div class="input-group">
@@ -730,30 +733,10 @@
             e.preventDefault();
             let isValid = true;
 
-            const firstName = document.getElementById('firstName');
-            const lastName = document.getElementById('lastName');
             const email = document.getElementById('email');
             const password = document.getElementById('password');
-            const firstNameError = document.getElementById('firstName-error');
-            const lastNameError = document.getElementById('lastName-error');
             const emailError = document.getElementById('email-error');
             const passwordError = document.getElementById('password-error');
-
-            // Validate first name
-            if (firstName.value.trim() === '') {
-                firstNameError.style.display = 'block';
-                isValid = false;
-            } else {
-                firstNameError.style.display = 'none';
-            }
-
-            // Validate last name
-            if (lastName.value.trim() === '') {
-                lastNameError.style.display = 'block';
-                isValid = false;
-            } else {
-                lastNameError.style.display = 'none';
-            }
 
             // Validate email
             if (!validateEmail(email.value)) {
@@ -777,8 +760,6 @@
 
                 // Mock user data storage
                 const userData = {
-                    firstName: firstName.value.trim(),
-                    lastName: lastName.value.trim(),
                     email: email.value.trim(),
                     isLoggedIn: true,
                     profilePic: 'https://i.pravatar.cc/150?u=' + email.value.trim()
@@ -904,6 +885,29 @@
             localStorage.removeItem('yuvaWorks_redirectUrl');
             window.location.href = 'login.html';
         }
+
+        const freelancerTab = document.getElementById('freelancer-tab');
+        const employerTab = document.getElementById('employer-tab');
+
+        // Store selected role in localStorage for use after login
+        function setRole(role) {
+            localStorage.setItem('yuvaWorks_role', role);
+        }
+
+        freelancerTab.addEventListener('click', () => {
+            freelancerTab.classList.add('active');
+            employerTab.classList.remove('active');
+            setRole('freelancer');
+        });
+
+        employerTab.addEventListener('click', () => {
+            employerTab.classList.add('active');
+            freelancerTab.classList.remove('active');
+            setRole('employer');
+        });
+
+        // Set default role on page load
+        setRole('freelancer');
     </script>
 </body>
 
