@@ -21,6 +21,12 @@
             --text-color: #ccd6f6;
             --blue-accent: #5671f5;
             --blue-light: #8492fe;
+            --light-bg: #ffffff;
+            --light-text: #1a202c;
+            --light-secondary: #4a5568;
+            --light-accent: #3182ce;
+            --light-surface: #f3f4f6;
+            --light-border: #e2e8f0;
         }
         
         body {
@@ -604,6 +610,270 @@
             color: #fff;
             outline: none;
         }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 2px solid var(--accent-color);
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 2rem;
+        }
+
+        .theme-toggle i {
+            font-size: 1rem;
+            transition: transform 0.5s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(100, 255, 218, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+        }
+
+        .theme-toggle:active {
+            transform: translateY(0);
+        }
+
+        /* Light theme styles */
+        body.light-theme {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        /* Update signin container background for light theme */
+        body.light-theme .signin-container {
+            background: radial-gradient(circle at 50% 50%, #f0f7ff, #e5eeff);
+        }
+
+        /* Update floating shapes for light theme */
+        body.light-theme .shape1 {
+            background: radial-gradient(circle, #3b82f6 0%, #2563eb 100%);
+            opacity: 0.1;
+        }
+
+        body.light-theme .shape2 {
+            background: radial-gradient(circle, #60a5fa 0%, #3b82f6 100%);
+            opacity: 0.1;
+        }
+
+        body.light-theme .shape3 {
+            background: radial-gradient(circle, #93c5fd 0%, #60a5fa 100%);
+            opacity: 0.1;
+        }
+
+        body.light-theme .shape4 {
+            background: radial-gradient(circle, #bfdbfe 0%, #93c5fd 100%);
+            opacity: 0.1;
+        }
+
+        body.light-theme .shape5 {
+            background: radial-gradient(circle, #3b82f6 0%, #1d4ed8 100%);
+            opacity: 0.1;
+        }
+
+        body.light-theme .shape6 {
+            background: radial-gradient(circle, #60a5fa 0%, #2563eb 100%);
+            opacity: 0.1;
+        }
+
+        /* Update card background for light theme */
+        body.light-theme .signin-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Header background for light theme */
+        body.light-theme .header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Update scrolled header for light theme */
+        body.light-theme .header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        /* Logo colors for light theme */
+        body.light-theme .logo {
+            color: #2563eb;
+        }
+
+        body.light-theme .logo span {
+            color: #1d4ed8;
+        }
+
+        /* Navigation links for light theme */
+        body.light-theme .nav-links a {
+            color: #1e293b;
+        }
+
+        body.light-theme .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        body.light-theme .nav-links a::after {
+            background-color: #2563eb;
+        }
+
+        /* Header and Navigation */
+        body.light-theme .header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        body.light-theme .logo {
+            color: #2563eb;
+        }
+
+        body.light-theme .logo span {
+            color: #1d4ed8;
+        }
+
+        body.light-theme .nav-links a {
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        body.light-theme .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* Sign In Card */
+        body.light-theme .signin-card {
+            background-color: white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-theme .signin-header h1 {
+            color: #1e293b;
+            font-weight: 700;
+        }
+
+        body.light-theme .signin-header p {
+            color: #4b5563;
+            font-weight: 400;
+        }
+
+        /* Input Fields */
+        body.light-theme .input-group input {
+            background-color: #f8fafc;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+        }
+
+        body.light-theme .input-group label {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        body.light-theme .input-group input:focus ~ label {
+            color: #2563eb;
+            background-color: white;
+        }
+
+        /* Form Options */
+        body.light-theme .remember-me label {
+            color: #4b5563;
+        }
+
+        body.light-theme .forgot-password a {
+            color: #2563eb;
+            font-weight: 500;
+        }
+
+        body.light-theme .forgot-password a:hover {
+            color: #1d4ed8;
+        }
+
+        /* Divider */
+        body.light-theme .divider::before,
+        body.light-theme .divider::after {
+            background-color: #e2e8f0;
+        }
+
+        body.light-theme .divider span {
+            color: #64748b;
+            background-color: white;
+        }
+
+        /* Social Buttons */
+        body.light-theme .social-btn {
+            background-color: #f1f5f9;
+        }
+
+        body.light-theme .social-btn i {
+            color: #1e293b;
+        }
+
+        body.light-theme .social-btn:hover {
+            background-color: #2563eb;
+        }
+
+        body.light-theme .social-btn:hover i {
+            color: white;
+        }
+
+        /* Login Link */
+        body.light-theme .login-link {
+            color: #64748b;
+        }
+
+        body.light-theme .login-link a {
+            color: #2563eb;
+            font-weight: 500;
+        }
+
+        /* Role Toggle */
+        body.light-theme .role-btn {
+            color: #2563eb;
+            border-color: #2563eb;
+        }
+
+        body.light-theme .role-btn.active {
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+            color: white;
+        }
+
+        /* Error Messages */
+        body.light-theme .form-error {
+            color: #dc2626;
+        }
+
+        /* OTP Section */
+        body.light-theme .otp-verify p {
+            color: #4b5563;
+        }
+
+        body.light-theme .otp-input {
+            background-color: #f8fafc;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+        }
+
+        body.light-theme .resend-otp {
+            color: #2563eb;
+        }
+
+        /* Close Button */
+        body.light-theme .close-button-card {
+            background-color: #f8fafc;
+            color: #2563eb;
+        }
+
+        body.light-theme .close-button-card:hover {
+            background-color: #2563eb;
+            color: white;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Include Google Identity Services Library -->
@@ -613,8 +883,12 @@
 <body>
     <header class="header">
         <a href="index.html" class="logo">Yuva<span>Works</span></a>
-        <!-- Updated to redirect to index.html -->
         <nav class="nav-links">
+            <!-- Add theme toggle button -->
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-sun"></i>
+                <span>Light Mode</span>
+            </button>
             <a href="aboutus.html">About Us</a>
             <a href="contactus.html">Contact</a>
         </nav>
@@ -983,6 +1257,40 @@
 
         // Set default role on page load
         setRole('freelancer');
+
+        // Theme toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            const themeText = themeToggle.querySelector('span');
+
+            // Load saved theme
+            const savedTheme = localStorage.getItem('yuva_theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+            }
+
+            // Toggle theme
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('light-theme');
+                const isLight = document.body.classList.contains('light-theme');
+                
+                if (isLight) {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    themeText.textContent = 'Dark Mode';
+                    localStorage.setItem('yuva_theme', 'light');
+                } else {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    themeText.textContent = 'Light Mode';
+                    localStorage.setItem('yuva_theme', 'dark');
+                }
+            });
+        });
     </script>
 </body>
 
